@@ -41,8 +41,30 @@ const ADDITIONS_DIR = resolve(ROOT, 'data', 'additions');
 const DRY_RUN = process.argv.includes('--dry-run');
 const DEFAULT_VIDEO_ID = '8O8TIoHpKXQ';
 const ALLOWED_CATEGORIES = new Set([
+  // pre-existing 9
   'caribbean', 'castle', 'city_historic', 'city_large',
   'hydraulic', 'nature', 'other', 'village', 'wind',
+  // 008_categories_and_tags.sql — finer-grained types + flavour categories
+  'museum', 'monument', 'architecture', 'coastal', 'religious', 'industrial',
+  'street_art', 'dark_legend', 'oddity',
+]);
+// Controlled tag vocabulary. Tags are orthogonal to category and a place
+// can carry multiple. Adding a new tag = one-line change here. Frontend
+// chips and the agent's search tool filter on exactly these strings.
+const ALLOWED_TAGS = new Set([
+  // theme
+  'art', 'music', 'science', 'nature', 'history', 'military',
+  'religion', 'food', 'sport', 'technology',
+  // era
+  'medieval', 'golden_age', 'industrial_era', 'wwii', 'cold_war', 'modern_arch',
+  // vibe
+  'quirky', 'spooky', 'romantic', 'family_friendly', 'dark_tourism',
+  'hidden_gem', 'photogenic',
+  'legend', 'ghost_story', 'eccentric', 'mural', 'urban_art',
+  'largest_in_world', 'oldest_in_country',
+  // practical
+  'unesco', 'free_entry', 'seasonal', 'byo_bike', 'ticketed_only',
+  'indoor', 'outdoor',
 ]);
 const BATCH = 32;
 
@@ -134,8 +156,9 @@ function validateEntry(entry, sourcePath) {
   if (typeof c?.lat !== 'number' || typeof c?.lng !== 'number') {
     errors.push('coordinates.lat and coordinates.lng must be numbers');
   } else {
-    // Range covers NL mainland (~50.7..53.7, 3.3..7.2) and Dutch Caribbean (~12..18, -70..-62).
-    if (c.lat < 12 || c.lat > 54) errors.push(`lat ${c.lat} out of range [12, 54]`);
+    // Range covers NL mainland (~50.7..53.7, 3.3..7.2) and Dutch Caribbean
+    // (~11.9..18, -70..-62). Klein Curaçao sits at ~11.99, hence the 11.9 floor.
+    if (c.lat < 11.9 || c.lat > 54) errors.push(`lat ${c.lat} out of range [11.9, 54]`);
     if (c.lng < -71 || c.lng > 8) errors.push(`lng ${c.lng} out of range [-71, 8]`);
   }
 
@@ -147,6 +170,17 @@ function validateEntry(entry, sourcePath) {
   }
   if (entry.videoId !== undefined && entry.videoId !== null && typeof entry.videoId !== 'string') {
     errors.push('videoId must be a string or null');
+  }
+
+  if (entry.tags !== undefined && entry.tags !== null) {
+    if (!Array.isArray(entry.tags)) {
+      errors.push('tags must be an array of strings');
+    } else {
+      const unknown = entry.tags.filter((t) => !ALLOWED_TAGS.has(t));
+      if (unknown.length) {
+        errors.push(`unknown tag(s): ${unknown.join(', ')} (vocabulary: ${[...ALLOWED_TAGS].join(', ')})`);
+      }
+    }
   }
 
   if (errors.length) {
@@ -265,8 +299,9 @@ for (const a of merged) {
     `INSERT INTO attractions (
         id, category, name_ru, name_en, short_ru, short_en, full_ru, full_en,
         lat, lng, video_id, video_time, video_time_fmt,
+        tags,
         author_id, source, status
-     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,NULL,'curated','published')
+     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,NULL,'curated','published')
      ON CONFLICT (id) DO UPDATE SET
         category = EXCLUDED.category,
         name_ru = EXCLUDED.name_ru, name_en = EXCLUDED.name_en,
@@ -274,6 +309,7 @@ for (const a of merged) {
         full_ru = EXCLUDED.full_ru, full_en = EXCLUDED.full_en,
         lat = EXCLUDED.lat, lng = EXCLUDED.lng,
         video_id = EXCLUDED.video_id, video_time = EXCLUDED.video_time, video_time_fmt = EXCLUDED.video_time_fmt,
+        tags = EXCLUDED.tags,
         updated_at = now()`,
     [
       a.id, a.category,
@@ -282,6 +318,7 @@ for (const a of merged) {
       a.full?.ru ?? null, a.full?.en ?? null,
       a.coordinates.lat, a.coordinates.lng,
       a._videoId, a.videoTime ?? null, a.videoTimeFormatted ?? null,
+      a.tags ?? [],
     ],
   );
 

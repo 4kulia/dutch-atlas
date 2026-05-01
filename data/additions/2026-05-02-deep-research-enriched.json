@@ -1,0 +1,791 @@
+[
+  {
+    "id": "bartkira-tilburg",
+    "category": "street_art",
+    "name": {
+      "ru": "Bartkira",
+      "en": "Bartkira"
+    },
+    "short": {
+      "ru": "Огромный мурал на фасаде Hall of Fame — мэшап Барта Симпсона и манги «Акира», созданный Франсом Боукасом в 2015 году.",
+      "en": "Massive mural on the Hall of Fame facade — a mashup of Bart Simpson and Akira manga, created by Frans Boukas in 2015."
+    },
+    "full": {
+      "ru": "С 2015 года фасад Hall of Fame в Тилбурге украшает гигантский мурал Bartkira — проект художника Франса Боукаса, установленный Эриком Велдмейером. Работа отсылает к интернет-проекту Bartkira, соединяющему культовую мангу «Акира» и «Симпсонов» в намеренно странный гибрид поп-культуры и графической анархии. Это один из самых узнаваемых и любимых местными жителями муралов в Тилбурге — яркий пример того, как уличное искусство может балансировать между абсурдом и визуальной силой.",
+      "en": "Since 2015, the Hall of Fame facade in Tilburg has featured the giant Bartkira mural — a project by artist Frans Boukas, installed by Erik Veldmeijer. The work references the internet Bartkira project, merging the cult manga Akira with The Simpsons into a deliberately strange hybrid of pop culture and graphic anarchy. It is one of the most recognisable and locally-loved murals in Tilburg — a vivid example of street art balancing absurdity with visual power."
+    },
+    "coordinates": {
+      "lat": 51.557,
+      "lng": 5.083
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "quirky",
+      "photogenic",
+      "mural",
+      "modern_arch"
+    ]
+  },
+  {
+    "id": "haniasteeg-leeuwarden",
+    "category": "street_art",
+    "name": {
+      "ru": "Ханиастег",
+      "en": "Haniasteeg"
+    },
+    "short": {
+      "ru": "Узкий переулок в Леувардене с плотной коллекцией муралов от Fake Stencils, Кенни Куквелла и Twitch — камерная уличная галерея.",
+      "en": "Narrow alley in Leeuwarden with a dense collection of murals by Fake Stencils, Kenny Cookwell and Twitch — an intimate street gallery."
+    },
+    "full": {
+      "ru": "Переулок Ханиастег — часть проекта Writer's Block в Леувардене, превратившая небольшую улицу в плотную галерею уличного искусства. Здесь работали Fake Stencils, Кенни Куквелл и Twitch, создавая работы на узких стенах и в неожиданных уголках. В отличие от монументальных фасадных муралов, Ханиастег привлекает камерностью и концентрацией: искусство здесь живёт на расстоянии вытянутой руки, а не сотен метров.",
+      "en": "Haniasteeg alley is part of the Writer's Block project in Leeuwarden, transforming a small street into a dense gallery of street art. Artists Fake Stencils, Kenny Cookwell and Twitch have created works on narrow walls and in unexpected corners. Unlike monumental facade murals, Haniasteeg appeals through intimacy and concentration: the art here lives at arm's length, not hundreds of metres away."
+    },
+    "coordinates": {
+      "lat": 53.201,
+      "lng": 5.793
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "mural",
+      "hidden_gem",
+      "photogenic",
+      "art"
+    ]
+  },
+  {
+    "id": "kabouter-buttplug-rotterdam",
+    "category": "oddity",
+    "name": {
+      "ru": "Санта-Клаус (Гном Баттплаг)",
+      "en": "Santa Claus (Buttplug Gnome)"
+    },
+    "short": {
+      "ru": "Бронзовая скульптура Пола Маккарти на площади Эндрахтсплейн — рождественский гном с провокационным силуэтом, критика потребительства.",
+      "en": "Bronze sculpture by Paul McCarthy on Eendrachtsplein square — a Christmas gnome with a provocative silhouette, a critique of consumerism."
+    },
+    "full": {
+      "ru": "На площади Эндрахтсплейн в Роттердаме стоит бронзовая скульптура Пола Маккарти «Санта-Клаус», известная горожанам как «Гном Баттплаг». Работа соединяет рождественский образ с намеренно неудобным силуэтом — критика потребительской культуры, упакованная в форму, которую невозможно не заметить. Это одна из самых фотографируемых городских странностей Роттердама: открытая площадь, доступная круглосуточно, и объект, который работает как ловушка для взгляда.",
+      "en": "On Eendrachtsplein square in Rotterdam stands Paul McCarthy's bronze sculpture 'Santa Claus', known to locals as the 'Buttplug Gnome'. The work combines a Christmas image with a deliberately uncomfortable silhouette — a critique of consumer culture packaged in a form impossible to ignore. It is one of Rotterdam's most photographed urban oddities: an open square accessible 24/7, and an object that works as a trap for the eye."
+    },
+    "coordinates": {
+      "lat": 51.918,
+      "lng": 4.476
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "eccentric",
+      "photogenic",
+      "quirky",
+      "modern_arch",
+      "urban_art"
+    ]
+  },
+  {
+    "id": "exposure-lelystad",
+    "category": "oddity",
+    "name": {
+      "ru": "Экспозур",
+      "en": "Exposure"
+    },
+    "short": {
+      "ru": "26-метровая фигура сидящего человека работы Энтони Гормли на дамбе озера Маркермер — 1800 металлических элементов, собранных в силуэт.",
+      "en": "26-metre crouching figure by Antony Gormley on a Markermeer breakwater — 1,800 metal elements assembled into a silhouette."
+    },
+    "full": {
+      "ru": "На дамбе Батавиахавен в Лелистаде почти 26-метровая фигура сидящего человека работы Энтони Гормли смотрит на озеро Маркермер. Скульптура собрана из 1800 металлических элементов, и её силуэт читается то как гигант, то как призрак — в зависимости от погоды и расстояния. Это лучшая крупная скульптура под открытым небом для тех, кто ищет «странное, но не китч»: работа требует дистанции для съёмки и зависит от света.",
+      "en": "On the Bataviahaven breakwater in Lelystad, a nearly 26-metre crouching figure by Antony Gormley gazes at Markermeer lake. The sculpture is assembled from 1,800 metal elements, and its silhouette reads sometimes as a giant, sometimes as a ghost — depending on weather and distance. It is the best large open-air sculpture for those seeking 'bizarre but not kitsch': the work requires distance for photography and depends on light."
+    },
+    "coordinates": {
+      "lat": 52.519,
+      "lng": 5.461
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "photogenic",
+      "modern_arch",
+      "largest_in_world",
+      "outdoor",
+      "eccentric"
+    ]
+  },
+  {
+    "id": "aurora-mural-heerlen",
+    "category": "street_art",
+    "name": {
+      "ru": "Аврора",
+      "en": "Aurora"
+    },
+    "short": {
+      "ru": "Мурал площадью ~18 000 м² на жилом комплексе в Херлене — заявлен как крупнейший в Европе, создан с участием жителей.",
+      "en": "~18,000 m² mural on a residential complex in Heerlen — claimed as Europe's largest, created with residents' participation."
+    },
+    "full": {
+      "ru": "Арт-проект коллектива Boa Mistura на жилом комплексе «Аврора» в Херлене занимает ~18 000 м² и заявлен как крупнейший мурал в Европе. Работа создавалась вместе с жителями комплекса — редкий случай, когда монументальное уличное искусство одновременно гигантское, жилое и социально ориентированное. Мурал виден издалека, но его смысл раскрывается в истории участия: это не просто фасад, а коллективный жест.",
+      "en": "The art project by collective Boa Mistura on the Aurora residential complex in Heerlen covers ~18,000 m² and is claimed as Europe's largest mural. The work was created together with the complex's residents — a rare case where monumental street art is simultaneously gigantic, residential and socially oriented. The mural is visible from afar, but its meaning unfolds in the story of participation: it is not just a facade, but a collective gesture."
+    },
+    "coordinates": {
+      "lat": 50.886,
+      "lng": 5.985
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "mural",
+      "largest_in_world",
+      "urban_art",
+      "photogenic",
+      "family_friendly"
+    ]
+  },
+  {
+    "id": "graffiti-hall-of-fame-boxtel",
+    "category": "street_art",
+    "name": {
+      "ru": "Граффити Холл оф Фейм Бокстел",
+      "en": "Graffiti Hall of Fame Boxtel"
+    },
+    "short": {
+      "ru": "Легальная стена в подземном переходе Бокстела — выросла из ежегодного Tunnel Vision jam, десятки художников работают здесь круглый год.",
+      "en": "Legal wall in a Boxtel underpass — grew from the annual Tunnel Vision jam, dozens of artists work here year-round."
+    },
+    "full": {
+      "ru": "Граффити Холл оф Фейм в Бокстеле вырос из ежегодного граффити-джема Tunnel Vision и используется как легальная зона, где десятки художников работают каждый год. В остальное время тоннель и стены открыты как галерея. Это общественный контрапункт к закрытым коммерческим граффити-паркам: место, где уличное искусство остаётся именно уличным — доступным, меняющимся, живым.",
+      "en": "The Graffiti Hall of Fame in Boxtel grew from the annual Tunnel Vision graffiti jam and is used as a legal zone where dozens of artists work each year. The rest of the year, the tunnel and walls are open as a gallery. It is a community-driven counterpoint to closed commercial graffiti parks: a place where street art remains street — accessible, changing, alive."
+    },
+    "coordinates": {
+      "lat": 51.591,
+      "lng": 5.331
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "mural",
+      "free_entry",
+      "hidden_gem",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "heron-heerlen",
+    "category": "street_art",
+    "name": {
+      "ru": "Цапля",
+      "en": "Heron"
+    },
+    "short": {
+      "ru": "Чёрно-белый мурал цапли-существа на бывшем здании CBS в Херлене — работа Дейва де Леу и Винсента Лансе.",
+      "en": "Black-and-white heron-creature mural on a former CBS building in Heerlen — work by Dave de Leeuw and Vincent Lancee."
+    },
+    "full": {
+      "ru": "Чёрно-белый мурал Дейва де Леу и Винсента Лансе изображает фантастическое существо-цаплю на бывшем здании CBS в Херлене. Работа показывает, как муралы Херлена интегрируются в постиндустриальный городской контекст: вместо декоративного заполнения они работают как точки напряжения между прошлым и настоящим. Одна из сильнейших монофигурных работ в Херлене, если нужен не маршрут, а единственный кадр.",
+      "en": "The black-and-white mural by Dave de Leeuw and Vincent Lancee depicts a fantastical heron-like creature on a former CBS building in Heerlen. The work shows how Heerlen murals integrate into post-industrial urban context: instead of decorative infill, they function as points of tension between past and present. One of the strongest single-piece works in Heerlen if you want a single shot rather than a route."
+    },
+    "coordinates": {
+      "lat": 50.888,
+      "lng": 5.969
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "mural",
+      "urban_art",
+      "photogenic",
+      "art",
+      "modern_arch"
+    ]
+  },
+  {
+    "id": "boekenmuur-utrecht",
+    "category": "street_art",
+    "name": {
+      "ru": "Букенмюр",
+      "en": "Boekenmuur"
+    },
+    "short": {
+      "ru": "Фотореалистичная книжная полка на фасаде дома в Утрехте — художник JanIsDeMan изобразил любимые книги жителей здания.",
+      "en": "Photorealistic bookcase on a house facade in Utrecht — artist JanIsDeMan depicted the residents' favourite books."
+    },
+    "full": {
+      "ru": "Самый известный утрехтский мурал-книжная полка на 2e Daalsedijk 69 создан художником JanIsDeMan и соседским сторителлингом. Дружелюбная, мгновенно узнаваемая фотореалистичная стена, где названия книг — настоящие любимые книги жителей дома. Лучше всего смотрится фронтально, с противоположной стороны улицы: тогда фасад превращается в окно в чью-то библиотеку.",
+      "en": "The most famous Utrecht mural bookshelf at 2e Daalsedijk 69 was created by artist JanIsDeMan and neighbourhood storytelling. A friendly, instantly-recognisable photorealistic facade where the book titles are the actual residents' favourites. Best viewed frontally from across the street: then the facade becomes a window into someone's library."
+    },
+    "coordinates": {
+      "lat": 52.099,
+      "lng": 5.116
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "mural",
+      "urban_art",
+      "family_friendly",
+      "photogenic",
+      "quirky"
+    ]
+  },
+  {
+    "id": "steklyannaya-ferma-sheyndel",
+    "category": "architecture",
+    "name": {
+      "ru": "Стеклянная ферма Схейндел",
+      "en": "Glass Farm Schijndel"
+    },
+    "short": {
+      "ru": "Гигантская стеклянная копия обычной голландской фермы работы MVRDV — внутри общественные функции, снаружи почти призрачный образ.",
+      "en": "MVRDV's oversized glass replica of an ordinary Dutch farm — civic functions inside, ghostly translucent barn outside."
+    },
+    "full": {
+      "ru": "Проект архитектурного бюро MVRDV увеличивает образ «средней местной фермы» до размеров полноценного общественного здания, выполненного целиком из стекла. Внутри размещаются обычные городские функции, снаружи — почти призрачное изображение гигантского стеклянного амбара. Здание работает как зеркало для окружающего ландшафта, меняя свой облик в зависимости от погоды и освещения. Лучше всего посещать в переменчивую погоду, чтобы оценить игру отражений и полупрозрачности конструкции.",
+      "en": "MVRDV's project enlarges the image of an average local farm into a full-scale glass hybrid public building. Inside are everyday civic functions; outside stands an almost ghostly image of a giant glass barn. The building acts as a mirror to the surrounding landscape, changing its appearance with weather and light. Best visited during changeable weather to appreciate the interplay of reflections and translucency in the structure."
+    },
+    "coordinates": {
+      "lat": 51.62,
+      "lng": 5.434
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "photogenic",
+      "quirky",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "groningerskiy-muzey",
+    "category": "museum",
+    "name": {
+      "ru": "Гронингерский музей",
+      "en": "Groninger Museum"
+    },
+    "short": {
+      "ru": "Постмодернистский павильон Алессандро Мендини 1994 года на музейном острове — официально признан «зданием споров».",
+      "en": "Alessandro Mendini's 1994 postmodern pavilion on a museum island — officially acknowledged as a 'building of debate'."
+    },
+    "full": {
+      "ru": "Музей современного искусства открылся в 1994 году и был спроектирован как яркая постмодернистская композиция с Алессандро Мендини в роли главного архитектора. Сам музей признаёт, что его внешний вид до сих пор вызывает споры о современной музейной архитектуре. Здание выглядит как набор разноцветных павильонов, собранных на искусственном острове посреди канала. Лучше всего рассматривать его как с пешеходного моста, так и с набережной, чтобы оценить всю павильонную композицию.",
+      "en": "The modern art museum opened in 1994, designed as a vivid postmodern composition with Alessandro Mendini as lead architect. The museum itself acknowledges that its appearance still triggers debates about contemporary museum architecture. The building resembles a cluster of brightly colored pavilions assembled on an artificial island in the middle of a canal. Best viewed from both the pedestrian bridge and embankment to appreciate the full pavilion composition."
+    },
+    "coordinates": {
+      "lat": 53.215,
+      "lng": 6.566
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "art",
+      "modern_arch",
+      "photogenic",
+      "indoor",
+      "quirky"
+    ]
+  },
+  {
+    "id": "dom-stena-2",
+    "category": "architecture",
+    "name": {
+      "ru": "Дом-стена № 2",
+      "en": "Wall House #2"
+    },
+    "short": {
+      "ru": "Единственный реализованный «Дом-стена» Джона Хейдука — философская стена с подвешенными объёмами как декорации сюрреалистического театра.",
+      "en": "John Hejduk's only realized Wall House — a philosophical wall with suspended volumes like surrealist stage scenery."
+    },
+    "full": {
+      "ru": "Единственный реализованный «Дом-стена» американского архитектора Джона Хейдука — задуман в 1973 году, построен в Гронингене в 2001-м. Огромная центральная стена с подвешенными объёмами превращает здание одновременно в теоретический манифест и декорацию сюрреалистического спектакля. Один из самых радикальных архитектурных объектов Нидерландов — философская конструкция в большей степени, чем жилой дом. Доступ ограничен: открыт только во время специальных мероприятий и сезонных программ Гронингерского музея.",
+      "en": "The only realized Wall House by American architect John Hejduk — conceived in 1973, built in Groningen in 2001. A huge central wall with suspended volumes makes the building read simultaneously as a theoretical manifesto and surrealist stage decoration. One of the most radical architectural objects in the Netherlands — a philosophical construction more than a livable house. Access is limited: open only during special occasions and seasonal programs run by the Groninger Museum."
+    },
+    "coordinates": {
+      "lat": 53.219,
+      "lng": 6.518
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "eccentric",
+      "seasonal",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "solse-gat",
+    "category": "dark_legend",
+    "name": {
+      "ru": "Солсе Гат",
+      "en": "Het Solse Gat"
+    },
+    "short": {
+      "ru": "Легендарная «дыра» в лесу Спёлдерсбос, связанная с преданием о грешных монахах — местные говорят, что ночью под землёй слышны колокола.",
+      "en": "Legendary 'hole' in Speulderbos forest linked to a tale of sinful monks — locals say bells can still be heard underground at night."
+    },
+    "full": {
+      "ru": "В лесу Спёлдерсбос находится легендарная «дыра», связанная с преданием о грешных монахах и монастыре, ушедшем под землю. Местная легенда гласит, что по ночам из-под земли до сих пор слышны колокола. Современные туристические описания сохраняют это место как официально признанную местную сагу. Это лучший кандидат на звание «народного хоррора», а не задокументированной трагедии. Посещать лучше днём, в сухую погоду — тропа может быть размыта.",
+      "en": "In the Speulderbos forest lies a legendary 'hole' linked to a tale of sinful monks and a monastery that sank underground. Local legend claims that bells can still be heard from beneath the earth at night. Modern tourist descriptions preserve the site as an officially recognized local saga. This is a prime candidate for 'folk horror' rather than documented tragedy. Best visited in daylight during dry weather — the trail can become muddy."
+    },
+    "coordinates": {
+      "lat": 52.328,
+      "lng": 5.711
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "legend",
+      "spooky",
+      "nature",
+      "ghost_story",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "muzey-tot-zover",
+    "category": "museum",
+    "name": {
+      "ru": "Музей Tot Zover",
+      "en": "Museum Tot Zover"
+    },
+    "short": {
+      "ru": "Голландский музей смерти и культуры прощания на территории кладбища Де-Ньиве-Остер — интеллектуальная рефлексия без сенсационности.",
+      "en": "Dutch museum of death and farewell culture on De Nieuwe Ooster cemetery grounds — intelligent reflection without sensationalism."
+    },
+    "full": {
+      "ru": "Музей, посвящённый смерти, трауру и меняющимся ритуалам прощания, расположен на территории кладбища Де-Ньиве-Остер в Амстердаме. Коллекция соединяет исторические похоронные объекты с современной художественной рефлексией о смерти. Один из самых интеллектуальных «темноватых, но не сенсационных» музеев Нидерландов. Открыт со вторника по воскресенье с 11:00 до 17:00. Адрес: Крёйслан 124, Амстердам.",
+      "en": "A museum dedicated to death, mourning, and changing farewell rituals, located on the grounds of De Nieuwe Ooster cemetery in Amsterdam. The collection combines historic funerary objects with contemporary artistic reflection on death. One of the most intelligent 'darkish but not sensational' museums in the Netherlands. Open Tuesday through Sunday from 11:00 to 17:00. Address: Kruislaan 124, Amsterdam."
+    },
+    "coordinates": {
+      "lat": 52.353,
+      "lng": 4.937
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "art",
+      "history",
+      "indoor"
+    ]
+  },
+  {
+    "id": "memorial-katastrofy-v-baylmere",
+    "category": "monument",
+    "name": {
+      "ru": "Мемориал катастрофы в Бейлмере",
+      "en": "Bijlmerramp Memorial"
+    },
+    "short": {
+      "ru": "«Дерево, которое всё видело» отмечает место крушения грузового Boeing 4 октября 1992 года в жилые блоки — погибло 43 человека.",
+      "en": "'The Tree That Saw Everything' marks the site of the 4 October 1992 cargo Boeing crash into residential blocks — 43 killed."
+    },
+    "full": {
+      "ru": "Мемориальное пространство отмечает место катастрофы 4 октября 1992 года, когда грузовой самолёт El Al врезался в жилые блоки Кляйн-Крёйтберг и Грунвен — погибло 43 человека. «Дерево, которое всё видело» стало центром «Растущего монумента» (Groeiend Monument). Один из самых важных городских трагических мемориалов в современных Нидерландах. Это общественное пространство открытого типа — при фотосъёмке сохраняйте уважительную дистанцию.",
+      "en": "A memorial space marks the site of the 4 October 1992 disaster, when an El Al cargo aircraft crashed into the residential blocks Klein Kruitberg and Groeneveen — 43 people were killed. 'The Tree That Saw Everything' became the heart of the Groeiend Monument (Growing Monument). One of the most important urban tragic memorials in modern Netherlands. This is an open public space — maintain respectful distance when photographing."
+    },
+    "coordinates": {
+      "lat": 52.314,
+      "lng": 4.957
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "modern_arch",
+      "outdoor",
+      "wwii"
+    ]
+  },
+  {
+    "id": "memorial-lager-vesterbork",
+    "category": "monument",
+    "name": {
+      "ru": "Мемориальный центр лагеря Вестерборк",
+      "en": "Herinneringscentrum Kamp Westerbork"
+    },
+    "short": {
+      "ru": "Начинался в 1939 году как лагерь для еврейских беженцев, стал транзитными воротами в Освенцим и Собибор — следы бараков видны на историческом участке.",
+      "en": "Started in 1939 as a Jewish refugee camp, became the transit gateway to Auschwitz and Sobibor — traces of barracks visible on historic terrain."
+    },
+    "full": {
+      "ru": "Вестерборк начинался в 1939 году как лагерь для еврейских беженцев, затем превратился в транзитный лагерь — «ворота в ад» на пути в Освенцим и Собибор. Следы бывшего лагеря до сих пор видны на исторической территории. Ключевое место для понимания механики депортаций из Нидерландов. Музей и кафе открыты с понедельника по пятницу с 10:00 до 17:00, по выходным и праздникам с 11:00 до 17:00; 4 мая — до 19:00.",
+      "en": "Westerbork started in 1939 as a camp for Jewish refugees, then became a transit camp — the 'gateway to hell' on the path to Auschwitz and Sobibor. Traces of the former camp are still visible on the historic terrain. A key site for understanding the mechanics of deportations from the Netherlands. Museum and café open Monday-Friday 10:00-17:00, weekends and holidays 11:00-17:00; 4 May until 19:00."
+    },
+    "coordinates": {
+      "lat": 52.917,
+      "lng": 6.605
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "wwii",
+      "history",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "slyusheyz",
+    "category": "architecture",
+    "name": {
+      "ru": "Слёйсхёйс",
+      "en": "Sluishuis"
+    },
+    "short": {
+      "ru": "«Плавучий» блок BIG и Barcode Architects на Эйбурге — одновременно мегаблок, мост, арка и причал с гигантским водным вырезом.",
+      "en": "BIG / Barcode Architects 'floating' block on IJburg — simultaneously a mega-block, bridge, arch and pier with a giant water cut-out."
+    },
+    "full": {
+      "ru": "Плавучий квартальный блок в воде, спроектированный бюро BIG и Barcode Architects. Современный амстердамский блок с огромным вырезом и водным проходом. Одна сторона поднята вверх, другая спускается ступенями к городу. Силуэт превращает его в одно из самых аномальных новых жилых зданий Нидерландов — одновременно мегаблок, мост, арку и причал. Здание завершено в 2022 году и стало новой архитектурной иконой восточного Амстердама.",
+      "en": "A floating quarter-block in the water, designed by BIG and Barcode Architects. A modern Amsterdam block with a huge cut-out and water passage. One side is raised up, the other steps down toward the city. The silhouette makes it one of the most anomalous new residential buildings in the Netherlands — simultaneously a mega-block, bridge, arch, and pier. Completed in 2022, it has become a new architectural icon of eastern Amsterdam."
+    },
+    "coordinates": {
+      "lat": 52.357,
+      "lng": 4.998
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "photogenic",
+      "outdoor",
+      "urban_art"
+    ]
+  },
+  {
+    "id": "nacionalnyy-memorial-kamp-vught",
+    "category": "monument",
+    "name": {
+      "ru": "Национальный мемориал Камп-Вугт",
+      "en": "Nationaal Monument Kamp Vught"
+    },
+    "short": {
+      "ru": "Единственный концентрационный лагерь СС, официально действовавший вне территории Рейха на оккупированной земле.",
+      "en": "The only SS concentration camp officially operated outside Reich territory on occupied soil during WWII."
+    },
+    "full": {
+      "ru": "Концентрационный лагерь в Вугте был единственным лагерем СС, официально действовавшим за пределами самой Германии на оккупированной территории, не присоединённой к Рейху. Сквозь его ворота прошли истории более 32 000 заключённых — политических узников, евреев, цыган, свидетелей Иеговы. Сегодня на территории сохранён подлинный барак 1B, место расстрелов и подземный музей, сочетающий документы, голоса свидетелей и тишину памяти. Это одно из самых сильных и тяжёлых мемориальных мест Нидерландов, требующее внутренней готовности к встрече с болью.",
+      "en": "Kamp Vught was the only SS concentration camp officially operated outside Germany on occupied territory not annexed to the Reich. Over 32,000 prisoners passed through its gates — political detainees, Jews, Roma, Jehovah's Witnesses. Today the site preserves authentic barrack 1B, the execution site, and an underground museum combining documents, survivor voices, and the quiet weight of memory. It stands as one of the Netherlands' most powerful and emotionally demanding memorial sites, requiring inner readiness to confront historical pain."
+    },
+    "coordinates": {
+      "lat": 51.659,
+      "lng": 5.275
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "wwii",
+      "dark_tourism",
+      "history"
+    ]
+  },
+  {
+    "id": "nacionalnyy-memorial-oranjehotel",
+    "category": "monument",
+    "name": {
+      "ru": "Национальный мемориал Ораньехотель",
+      "en": "Nationaal Monument Oranjehotel"
+    },
+    "short": {
+      "ru": "Тюрьма Схевенинген, прозванная «Ораньехотель» — через неё прошли более 25 000 узников оккупационного режима.",
+      "en": "Scheveningen prison nicknamed 'Oranjehotel' — over 25,000 prisoners of the Nazi occupation passed through its cells."
+    },
+    "full": {
+      "ru": "Обычная тюрьма Схевенингена превратилась во время Второй мировой в один из инструментов нацистского террора; голландцы иронично прозвали её «Ораньехотель». Сквозь камеры прошли более 25 000 человек — участники Сопротивления, евреи, свидетели Иеговы, арестованные по «экономическим» делам. Мемориал даёт увидеть, как обычная тюрьма становится машиной подавления, и сохраняет голоса тех, кто противостоял оккупации изнутри каменного мешка. Место позволяет понять масштаб террора через простую человеческую географию камер и коридоров.",
+      "en": "An ordinary prison in Scheveningen became an instrument of Nazi terror during WWII; the Dutch ironically nicknamed it the 'Orange Hotel.' Over 25,000 people passed through its cells — resistance fighters, Jews, Jehovah's Witnesses, and those arrested on 'economic' charges. The memorial shows how a normal prison became a machine of suppression, preserving the voices of those who resisted from inside stone walls. The site makes the scale of occupation terror tangible through the simple human geography of cells and corridors."
+    },
+    "coordinates": {
+      "lat": 52.099,
+      "lng": 4.301
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "wwii",
+      "dark_tourism",
+      "history"
+    ]
+  },
+  {
+    "id": "de-blob-eindhoven",
+    "category": "architecture",
+    "name": {
+      "ru": "Де Блоб",
+      "en": "De Blob"
+    },
+    "short": {
+      "ru": "Органическая стеклянная капля Массимилиано Фуксаса 2010 года — чистейший пример архитектуры «люби или ненавидь».",
+      "en": "Massimiliano Fuksas's 2010 organic glass blob — the purest Dutch example of love-it-or-hate-it architecture."
+    },
+    "full": {
+      "ru": "Итальянский архитектор Массимилиано Фуксас завершил в 2010 году в Эйндховене здание, задуманное как «прозрачная, соблазнительная» форма для нового торгового квартала. На практике получился чистейший образец архитектуры-провокации: часть зрителей видит в нём смелый постмодернистский жест, часть — откровенное уродство. Де Блоб стал одним из самых полемичных зданий 2010-х в Нидерландах. Лучший ракурс открывается с площади 18 Septemberplein, откуда видна вся странная органическая плавучесть стекла и стали.",
+      "en": "Italian architect Massimiliano Fuksas completed this building in Eindhoven in 2010, conceived as a 'transparent, seductive' form for a new shopping district. In practice it became the purest example of provocative architecture: some see a bold postmodern gesture, others an outright eyesore. De Blob has become one of the most polarizing Dutch buildings of the 2010s. The best vantage point is from 18 Septemberplein, where the entire strange organic buoyancy of glass and steel reveals itself."
+    },
+    "coordinates": {
+      "lat": 51.443,
+      "lng": 5.476
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "quirky",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "nacionalnyy-memorial-kamp-amersfoort",
+    "category": "monument",
+    "name": {
+      "ru": "Национальный мемориал Камп-Амерсфорт",
+      "en": "Nationaal Monument Kamp Amersfoort"
+    },
+    "short": {
+      "ru": "Транзитный лагерь 1941–1945 годов — более 30 000 человек отправлены дальше примерно в 800 этапах.",
+      "en": "Transit prison camp 1941–1945 — over 30,000 people deported onward in roughly 800 transports."
+    },
+    "full": {
+      "ru": "Камп-Амерсфорт работал как транзитная тюрьма и лагерь с 1941 по 1945 год; отсюда более 30 000 узников были отправлены дальше примерно в 800 этапах — в концлагеря Германии, на принудительные работы, на смерть. Подземный музей и реконструированный двор сосредоточены не только на судьбах узников, но и на фигурах охранников — анализируя механику насилия с обеих сторон колючей проволоки. Это один из самых аналитически сильных музеев нацистского насилия в стране, работающий не на эмоциональный шок, а на понимание системы.",
+      "en": "Kamp Amersfoort functioned as a transit prison and camp from 1941 to 1945; over 30,000 prisoners were sent onward in roughly 800 transports — to German concentration camps, forced labor, and death. The underground museum and reconstructed yard focus equally on the fates of prisoners and the figures of guards, analyzing the mechanics of violence from both sides of the barbed wire. It is one of the Netherlands' most analytically powerful museums of Nazi violence, working not through emotional shock but through systematic understanding."
+    },
+    "coordinates": {
+      "lat": 52.151,
+      "lng": 5.388
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "wwii",
+      "dark_tourism",
+      "history"
+    ]
+  },
+  {
+    "id": "deltaverk-slash-slash",
+    "category": "oddity",
+    "name": {
+      "ru": "Дельтаверк//",
+      "en": "Deltawerk//"
+    },
+    "short": {
+      "ru": "Гигантский бассейн Дельта-флюма превращён в ландшафтную скульптуру-руину внутри Ватерлопбоса.",
+      "en": "The giant Delta flume wave basin transformed into a landscape sculpture-ruin inside Waterloopbos."
+    },
+    "full": {
+      "ru": "Художники RAAAF и Atelier de Lyon превратили огромный волновой бассейн бывшего Дельта-флюма в масштабную работу Дельтаверк//, балансирующую на грани ландшафтной скульптуры, руины и инженерного памятника. Бетонные стены бассейна, когда-то служившие для моделирования штормовых волн, теперь стоят как странный храм воды и техники среди деревьев Ватерлопбоса. Произведение лучше всего воспринимается в рамках полного маршрута по лесу — как неожиданная встреча забытой инфраструктуры и современного искусства.",
+      "en": "Artists RAAAF and Atelier de Lyon transformed the massive former Delta flume wave basin into the large-scale work Deltawerk//, balancing on the boundary between landscape sculpture, ruin, and engineering monument. The concrete walls of the basin, once used to model storm surges, now stand as a strange temple of water and technology among the trees of Waterloopbos. The work is best experienced as part of a full forest route — an unexpected encounter between abandoned infrastructure and contemporary art."
+    },
+    "coordinates": {
+      "lat": 52.677,
+      "lng": 5.918
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "art",
+      "nature",
+      "hidden_gem",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "zeleniy-kafedral",
+    "category": "oddity",
+    "name": {
+      "ru": "Зелёный кафедрал",
+      "en": "De Groene Kathedraal"
+    },
+    "short": {
+      "ru": "178 тополей Маринуса Боземана воспроизводят план Реймсского собора — буквальный «собор без камня» в польдере.",
+      "en": "Marinus Boezem's 178 poplars reproduce the Reims cathedral floor plan — a literal 'cathedral without stone' in the polder."
+    },
+    "full": {
+      "ru": "Художник Маринус Боземан высадил 178 тополей и проложил бетонные дорожки, точно воспроизводящие план собора Нотр-Дам в Реймсе. Результат — буквальный «собор без камня», растущий в ландшафте польдера Флеволанд. Деревья образуют нефы и трансепт, дорожки обозначают колонны, и всё сооружение медленно меняется вместе с ростом тополей и сменой сезонов. Свободный доступ на открытом воздухе; лучше всего посещать в сухую погоду, выделив время на прогулку по окружающему Кафедраленбосу.",
+      "en": "Artist Marinus Boezem planted 178 poplars and laid concrete pathways precisely reproducing the floor plan of Reims Notre-Dame cathedral. The result is a literal 'cathedral without stone' growing in the Flevoland polder landscape. The trees form nave and transept, pathways mark columns, and the entire structure slowly changes with the growth of poplars and the turning seasons. Free outdoor access; best visited in dry weather with time for a walk through the surrounding Kathedralenbos."
+    },
+    "coordinates": {
+      "lat": 52.349,
+      "lng": 5.282
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "art",
+      "nature",
+      "free_entry",
+      "outdoor",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "muzey-navodneniya-1953",
+    "category": "museum",
+    "name": {
+      "ru": "Музей наводнения 1953 года",
+      "en": "Watersnoodmuseum"
+    },
+    "short": {
+      "ru": "Музей внутри четырёх кессонов, закрывших последнюю брешь наводнения 1953 года — катастрофа и память воды.",
+      "en": "Museum inside the four caissons that sealed the last 1953 flood breach — catastrophe and water memory combined."
+    },
+    "full": {
+      "ru": "Музей размещён в бетонных кессонах, которыми в 1953 году была закрыта последняя брешь катастрофического наводнения, унёсшего почти 2000 жизней. Экспозиция рассказывает и о самой катастрофе — ночь шторма, прорыв дамб, эвакуацию, — и о более широком голландском опыте жизни с водой. Это лучшее «тёмное» водно-историческое место в Нидерландах: не хоррор, а национальная травма плюс инженерная память. Музей работает ежедневно 10:00–17:00 и физически встроен в ландшафт борьбы человека и моря.",
+      "en": "The museum is housed in the concrete caissons used to seal the last breach of the catastrophic 1953 flood, which claimed nearly 2,000 lives. Exhibits explain both the disaster itself — the night of the storm, dike failures, evacuations — and the broader Dutch experience of living with water. It is the best 'dark' water-history site in the Netherlands: not horror but national trauma combined with engineering memory. The museum is open daily 10:00–17:00 and is physically embedded in the landscape of human struggle against the sea."
+    },
+    "coordinates": {
+      "lat": 51.621,
+      "lng": 3.972
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "dark_tourism",
+      "indoor"
+    ]
+  },
+  {
+    "id": "muzey-tyurmy-gevangenport",
+    "category": "museum",
+    "name": {
+      "ru": "Музей тюрьмы Гевангенпорт",
+      "en": "Museum de Gevangenpoort"
+    },
+    "short": {
+      "ru": "Средневековые ворота и бывшая тюрьма — камеры, стокзолдер, пейнкелдер и история телесных наказаний в Гааге.",
+      "en": "Medieval gate and former prison museum — cells, stockzolder, pijnkelder, and the history of corporal punishment."
+    },
+    "full": {
+      "ru": "Средневековые ворота и бывшая тюрьма Гевангенпорт — один из самых «готических» исторических музеев страны, не придумывающий ужасов, а показывающий их реальную историю. В камерах, стокзолдере (чулане для колодок) и пейнкелдере (подвале пыток) музей напрямую рассказывает историю преступления и наказания через подлинные пространства. Экспозиция охватывает несколько веков голландской пенитенциарной системы и практики телесных наказаний. Музей работает: понедельник 11:00–17:00, вторник–пятница 10:00–17:00, выходные 11:00–17:00.",
+      "en": "The medieval Gevangenpoort gate and former prison is one of the Netherlands' most 'gothic' historical museums, not inventing horrors but showing their real history. In the cells, stockzolder (stocks storage), and pijnkelder (torture cellar), the museum tells the story of crime and punishment directly through authentic spaces. The exhibits span several centuries of Dutch penitentiary systems and corporal punishment practices. Hours: Monday 11:00–17:00, Tuesday–Friday 10:00–17:00, weekends 11:00–17:00."
+    },
+    "coordinates": {
+      "lat": 52.08,
+      "lng": 4.311
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "dark_tourism",
+      "medieval",
+      "indoor"
+    ]
+  },
+  {
+    "id": "kasbah-hengelo",
+    "category": "architecture",
+    "name": {
+      "ru": "Касба Хенгело",
+      "en": "De Kasbah Hengelo"
+    },
+    "short": {
+      "ru": "Жилой комплекс 1973 года архитектора Пита Блома — 184 квартиры подняты на бетонных колоннах, превращая землю под домами в общественное городское пространство.",
+      "en": "Piet Blom's 1973 radical housing project — 184 apartments lifted on concrete columns, transforming the ground level into a semi-public urban commons."
+    },
+    "full": {
+      "ru": "Касба — один из самых убедительных примеров утопического послевоенного социального жилья в Нидерландах. Спроектированный Питом Бломом в 1973 году комплекс реализует концепцию «wonen als stedelijk dak» — жить как на городской крыше. 184 квартиры подняты на мощных бетонных столбах, а пространство под ними превращено в полуобщественную территорию, доступную для всех жителей района. Эта архитектурная утопия предвосхитила знаменитые кубические дома Блома и остаётся важным памятником голландского экспериментального градостроительства. Жилая зона — осмотр возможен снаружи.",
+      "en": "De Kasbah is one of the Netherlands' most convincing examples of utopian post-war social housing. Designed by Piet Blom in 1973, the complex embodies the concept of «wonen als stedelijk dak» — living as an urban roof. 184 apartments are raised on massive concrete columns, while the space beneath becomes a semi-public common territory accessible to all neighborhood residents. This architectural utopia predated Blom's famous cube houses and remains an important monument to Dutch experimental urban design. Residential area — viewing from outside only."
+    },
+    "coordinates": {
+      "lat": 52.262,
+      "lng": 6.794
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "history",
+      "quirky",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "kubuswoningen-helmond",
+    "category": "architecture",
+    "name": {
+      "ru": "Кубические дома Хелмонда",
+      "en": "Kubuswoningen Helmond"
+    },
+    "short": {
+      "ru": "Экспериментальные дома на столбах Пита Блома 1970-х годов — предшественники знаменитых роттердамских кубов, часть композиции вокруг сгоревшего театра.",
+      "en": "Piet Blom's experimental 1970s pole houses that predated Rotterdam's famous cubes — part of a composition around the burned-out 't Speelhuis theatre site."
+    },
+    "full": {
+      "ru": "Эти дома на столбах (paalwoningen) были построены в 1970-е годы как экспериментальный проект Пита Блома, предшествовавший его более известным роттердамским кубическим домам. Изначально они входили в архитектурный ансамбль вокруг театра 't Speelhuis. После пожара 2011 года, уничтожившего театр, контекст изменился, но дома остаются ключевой частью архитектурного наследия Хелмонда. Это жилая зона, возможен только внешний осмотр. Архитектура демонстрирует эволюцию радикальных жилищных идей Блома от ранних экспериментов к зрелым формам.",
+      "en": "These pole houses (paalwoningen) were built in the 1970s as Piet Blom's experimental project that predated his more famous Rotterdam cube houses. Originally they formed part of an architectural ensemble around the 't Speelhuis theatre. After a 2011 fire destroyed the theatre, the context changed, but the houses remain a key part of Helmond's architectural heritage. This is a residential zone — viewing from outside only. The architecture demonstrates the evolution of Blom's radical housing ideas from early experiments to mature forms."
+    },
+    "coordinates": {
+      "lat": 51.484,
+      "lng": 5.661
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "history",
+      "quirky",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "inntel-hotel-zaandam",
+    "category": "architecture",
+    "name": {
+      "ru": "Отель Иннтель Зандам",
+      "en": "Inntel Hotel Zaandam"
+    },
+    "short": {
+      "ru": "Башня-отель 2010 года архитектора Вилфрида ван Виндена, составленная из ~70 традиционных заанских домиков — мгновенно ставшая архитектурным мемом.",
+      "en": "Wilfried van Winden's 2010 hotel tower composed of ~70 stacked traditional Zaan houses — an instant global architectural meme."
+    },
+    "full": {
+      "ru": "Башня-отель по проекту Вилфрида ван Виндена открылась в 2010 году и мгновенно превратилась в один из самых узнаваемых архитектурных объектов Нидерландов. Здание собрано из почти 70 силуэтов традиционных заанских домов, наложенных друг на друга в фантастической композиции. Эта игра с фольклорными формами и современной высоткой создала глобальный архитектурный мем, регулярно появляющийся в подборках самых необычных зданий мира. Осмотр возможен снаружи; вход внутрь — для гостей отеля. Идеальная фотография на фоне исторической застройки Заандама.",
+      "en": "The tower hotel designed by Wilfried van Winden opened in 2010 and instantly became one of the Netherlands' most recognizable architectural objects. The building is composed of almost 70 silhouettes of traditional Zaanse houses stacked upon each other in a fantastical composition. This playful combination of folkloric forms and modern tower created a global architectural meme that regularly appears in compilations of the world's most unusual buildings. Viewing is possible from outside; entry inside is for hotel guests only. Perfect photo opportunity against the backdrop of Zaandam's historic architecture."
+    },
+    "coordinates": {
+      "lat": 52.439,
+      "lng": 4.821
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "quirky",
+      "photogenic",
+      "family_friendly"
+    ]
+  }
+]
