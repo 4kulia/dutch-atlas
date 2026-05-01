@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { pb } from '../auth/pb';
-import { mapPbToAttraction, type PbAttractionRecord } from './mapAttraction';
+import { apiFetch } from '../auth/api';
+import { mapApiToAttraction, type ApiAttractionRecord } from './mapAttraction';
 import { ATTRACTIONS_BUNDLED } from './bundled';
 import type { Attraction, Category } from '../types';
 
@@ -9,26 +9,21 @@ interface AttractionsState {
   byId: ReadonlyMap<string, Attraction>;
   countByCategory: Record<Category, number>;
   isLoading: boolean;
-  // Network/permission errors when loading from PB. UI continues to render
-  // off the bundled fallback so a degraded backend doesn't blank the map.
   error: string | null;
-  // True until at least one fetch from PB has resolved (success or failure).
-  // Components can use this to avoid flickering "empty state" while we're
-  // still on the first response.
   hydrated: boolean;
 }
 
 const AttractionsContext = createContext<AttractionsState | null>(null);
 
-const CACHE_KEY = 'nl_attractions:cache:v1';
-const CACHE_TTL_MS = 60 * 60 * 1000; // 1h
+const CACHE_KEY = 'nl_attractions:cache:v2';
+const CACHE_TTL_MS = 60 * 60 * 1000;
 
 interface CachePayload {
   fetchedAt: number;
-  rows: PbAttractionRecord[];
+  rows: ApiAttractionRecord[];
 }
 
-function readCache(): PbAttractionRecord[] | null {
+function readCache(): ApiAttractionRecord[] | null {
   if (typeof window === 'undefined') return null;
   try {
     const raw = window.localStorage.getItem(CACHE_KEY);
@@ -42,11 +37,13 @@ function readCache(): PbAttractionRecord[] | null {
   }
 }
 
-function writeCache(rows: PbAttractionRecord[]) {
+function writeCache(rows: ApiAttractionRecord[]) {
   if (typeof window === 'undefined') return;
   try {
-    const payload: CachePayload = { fetchedAt: Date.now(), rows };
-    window.localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
+    window.localStorage.setItem(
+      CACHE_KEY,
+      JSON.stringify({ fetchedAt: Date.now(), rows } satisfies CachePayload),
+    );
   } catch {
     /* localStorage full / disabled — non-fatal */
   }
@@ -65,10 +62,9 @@ function deriveState(attractions: Attraction[]): {
 }
 
 export function AttractionsProvider({ children }: { children: ReactNode }) {
-  // Three sources, in order of preference: PB live → localStorage cache → bundled JSON.
   const [attractions, setAttractions] = useState<Attraction[]>(() => {
     const cached = readCache();
-    if (cached) return cached.map(mapPbToAttraction);
+    if (cached) return cached.map(mapApiToAttraction);
     return ATTRACTIONS_BUNDLED;
   });
   const [hydrated, setHydrated] = useState(false);
@@ -77,22 +73,17 @@ export function AttractionsProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let cancelled = false;
-    pb.collection('attractions')
-      .getFullList<PbAttractionRecord>({
-        filter: 'status = "published"',
-        sort: 'created',
-        batch: 200,
-      })
-      .then((rows) => {
+    apiFetch<{ attractions: ApiAttractionRecord[] }>('/api/attractions')
+      .then((res) => {
         if (cancelled) return;
-        writeCache(rows);
-        setAttractions(rows.map(mapPbToAttraction));
+        writeCache(res.attractions);
+        setAttractions(res.attractions.map(mapApiToAttraction));
         setError(null);
       })
       .catch((err) => {
         if (cancelled) return;
         const msg = err instanceof Error ? err.message : 'Failed to load attractions';
-        console.warn('[attractions] PB fetch failed, using fallback', err);
+        console.warn('[attractions] api fetch failed, using fallback', err);
         setError(msg);
       })
       .finally(() => {
@@ -119,7 +110,6 @@ export function useAttractions(): AttractionsState {
   return ctx;
 }
 
-// Convenience wrapper used by hot paths that only need the byId map.
 export function useAttractionsById(): ReadonlyMap<string, Attraction> {
   return useAttractions().byId;
 }

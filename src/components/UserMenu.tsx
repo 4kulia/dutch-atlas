@@ -20,7 +20,7 @@ interface Props {
 }
 
 export function UserMenu({ onOpenMyPlaces }: Props = {}) {
-  const { user, signInWithGoogle, signOut, isSigningIn, error } = useAuth();
+  const { user, signInWithGoogle, signOut, error } = useAuth();
   const { lang } = useLang();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -46,14 +46,11 @@ export function UserMenu({ onOpenMyPlaces }: Props = {}) {
       <button
         type="button"
         onClick={signInWithGoogle}
-        disabled={isSigningIn}
         title={error ?? undefined}
-        className="inline-flex h-9 items-center gap-2 rounded-full border border-ink-700/60 bg-ink-900/85 px-3 text-xs font-medium text-ink-100 backdrop-blur-md transition-colors hover:border-ink-500/60 disabled:opacity-60"
+        className="inline-flex h-9 items-center gap-2 rounded-full border border-ink-700/60 bg-ink-900/85 px-3 text-xs font-medium text-ink-100 backdrop-blur-md transition-colors hover:border-ink-500/60"
       >
         <GoogleGlyph />
-        <span className="hidden sm:inline">
-          {isSigningIn ? t('signing_in', lang) : t('sign_in', lang)}
-        </span>
+        <span className="hidden sm:inline">{t('sign_in', lang)}</span>
         <span className="sm:hidden">{t('sign_in_short', lang)}</span>
       </button>
     );

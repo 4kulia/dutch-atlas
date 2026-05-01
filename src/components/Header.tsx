@@ -7,9 +7,12 @@ import { SearchBar } from './SearchBar';
 interface Props {
   onSelectAttraction: (id: string) => void;
   onOpenMyPlaces: () => void;
+  onOpenChat: () => void;
 }
 
-export function Header({ onSelectAttraction, onOpenMyPlaces }: Props) {
+const CHAT_LABEL = { ru: 'Помощник', en: 'Assistant' } as const;
+
+export function Header({ onSelectAttraction, onOpenMyPlaces, onOpenChat }: Props) {
   const { lang } = useLang();
   return (
     <header
@@ -28,6 +31,34 @@ export function Header({ onSelectAttraction, onOpenMyPlaces }: Props) {
         </div>
         <div className="ml-auto flex items-center gap-2">
           <SearchBar onSelect={onSelectAttraction} />
+          <button
+            type="button"
+            onClick={onOpenChat}
+            title={CHAT_LABEL[lang]}
+            aria-label={CHAT_LABEL[lang]}
+            className="group inline-flex h-9 items-center gap-2 rounded-full border border-ink-700/60 bg-ink-900/85 px-3 text-xs font-medium text-ink-100 backdrop-blur-md transition-colors hover:border-accent/50"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden
+              className="text-accent"
+            >
+              <path
+                d="M4 12a8 8 0 0114.5-4.6L21 6l-1 4.5L17 9l1.5-2A6 6 0 106 12c0 .9.2 1.7.5 2.5L4 18l3.5-1.5C8.3 18.5 10 19 12 19a8 8 0 008-7"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle cx="9" cy="12" r="1" fill="currentColor" />
+              <circle cx="13" cy="12" r="1" fill="currentColor" />
+              <circle cx="17" cy="12" r="1" fill="currentColor" />
+            </svg>
+            <span className="hidden sm:inline">{CHAT_LABEL[lang]}</span>
+          </button>
           <UserMenu onOpenMyPlaces={onOpenMyPlaces} />
           <LanguageToggle />
         </div>

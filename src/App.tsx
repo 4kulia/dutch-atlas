@@ -4,9 +4,11 @@ import { CategoryFilter } from './components/CategoryFilter';
 import { MapView } from './components/MapView';
 import { AttractionDrawer } from './components/AttractionDrawer';
 import { MyPlacesPanel } from './components/MyPlacesPanel';
+import { ChatPanel } from './components/ChatPanel';
 import { useAttractions } from './data/AttractionsProvider';
 import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
+import { agentBus } from './agent/events';
 
 function readInitialId(): string | null {
   if (typeof window === 'undefined') return null;
@@ -29,6 +31,7 @@ export default function App() {
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [myPlacesOpen, setMyPlacesOpen] = useState(false);
   const [myPlacesRefreshKey, setMyPlacesRefreshKey] = useState(0);
+  const [chatOpen, setChatOpen] = useState(false);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
   const { attractions, byId, countByCategory: counts } = useAttractions();
 
@@ -76,7 +79,26 @@ export default function App() {
     setMyPlacesOpen(true);
   }, []);
   const onCloseMyPlaces = useCallback(() => setMyPlacesOpen(false), []);
+  const onOpenChat = useCallback(() => setChatOpen(true), []);
+  const onCloseChat = useCallback(() => setChatOpen(false), []);
   const selected = selectedId ? byId.get(selectedId) ?? null : null;
+
+  // Wire the agent's UI events into the existing map+drawer state.
+  useEffect(() => {
+    return agentBus.subscribe((event) => {
+      if (event.type === 'drawer.open') {
+        setSelectedId(event.slug);
+        setMyPlacesOpen(false);
+      } else if (event.type === 'map.show') {
+        // For now: if a single slug is provided, treat it like selecting
+        // that marker so the existing pan/zoom flow kicks in. Multi-slug
+        // viewport-fit will follow with the build_route work.
+        if (event.slugs.length === 1) {
+          setSelectedId(event.slugs[0] ?? null);
+        }
+      }
+    });
+  }, []);
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
   }, [selectedId, toggleFavorite]);
@@ -90,7 +112,11 @@ export default function App() {
         activeCategories={active}
         attractions={visibleAttractions}
       />
-      <Header onSelectAttraction={onSelect} onOpenMyPlaces={onOpenMyPlaces} />
+      <Header
+        onSelectAttraction={onSelect}
+        onOpenMyPlaces={onOpenMyPlaces}
+        onOpenChat={onOpenChat}
+      />
       <div
         className="pointer-events-none absolute inset-x-0 z-20"
         style={{ top: 'calc(env(safe-area-inset-top) + 60px)' }}
@@ -118,6 +144,11 @@ export default function App() {
         refreshKey={myPlacesRefreshKey}
         onClose={onCloseMyPlaces}
         onSelect={onSelect}
+      />
+      <ChatPanel
+        open={chatOpen}
+        onClose={onCloseChat}
+        onSelectAttraction={onSelect}
       />
     </div>
   );

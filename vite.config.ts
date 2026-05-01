@@ -7,12 +7,10 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     proxy: {
-      // In dev, Vite proxies /pb/* to the PocketBase container so the
-      // frontend can use the same `/pb` path it uses in production.
-      '/pb': {
-        target: 'http://localhost:8090',
+      // /api/* → backend (handles auth, catalogue, favorites/notes, agent SSE).
+      '/api': {
+        target: 'http://localhost:8091',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/pb/, ''),
       },
     },
   },
