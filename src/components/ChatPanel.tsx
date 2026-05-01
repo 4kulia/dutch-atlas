@@ -2,14 +2,20 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react';
 import { useLang } from '../i18n/LanguageProvider';
 import { useAuth } from '../auth/AuthProvider';
-import { useAgentChat, type AgentMessage, type CardItem } from '../agent/useAgentChat';
+import { useAgentChat, type AgentMessage, type CardItem, type RouteCardData } from '../agent/useAgentChat';
 import { agentBus } from '../agent/events';
+import { renderMarkdown } from '../agent/markdown';
+import { useRouteDirections, findLeg } from '../agent/routeDirections';
+import {
+  TRAVEL_MODE_LABEL,
+  TRAVEL_MODE_ORDER,
+  type TravelMode,
+} from '../agent/travelMode';
 
 // ─── Copy ───────────────────────────────────────────────────────────
 const T = {
@@ -56,17 +62,94 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSelectAttraction: (slug: string) => void;
+  travelMode: TravelMode;
+  onTravelModeChange: (mode: TravelMode) => void;
+  activeRouteSig: string | null;
+  onActivateRoute: (sig: string, data: RouteCardData) => void;
 }
 
-export function ChatPanel({ open, onClose, onSelectAttraction }: Props) {
+interface SessionListItem {
+  id: string;
+  title: string;
+  preview: string | null;
+  updatedAt: string;
+}
+
+export function ChatPanel({
+  open,
+  onClose,
+  onSelectAttraction,
+  travelMode,
+  onTravelModeChange,
+  activeRouteSig,
+  onActivateRoute,
+}: Props) {
   const { lang } = useLang();
   const { isAuthenticated, signInWithGoogle } = useAuth();
-  const chat = useAgentChat(lang);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [sessions, setSessions] = useState<SessionListItem[]>([]);
+  const [sessionsOpen, setSessionsOpen] = useState(false);
+
+  const refreshSessions = useCallback(async () => {
+    if (!isAuthenticated) return;
+    try {
+      const res = await import('../auth/api').then((m) =>
+        m.apiFetch<{ sessions: SessionListItem[] }>('/api/chat/sessions'),
+      );
+      setSessions(res.sessions);
+    } catch (err) {
+      console.warn('[chat] sessions list failed', err);
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (open && isAuthenticated) refreshSessions();
+  }, [open, isAuthenticated, refreshSessions]);
+
+  const onSessionCreated = useCallback(
+    (id: string) => {
+      setSessionId(id);
+      // Refresh sidebar list so the new session appears at the top.
+      refreshSessions();
+    },
+    [refreshSessions],
+  );
+
+  const chat = useAgentChat({ lang, travelMode, sessionId, onSessionCreated });
   const [draft, setDraft] = useState('');
   const [snap, setSnap] = useState<Snap>('mid');
   const sheetRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  const startNewSession = useCallback(() => {
+    chat.reset();
+    setSessionId(null);
+    setSessionsOpen(false);
+  }, [chat]);
+
+  const switchToSession = useCallback((id: string) => {
+    setSessionId(id);
+    setSessionsOpen(false);
+  }, []);
+
+  const deleteSession = useCallback(
+    async (id: string) => {
+      try {
+        await import('../auth/api').then((m) =>
+          m.apiFetch(`/api/chat/sessions/${id}`, { method: 'DELETE' }),
+        );
+        if (id === sessionId) {
+          chat.reset();
+          setSessionId(null);
+        }
+        setSessions((prev) => prev.filter((s) => s.id !== id));
+      } catch (err) {
+        console.warn('[chat] session delete failed', err);
+      }
+    },
+    [chat, sessionId],
+  );
 
   // Auto-resize the textarea up to ~5 lines.
   useLayoutEffect(() => {
@@ -160,11 +243,10 @@ export function ChatPanel({ open, onClose, onSelectAttraction }: Props) {
   };
 
   const mobileHeightDvh = SNAP_DVH[snap];
-  const sheetTransform = useMemo(() => {
-    if (!open) return 'translateY(100%)';
-    if (dragOffset !== 0) return `translateY(${dragOffset}px)`;
-    return 'translateY(0)';
-  }, [open, dragOffset]);
+  // While dragging on mobile we override transform inline. Otherwise the
+  // Tailwind responsive class below (`translate-y-full` on mobile,
+  // `translate-x-full` on desktop) controls the closed-state direction.
+  const dragInlineTransform = dragOffset !== 0 ? `translate3d(0, ${dragOffset}px, 0)` : undefined;
 
   const starters = T.starters[lang];
   const hasMessages = chat.messages.length > 0;
@@ -176,19 +258,27 @@ export function ChatPanel({ open, onClose, onSelectAttraction }: Props) {
         role="dialog"
         aria-modal="false"
         aria-label={T.title[lang]}
+        aria-hidden={!open}
         className={[
           'fixed z-40 will-change-transform select-none',
           'bg-ink-900/95 backdrop-blur-md text-ink-100',
           'shadow-sheet',
-          // Mobile bottom sheet
-          'inset-x-0 bottom-0 rounded-t-[20px] border-t border-ink-700/60',
-          // Desktop right drawer (anchored top-to-bottom on the right)
+          // Mobile bottom sheet (height comes from CSS var `--sheet-h`)
+          'inset-x-0 bottom-0 h-[var(--sheet-h)] rounded-t-[20px] border-t border-ink-700/60',
+          // Desktop right drawer (full height, fixed width on the right)
           'md:inset-x-auto md:top-0 md:right-0 md:h-[100dvh] md:w-[440px] md:rounded-none md:border-l md:border-t-0 md:border-ink-700/60',
+          // Closed states differ by direction. On mobile the sheet slides
+          // down (translateY); on desktop the drawer slides right (translateX).
+          open
+            ? 'translate-y-0 md:translate-x-0'
+            : 'translate-y-full pointer-events-none md:translate-y-0 md:translate-x-full',
+          'transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
         ].join(' ')}
         style={{
-          height: `min(${mobileHeightDvh}dvh, 92dvh)`,
-          transform: sheetTransform,
-          transition: dragOffset === 0 ? 'transform 280ms cubic-bezier(0.32, 0.72, 0, 1), height 280ms cubic-bezier(0.32, 0.72, 0, 1)' : 'none',
+          // Mobile-only height — utility classes h-[var(--sheet-h)] (mobile)
+          // and md:h-[100dvh] (desktop) read from this variable.
+          ['--sheet-h' as never]: `min(${mobileHeightDvh}dvh, 92dvh)`,
+          transform: dragInlineTransform,
           paddingBottom: 'env(safe-area-inset-bottom)',
         }}
       >
@@ -222,15 +312,29 @@ export function ChatPanel({ open, onClose, onSelectAttraction }: Props) {
               <p className="mt-1.5 text-[11.5px] italic text-ink-500">{T.subtitle[lang]}</p>
             </div>
             <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => setSessionsOpen((v) => !v)}
+                title={lang === 'ru' ? 'Чаты' : 'Chats'}
+                aria-label={lang === 'ru' ? 'Чаты' : 'Chats'}
+                className={[
+                  'grid h-9 w-9 place-items-center rounded-full transition-colors',
+                  sessionsOpen
+                    ? 'bg-ink-800 text-ink-100'
+                    : 'text-ink-300 hover:bg-ink-800 hover:text-ink-100',
+                ].join(' ')}
+              >
+                <IconList />
+              </button>
               {hasMessages && (
                 <button
                   type="button"
-                  onClick={chat.reset}
+                  onClick={startNewSession}
                   title={T.newChat[lang]}
                   aria-label={T.newChat[lang]}
                   className="grid h-9 w-9 place-items-center rounded-full text-ink-300 transition-colors hover:bg-ink-800 hover:text-ink-100"
                 >
-                  <IconRefresh />
+                  <IconPlus />
                 </button>
               )}
               <button
@@ -243,6 +347,19 @@ export function ChatPanel({ open, onClose, onSelectAttraction }: Props) {
               </button>
             </div>
           </header>
+
+          {/* — Sessions overlay — */}
+          {sessionsOpen && isAuthenticated && (
+            <SessionsOverlay
+              lang={lang}
+              sessions={sessions}
+              activeId={sessionId}
+              onPick={switchToSession}
+              onNew={startNewSession}
+              onDelete={deleteSession}
+              onClose={() => setSessionsOpen(false)}
+            />
+          )}
 
           {/* — Body — */}
           {!isAuthenticated ? (
@@ -267,6 +384,12 @@ export function ChatPanel({ open, onClose, onSelectAttraction }: Props) {
                             lang={lang}
                             onSelectCard={handleCardSelect}
                             onMapCard={handleCardShowOnMap}
+                            travelMode={travelMode}
+                            onTravelModeChange={onTravelModeChange}
+                            activeRouteSig={activeRouteSig}
+                            onActivateRoute={onActivateRoute}
+                            isLastMessage={m.id === chat.messages[chat.messages.length - 1]?.id}
+                            isStreaming={chat.isStreaming}
                           />
                         )}
                       </li>
@@ -364,53 +487,96 @@ function AssistantTurn({
   lang,
   onSelectCard,
   onMapCard,
+  travelMode,
+  onTravelModeChange,
+  activeRouteSig,
+  onActivateRoute,
+  isLastMessage,
+  isStreaming,
 }: {
   message: AgentMessage;
   lang: 'ru' | 'en';
   onSelectCard: (slug: string) => void;
   onMapCard: (slug: string) => void;
+  travelMode: TravelMode;
+  onTravelModeChange: (m: TravelMode) => void;
+  activeRouteSig: string | null;
+  onActivateRoute: (sig: string, data: RouteCardData) => void;
+  isLastMessage: boolean;
+  isStreaming: boolean;
 }) {
-  const showCaret = message.isStreaming && message.text.length > 0;
+  const items = message.items;
+
+  // The streaming caret is shown on the last text item of the last assistant
+  // message that is still streaming.
+  const lastTextIdx = (() => {
+    for (let i = items.length - 1; i >= 0; i--) {
+      if (items[i]!.kind === 'text') return i;
+    }
+    return -1;
+  })();
+  const caretAt = isLastMessage && isStreaming ? lastTextIdx : -1;
+
   return (
     <div className="flex flex-col gap-3">
-      {(message.text || showCaret) && (
-        <div className="text-[14px] leading-relaxed text-ink-100">
-          <span className="whitespace-pre-line">{message.text}</span>
-          {showCaret && (
-            <span
-              aria-hidden
-              className="ml-0.5 inline-block h-[14px] w-[2px] -translate-y-[1px] animate-caret bg-accent"
-              style={{ verticalAlign: 'text-bottom' }}
-            />
-          )}
-        </div>
-      )}
-
-      {message.toolHints && message.toolHints.length > 0 && (
-        <ul className="flex flex-col gap-1">
-          {message.toolHints.map((h, i) => (
-            <li key={i} className="text-[12px] italic text-ink-500">
-              {h}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {message.cards && message.cards.length > 0 && (
-        <ul className="flex flex-col gap-2">
-          {message.cards.map((c) => (
-            <CardRow
-              key={`${message.id}-${c.slug}`}
-              card={c}
+      {items.map((item, idx) => {
+        if (item.kind === 'text') {
+          return (
+            <div
+              key={idx}
+              className="text-[14px] leading-relaxed text-ink-100 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+            >
+              {renderMarkdown(item.value)}
+              {idx === caretAt && (
+                <span
+                  aria-hidden
+                  className="ml-0.5 inline-block h-[14px] w-[2px] -translate-y-[1px] animate-caret bg-accent"
+                  style={{ verticalAlign: 'text-bottom' }}
+                />
+              )}
+            </div>
+          );
+        }
+        if (item.kind === 'tool') {
+          return (
+            <div key={idx} className="text-[12px] italic text-ink-500">
+              {item.label}
+            </div>
+          );
+        }
+        if (item.kind === 'cards') {
+          return (
+            <ul key={idx} className="flex flex-col gap-2">
+              {item.items.map((c) => (
+                <CardRow
+                  key={`${message.id}-${idx}-${c.slug}`}
+                  card={c}
+                  lang={lang}
+                  onSelect={onSelectCard}
+                  onMap={onMapCard}
+                />
+              ))}
+            </ul>
+          );
+        }
+        if (item.kind === 'route') {
+          return (
+            <RouteCard
+              key={idx}
+              route={item.data}
+              sig={item.sig}
+              isActive={activeRouteSig === item.sig}
               lang={lang}
-              onSelect={onSelectCard}
-              onMap={onMapCard}
+              onSelectStop={onSelectCard}
+              onActivate={() => onActivateRoute(item.sig, item.data)}
+              travelMode={travelMode}
+              onTravelModeChange={onTravelModeChange}
             />
-          ))}
-        </ul>
-      )}
+          );
+        }
+        return null;
+      })}
 
-      {/* tiny caret blink keyframes — colocated since Tailwind has no built-in */}
       <style>{`
         @keyframes caret-blink { 0%, 60% { opacity: 1; } 60.01%, 100% { opacity: 0; } }
         .animate-caret { animation: caret-blink 1.05s steps(1, end) infinite; }
@@ -506,6 +672,173 @@ function CardRow({
   );
 }
 
+// ─── RouteCard ──────────────────────────────────────────────────────
+
+const DAY_COLORS = ['#ff6a3d', '#0ea5e9', '#a855f7', '#10b981', '#f59e0b'];
+
+function RouteCard({
+  route,
+  sig,
+  isActive,
+  lang,
+  onSelectStop,
+  onActivate,
+  travelMode,
+  onTravelModeChange,
+}: {
+  route: RouteCardData;
+  sig: string;
+  isActive: boolean;
+  lang: 'ru' | 'en';
+  onSelectStop: (slug: string) => void;
+  onActivate: () => void;
+  travelMode: TravelMode;
+  onTravelModeChange: (m: TravelMode) => void;
+}) {
+  const directions = useRouteDirections();
+  let counter = 0;
+  void sig;
+  return (
+    <div
+      className={[
+        'overflow-hidden rounded-[14px] border bg-ink-950/55 transition-colors',
+        isActive ? 'border-accent/65 shadow-[inset_0_0_0_1px_rgba(255,106,61,0.35)]' : 'border-ink-700/55',
+      ].join(' ')}
+    >
+      <header className="flex items-center justify-between gap-3 border-b border-ink-700/40 bg-ink-900/40 px-3 py-2">
+        <div className="min-w-0 flex items-center gap-2">
+          <span aria-hidden className="text-[14px]">🚗</span>
+          <span className="truncate text-[12px] font-semibold tracking-wide text-ink-100">
+            {route.title || (lang === 'ru' ? 'Маршрут' : 'Route')}
+          </span>
+        </div>
+        {isActive ? (
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-2 py-[1px] text-[10.5px] font-medium uppercase tracking-[0.18em] text-accent">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
+            {directions.isLoading
+              ? lang === 'ru' ? 'считаю…' : 'computing…'
+              : lang === 'ru' ? 'на карте' : 'on map'}
+          </span>
+        ) : (
+          <button
+            type="button"
+            onClick={onActivate}
+            className="inline-flex items-center gap-1 rounded-full border border-ink-700/60 px-2 py-[1px] text-[10.5px] font-medium uppercase tracking-[0.18em] text-ink-300 transition-colors hover:border-accent/50 hover:text-accent"
+          >
+            {lang === 'ru' ? 'на карту' : 'show map'}
+          </button>
+        )}
+      </header>
+
+      {/* Travel mode segmented control */}
+      <div className="flex items-stretch gap-1 px-2 pt-2">
+        {TRAVEL_MODE_ORDER.map((m) => (
+          <button
+            key={m}
+            type="button"
+            onClick={() => onTravelModeChange(m)}
+            className={[
+              'flex-1 rounded-full px-2 py-1.5 text-[11.5px] font-medium transition-colors',
+              m === travelMode
+                ? 'bg-accent text-ink-950'
+                : 'border border-ink-700/55 text-ink-300 hover:border-accent/40 hover:text-ink-100',
+            ].join(' ')}
+          >
+            <span className="mr-1" aria-hidden>{TRAVEL_MODE_ICON[m]}</span>
+            {TRAVEL_MODE_LABEL[m][lang]}
+          </button>
+        ))}
+      </div>
+
+      {directions.error && (
+        <p className="px-3 pt-1 text-[11px] italic text-rose-300/80">{directions.error}</p>
+      )}
+
+      <ol className="flex flex-col">
+        {route.days.map((day, dayIdx) => {
+          const color = DAY_COLORS[dayIdx % DAY_COLORS.length] ?? '#ff6a3d';
+          return (
+            <li key={dayIdx} className="border-b border-ink-700/30 last:border-b-0">
+              <div className="flex items-center gap-2 px-3 pt-2.5 pb-1.5">
+                <span
+                  aria-hidden
+                  className="h-1.5 w-6 rounded-full"
+                  style={{ background: color }}
+                />
+                <span className="text-[13px] font-semibold text-ink-100">{day.title}</span>
+              </div>
+              <ul className="px-3 pb-2.5">
+                {day.stops.map((stop, idx) => {
+                  const n = ++counter;
+                  // Live leg from the directions context (real Google route);
+                  // fall back to the agent's haversine estimate.
+                  const liveLeg = idx > 0 ? findLeg(directions.legs, dayIdx, idx) : undefined;
+                  const minutes = liveLeg?.minutes ?? stop.drive_minutes_from_prev ?? null;
+                  const isApprox = liveLeg == null;
+                  return (
+                    <li key={`${dayIdx}-${idx}-${stop.slug}`} className="relative pl-7">
+                      <span
+                        aria-hidden
+                        className="absolute left-[10px] top-0 h-full w-px"
+                        style={{ background: idx === day.stops.length - 1 ? 'transparent' : color, opacity: 0.4 }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => onSelectStop(stop.slug)}
+                        className="group flex w-full items-start gap-2 py-1.5 text-left"
+                      >
+                        <span
+                          className="absolute left-0 top-2 grid h-[22px] w-[22px] place-items-center rounded-full text-[11px] font-bold tabular-nums text-ink-950 shadow"
+                          style={{ background: color, fontWeight: 700 }}
+                        >
+                          {n}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-baseline gap-2">
+                            <span className="truncate text-[13.5px] font-medium text-ink-100 group-hover:text-accent">
+                              {stop.name}
+                            </span>
+                            {stop.arrive_at && (
+                              <span className="ml-auto shrink-0 text-[11px] tabular-nums text-ink-500">
+                                {stop.arrive_at}
+                              </span>
+                            )}
+                          </div>
+                          {stop.note && (
+                            <p className="mt-0.5 line-clamp-2 text-[12px] leading-snug text-ink-300">
+                              {stop.note}
+                            </p>
+                          )}
+                          {idx > 0 && minutes != null && (
+                            <p className="mt-0.5 text-[11px] italic text-ink-500 tabular-nums">
+                              {isApprox ? '≈ ' : ''}
+                              {minutes} {lang === 'ru' ? 'мин' : 'min'}
+                              {liveLeg && liveLeg.meters > 0 && (
+                                <> · {(liveLeg.meters / 1000).toFixed(liveLeg.meters > 9999 ? 0 : 1)} km</>
+                              )}
+                            </p>
+                          )}
+                        </div>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
+const TRAVEL_MODE_ICON: Record<TravelMode, string> = {
+  DRIVING: '🚗',
+  WALKING: '🚶',
+  BICYCLING: '🚲',
+  TRANSIT: '🚌',
+};
+
 function ScoreBadge({ value }: { value: number }) {
   const text = value.toFixed(2);
   return (
@@ -533,6 +866,120 @@ function EmptyState({ lang }: { lang: 'ru' | 'en' }) {
       </p>
     </div>
   );
+}
+
+function SessionsOverlay({
+  lang,
+  sessions,
+  activeId,
+  onPick,
+  onNew,
+  onDelete,
+  onClose,
+}: {
+  lang: 'ru' | 'en';
+  sessions: SessionListItem[];
+  activeId: string | null;
+  onPick: (id: string) => void;
+  onNew: () => void;
+  onDelete: (id: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <div className="absolute inset-0 z-10 flex flex-col bg-ink-900/98 backdrop-blur-md">
+      <div className="flex items-center justify-between gap-2 border-b border-ink-700/40 px-5 py-3">
+        <h3 className="text-[15px] font-semibold text-ink-100">
+          {lang === 'ru' ? 'Чаты' : 'Chats'}
+        </h3>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={lang === 'ru' ? 'Закрыть' : 'Close'}
+          className="grid h-8 w-8 place-items-center rounded-full text-ink-300 hover:bg-ink-800 hover:text-ink-100"
+        >
+          <IconClose />
+        </button>
+      </div>
+
+      <button
+        type="button"
+        onClick={onNew}
+        className="mx-3 mt-3 inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-2 text-[13px] font-semibold text-ink-950 transition-opacity hover:opacity-90"
+      >
+        <IconPlus />
+        {lang === 'ru' ? 'Новый чат' : 'New chat'}
+      </button>
+
+      <div className="flex-1 overflow-y-auto px-3 py-3">
+        {sessions.length === 0 ? (
+          <p className="px-2 text-[13px] text-ink-500">
+            {lang === 'ru' ? 'Пока нет сохранённых чатов.' : 'No saved chats yet.'}
+          </p>
+        ) : (
+          <ul className="flex flex-col gap-1">
+            {sessions.map((s) => {
+              const isActive = s.id === activeId;
+              return (
+                <li key={s.id}>
+                  <div
+                    className={[
+                      'group flex items-stretch overflow-hidden rounded-xl border transition-colors',
+                      isActive
+                        ? 'border-accent/55 bg-accent/10'
+                        : 'border-ink-700/45 bg-ink-950/35 hover:border-ink-500/55',
+                    ].join(' ')}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => onPick(s.id)}
+                      className="flex flex-1 flex-col items-start gap-0.5 px-3 py-2 text-left"
+                    >
+                      <span className="line-clamp-1 text-[13.5px] font-medium text-ink-100">
+                        {s.title}
+                      </span>
+                      {s.preview && (
+                        <span className="line-clamp-1 text-[11.5px] text-ink-500">
+                          {s.preview}
+                        </span>
+                      )}
+                      <span className="text-[10.5px] uppercase tracking-[0.16em] text-ink-500/80">
+                        {formatRelative(s.updatedAt, lang)}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onDelete(s.id)}
+                      title={lang === 'ru' ? 'Удалить' : 'Delete'}
+                      aria-label={lang === 'ru' ? 'Удалить' : 'Delete'}
+                      className="grid w-10 shrink-0 place-items-center text-ink-500 opacity-0 transition-opacity hover:bg-ink-800/60 hover:text-rose-300 group-hover:opacity-100"
+                    >
+                      <IconTrash />
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function formatRelative(iso: string, lang: 'ru' | 'en'): string {
+  const t = new Date(iso).getTime();
+  if (!Number.isFinite(t)) return '';
+  const diffMin = Math.round((Date.now() - t) / 60_000);
+  if (diffMin < 1) return lang === 'ru' ? 'только что' : 'just now';
+  if (diffMin < 60) return lang === 'ru' ? `${diffMin} мин` : `${diffMin} min`;
+  const h = Math.round(diffMin / 60);
+  if (h < 24) return lang === 'ru' ? `${h} ч` : `${h}h`;
+  const d = Math.round(h / 24);
+  if (d < 30) return lang === 'ru' ? `${d} дн` : `${d}d`;
+  return new Date(iso).toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-GB', {
+    day: 'numeric',
+    month: 'short',
+  });
 }
 
 function SignInPanel({ onSignIn, lang }: { onSignIn: () => void; lang: 'ru' | 'en' }) {
@@ -568,13 +1015,27 @@ function IconClose() {
     </svg>
   );
 }
-function IconRefresh() {
+function IconList() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+function IconPlus() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+function IconTrash() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
-        d="M21 12a9 9 0 11-3.34-7M21 4v5h-5"
+        d="M5 7h14M10 11v6M14 11v6M6 7l1 12a2 2 0 002 2h6a2 2 0 002-2l1-12M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

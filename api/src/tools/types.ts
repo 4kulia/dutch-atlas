@@ -23,7 +23,30 @@ export interface UiEventOpenDrawer {
   slug: string;
 }
 
-export type UiEvent = UiEventCardAttractions | UiEventShowOnMap | UiEventOpenDrawer;
+export interface RouteStop {
+  slug: string;
+  name: string;
+  arrive_at?: string | null;
+  drive_minutes_from_prev?: number | null;
+  note?: string | null;
+}
+
+export interface RouteDay {
+  title: string;
+  stops: RouteStop[];
+}
+
+export interface UiEventRouteShow {
+  type: 'route.show';
+  title?: string;
+  days: RouteDay[];
+}
+
+export type UiEvent =
+  | UiEventCardAttractions
+  | UiEventShowOnMap
+  | UiEventOpenDrawer
+  | UiEventRouteShow;
 
 export interface ToolResult {
   forModel: unknown;

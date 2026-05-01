@@ -16,6 +16,7 @@ import { attractionsRouter } from './routes/attractions.js';
 import { favoritesRouter } from './routes/favorites.js';
 import { notesRouter } from './routes/notes.js';
 import { agentRouter } from './routes/agent.js';
+import { chatRouter } from './routes/chat.js';
 
 async function main(): Promise<void> {
   console.log(`api starting (NODE_ENV=${config.nodeEnv})`);
@@ -36,6 +37,7 @@ async function main(): Promise<void> {
   app.use('/api/favorites', favoritesRouter);
   app.use('/api/notes', notesRouter);
   app.use('/api/agent', agentRouter);
+  app.use('/api/chat', chatRouter);
 
   app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     console.error('[api] unhandled', err);

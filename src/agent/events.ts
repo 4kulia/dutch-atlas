@@ -14,7 +14,27 @@ export interface AgentDrawerOpen {
   slug: string;
 }
 
-export type AgentUiEvent = AgentMapShow | AgentDrawerOpen;
+export interface RouteStop {
+  slug: string;
+  name?: string;
+  arrive_at?: string | null;
+  drive_minutes_from_prev?: number | null;
+  note?: string | null;
+}
+
+export interface RouteDay {
+  title: string;
+  stops: RouteStop[];
+}
+
+export interface AgentRouteShow {
+  type: 'route.show';
+  title?: string;
+  days: RouteDay[];
+  sig?: string;
+}
+
+export type AgentUiEvent = AgentMapShow | AgentDrawerOpen | AgentRouteShow;
 
 type Listener = (event: AgentUiEvent) => void;
 

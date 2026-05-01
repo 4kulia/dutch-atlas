@@ -8,7 +8,8 @@ import { ChatPanel } from './components/ChatPanel';
 import { useAttractions } from './data/AttractionsProvider';
 import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
-import { agentBus } from './agent/events';
+import { agentBus, type RouteDay } from './agent/events';
+import { DEFAULT_TRAVEL_MODE, type TravelMode } from './agent/travelMode';
 
 function readInitialId(): string | null {
   if (typeof window === 'undefined') return null;
@@ -32,6 +33,10 @@ export default function App() {
   const [myPlacesOpen, setMyPlacesOpen] = useState(false);
   const [myPlacesRefreshKey, setMyPlacesRefreshKey] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
+  const [highlightedIds, setHighlightedIds] = useState<Set<string> | null>(null);
+  const [activeRoute, setActiveRoute] = useState<{ title?: string; days: RouteDay[] } | null>(null);
+  const [activeRouteSig, setActiveRouteSig] = useState<string | null>(null);
+  const [travelMode, setTravelMode] = useState<TravelMode>(DEFAULT_TRAVEL_MODE);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
   const { attractions, byId, countByCategory: counts } = useAttractions();
 
@@ -90,15 +95,46 @@ export default function App() {
         setSelectedId(event.slug);
         setMyPlacesOpen(false);
       } else if (event.type === 'map.show') {
-        // For now: if a single slug is provided, treat it like selecting
-        // that marker so the existing pan/zoom flow kicks in. Multi-slug
-        // viewport-fit will follow with the build_route work.
         if (event.slugs.length === 1) {
+          // Single pick → open it directly; the existing pan/zoom flow runs.
           setSelectedId(event.slugs[0] ?? null);
+          setHighlightedIds(null);
+          setActiveRoute(null);
+        } else if (event.slugs.length > 1) {
+          // Multi-slug → highlight and let the map fit them in view.
+          setHighlightedIds(new Set(event.slugs));
+          setActiveRoute(null);
+          setSelectedId(null);
         }
+      } else if (event.type === 'route.show') {
+        setActiveRoute({ title: event.title, days: event.days });
+        setActiveRouteSig(event.sig ?? null);
+        const slugs = event.days.flatMap((d) => d.stops.map((s) => s.slug));
+        setHighlightedIds(new Set(slugs));
+        setSelectedId(null);
       }
     });
   }, []);
+
+  // Clear the map's highlight/route overlay when the user picks a marker
+  // directly — they're done with the agent's pre-built focus.
+  useEffect(() => {
+    if (selectedId) {
+      setHighlightedIds(null);
+    }
+  }, [selectedId]);
+
+  // Activate a different route on the map (called when the user clicks an
+  // older RouteCard in the chat).
+  const onActivateRoute = useCallback(
+    (sig: string, data: { title?: string; days: RouteDay[] }) => {
+      setActiveRoute(data);
+      setActiveRouteSig(sig);
+      setHighlightedIds(new Set(data.days.flatMap((d) => d.stops.map((s) => s.slug))));
+      setSelectedId(null);
+    },
+    [],
+  );
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
   }, [selectedId, toggleFavorite]);
@@ -111,6 +147,9 @@ export default function App() {
         onSelect={onSelect}
         activeCategories={active}
         attractions={visibleAttractions}
+        highlightedIds={highlightedIds}
+        route={activeRoute}
+        travelMode={travelMode}
       />
       <Header
         onSelectAttraction={onSelect}
@@ -149,6 +188,10 @@ export default function App() {
         open={chatOpen}
         onClose={onCloseChat}
         onSelectAttraction={onSelect}
+        travelMode={travelMode}
+        onTravelModeChange={setTravelMode}
+        activeRouteSig={activeRouteSig}
+        onActivateRoute={onActivateRoute}
       />
     </div>
   );
