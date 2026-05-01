@@ -1,7 +1,7 @@
 import { APIProvider, AdvancedMarker, Map as GMap, useAdvancedMarkerRef, useMap } from '@vis.gl/react-google-maps';
 import { MarkerClusterer, type Marker } from '@googlemaps/markerclusterer';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ATTRACTIONS, ATTRACTIONS_BY_ID } from '../data/attractions';
+import { useAttractions } from '../data/AttractionsProvider';
 import type { Attraction, Category } from '../types';
 import { MarkerIcon } from './MarkerIcon';
 import { useLang } from '../i18n/LanguageProvider';
@@ -22,9 +22,10 @@ interface Props {
 
 export function MapView({ apiKey, selectedId, onSelect, activeCategories, attractions }: Props) {
   const { lang } = useLang();
+  const { attractions: allAttractions } = useAttractions();
   const visible = useMemo(
-    () => attractions ?? ATTRACTIONS.filter((a) => activeCategories.has(a.category)),
-    [activeCategories, attractions],
+    () => attractions ?? allAttractions.filter((a) => activeCategories.has(a.category)),
+    [activeCategories, attractions, allAttractions],
   );
 
   const onlyCaribbean = useMemo(() => {
@@ -79,6 +80,7 @@ interface BodyProps {
 
 function MapBody({ visible, selectedId, onSelect, flyTo, flyZoom, flyKey }: BodyProps) {
   const map = useMap();
+  const { byId } = useAttractions();
 
   useEffect(() => {
     if (!map) return;
@@ -91,7 +93,7 @@ function MapBody({ visible, selectedId, onSelect, flyTo, flyZoom, flyKey }: Body
   // picked.
   useEffect(() => {
     if (!map || !selectedId) return;
-    const a = ATTRACTIONS_BY_ID.get(selectedId);
+    const a = byId.get(selectedId);
     if (!a) return;
     const currentZoom = map.getZoom() ?? 7;
     const targetZoom = Math.max(currentZoom, 10);
@@ -100,7 +102,7 @@ function MapBody({ visible, selectedId, onSelect, flyTo, flyZoom, flyKey }: Body
       // Brief delay so the pan animates first.
       window.setTimeout(() => map.setZoom(targetZoom), 220);
     }
-  }, [map, selectedId]);
+  }, [map, selectedId, byId]);
 
   return (
     <ClusteredMarkers

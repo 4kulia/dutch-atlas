@@ -6,11 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Bilingual (RU/EN) interactive map of ~99 Netherlands attractions extracted from a single YouTube video (`8O8TIoHpKXQ`, see `src/types.ts`). Each marker opens a drawer that plays the video at the right timecode and lets signed-in users save favorites and personal notes. Live at https://dutch-atlas.com.
 
+User-submitted places are planned: the `attractions` collection already has the schema for it (`source`, `status`, `author`, optional video). Curated rows are seeded from `data/attractions.json` by `scripts/setup-attractions.mjs`.
+
 ## Stack at a glance
 
 - **Frontend:** Vite + React 18 + TypeScript + Tailwind, served by nginx in Docker.
 - **Map:** `@vis.gl/react-google-maps` + `@googlemaps/markerclusterer`.
-- **Backend:** PocketBase 0.26 (Go binary in its own container) — Google OAuth + per-user `favorites` + `notes` collections.
+- **Backend:** PocketBase 0.26 (Go binary in its own container) — Google OAuth + `attractions` (curated + future user-content) + per-user `favorites` + `notes`.
 - **Deploy:** Two `docker compose` services (`web`, `pb`), both bind to `127.0.0.1`. Host nginx terminates TLS and proxies `/` → 8080, `/pb/` → 8090.
 
 ## Common commands
@@ -36,6 +38,11 @@ docker compose exec pb /pb/pocketbase superuser upsert EMAIL PASSWORD
 POCKETBASE_ADMIN_EMAIL=… POCKETBASE_ADMIN_PASSWORD=… \
   node scripts/setup-pb-oauth.mjs path/to/client_secret_*.json
 
+# create the attractions collection + seed/sync curated rows from data/attractions.json
+# (idempotent: skips schema if already present, upserts rows by slug)
+POCKETBASE_ADMIN_EMAIL=… POCKETBASE_ADMIN_PASSWORD=… \
+  node scripts/setup-attractions.mjs
+
 # deploy (server: ssh alias `dutch-atlas`, /opt/dutch-atlas)
 ssh dutch-atlas 'cd /opt/dutch-atlas && git pull && docker compose build web && docker compose up -d web'
 ```
@@ -44,15 +51,28 @@ There are no automated tests in this repo.
 
 ## Architecture
 
-### Single source of truth for places
+### Where places live
 
-`data/attractions.json` is the **only** runtime data. It is built by hand‑in‑the‑loop:
+The runtime source of truth is the `attractions` PocketBase collection. `data/attractions.json` is the *seed* and the bundled fallback used while the PB request is in flight (or if PB is unreachable). It is built by hand‑in‑the‑loop:
 
 1. `prepare-data.mjs` parses `docs/netherlands_attractions_timecodes.md` (~99 items grouped by `##`/`###` headers) and slices `docs/netherlands_transcript.json` to attach a Russian paragraph per attraction. Output is `data/attractions.base.json` (RU only, no coordinates).
 2. `scripts/enrichments.mjs` is a hand‑maintained map of `id → { coordinates, name_en, short_en, full_en }`. Adding a new place means adding both an entry in `timecodes.md` *and* an enrichment.
 3. `merge-data.mjs` joins both sources, sorts by `videoTime`, and fails loudly if any id is missing an enrichment.
+4. `scripts/setup-attractions.mjs` reads `data/attractions.json` and upserts rows in PB by `slug` (idempotent — safe to rerun).
 
-`src/data/attractions.ts` re‑exports the JSON typed as `Attraction[]` (see `src/types.ts`) and exposes `ATTRACTIONS_BY_ID` and `countByCategory`.
+`src/data/AttractionsProvider.tsx` is the only place that reads from PB. It hydrates from `localStorage` (TTL 1h) → bundled JSON (`src/data/bundled.ts`) → PB live, in that order; consumers use `useAttractions()` to get `attractions`, `byId`, and `countByCategory`. Don't reintroduce static `ATTRACTIONS` imports.
+
+### `attractions` collection model
+
+The schema was created via `scripts/setup-attractions.mjs` (admin SDK), **not** a JSVM migration: in PB v0.26 the JSVM crashes silently on multi-field saves of a fresh collection (the runner reports "Applied" but nothing is created). The setup script is idempotent and is the canonical way to bootstrap the collection on a new PB volume.
+
+Key fields beyond the obvious ones:
+
+- `slug` (unique) — human-readable id used by `favorites.attraction_id` / `notes.attraction_id` and by `?id=` in the URL. We **do not** use PB relations for those links so existing favorites/notes continue working without a data migration.
+- `source: "curated" | "user"` and `status: "draft" | "pending" | "published" | "rejected"` — together drive visibility. List/view rules show `status="published"` to everyone plus the author's own drafts/pending. Authors can only edit/delete their own drafts; published rows are moderation-owned (no client-side moderation UI yet).
+- `video_id` / `video_time` are optional — user-submitted places typically won't have a video. The drawer hides the iframe and the "open in YouTube" button when they're missing.
+- `category` is a free-text field at the DB layer to allow user-supplied tags. The frontend maps unknown values to the canonical `'other'` bucket via `isCategory()` and keeps the original in `rawCategory` for future display.
+- `embedding_text` + `embedding_hash` are scaffolding for a future vector store (the AI assistant will read text from there). PB is SQLite, so the actual vectors will live elsewhere — Qdrant or `sqlite-vec` next to `pb_data` — to be decided when the assistant ships.
 
 ### State and data flow in the UI
 

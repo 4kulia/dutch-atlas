@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { ATTRACTIONS_BY_ID } from '../data/attractions';
+import { useAttractions } from '../data/AttractionsProvider';
 import { useLang } from '../i18n/LanguageProvider';
 import { CATEGORY_LABEL, UI } from '../i18n/strings';
 import { plural } from '../i18n/plurals';
@@ -17,13 +17,14 @@ interface Props {
 
 export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
   const { lang } = useLang();
+  const { byId } = useAttractions();
   const { favoriteIds, notesByAttraction } = useMyPlaces(refreshKey);
 
   const items = useMemo(() => {
     const ids = new Set<string>([...favoriteIds, ...notesByAttraction.keys()]);
     const list: Array<{ a: Attraction; favorite: boolean; notes: NoteRecord[] }> = [];
     for (const id of ids) {
-      const a = ATTRACTIONS_BY_ID.get(id);
+      const a = byId.get(id);
       if (!a) continue;
       list.push({
         a,
@@ -36,7 +37,7 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
       return x.a.name[lang].localeCompare(y.a.name[lang]);
     });
     return list;
-  }, [favoriteIds, notesByAttraction, lang]);
+  }, [favoriteIds, notesByAttraction, lang, byId]);
 
   useEffect(() => {
     if (!open) return;

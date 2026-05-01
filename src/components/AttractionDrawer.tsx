@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import type { Attraction } from '../types';
 import { useLang } from '../i18n/LanguageProvider';
 import { CATEGORY_LABEL, UI } from '../i18n/strings';
-import { VIDEO_ID } from '../types';
 import { VideoEmbed } from './VideoEmbed';
 import { CategoryDot } from './MarkerIcon';
 import { FavoriteButton } from './FavoriteButton';
@@ -83,8 +82,12 @@ export function AttractionDrawer({ attraction, onClose, isFavorite, onToggleFavo
                 <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-wide text-ink-300">
                   <CategoryDot category={attraction.category} />
                   <span>{CATEGORY_LABEL[attraction.category][lang]}</span>
-                  <span aria-hidden>·</span>
-                  <span className="font-mono">{attraction.videoTimeFormatted}</span>
+                  {attraction.videoTimeFormatted && (
+                    <>
+                      <span aria-hidden>·</span>
+                      <span className="font-mono">{attraction.videoTimeFormatted}</span>
+                    </>
+                  )}
                 </div>
                 <h2 className="text-2xl font-semibold leading-tight md:text-3xl">
                   {attraction.name[lang]}
@@ -108,32 +111,37 @@ export function AttractionDrawer({ attraction, onClose, isFavorite, onToggleFavo
             </header>
 
             <div className="flex-1 overflow-y-auto px-5 md:px-6">
-              <VideoEmbed
-                key={attraction.id}
-                startSeconds={attraction.videoTime}
-                title={attraction.name[lang]}
-                lang={lang}
-              />
-
-              <p className="mt-3 text-[12px] leading-snug text-ink-500">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="mr-1 -mb-0.5 inline-block align-text-bottom"
-                  aria-hidden
-                >
-                  <path
-                    d="M12 9v4m0 4h.01M10.29 3.86l-8.41 14.55A2 2 0 003.62 21h16.76a2 2 0 001.74-2.59L13.71 3.86a2 2 0 00-3.42 0z"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+              {attraction.videoId && attraction.videoTime != null && (
+                <>
+                  <VideoEmbed
+                    key={attraction.id}
+                    videoId={attraction.videoId}
+                    startSeconds={attraction.videoTime}
+                    title={attraction.name[lang]}
+                    lang={lang}
                   />
-                </svg>
-                {UI.audio_hint[lang]}
-              </p>
+
+                  <p className="mt-3 text-[12px] leading-snug text-ink-500">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="mr-1 -mb-0.5 inline-block align-text-bottom"
+                      aria-hidden
+                    >
+                      <path
+                        d="M12 9v4m0 4h.01M10.29 3.86l-8.41 14.55A2 2 0 003.62 21h16.76a2 2 0 001.74-2.59L13.71 3.86a2 2 0 00-3.42 0z"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {UI.audio_hint[lang]}
+                  </p>
+                </>
+              )}
 
               <p className="mt-5 text-[15px] leading-relaxed text-ink-100">
                 {capitalize(attraction.short[lang])}
@@ -183,17 +191,19 @@ export function AttractionDrawer({ attraction, onClose, isFavorite, onToggleFavo
               )}
 
               <div className="mt-6 mb-6 flex flex-wrap gap-2">
-                <a
-                  href={`https://youtu.be/${VIDEO_ID}?t=${attraction.videoTime}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink-800 px-4 py-2 text-sm font-medium text-ink-100 hover:bg-ink-700 transition-colors"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418A2.506 2.506 0 0 0 2.418 6.186 26.07 26.07 0 0 0 2 12a26.07 26.07 0 0 0 .418 5.814 2.506 2.506 0 0 0 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 0 0 1.768-1.768A26.07 26.07 0 0 0 22 12a26.07 26.07 0 0 0-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z" />
-                  </svg>
-                  {UI.open_in_youtube[lang]}
-                </a>
+                {attraction.videoId && attraction.videoTime != null && (
+                  <a
+                    href={`https://youtu.be/${attraction.videoId}?t=${attraction.videoTime}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-ink-800 px-4 py-2 text-sm font-medium text-ink-100 hover:bg-ink-700 transition-colors"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                      <path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418A2.506 2.506 0 0 0 2.418 6.186 26.07 26.07 0 0 0 2 12a26.07 26.07 0 0 0 .418 5.814 2.506 2.506 0 0 0 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 0 0 1.768-1.768A26.07 26.07 0 0 0 22 12a26.07 26.07 0 0 0-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z" />
+                    </svg>
+                    {UI.open_in_youtube[lang]}
+                  </a>
+                )}
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${attraction.coordinates.lat},${attraction.coordinates.lng}`}
                   target="_blank"

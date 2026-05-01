@@ -1,5 +1,8 @@
 export type Lang = 'ru' | 'en';
 
+// The 9 canonical categories used by curated attractions and by the map's
+// filter chips. User-submitted attractions may use any string for `category`
+// (we render unknown values as the "other" bucket); see `isCategory`.
 export type Category =
   | 'city_large'
   | 'city_historic'
@@ -16,15 +19,25 @@ export interface LocalizedString {
   en: string;
 }
 
+export type AttractionSource = 'curated' | 'user';
+export type AttractionStatus = 'draft' | 'pending' | 'published' | 'rejected';
+
 export interface Attraction {
-  id: string;
+  id: string;                        // slug (stable URL key, also used by favorites/notes)
+  recordId?: string;                 // PocketBase row id (only for rows that came from PB)
   category: Category;
+  rawCategory?: string;              // original string when it didn't match a canonical category
   name: LocalizedString;
   short: LocalizedString;
   full: LocalizedString;
   coordinates: { lat: number; lng: number };
-  videoTime: number;
-  videoTimeFormatted: string;
+  // Video pointers are optional: user-submitted places may not have one.
+  videoId?: string;
+  videoTime?: number;
+  videoTimeFormatted?: string;
+  source: AttractionSource;
+  status: AttractionStatus;
+  authorId?: string;
 }
 
 export const VIDEO_ID = '8O8TIoHpKXQ';
@@ -40,3 +53,9 @@ export const CATEGORIES: Category[] = [
   'caribbean',
   'other',
 ];
+
+const CATEGORY_SET = new Set<Category>(CATEGORIES);
+
+export function isCategory(value: unknown): value is Category {
+  return typeof value === 'string' && CATEGORY_SET.has(value as Category);
+}
