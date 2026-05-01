@@ -32,7 +32,7 @@ interface ShowArgs {
   fly_to?: { lat: number; lng: number; zoom?: number };
 }
 
-export async function showOnMap(args: ShowArgs): Promise<ToolResult> {
+export async function showOnMap(args: ShowArgs, _ctx: { userId: string }): Promise<ToolResult> {
   return {
     forModel: { ok: true, count: args.slugs.length },
     uiEvents: [{ type: 'map.show', slugs: args.slugs, ...(args.fly_to ? { flyTo: args.fly_to } : {}) }],
@@ -55,7 +55,7 @@ interface OpenArgs {
   slug: string;
 }
 
-export async function openDrawer(args: OpenArgs): Promise<ToolResult> {
+export async function openDrawer(args: OpenArgs, _ctx: { userId: string }): Promise<ToolResult> {
   return {
     forModel: { ok: true },
     uiEvents: [{ type: 'drawer.open', slug: args.slug }],

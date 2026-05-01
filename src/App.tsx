@@ -8,6 +8,7 @@ import { ChatPanel } from './components/ChatPanel';
 import { useAttractions } from './data/AttractionsProvider';
 import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
+import { useVisits } from './auth/useVisits';
 import { agentBus, type RouteDay } from './agent/events';
 import { DEFAULT_TRAVEL_MODE, type TravelMode } from './agent/travelMode';
 import { useLang } from './i18n/LanguageProvider';
@@ -41,7 +42,9 @@ export default function App() {
   const [activeRoute, setActiveRoute] = useState<{ title?: string; days: RouteDay[] } | null>(null);
   const [activeRouteSig, setActiveRouteSig] = useState<string | null>(null);
   const [travelMode, setTravelMode] = useState<TravelMode>(DEFAULT_TRAVEL_MODE);
+  const [hideVisited, setHideVisited] = useState(false);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
+  const { ids: visitedIds, toggle: toggleVisited } = useVisits();
   const { attractions, byId, countByCategory: counts } = useAttractions();
 
   useEffect(() => {
@@ -51,8 +54,9 @@ export default function App() {
   const visibleAttractions = useMemo(() => {
     let result = attractions.filter((a) => active.has(a.category));
     if (favoritesOnly) result = result.filter((a) => favoriteIds.has(a.id));
+    if (hideVisited) result = result.filter((a) => !visitedIds.has(a.id));
     return result;
-  }, [attractions, active, favoritesOnly, favoriteIds]);
+  }, [attractions, active, favoritesOnly, favoriteIds, hideVisited, visitedIds]);
 
   const toggleCategory = useCallback((c: Category) => {
     setActive((prev) => {
@@ -76,6 +80,7 @@ export default function App() {
   const onAll = useCallback(() => {
     setActive(new Set(CATEGORIES));
     setFavoritesOnly(false);
+    setHideVisited(false);
   }, []);
   const onSelect = useCallback((id: string | null) => {
     setSelectedId(id);
@@ -149,6 +154,9 @@ export default function App() {
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
   }, [selectedId, toggleFavorite]);
+  const handleToggleVisited = useCallback(() => {
+    if (selectedId) toggleVisited(selectedId);
+  }, [selectedId, toggleVisited]);
 
   return (
     <div className="relative h-[100dvh] w-full overflow-hidden bg-ink-950">
@@ -159,6 +167,7 @@ export default function App() {
         activeCategories={active}
         attractions={visibleAttractions}
         highlightedIds={highlightedIds}
+        visitedIds={visitedIds}
         route={activeRoute}
         travelMode={travelMode}
       />
@@ -180,6 +189,9 @@ export default function App() {
             favoritesOnly={favoritesOnly}
             onToggleFavoritesOnly={onToggleFavoritesOnly}
             favoritesCount={favoriteIds.size}
+            hideVisited={hideVisited}
+            onToggleHideVisited={() => setHideVisited((v) => !v)}
+            visitedCount={visitedIds.size}
           />
         </div>
         {hasMapFocus && (
@@ -207,6 +219,8 @@ export default function App() {
         onClose={onClose}
         isFavorite={selectedId ? favoriteIds.has(selectedId) : false}
         onToggleFavorite={handleToggleFavorite}
+        isVisited={selectedId ? visitedIds.has(selectedId) : false}
+        onToggleVisited={handleToggleVisited}
       />
       <MyPlacesPanel
         open={myPlacesOpen}

@@ -5,6 +5,7 @@ import type { NoteRecord } from './useNotes';
 
 interface MyPlacesState {
   favoriteIds: Set<string>;
+  visitedIds: Set<string>;
   notesByAttraction: Map<string, NoteRecord[]>;
   isLoading: boolean;
 }
@@ -19,12 +20,14 @@ interface ApiNote {
 export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
   const { user } = useAuth();
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
+  const [visitedIds, setVisitedIds] = useState<Set<string>>(new Set());
   const [notesByAttraction, setNotesByAttraction] = useState<Map<string, NoteRecord[]>>(new Map());
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!user) {
       setFavoriteIds(new Set());
+      setVisitedIds(new Set());
       setNotesByAttraction(new Map());
       return;
     }
@@ -33,11 +36,13 @@ export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
 
     Promise.all([
       apiFetch<{ favorites: Array<{ attractionId: string }> }>('/api/favorites'),
+      apiFetch<{ visits: Array<{ attractionId: string }> }>('/api/visits'),
       apiFetch<{ notes: ApiNote[] }>('/api/notes'),
     ])
-      .then(([favs, notes]) => {
+      .then(([favs, visits, notes]) => {
         if (cancelled) return;
         setFavoriteIds(new Set(favs.favorites.map((f) => f.attractionId)));
+        setVisitedIds(new Set(visits.visits.map((v) => v.attractionId)));
         const grouped = new Map<string, NoteRecord[]>();
         for (const n of notes.notes) {
           const rec: NoteRecord = {
@@ -64,5 +69,5 @@ export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
     };
   }, [user, refreshKey]);
 
-  return { favoriteIds, notesByAttraction, isLoading };
+  return { favoriteIds, visitedIds, notesByAttraction, isLoading };
 }

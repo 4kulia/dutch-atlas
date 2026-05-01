@@ -8,8 +8,10 @@ export default defineConfig({
     port: 5173,
     proxy: {
       // /api/* → backend (handles auth, catalogue, favorites/notes, agent SSE).
+      // Use 127.0.0.1 explicitly: VS Code / Cursor's auto-forward listens on
+      // ::1:8091 and would tunnel our calls to the production server.
       '/api': {
-        target: 'http://localhost:8091',
+        target: 'http://127.0.0.1:8091',
         changeOrigin: true,
       },
     },

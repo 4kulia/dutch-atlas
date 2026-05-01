@@ -35,7 +35,7 @@ export const getAttractionDetailsToolDef = {
   },
 } as const;
 
-export async function getAttractionDetails(args: Args): Promise<ToolResult> {
+export async function getAttractionDetails(args: Args, _ctx: { userId: string }): Promise<ToolResult> {
   const r = await query<Row>(
     `SELECT id, category,
             name_${args.lang === 'en' ? 'en' : 'ru'} AS name,

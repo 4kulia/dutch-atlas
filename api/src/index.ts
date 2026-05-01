@@ -14,6 +14,7 @@ import { runMigrations } from './migrate.js';
 import { authRouter } from './routes/auth.js';
 import { attractionsRouter } from './routes/attractions.js';
 import { favoritesRouter } from './routes/favorites.js';
+import { visitsRouter } from './routes/visits.js';
 import { notesRouter } from './routes/notes.js';
 import { agentRouter } from './routes/agent.js';
 import { chatRouter } from './routes/chat.js';
@@ -35,6 +36,7 @@ async function main(): Promise<void> {
   app.use('/api/auth', authRouter);
   app.use('/api/attractions', attractionsRouter);
   app.use('/api/favorites', favoritesRouter);
+  app.use('/api/visits', visitsRouter);
   app.use('/api/notes', notesRouter);
   app.use('/api/agent', agentRouter);
   app.use('/api/chat', chatRouter);

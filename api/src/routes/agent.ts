@@ -121,6 +121,7 @@ agentRouter.post('/messages', async (req: AuthedRequest, res) => {
     const result = await runChat({
       lang,
       travelMode,
+      userId,
       history,
       userMessage: message,
       signal: ac.signal,

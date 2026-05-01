@@ -15,6 +15,7 @@ export interface ChatTurn {
 export interface RunOptions {
   lang: Lang;
   travelMode: TravelMode;
+  userId: string;
   history: ChatTurn[];
   userMessage: string;
   signal: AbortSignal;
@@ -32,6 +33,9 @@ Each user message is prefixed with [lang=…, travelMode=…]. The travelMode is
 
 Tools:
 - Use \`search_attractions\` whenever the user describes places by interest, vibe, or feature. Always pass \`lang\` matching the user's message. Use \`near\` when they mention a city, and \`categories\` when they specify a place type. Don't try to recall the catalogue from memory — always search.
+  - By default the user wants new places — \`search_attractions\` excludes places they've already marked as visited automatically. You normally do NOT need to think about this.
+  - Pass \`exclude_visited: false\` ONLY when the user explicitly references their visited places ("куда я уже ездил подходит?", "что-то знакомое", "place I've been to"). Pass \`visited_only: true\` for explicit "show my visited" / "where have I been" queries.
+  - When you DO include visited places in the answer, mention it briefly in your reply ("включил места, где ты уже был").
 - Use \`get_attraction_details\` when you need the full description to reason carefully about a place.
 - Use \`show_on_map\` for a flat shortlist of 3–6 places (no order) so the user sees them on the map.
 - Use \`build_route\` whenever the user asks for an itinerary, a tour, "a day", "a weekend", or a "route" — anything with order. Group stops into days. The frontend draws a colour-coded path on the map and shows numbered markers; it ALSO renders a structured route card in the chat. Don't ALSO call \`show_on_map\` for the same places.
@@ -66,7 +70,7 @@ export async function runChat(opts: RunOptions): Promise<{
   usage: { inputTokens: number; outputTokens: number };
   reply: string;
 }> {
-  const { lang, travelMode, history, userMessage, onText, onUiEvent, onToolUseStart, signal } = opts;
+  const { lang, travelMode, userId, history, userMessage, onText, onUiEvent, onToolUseStart, signal } = opts;
 
   const messages: Array<{ role: 'user' | 'assistant'; content: any }> = [];
   for (const m of history) messages.push({ role: m.role, content: m.content });
@@ -128,7 +132,7 @@ export async function runChat(opts: RunOptions): Promise<{
 
     for (const tu of toolUses) {
       onToolUseStart({ name: tu.name, id: tu.id, input: tu.input });
-      const result = await runTool(tu.name, tu.input);
+      const result = await runTool(tu.name, tu.input, { userId });
       if (result.uiEvents) for (const evt of result.uiEvents) onUiEvent(evt);
       toolResults.push({
         type: 'tool_result',

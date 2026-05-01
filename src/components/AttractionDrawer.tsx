@@ -5,6 +5,7 @@ import { CATEGORY_LABEL, UI } from '../i18n/strings';
 import { VideoEmbed } from './VideoEmbed';
 import { CategoryDot } from './MarkerIcon';
 import { FavoriteButton } from './FavoriteButton';
+import { VisitedButton } from './VisitedButton';
 import { NotesPanel } from './NotesPanel';
 import { ShareButton } from './ShareButton';
 import { useAuth } from '../auth/AuthProvider';
@@ -14,9 +15,18 @@ interface Props {
   onClose: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  isVisited: boolean;
+  onToggleVisited: () => void;
 }
 
-export function AttractionDrawer({ attraction, onClose, isFavorite, onToggleFavorite }: Props) {
+export function AttractionDrawer({
+  attraction,
+  onClose,
+  isFavorite,
+  onToggleFavorite,
+  isVisited,
+  onToggleVisited,
+}: Props) {
   const { lang } = useLang();
   const { isAuthenticated, signInWithGoogle } = useAuth();
   const [expanded, setExpanded] = useState(true);
@@ -147,10 +157,15 @@ export function AttractionDrawer({ attraction, onClose, isFavorite, onToggleFavo
                 {capitalize(attraction.short[lang])}
               </p>
 
-              <div className="mt-5 flex items-center gap-2">
+              <div className="mt-5 flex flex-wrap items-center gap-2">
                 <FavoriteButton
                   active={isFavorite}
                   onToggle={onToggleFavorite}
+                  onPromptLogin={() => setShowLoginHint(true)}
+                />
+                <VisitedButton
+                  active={isVisited}
+                  onToggle={onToggleVisited}
                   onPromptLogin={() => setShowLoginHint(true)}
                 />
                 {!isAuthenticated && showLoginHint && (

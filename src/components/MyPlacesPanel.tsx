@@ -18,26 +18,39 @@ interface Props {
 export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
   const { lang } = useLang();
   const { byId } = useAttractions();
-  const { favoriteIds, notesByAttraction } = useMyPlaces(refreshKey);
+  const { favoriteIds, visitedIds, notesByAttraction } = useMyPlaces(refreshKey);
 
-  const items = useMemo(() => {
-    const ids = new Set<string>([...favoriteIds, ...notesByAttraction.keys()]);
-    const list: Array<{ a: Attraction; favorite: boolean; notes: NoteRecord[] }> = [];
+  const { unvisitedItems, visitedItems } = useMemo(() => {
+    const ids = new Set<string>([
+      ...favoriteIds,
+      ...visitedIds,
+      ...notesByAttraction.keys(),
+    ]);
+    const all: Array<{
+      a: Attraction;
+      favorite: boolean;
+      visited: boolean;
+      notes: NoteRecord[];
+    }> = [];
     for (const id of ids) {
       const a = byId.get(id);
       if (!a) continue;
-      list.push({
+      all.push({
         a,
         favorite: favoriteIds.has(id),
+        visited: visitedIds.has(id),
         notes: notesByAttraction.get(id) ?? [],
       });
     }
-    list.sort((x, y) => {
+    all.sort((x, y) => {
       if (x.favorite !== y.favorite) return x.favorite ? -1 : 1;
       return x.a.name[lang].localeCompare(y.a.name[lang]);
     });
-    return list;
-  }, [favoriteIds, notesByAttraction, lang, byId]);
+    return {
+      unvisitedItems: all.filter((it) => !it.visited),
+      visitedItems: all.filter((it) => it.visited),
+    };
+  }, [favoriteIds, visitedIds, notesByAttraction, lang, byId]);
 
   useEffect(() => {
     if (!open) return;
@@ -97,23 +110,48 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
           </header>
 
           <div className="flex-1 overflow-y-auto px-4 pb-6 md:px-5">
-            {items.length === 0 ? (
+            {unvisitedItems.length === 0 && visitedItems.length === 0 ? (
               <p className="rounded-xl border border-dashed border-ink-700/40 px-4 py-8 text-center text-[13px] leading-relaxed text-ink-500">
                 {UI.my_places_empty[lang]}
               </p>
             ) : (
-              <ul className="space-y-3">
-                {items.map(({ a, favorite, notes }) => (
-                  <PlaceCard
-                    key={a.id}
-                    attraction={a}
-                    favorite={favorite}
-                    notes={notes}
-                    lang={lang}
-                    onSelect={() => onSelect(a.id)}
-                  />
-                ))}
-              </ul>
+              <>
+                {unvisitedItems.length > 0 && (
+                  <ul className="space-y-3">
+                    {unvisitedItems.map(({ a, favorite, notes }) => (
+                      <PlaceCard
+                        key={a.id}
+                        attraction={a}
+                        favorite={favorite}
+                        visited={false}
+                        notes={notes}
+                        lang={lang}
+                        onSelect={() => onSelect(a.id)}
+                      />
+                    ))}
+                  </ul>
+                )}
+                {visitedItems.length > 0 && (
+                  <>
+                    <h3 className="mt-5 mb-2 px-1 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-emerald-300/80">
+                      {UI.visited_section[lang]}
+                    </h3>
+                    <ul className="space-y-3">
+                      {visitedItems.map(({ a, favorite, notes }) => (
+                        <PlaceCard
+                          key={a.id}
+                          attraction={a}
+                          favorite={favorite}
+                          visited
+                          notes={notes}
+                          lang={lang}
+                          onSelect={() => onSelect(a.id)}
+                        />
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -125,6 +163,7 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
 interface CardProps {
   attraction: Attraction;
   favorite: boolean;
+  visited: boolean;
   notes: NoteRecord[];
   lang: Lang;
   onSelect: () => void;
@@ -148,9 +187,14 @@ function formatDate(value: string, lang: Lang): string {
   });
 }
 
-function PlaceCard({ attraction, favorite, notes, lang, onSelect }: CardProps) {
+function PlaceCard({ attraction, favorite, visited, notes, lang, onSelect }: CardProps) {
   return (
-    <li className="overflow-hidden rounded-xl border border-ink-700/40 bg-ink-900/40">
+    <li
+      className={[
+        'overflow-hidden rounded-xl border bg-ink-900/40 transition-opacity',
+        visited ? 'border-emerald-700/40 opacity-80' : 'border-ink-700/40',
+      ].join(' ')}
+    >
       <button
         type="button"
         onClick={onSelect}
@@ -159,7 +203,12 @@ function PlaceCard({ attraction, favorite, notes, lang, onSelect }: CardProps) {
         <CategoryDot category={attraction.category} size={12} />
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <span className="truncate text-[15px] font-medium text-ink-100">
+            <span
+              className={[
+                'truncate text-[15px] font-medium',
+                visited ? 'text-ink-300' : 'text-ink-100',
+              ].join(' ')}
+            >
               {attraction.name[lang]}
             </span>
             {favorite && (
@@ -172,6 +221,22 @@ function PlaceCard({ attraction, favorite, notes, lang, onSelect }: CardProps) {
                 aria-hidden
               >
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            )}
+            {visited && (
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="shrink-0 text-emerald-400"
+                aria-hidden
+              >
+                <path d="M5 12.5l4.2 4.2L19 7" />
               </svg>
             )}
           </div>
