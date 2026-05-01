@@ -8,13 +8,18 @@ const LABELS = {
   sign_in_short: { ru: 'Войти', en: 'Sign in' },
   sign_out: { ru: 'Выйти', en: 'Sign out' },
   signing_in: { ru: 'Входим…', en: 'Signing in…' },
+  my_places: { ru: 'Мои места', en: 'My places' },
 } as const;
 
 function t(key: keyof typeof LABELS, lang: Lang): string {
   return LABELS[key][lang];
 }
 
-export function UserMenu() {
+interface Props {
+  onOpenMyPlaces?: () => void;
+}
+
+export function UserMenu({ onOpenMyPlaces }: Props = {}) {
   const { user, signInWithGoogle, signOut, isSigningIn, error } = useAuth();
   const { lang } = useLang();
   const [open, setOpen] = useState(false);
@@ -75,6 +80,32 @@ export function UserMenu() {
             <div className="font-medium">{user.name}</div>
             <div className="truncate text-[11px] text-ink-300">{user.email}</div>
           </div>
+          {onOpenMyPlaces && (
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                onOpenMyPlaces();
+              }}
+              className="flex w-full items-center gap-2 px-4 py-2.5 text-left transition-colors hover:bg-ink-800/80"
+              role="menuitem"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+              {t('my_places', lang)}
+            </button>
+          )}
           <button
             type="button"
             onClick={() => {

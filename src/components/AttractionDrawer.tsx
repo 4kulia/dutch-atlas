@@ -7,6 +7,7 @@ import { VideoEmbed } from './VideoEmbed';
 import { CategoryDot } from './MarkerIcon';
 import { FavoriteButton } from './FavoriteButton';
 import { NotesPanel } from './NotesPanel';
+import { ShareButton } from './ShareButton';
 import { useAuth } from '../auth/AuthProvider';
 
 interface Props {
@@ -210,6 +211,7 @@ export function AttractionDrawer({ attraction, onClose, isFavorite, onToggleFavo
                   </svg>
                   {UI.open_in_maps[lang]}
                 </a>
+                <ShareButton attraction={attraction} />
               </div>
 
               {isAuthenticated && <NotesPanel attractionId={attraction.id} />}

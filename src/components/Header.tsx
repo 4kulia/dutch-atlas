@@ -2,15 +2,21 @@ import { useLang } from '../i18n/LanguageProvider';
 import { UI } from '../i18n/strings';
 import { LanguageToggle } from './LanguageToggle';
 import { UserMenu } from './UserMenu';
+import { SearchBar } from './SearchBar';
 
-export function Header() {
+interface Props {
+  onSelectAttraction: (id: string) => void;
+  onOpenMyPlaces: () => void;
+}
+
+export function Header({ onSelectAttraction, onOpenMyPlaces }: Props) {
   const { lang } = useLang();
   return (
     <header
       className="pointer-events-none absolute inset-x-0 top-0 z-30"
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
-      <div className="pointer-events-auto mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-3 py-3 md:px-5 md:py-4">
+      <div className="pointer-events-auto mx-auto flex max-w-[1600px] items-center gap-2 px-3 py-3 md:gap-3 md:px-5 md:py-4">
         <div className="flex items-center gap-2.5 rounded-full border border-ink-700/60 bg-ink-900/70 px-3 py-1.5 backdrop-blur-md">
           <Logo />
           <span className="hidden md:inline text-[13px] font-semibold text-ink-100 leading-none">
@@ -20,8 +26,9 @@ export function Header() {
             NL · {UI.short_title[lang]}
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <UserMenu />
+        <div className="ml-auto flex items-center gap-2">
+          <SearchBar onSelect={onSelectAttraction} />
+          <UserMenu onOpenMyPlaces={onOpenMyPlaces} />
           <LanguageToggle />
         </div>
       </div>

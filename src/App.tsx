@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { CategoryFilter } from './components/CategoryFilter';
 import { MapView } from './components/MapView';
 import { AttractionDrawer } from './components/AttractionDrawer';
+import { MyPlacesPanel } from './components/MyPlacesPanel';
 import { ATTRACTIONS, ATTRACTIONS_BY_ID, countByCategory } from './data/attractions';
 import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
@@ -27,6 +28,8 @@ export default function App() {
   const [selectedId, setSelectedId] = useState<string | null>(() => readInitialId());
   const [active, setActive] = useState<Set<Category>>(() => new Set(CATEGORIES));
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [myPlacesOpen, setMyPlacesOpen] = useState(false);
+  const [myPlacesRefreshKey, setMyPlacesRefreshKey] = useState(0);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
 
   useEffect(() => {
@@ -64,9 +67,17 @@ export default function App() {
     setActive(new Set(CATEGORIES));
     setFavoritesOnly(false);
   }, []);
-  const onSelect = useCallback((id: string | null) => setSelectedId(id), []);
+  const onSelect = useCallback((id: string | null) => {
+    setSelectedId(id);
+    if (id) setMyPlacesOpen(false);
+  }, []);
   const onClose = useCallback(() => setSelectedId(null), []);
   const onToggleFavoritesOnly = useCallback(() => setFavoritesOnly((v) => !v), []);
+  const onOpenMyPlaces = useCallback(() => {
+    setMyPlacesRefreshKey((k) => k + 1);
+    setMyPlacesOpen(true);
+  }, []);
+  const onCloseMyPlaces = useCallback(() => setMyPlacesOpen(false), []);
   const selected = selectedId ? ATTRACTIONS_BY_ID.get(selectedId) ?? null : null;
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
@@ -81,7 +92,7 @@ export default function App() {
         activeCategories={active}
         attractions={visibleAttractions}
       />
-      <Header />
+      <Header onSelectAttraction={onSelect} onOpenMyPlaces={onOpenMyPlaces} />
       <div
         className="pointer-events-none absolute inset-x-0 z-20"
         style={{ top: 'calc(env(safe-area-inset-top) + 60px)' }}
@@ -103,6 +114,12 @@ export default function App() {
         onClose={onClose}
         isFavorite={selectedId ? favoriteIds.has(selectedId) : false}
         onToggleFavorite={handleToggleFavorite}
+      />
+      <MyPlacesPanel
+        open={myPlacesOpen}
+        refreshKey={myPlacesRefreshKey}
+        onClose={onCloseMyPlaces}
+        onSelect={onSelect}
       />
     </div>
   );

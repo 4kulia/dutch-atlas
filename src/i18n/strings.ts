@@ -79,6 +79,19 @@ export const UI: Dict = {
     ru: 'Открыть в Google Maps',
     en: 'Open in Google Maps',
   },
+  share: { ru: 'Поделиться', en: 'Share' },
+  share_copied: { ru: 'Ссылка скопирована', en: 'Link copied' },
+  my_places: { ru: 'Мои места', en: 'My places' },
+  my_places_empty: {
+    ru: 'Здесь будут появляться места, которые вы сохраните в избранное или о которых сделаете заметку.',
+    en: 'Places you save to favorites or write notes about will appear here.',
+  },
+  my_places_favorites: { ru: 'Избранное', en: 'Favorites' },
+  my_places_with_notes: { ru: 'С заметками', en: 'With notes' },
+  my_places_notes_count: {
+    ru: 'заметок',
+    en: 'notes',
+  },
   favorite_add: { ru: 'В избранное', en: 'Save' },
   favorite_remove: { ru: 'В избранном', en: 'Saved' },
   favorite_login_required: {
