@@ -26,6 +26,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, []);
 
+  // Validate that the persisted token still maps to an existing user record.
+  // If we wiped pb_data on the server (or the user got deleted), the token
+  // looks valid but every subsequent write fails with relation errors. Detect
+  // by calling authRefresh — if PB rejects it, drop the auth state and let
+  // the user sign in again with a fresh token.
+  useEffect(() => {
+    if (!pb.authStore.isValid) return;
+    pb.collection('users')
+      .authRefresh()
+      .catch((err) => {
+        const status = (err as { status?: number })?.status;
+        if (status === 401 || status === 403 || status === 404) {
+          console.warn('[auth] stored token references a missing user — clearing');
+          pb.authStore.clear();
+        }
+      });
+  }, []);
+
   const signInWithGoogle = useCallback(async () => {
     setError(null);
     setIsSigningIn(true);
