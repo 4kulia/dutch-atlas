@@ -10,6 +10,7 @@ import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
 import { agentBus, type RouteDay } from './agent/events';
 import { DEFAULT_TRAVEL_MODE, type TravelMode } from './agent/travelMode';
+import { useLang } from './i18n/LanguageProvider';
 
 function readInitialId(): string | null {
   if (typeof window === 'undefined') return null;
@@ -24,8 +25,11 @@ function syncIdToUrl(id: string | null) {
   window.history.replaceState(null, '', url.toString());
 }
 
+const CLEAR_FOCUS_LABEL = { ru: 'Снять выделение', en: 'Clear selection' } as const;
+
 export default function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY ?? '';
+  const { lang } = useLang();
 
   const [selectedId, setSelectedId] = useState<string | null>(() => readInitialId());
   const [active, setActive] = useState<Set<Category>>(() => new Set(CATEGORIES));
@@ -193,7 +197,7 @@ export default function App() {
                   strokeLinecap="round"
                 />
               </svg>
-              Снять выделение
+              {CLEAR_FOCUS_LABEL[lang]}
             </button>
           </div>
         )}
