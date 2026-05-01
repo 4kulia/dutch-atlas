@@ -1,0 +1,46 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_GOOGLE_MAPS_API_KEY: ${VITE_GOOGLE_MAPS_API_KEY:-}
+        VITE_GOOGLE_MAPS_MAP_ID: ${VITE_GOOGLE_MAPS_MAP_ID:-}
+        VITE_POCKETBASE_URL: ${VITE_POCKETBASE_URL:-/pb}
+    image: nl-attractions:latest
+    container_name: nl-attractions
+    restart: unless-stopped
+    depends_on:
+      - pb
+    ports:
+      # Bind to localhost only — the host nginx in front handles TLS and the public port.
+      - "127.0.0.1:8080:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  pb:
+    build:
+      context: ./pb
+      dockerfile: Dockerfile
+    image: nl-attractions-pb:latest
+    container_name: nl-attractions-pb
+    restart: unless-stopped
+    ports:
+      # Same pattern: localhost-only; host nginx exposes /pb/* publicly.
+      - "127.0.0.1:8090:8090"
+    volumes:
+      - pb_data:/pb/pb_data
+      # Bind-mount migrations so adding a new file in pb/pb_migrations
+      # is picked up on container restart without rebuilding the image.
+      - ./pb/pb_migrations:/pb/pb_migrations:ro
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8090/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  pb_data:

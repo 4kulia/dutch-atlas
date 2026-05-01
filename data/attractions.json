@@ -1,0 +1,2180 @@
+[
+  {
+    "id": "gitorn",
+    "category": "village",
+    "name": {
+      "ru": "Гиторн",
+      "en": "Giethoorn"
+    },
+    "short": {
+      "ru": "«голландская Венеция», деревня без улиц, только каналы.",
+      "en": "“Dutch Venice”, a village without streets — only canals."
+    },
+    "full": {
+      "ru": "Среди самых удивительных мест в Нидерландах — Гиторн в провинции Оверэйссел, очаровательная деревня, прозванная «голландской Венецией». Она была основана в XIII веке фермерами и монахами, которые добывали торф — топливо, использовавшееся до угля, что привело к образованию озёр и каналов. Здесь нет улиц для автомобилей; вместо этого каналы, пешеходные дорожки и десятки мостов соединяют дома и сады. Это поистине сельское место непреднамеренно начало привлекать посетителей благодаря своей красоте и мирной атмосфере. Каждый дом окружен каналами и ухоженными садами, соединенными деревянными мостиками. Некоторые из них расположены на небольших частных островах, каждый со своим причалом.",
+      "en": "In Overijssel, Giethoorn is a charming village nicknamed the “Dutch Venice.” It was founded in the 13th century by farmers and monks who dug peat — the pre-coal fuel — creating the lakes and canals that define the place. There are no roads for cars; canals, footpaths and dozens of bridges connect houses and gardens. Each home is surrounded by canals and tidy gardens linked by little wooden bridges. Some sit on small private islands, each with its own jetty."
+    },
+    "coordinates": {
+      "lat": 52.74,
+      "lng": 6.0789
+    },
+    "videoTime": 91,
+    "videoTimeFormatted": "1:31"
+  },
+  {
+    "id": "zaanse-shans",
+    "category": "village",
+    "name": {
+      "ru": "Заансе-Сханс",
+      "en": "Zaanse Schans"
+    },
+    "short": {
+      "ru": "музей под открытым небом: ветряные мельницы, дома XVII–XVIII вв.",
+      "en": "Open-air museum: windmills, 17th–18th-century houses."
+    },
+    "full": {
+      "ru": "Заансе-Сханс — это место, которое оживляет голландский Золотой век, когда этот регион стал одним из первых промышленных центров мира. Он был создан в 1960-х годах для сохранения как ветряных мельниц, так и исторических домов XVII и XVIII веков. В те времена здесь работали сотни мельниц, производивших масло, муку, какао, древесину и даже корабли. Каждая ветряная мельница имела свою специализацию: от помола пигментов и специй до производства бумаги или заготовок древесины для верфей.",
+      "en": "Zaanse Schans brings the Dutch Golden Age to life from a time when this region became one of the world’s first industrial centres. Set up in the 1960s to preserve windmills and historic 17th–18th-century houses, it gathers what was once a working landscape: hundreds of mills here produced oil, flour, cocoa, wood and even ships. Each mill specialised — from grinding pigments and spices to making paper and shipyard timber."
+    },
+    "coordinates": {
+      "lat": 52.4742,
+      "lng": 4.8169
+    },
+    "videoTime": 198,
+    "videoTimeFormatted": "3:18"
+  },
+  {
+    "id": "afsleytdeyk",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Афслёйтдейк",
+      "en": "Afsluitdijk"
+    },
+    "short": {
+      "ru": "массивная дамба 1927–1932, отделила Зёйдерзе.",
+      "en": "Massive dike (1927–1932), sealed off the Zuiderzee."
+    },
+    "full": {
+      "ru": "Афслёйтдейк — эта массивная дамба перекрывает внутреннее море Зёйдерзе и превращает его в озеро Эйсселмер, защищая страну от наводнений и создавая новые земли. Это считается одним из крупнейших и самых амбициозных гидротехнических проектов в мире. Строительство длилось с 1927 по 1932 год и потребовало миллионов кубометров песка, глины и камней, а также труда тысяч рабочих. В восточной части монументальные шлюзы позволяют судам пересекать пресную и соленую воду.",
+      "en": "This massive dike closes off the inland sea of the Zuiderzee and turns it into Lake IJsselmeer, protecting the country from flooding and creating new land. It is regarded as one of the largest and most ambitious water-management projects in the world. Construction ran from 1927 to 1932 and required millions of cubic metres of sand, clay and stone, and the labour of thousands of workers. At its eastern end, monumental locks let vessels cross between fresh and salt water."
+    },
+    "coordinates": {
+      "lat": 53.0667,
+      "lng": 5.0333
+    },
+    "videoTime": 273,
+    "videoTimeFormatted": "4:33"
+  },
+  {
+    "id": "amsterdam",
+    "category": "city_large",
+    "name": {
+      "ru": "Амстердам",
+      "en": "Amsterdam"
+    },
+    "short": {
+      "ru": "столица, «Северная Венеция»: каналы XVII в., плавучие и «танцующие» дома, ~900 000 велосипедов, A'DAM Lookout, Рейксмузеум, NEMO.",
+      "en": "Capital, “Venice of the North”: 17th-century canals, floating and “dancing” houses, ~900,000 bicycles, A’DAM Lookout, Rijksmuseum, NEMO."
+    },
+    "full": {
+      "ru": "Амстердам — официальная столица Нидерландов и один из главных культурных и экономических центров Европы, часто называемый «Северной Венецией». В XVII веке он стал одним из важнейших городов планеты, положив начало Золотому веку Нидерландов. Город отличается обширной сетью каналов, окружающих исторический центр. Планировка была разработана в Золотой век для поддержки торговли и обороны. После Второй мировой войны Амстердам столкнулся с острой нехваткой жилья, и в качестве временного решения многие люди начали жить на лодках. Со временем этот образ жизни укоренился и превратился из необходимости в альтернативный способ существования. Так называемые «танцующие дома» — это старые дома на берегу каналов, построенные на деревянных сваях. Из-за проседания грунта и смещения свай некоторые дома теперь наклонены вперед, назад или вбок. В столице ездят около 900 000 велосипедов — больше, чем жителей. Они являются не просто средством передвижения, но и символом культуры города. Центральный вокзал — сердце транспортной сети страны , соединяющее национальные и международные поезда, трамваи, автобусы и паромы. Прямо напротив Центрального вокзала находится смотровая башня A'DAM Lookout на северном берегу реки Эй с качелями на крыше. Рейксмузеум — самый важный музей в Нидерландах, где хранятся шедевры Рембрандта, Вермеера, Франса Хальса и других икон Золотого века. Крупнейший в стране научный музей — NEMO, футуристическое здание в форме корабля, которое, кажется, вырастает прямо из воды.",
+      "en": "Amsterdam is the official capital of the Netherlands and one of Europe’s major cultural and economic hubs, often called the “Venice of the North.” In the 17th century it became one of the most important cities on the planet, launching the Dutch Golden Age. Its historic centre is wrapped in a vast network of canals laid out during the Golden Age to support trade and defence. After WWII a severe housing shortage led people to live on boats, and what began as a stopgap turned into a way of life. The so-called “dancing houses” are old canal-side homes built on wooden piles; ground subsidence has tilted some of them forward, backward, or sideways. The city has around 900,000 bicycles — more than residents — both transport and cultural symbol. Centraal Station is the heart of the country’s transport network. Across from it, on the north bank of the IJ, stands the A’DAM Lookout tower with a swing on the roof. The Rijksmuseum holds masterpieces by Rembrandt, Vermeer, Frans Hals and other Golden Age icons; NEMO, the country’s largest science museum, is a futuristic ship-shaped building rising from the water."
+    },
+    "coordinates": {
+      "lat": 52.3676,
+      "lng": 4.9041
+    },
+    "videoTime": 351,
+    "videoTimeFormatted": "5:51"
+  },
+  {
+    "id": "bollenstrek",
+    "category": "nature",
+    "name": {
+      "ru": "Болленстрек",
+      "en": "Bollenstreek"
+    },
+    "short": {
+      "ru": "«регион луковиц», поля тюльпанов, центр тюльпаномании.",
+      "en": "“Bulb region”, tulip fields, the heart of tulip mania."
+    },
+    "full": {
+      "ru": "Болленстрек. Название в переводе с голландского означает «регион луковиц». Это прибрежная полоса на западе страны между городами Харлем и Лейден. Хотя тюльпаны попали сюда из Турции в XVI веке, именно в Болленстреке они стали важной сельскохозяйственной культурой и национальным символом Нидерландов. В XVII веке выращивание тюльпанов в этом регионе вызвало первый в истории экономический пузырь, известный как тюльпаномания.",
+      "en": "The name means “bulb region” in Dutch. It is a coastal strip in the west between the cities of Haarlem and Leiden. Although tulips arrived from Turkey in the 16th century, it was here in the Bollenstreek that they became a major crop and a national symbol of the Netherlands. In the 17th century tulip cultivation triggered history’s first economic bubble — tulip mania."
+    },
+    "coordinates": {
+      "lat": 52.2667,
+      "lng": 4.55
+    },
+    "videoTime": 581,
+    "videoTimeFormatted": "9:41"
+  },
+  {
+    "id": "kekenhof",
+    "category": "nature",
+    "name": {
+      "ru": "Кёкенхоф",
+      "en": "Keukenhof"
+    },
+    "short": {
+      "ru": "крупнейший в мире тюльпановый сад.",
+      "en": "World’s largest tulip garden."
+    },
+    "full": {
+      "ru": "В центре региона находится Кёкенхоф, крупнейший в мире тюльпановый сад. Каждую весну парк превращается в уникальное природное зрелище, утопающее в миллионах тюльпанов, нарциссов, гиацинтов и других цветов. Дизайн парка меняется каждый год, появляются новые формы, темы и цветочные композиции.",
+      "en": "At the heart of the Bollenstreek lies Keukenhof, the world’s largest tulip garden. Each spring the park transforms into a unique natural spectacle of millions of tulips, daffodils, hyacinths and other flowers. Its design changes every year, with new shapes, themes and floral compositions."
+    },
+    "coordinates": {
+      "lat": 52.2697,
+      "lng": 4.5469
+    },
+    "videoTime": 640,
+    "videoTimeFormatted": "10:40"
+  },
+  {
+    "id": "akveduk-velyuvemeer",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Акведук Велювемеер",
+      "en": "Veluwemeer Aqueduct"
+    },
+    "short": {
+      "ru": "лодки плывут над автомагистралью N302 (2002).",
+      "en": "Boats sail over the N302 motorway (2002)."
+    },
+    "full": {
+      "ru": "Акведук Велювемеер. Он был открыт в 2002 году как часть автомагистрали N302, соединяющей материковую часть Нидерландов с провинцией Флеволанд. Рассматривались такие варианты, как разводные мосты или туннели, но в качестве наиболее эффективного и экономически выгодного решения был выбран неглубокий акведук. Он позволяет водам озера Велюве протекать над дорогой, создавая судоходный канал, по которому ходят парусные лодки и небольшие суда.",
+      "en": "Opened in 2002 as part of the N302 motorway connecting the Dutch mainland with Flevoland. Drawbridges and tunnels were considered, but a shallow aqueduct was chosen as the most efficient and cost-effective solution. It lets the waters of Lake Veluwe flow over the road, creating a navigable channel for sailboats and small craft."
+    },
+    "coordinates": {
+      "lat": 52.4106,
+      "lng": 5.6294
+    },
+    "videoTime": 687,
+    "videoTimeFormatted": "11:27"
+  },
+  {
+    "id": "plotina-ostersheldekering",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Плотина Остерсхельдекеринг",
+      "en": "Oosterscheldekering"
+    },
+    "short": {
+      "ru": "одно из 7 чудес инженерии, 65 столбов по 18 000 тонн.",
+      "en": "One of the seven engineering wonders, 65 piers of 18,000 tonnes each."
+    },
+    "full": {
+      "ru": "Плотина Остерсхельдекеринг. Это крупнейший гидротехнический проект в Нидерландах, признанный одним из семи чудес современной инженерии. Это колоссальный барьер против штормовых наводнений, состоящий из 65 бетонных столбов и огромных ворот , которые открываются и закрываются для регулирования уровня моря. Его масштаб поражает: каждая колонна весит 18 000 тонн и была установлена ​​в море с необычайной точностью. Ворота, обычно открытые, позволяют приливным водам свободно течь. Они закрываются только во время штормов или при",
+      "en": "The largest hydraulic project in the Netherlands and one of the seven wonders of modern engineering. This colossal storm-surge barrier is made of 65 concrete piers and giant gates that open and close to control sea level. The scale is staggering — each pier weighs 18,000 tonnes and was placed in the sea with extraordinary precision. The gates, normally open, let the tides flow freely; they close only during storms or flood risk."
+    },
+    "coordinates": {
+      "lat": 51.63,
+      "lng": 3.68
+    },
+    "videoTime": 742,
+    "videoTimeFormatted": "12:22"
+  },
+  {
+    "id": "gauda",
+    "category": "city_large",
+    "name": {
+      "ru": "Гауда",
+      "en": "Gouda"
+    },
+    "short": {
+      "ru": "сыр, готическая ратуша 1448–1450, церковь Святого Иоанна.",
+      "en": "Cheese, Gothic city hall (1448–1450), St John’s Church."
+    },
+    "full": {
+      "ru": "Ворота, обычно открытые, позволяют приливным водам свободно течь. Они закрываются только во время штормов или при риске наводнения. Гауда, расположенная между Роттердамом и Утрехтом, — это исторический город, известный своим сыром, а также средневековым наследием и многовековыми ремесленными традициями. В Средние века он был важным торговым центром для пива, свечей, керамики и, особенно, сыра. Чтобы купить сыр Гауда — один из самых популярных сыров в мире — можно посетить еженедельный рынок, который проводится с апреля по август на главной площади. Гауда также тесно связана со своими водными путями: ее каналы были необходимы для транспортировки торфа, пива и сыра. Ратуша, построенная между 1448 и 1450 годами, является жемчужиной голландской средневековой архитектуры. Церковь Святого Иоанна в Гауде — самая длинная церковь в стране и считается национальным протестантским сокровищем. Тем временем церковь Святого Иосифа — это неоготический католический храм, символизирующий возрождение католицизма в Нидерландах в XIX веке.",
+      "en": "Between Rotterdam and Utrecht, Gouda is famous for its cheese as well as its medieval heritage and centuries of craft. In the Middle Ages it was a major trade centre for beer, candles, pottery and especially cheese. The weekly cheese market on the main square (April–August) is the place to buy Gouda. Its waterways carried peat, beer and cheese. The 1448–1450 city hall is a jewel of Dutch medieval architecture. St John’s Church is the longest church in the country and a national Protestant treasure, while St Joseph’s, a neo-Gothic Catholic church, symbolises the 19th-century revival of Dutch Catholicism."
+    },
+    "coordinates": {
+      "lat": 52.0115,
+      "lng": 4.7105
+    },
+    "videoTime": 802,
+    "videoTimeFormatted": "13:22"
+  },
+  {
+    "id": "ozera-vinkevene-i-loosdreht",
+    "category": "nature",
+    "name": {
+      "ru": "Озёра Винкевене и Лоосдрехт",
+      "en": "Vinkeveense Plassen and Loosdrechtse Plassen"
+    },
+    "short": {
+      "ru": "«Голландская Ривьера», легаккеры.",
+      "en": "“Dutch Riviera”, legakkers (peat-strip islands)."
+    },
+    "full": {
+      "ru": "Сегодня здесь проводятся концерты и торжества, максимально используя просторный интерьер и превосходную акустику. Озера Винкевене и Лоосдрехт образуют группу озер и каналов в провинции Утрехт, к юго-востоку от Амстердама, недалеко от деревни Винкевене. Здесь вы найдете мозаику из голубых озер, узких каналов и длинных полос земли, известных как легаккеры. Земля между каналами в Средние века использовалась для сушки торфа, процесс, который сформировал современный ландшафт узких, вытянутых островов. Некоторые из этих островов являются частной собственностью и доступны только на лодке. Рядом с ними расположены озера Лоосдрехт, одна из самых оживленных зон отдыха на воде в Нидерландах, часто называемая «Голландской Ривьерой». Они отражают двойственную природу голландских польдеров и озер: ландшафты, первоначально сформированные в результате освоения земель, а затем превращенные в зоны отдыха.",
+      "en": "These lakes form a group of waters and canals in Utrecht province, south-east of Amsterdam near the village of Vinkeveen. You will find a mosaic of blue lakes, narrow canals and long strips of land called legakkers. The land between the channels was used in the Middle Ages for drying peat — a process that produced today’s landscape of long, narrow islands. Some of these islands are private and accessible only by boat. Adjacent are the Loosdrechtse Plassen, one of the busiest water-recreation areas in the Netherlands, often called the “Dutch Riviera.”"
+    },
+    "coordinates": {
+      "lat": 52.2167,
+      "lng": 5.0167
+    },
+    "videoTime": 917,
+    "videoTimeFormatted": "15:17"
+  },
+  {
+    "id": "harlem",
+    "category": "city_large",
+    "name": {
+      "ru": "Харлем",
+      "en": "Haarlem"
+    },
+    "short": {
+      "ru": "«город цветов», мельница Де Адриан, орган Мюллера, собор Святого Бавона.",
+      "en": "“City of flowers”, De Adriaan windmill, Müller organ, St Bavo Cathedral."
+    },
+    "full": {
+      "ru": "Их развитие как туристического направления началось в XX веке, особенно среди голландской элиты. Харлем — столица Северной Голландии и считается «городом цветов», поскольку в Золотой век он был центром тюльпановой промышленности. Сегодня это культурный и жилой город, известный высоким качеством жизни и близостью к Амстердаму и побережью. Во время Восьмидесятилетней войны Харлем, как известно, семь месяцев сопротивлялся испанской армии — легендарное событие в голландской истории. Одним из символов города является ветряная мельница Де Адриан, построенная на вершине старой оборонительной башни и используемая для помола различных продуктов. Так называемая Большая церковь, расположенная на главной площади Харлема, изначально была католическим храмом и перешла в руки Реформатской церкви после протестантской Реформации в XVI веке. Внутри находится орган Мюллера, на котором играли такие музыканты, как Гендель, Мендельсон и Моцарт. К югу возвышается собор Святого Бавона, сочетающий в себе неоготический, неороманский и византийский стили.",
+      "en": "Capital of North Holland, Haarlem is known as the “city of flowers” for its central role in the Golden Age tulip industry. Today it is a cultural and residential city famed for its quality of life and proximity to Amsterdam and the coast. During the Eighty Years’ War it famously held out against the Spanish for seven months. One landmark is the De Adriaan windmill, built atop an old defensive tower. The Grote Kerk, originally Catholic, became Reformed after the 16th-century Reformation; inside is the Müller organ, played by Handel, Mendelssohn and Mozart. To the south rises St Bavo Cathedral, mixing neo-Gothic, neo-Romanesque and Byzantine styles."
+    },
+    "coordinates": {
+      "lat": 52.3874,
+      "lng": 4.6462
+    },
+    "videoTime": 1032,
+    "videoTimeFormatted": "17:12"
+  },
+  {
+    "id": "utreht",
+    "category": "city_large",
+    "name": {
+      "ru": "Утрехт",
+      "en": "Utrecht"
+    },
+    "short": {
+      "ru": "двухуровневые каналы, Утрехтский союз 1579, День короля.",
+      "en": "Two-level canals, Union of Utrecht (1579), King’s Day."
+    },
+    "full": {
+      "ru": "Утрехт — четвёртый по величине город страны. В 1579 году здесь был подписан Утрехтский союз, создавший Республику семи объединённых провинций, предшественницу современных Нидерландов. Его каналы уникальны для страны тем, что имеют два уровня: один на уровне улицы, а другой — на уровне земли. Уровень воды, где когда-то стояли средневековые склады. Каждый год 27 апреля город отмечает День короля, когда люди одеваются в оранжевое, а каналы заполняются праздничными лодками. Эти каналы развивались в течение XIX века, но с деиндустриализацией многие районы были преобразованы в пространства с плавучими домами.",
+      "en": "Utrecht is the country’s fourth-largest city. The Union of Utrecht, signed here in 1579, created the Republic of the Seven United Provinces — predecessor of today’s Netherlands. Its canals are unique for their two levels: street level above and a wharf level at the water where medieval warehouses once stood. Every 27 April the city celebrates King’s Day; people dress in orange and the canals fill with festive boats. As the canal districts deindustrialised in the 19th and 20th centuries, many warehouse spaces were converted into houseboat homes."
+    },
+    "coordinates": {
+      "lat": 52.0907,
+      "lng": 5.1214
+    },
+    "videoTime": 1160,
+    "videoTimeFormatted": "19:20"
+  },
+  {
+    "id": "zamok-de-haar",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Де Хаар",
+      "en": "De Haar Castle"
+    },
+    "short": {
+      "ru": "крупнейший замок Нидерландов, рядом с Утрехтом.",
+      "en": "Largest castle in the Netherlands, near Utrecht."
+    },
+    "full": {
+      "ru": "Совсем рядом с Утрехтом находится замок Де Хаар, самый большой замок в Нидерландах. Он был построен в XIV веке семьей Де Хаар, перестроен в XIX веке и позже стал местом сбора высшего общества Европы.",
+      "en": "Right next to Utrecht stands the De Haar castle, the largest castle in the Netherlands. Built by the De Haar family in the 14th century, it was rebuilt in the 19th century and later became a gathering place for European high society."
+    },
+    "coordinates": {
+      "lat": 52.1308,
+      "lng": 4.9858
+    },
+    "videoTime": 1243,
+    "videoTimeFormatted": "20:43"
+  },
+  {
+    "id": "piramida-austerlic",
+    "category": "castle",
+    "name": {
+      "ru": "Пирамида Аустерлиц",
+      "en": "Pyramid of Austerlitz"
+    },
+    "short": {
+      "ru": "наполеоновская постройка 1804.",
+      "en": "Napoleonic structure from 1804."
+    },
+    "full": {
+      "ru": "Недалеко от Утрехта также находится пирамида Аустерлиц, возведенная в 1804 году наполеоновскими войсками и вдохновленная египетскими пирамидами.",
+      "en": "Near Utrecht stands the Pyramid of Austerlitz, raised in 1804 by Napoleonic troops and inspired by the Egyptian pyramids."
+    },
+    "coordinates": {
+      "lat": 52.0833,
+      "lng": 5.3333
+    },
+    "videoTime": 1268,
+    "videoTimeFormatted": "21:08"
+  },
+  {
+    "id": "rotterdam",
+    "category": "city_large",
+    "name": {
+      "ru": "Роттердам",
+      "en": "Rotterdam"
+    },
+    "short": {
+      "ru": "крупнейший порт Европы, Кубовые дома, мост Эразма, Марктал, футуристический вокзал.",
+      "en": "Europe’s largest port, Cube Houses, Erasmus Bridge, Markthal, futuristic central station."
+    },
+    "full": {
+      "ru": "Роттердам — второй по величине город в Нидерландах, крупный мировой порт, расположенный на берегу реки Маас. Город был почти полностью разрушен в 1940 году немецкими бомбардировками, и вместо того, чтобы восстанавливать его как прежде, он принял архитектурные инновации. На территории Роттердама расположен крупнейший в Европе и один из самых загруженных в мире портов. Он имеет сеть рек и каналов, хотя, в отличие от Амстердама, они служат в основном промышленным, а не декоративным целям. Центральный вокзал Роттердама выделяется своим футуристическим дизайном: металлическая крыша в форме стрелы направлена ​​в сторону центра города. Марктал — это крытый рынок, открытый в 2014 году, имеющий форму гигантской арки, с киосками с едой и ресторанами внутри. «Кубовые дома», созданные в 1970-х годах, представляют собой наклонные конструкции, напоминающие абстрактный лес, где каждый куб символизирует дерево. Открытый в 1996 году мост Эразма стал современной иконой города, соединяющей северную и южную части Роттердама.",
+      "en": "Rotterdam is the second-largest city in the Netherlands and a major global port on the Maas river. After German bombing in 1940 destroyed almost the entire city, it embraced architectural innovation rather than rebuilding the past. The port is the largest in Europe and one of the busiest in the world. Its rivers and canals are mostly industrial rather than ornamental, unlike Amsterdam. The futuristic Centraal Station has a metallic arrow-shaped roof pointing toward the centre. The Markthal, opened in 2014, is a giant covered arch full of food stalls and restaurants. The Cube Houses (1970s) are tilted blocks evoking an abstract forest, each cube standing in for a tree. Opened in 1996, the Erasmus Bridge is a modern icon connecting north and south Rotterdam."
+    },
+    "coordinates": {
+      "lat": 51.9244,
+      "lng": 4.4777
+    },
+    "videoTime": 1288,
+    "videoTimeFormatted": "21:28"
+  },
+  {
+    "id": "nacionalnyy-park-velyuve",
+    "category": "nature",
+    "name": {
+      "ru": "Национальный парк Велюве",
+      "en": "Veluwe National Park"
+    },
+    "short": {
+      "ru": "«голландская Сахара», олени, серый волк.",
+      "en": "“Dutch Sahara”, deer, grey wolf."
+    },
+    "full": {
+      "ru": "В центре страны расположен крупнейший национальный парк Нидерландов, ландшафт которого состоит из лесов, дюн и лугов. Он расположен на древней системе ледниковых морен, образовавшихся во время ледникового периода, что придает местности ее пологий, холмистый характер. Иногда его называют голландской Сахарой ​​из-за обширных внутренних песчаных дюн, редкого для Центральной Европы ландшафта. Фиолетовые вересковые пустоши выделяются, окрашивая пейзаж в фиолетовые тона в разное время года и создавая почти сюрреалистическую атмосферу. В этом районе обитает большая популяция благородных оленей. Хотя они исчезли с большей части территории Нидерландов, им удалось выжить в Велюве. В брачный сезон самцы яростно конкурируют за доступ к гаремам самок. В парке также обитает серый волк, крупнейший хищник Европы.",
+      "en": "In the centre of the country lies the largest national park in the Netherlands, with a landscape of forests, dunes and meadows. It rests on an ancient system of glacial moraines from the Ice Age, giving the area its gentle, rolling character. It is sometimes called the Dutch Sahara for its extensive inland sand dunes — rare in central Europe. Purple heathlands turn the landscape violet at certain times of year, creating an almost surreal atmosphere. The park hosts a large red-deer population that survived here when it disappeared from much of the country. The grey wolf, Europe’s largest predator, has recently returned after a near-century absence due to hunting and habitat loss."
+    },
+    "coordinates": {
+      "lat": 52.1167,
+      "lng": 5.7833
+    },
+    "videoTime": 1439,
+    "videoTimeFormatted": "23:59"
+  },
+  {
+    "id": "volendam",
+    "category": "village",
+    "name": {
+      "ru": "Волендам",
+      "en": "Volendam"
+    },
+    "short": {
+      "ru": "рыбацкая деревня XIV в.",
+      "en": "14th-century fishing village."
+    },
+    "full": {
+      "ru": "После почти столетия отсутствия волков из-за охоты и потери среды обитания, они недавно вернулись. Волендам. Эта рыбацкая деревня в Северной Голландии расположена на берегу озера Эйссел, недалеко от Амстердама. Она возникла в XIV веке, когда жители соседнего города построили новую гавань и закрыли старую плотиной. На протяжении веков Волендам оставался изолированным, что помогло сохранить его диалект и традиции. К XIX веку это место стало популярным среди художников и живописцев, а сегодня это крупный",
+      "en": "This North Holland fishing village stands on the IJsselmeer near Amsterdam. It arose in the 14th century when residents of a neighbouring town built a new harbour and dammed the old one. For centuries Volendam stayed isolated, helping preserve its dialect and traditions. By the 19th century it had become popular with painters and artists; today it is a major tourist destination."
+    },
+    "coordinates": {
+      "lat": 52.4944,
+      "lng": 5.0742
+    },
+    "videoTime": 1562,
+    "videoTimeFormatted": "26:02"
+  },
+  {
+    "id": "kyurasao",
+    "category": "caribbean",
+    "name": {
+      "ru": "Кюрасао",
+      "en": "Curaçao"
+    },
+    "short": {
+      "ru": "Виллемстад, мост королевы Эммы, Кляйн-Кюрасао.",
+      "en": "Willemstad, Queen Emma Bridge, Klein Curaçao."
+    },
+    "full": {
+      "ru": "К XIX веку это место стало популярным среди художников и живописцев, а сегодня это крупный туристический центр. Кюрасао. Этот остров в Карибском море является составной частью Королевства Нидерландов. В 1634 году остров был захвачен Голландской Вест-Индской компанией, которая превратила его в торговый центр и центр работорговли. Виллемстад, столица, сочетает голландскую архитектуру с африканскими традициями , а также еврейским, латиноамериканским и карибским влиянием. Легенда гласит, что губернатор, страдавший мигренями, приказал не красить дома в белый цвет, чтобы избежать солнечных бликов на стенах. Одним из символов города является мост королевы Эммы, плавучий мост, который открывается, чтобы пропускать корабли. У юго-восточного побережья находится Кляйн-Кюрасао, необитаемый остров с длинными нетронутыми пляжами и важным местом гнездования морских черепах.",
+      "en": "This Caribbean island is a constituent country of the Kingdom of the Netherlands. The Dutch West India Company seized it in 1634, turning it into a trade and slave-trade hub. Willemstad, the capital, blends Dutch architecture with African traditions and Jewish, Latin American and Caribbean influences. Legend has it that a governor with migraines forbade painting the houses white to avoid sun glare on the walls. One symbol of the city is the Queen Emma Bridge, a pontoon bridge that swings open to let ships pass. Off the south-east coast lies Klein Curaçao, an uninhabited island with long pristine beaches and a key sea-turtle nesting site."
+    },
+    "coordinates": {
+      "lat": 12.1696,
+      "lng": -68.99
+    },
+    "videoTime": 1637,
+    "videoTimeFormatted": "27:17"
+  },
+  {
+    "id": "bonayre",
+    "category": "caribbean",
+    "name": {
+      "ru": "Бонайре",
+      "en": "Bonaire"
+    },
+    "short": {
+      "ru": "Кралендейк, фламинго, соляные пруды.",
+      "en": "Kralendijk, flamingos, salt pans."
+    },
+    "full": {
+      "ru": "Бонайре. Этот остров в голландской части Карибского моря расположен к северу от Венесуэлы и с 2010 года является особым муниципалитетом Нидерландов. Захваченный испанцами в 1499 году, он был покорен голландцами в 1636 году, которые использовали его в основном для производства соли. Кралендейк, столица острова, — небольшой прибрежный городок, полный красочных колониальных домов, приморских баров и ресторанов. К югу расположены огромные соляные испарительные пруды, окрашивающие ландшафт в розовые оттенки. В лагуне Пекельмеер, на южной оконечности острова, обитает одна из крупнейших колоний карибских фламинго. Недалеко от Кралендейка находится Кляйн-Бонайре, плоский необитаемый остров, объявленный охраняемой территорией благодаря своим коралловым рифам и нетронутым пляжам.",
+      "en": "In the Dutch Caribbean north of Venezuela, Bonaire has been a special municipality of the Netherlands since 2010. Captured by the Spanish in 1499 and conquered by the Dutch in 1636, it was used mainly for salt production. Kralendijk, the capital, is a small coastal town full of colourful colonial houses, seaside bars and restaurants. To the south huge salt evaporation ponds tint the landscape pink. The Pekelmeer lagoon at the southern tip is home to one of the largest Caribbean flamingo colonies. Off Kralendijk lies Klein Bonaire, a flat uninhabited island declared a protected area for its coral reefs and untouched beaches."
+    },
+    "coordinates": {
+      "lat": 12.1784,
+      "lng": -68.2385
+    },
+    "videoTime": 1759,
+    "videoTimeFormatted": "29:19"
+  },
+  {
+    "id": "poluostrov-marken",
+    "category": "village",
+    "name": {
+      "ru": "Полуостров Маркен",
+      "en": "Marken Peninsula"
+    },
+    "short": {
+      "ru": "бывший остров, соединён дамбой в 1957.",
+      "en": "Former island, joined to the mainland by a causeway in 1957."
+    },
+    "full": {
+      "ru": "Полуостров Маркен. Этот небольшой полуостров расположен в озере Эйссел, недалеко от Амстердама и Волендама. На протяжении веков это был изолированный остров в Зёйдерзе, где жители вели уединенный образ жизни, зависящий от рыболовства. В 1957 году дамба соединила его с материком, превратив в полуостров и сделав его более доступным для посетителей. Туризм сейчас является ключевой частью местной экономики, однако жители по-прежнему сохраняют свою самобытность",
+      "en": "A small peninsula in the IJsselmeer near Amsterdam and Volendam. For centuries it was an isolated island in the Zuiderzee where residents lived a quiet life dependent on fishing. In 1957 a causeway linked it to the mainland, turning it into a peninsula and making it more accessible. Tourism is now a key part of the local economy, yet residents still preserve their distinctive identity and peaceful way of life."
+    },
+    "coordinates": {
+      "lat": 52.4567,
+      "lng": 5.1056
+    },
+    "videoTime": 1864,
+    "videoTimeFormatted": "31:04"
+  },
+  {
+    "id": "gaaga",
+    "category": "city_large",
+    "name": {
+      "ru": "Гаага",
+      "en": "The Hague"
+    },
+    "short": {
+      "ru": "«город мира и справедливости»: Дворец мира, Бинненхоф, пляжи Кийкдуин и Схевенинген.",
+      "en": "“City of peace and justice”: Peace Palace, Binnenhof, Kijkduin and Scheveningen beaches."
+    },
+    "full": {
+      "ru": "Туризм сейчас является ключевой частью местной экономики, однако жители по-прежнему сохраняют свою самобытность и мирный образ жизни. Гаага. Третий по величине город Нидерландов является административной столицей и местом расположения правительства Нидерландов. Город известен во всем мире как «город мира и справедливости», здесь расположены Международный суд и Международный уголовный суд. В Золотой век он стал центром дипломатии и аристократии, в отличие от коммерческого характера Амстердама. Дворец мира, частично построенный на средства филантропа Эндрю Карнеги, является местом расположения Международного суда и мирным символом мира.",
+      "en": "The third-largest city in the Netherlands, The Hague is the country’s seat of government. It is known worldwide as the “city of peace and justice,” home to the International Court of Justice and the International Criminal Court. In the Golden Age it became a centre of diplomacy and aristocracy, distinct from Amsterdam’s commercial character. The Peace Palace, partly funded by philanthropist Andrew Carnegie, houses the ICJ and is a global symbol of peace. The Binnenhof, the historic heart of Dutch politics, hosts parliament, the cabinet and the prime minister’s office. The Hague is the only major Dutch city with direct access to the North Sea: family-friendly Kijkduin and the broad, lively Scheveningen beach draw hundreds of thousands of visitors each summer."
+    },
+    "coordinates": {
+      "lat": 52.0705,
+      "lng": 4.3007
+    },
+    "videoTime": 1922,
+    "videoTimeFormatted": "32:02"
+  },
+  {
+    "id": "zamok-binnenhof",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Бинненхоф",
+      "en": "Binnenhof"
+    },
+    "short": {
+      "ru": "сердце голландской политики в Гааге.",
+      "en": "Heart of Dutch politics in The Hague."
+    },
+    "full": {
+      "ru": "Замок Бинненхоф — историческое сердце голландской политики, где размещаются парламент, правительство и канцелярия премьер-министра. Гаага — единственный крупный голландский город с прямым выходом к Северному морю, известный своими пляжами, такими как Кийкдуин, идеально подходящий для семейного отдыха. Пляж Схевенинген каждое лето привлекает сотни тысяч местных и иностранных туристов своей широкой береговой линией и водными развлечениями.",
+      "en": "The Binnenhof is the historic heart of Dutch politics, housing parliament, the cabinet and the prime minister’s office."
+    },
+    "coordinates": {
+      "lat": 52.08,
+      "lng": 4.3133
+    },
+    "videoTime": 1994,
+    "videoTimeFormatted": "33:14"
+  },
+  {
+    "id": "alkmar",
+    "category": "city_large",
+    "name": {
+      "ru": "Алкмар",
+      "en": "Alkmaar"
+    },
+    "short": {
+      "ru": "исторический сырный рынок с носильщиками в гильдиях.",
+      "en": "Historic cheese market with porters in their guilds."
+    },
+    "full": {
+      "ru": "Алкмар, расположенный между Амстердамом и Северным морем, славится своим историческим сырным рынком и девизом: «Там, где начинается победа Голландии». Город сыграл решающую роль в Восьмидесятилетней войне: в 1573 году он выдержал испанскую осаду, что стало первой крупной победой повстанцев. Площадка для взвешивания превращается в оживленную сцену, где демонстрируются и продаются головки сыра Гауда и Эдам. Носильщики в традиционной одежде несут головки сыра на носилках для взвешивания и продажи. Цвет их шляп указывает на их гильдию, систему, существующую на протяжении веков.",
+      "en": "Between Amsterdam and the North Sea, Alkmaar is famous for its historic cheese market and the motto “Where Holland’s victory begins.” The city was decisive in the Eighty Years’ War: in 1573 it withstood a Spanish siege, the rebels’ first major victory. The Waag square turns into a lively scene where Gouda and Edam wheels are displayed and sold. Porters in traditional dress carry the wheels on stretchers to be weighed; the colour of their hats marks their guild, a system that has persisted for centuries."
+    },
+    "coordinates": {
+      "lat": 52.6324,
+      "lng": 4.7534
+    },
+    "videoTime": 2044,
+    "videoTimeFormatted": "34:04"
+  },
+  {
+    "id": "horn",
+    "category": "city_large",
+    "name": {
+      "ru": "Хорн",
+      "en": "Hoorn"
+    },
+    "short": {
+      "ru": "порт Золотого века, база Ост- и Вест-Индской компаний.",
+      "en": "Golden Age port, base of the Dutch East and West India Companies."
+    },
+    "full": {
+      "ru": "Хорн . Этот город был одним из главных портов Нидерландов в Золотой век, известный своими моряками, торговцами и исследователями. Он стал базой как для Голландской Ост-Индской компании, так и для Голландской Вест-Индской компании, служа военно-морским и торговым центром. Его исторический центр полон купеческих домов XVII века, похожих по стилю на амстердамские, но меньшего масштаба. Неподалеку проходит паровозная линия Хорн–Медемблик. Первоначальная линия открылась в конце XIX века как часть местной железнодорожной сети, а после закрытия была восстановлена ​​для исторического и рекреационного использования.",
+      "en": "Hoorn was one of the foremost Dutch ports in the Golden Age, known for its sailors, merchants and explorers. It served as a base for both the Dutch East India and West India Companies, a naval and commercial hub. Its historic centre is full of 17th-century merchant houses, similar in style to Amsterdam’s but smaller. Nearby runs the Hoorn–Medemblik steam railway, a heritage line revived for tourism after the original closed."
+    },
+    "coordinates": {
+      "lat": 52.6425,
+      "lng": 5.0597
+    },
+    "videoTime": 2111,
+    "videoTimeFormatted": "35:11"
+  },
+  {
+    "id": "amersfort",
+    "category": "city_large",
+    "name": {
+      "ru": "Амерсфорт",
+      "en": "Amersfoort"
+    },
+    "short": {
+      "ru": "«сердце Голландии», башня Богоматери, ворота Коппельпорт.",
+      "en": "“Heart of Holland”, the Tower of Our Lady, Koppelpoort gate."
+    },
+    "full": {
+      "ru": "Амерсфорт. Этот город, расположенный на полпути между Амстердамом и Арнемом, известен своим превосходным качеством жизни. Благодаря своему центральному расположению он считается «сердцем Голландии». Средневековый город с сохранившимися стенами, башнями и каналами, он также современен и богат культурной жизнью. В средневековье он был центром паломничества благодаря «Чудотворной Деве Марии Амерсфортской». Башня Богоматери — самая высокая в городе. Когда-то она принадлежала церкви, разрушенной в 1787 году, но башня сохранилась и теперь стоит отдельно. Коппельпорт — это укрепленные ворота, позволявшие проход как по суше, так и по воде,",
+      "en": "Halfway between Amsterdam and Arnhem, Amersfoort is celebrated for its quality of life. Its central location earns it the nickname “heart of Holland.” It is at once medieval — with surviving walls, towers and canals — and modern, with a rich cultural life. In the Middle Ages it was a pilgrimage centre devoted to “Our Lady of Amersfoort.” The Tower of Our Lady, the city’s tallest, once belonged to a church demolished in 1787 and now stands alone. The Koppelpoort, allowing passage by both land and water, is a unique European fortified gate."
+    },
+    "coordinates": {
+      "lat": 52.1561,
+      "lng": 5.3878
+    },
+    "videoTime": 2186,
+    "videoTimeFormatted": "36:26"
+  },
+  {
+    "id": "nacionalnyy-park-zyuyd-kennemerland",
+    "category": "nature",
+    "name": {
+      "ru": "Национальный парк Зюйд-Кеннемерланд",
+      "en": "Zuid-Kennemerland National Park"
+    },
+    "short": {
+      "ru": "дюны, европейский зубр.",
+      "en": "Dunes, European bison."
+    },
+    "full": {
+      "ru": "Коппельпорт — это укрепленные ворота, позволявшие проход как по суше, так и по воде, что является уникальным явлением в Европе. Национальный парк Зюйд-Кеннемерланд. Этот парк, расположенный совсем рядом с Амстердамом, охраняет территорию дюн, лесов, лугов и озер. Дюны служат мощным природным фильтром, обеспечивающим питьевой водой Харлем и Амстердам. Здесь обитает европейский зубр, крупнейшее наземное млекопитающее континента. После того как в XX веке эта порода оказалась на грани исчезновения, благодаря международным программам сохранения она была вновь завезена в несколько европейских стран. Также можно увидеть европейских ланей, завезенных в Северную Европу римлянами, а позже средневековой знатью. Конская лошадь, полудикая порода из Польши, была завезена в рамках программы по сохранению породы. Проект по управлению природным ландшафтом. Они пасутся на лугах и дюнах, предотвращая разрастание кустарников и способствуя поддержанию разнообразия растительной и насекомой жизни.",
+      "en": "Right next to Amsterdam, this park protects an area of dunes, forests, meadows and lakes. The dunes act as a powerful natural filter, supplying drinking water to Haarlem and Amsterdam. It is home to the European bison, the continent’s largest land mammal, reintroduced through international conservation programmes after near-extinction in the 20th century. You can also see European fallow deer, brought to northern Europe by the Romans and later by medieval nobility, and Konik ponies — a semi-wild Polish breed introduced as part of a landscape-management project. They graze the dunes and meadows, keeping shrubs in check and supporting plant and insect diversity."
+    },
+    "coordinates": {
+      "lat": 52.4167,
+      "lng": 4.5833
+    },
+    "videoTime": 2270,
+    "videoTimeFormatted": "37:50"
+  },
+  {
+    "id": "blauvestad",
+    "category": "village",
+    "name": {
+      "ru": "Блаувестад",
+      "en": "Blauwestad"
+    },
+    "short": {
+      "ru": "основан в 2005, дома с причалами на озере.",
+      "en": "Founded in 2005, lakeside houses with private jetties."
+    },
+    "full": {
+      "ru": "Блаувестад. В отличие от многих исторических голландских городов, Блаувестад был официально основан в 2005 году, что делает его одним из самых молодых городов страны. Он был создан путем затопления бывших сельскохозяйственных угодий, сочетая современное жилье с инфраструктурой для лодок и водных видов спорта.",
+      "en": "Unlike many historic Dutch towns, Blauwestad was officially founded in 2005, making it one of the country’s youngest. It was created by flooding former farmland and combines modern housing with infrastructure for boats and water sports. Houses are built right on the lakeshore, each with its own jetty and direct water access."
+    },
+    "coordinates": {
+      "lat": 53.1828,
+      "lng": 6.9594
+    },
+    "videoTime": 2378,
+    "videoTimeFormatted": "39:38"
+  },
+  {
+    "id": "ves-nordostpolder",
+    "category": "wind",
+    "name": {
+      "ru": "ВЭС Нордостполдер",
+      "en": "Noordoostpolder Wind Farm"
+    },
+    "short": {
+      "ru": "на отвоёванной у моря земле, ~400 000 домов.",
+      "en": "On reclaimed land, ~400,000 homes powered."
+    },
+    "full": {
+      "ru": "Дома построены прямо на берегу озера, каждый с собственным причалом и прямым доступом к воде. Ветроэлектростанция Нордостполдер. Этот ветроэнергетический парк в провинции Флеволанд расположен на земле, отвоеванной у моря. Сегодня эти отвоеванные у моря территории образуют самый большой участок земли, когда-либо отвоеванный у моря, плодородный благодаря богатому минералами бывшему морскому дну. Ветроэлектростанция объединяет турбины, установленные как на суше, так и в воде. Она вырабатывает достаточно электроэнергии каждый год, чтобы обеспечить ею около 400 000 домов.",
+      "en": "This wind farm in Flevoland stands on land reclaimed from the sea. The reclaimed area today forms the largest tract of land ever recovered from the sea, made fertile by the mineral-rich former seabed. The farm combines turbines on land and in the water and produces enough electricity each year to power around 400,000 homes."
+    },
+    "coordinates": {
+      "lat": 52.75,
+      "lng": 5.75
+    },
+    "videoTime": 2415,
+    "videoTimeFormatted": "40:15"
+  },
+  {
+    "id": "naarden",
+    "category": "city_historic",
+    "name": {
+      "ru": "Наарден",
+      "en": "Naarden"
+    },
+    "short": {
+      "ru": "ренессансная крепость в форме звезды.",
+      "en": "Renaissance star-shaped fortress."
+    },
+    "full": {
+      "ru": "Наарден. Расположенный в Северной Голландии, этот город сохранил ренессансную крепость в форме звезды. Сверху он выглядит как идеальный геометрический дизайн, превративший его в икону военной архитектуры. Немногие европейские города могут похвастаться такой совершенной системой обороны с двойными рвами и двойными стенами. Он был разрушен в 1572 году испанскими войсками во время Восьмидесятилетней войны и восстановлен в XVII",
+      "en": "In North Holland, Naarden has preserved a Renaissance star-shaped fortress. From above it appears as a perfect geometric design, an icon of military architecture. Few European cities can boast such a complete defensive system with double moats and double walls. Destroyed in 1572 by Spanish troops during the Eighty Years’ War, it was rebuilt in the 17th century as an Italian-style fortress."
+    },
+    "coordinates": {
+      "lat": 52.2967,
+      "lng": 5.1592
+    },
+    "videoTime": 2495,
+    "videoTimeFormatted": "41:35"
+  },
+  {
+    "id": "zaandam",
+    "category": "village",
+    "name": {
+      "ru": "Заандам",
+      "en": "Zaandam"
+    },
+    "short": {
+      "ru": "сердце Заанстрека, отель Inntel.",
+      "en": "Heart of the Zaanstreek, Inntel Hotel."
+    },
+    "full": {
+      "ru": "Он был разрушен в 1572 году испанскими войсками во время Восьмидесятилетней войны и восстановлен в XVII веке как крепость в итальянском стиле. Заандам. Этот город является сердцем региона Заанстрек, одного из старейших промышленных районов мира. В XVII веке в регионе Заан работало более 600 ветряных мельниц, и он считается первой в мире промышленной зоной. Темно-зеленые деревянные дома были типичными жилищами для торговцев, моряков и рабочих ветряных мельниц. В последние годы, в ходе реконструкции города, архитекторы перепроектировали эти традиционные зеленые дома в большие современные здания. Отель Inntel выделяется фасадом, напоминающим стопку знаковых местных домов.",
+      "en": "Zaandam is the heart of the Zaanstreek, one of the oldest industrial regions in the world. In the 17th century the Zaan area had over 600 windmills working at once and is considered the world’s first industrial zone. The dark-green wooden houses were typical homes for merchants, sailors and mill workers. In recent reconstructions, architects have reinterpreted these traditional green houses into large modern buildings — most famously the Inntel Hotel, whose facade looks like a stack of iconic local houses."
+    },
+    "coordinates": {
+      "lat": 52.4389,
+      "lng": 4.8178
+    },
+    "videoTime": 2546,
+    "videoTimeFormatted": "42:26"
+  },
+  {
+    "id": "shermerhorn",
+    "category": "village",
+    "name": {
+      "ru": "Шермерхорн",
+      "en": "Schermerhorn"
+    },
+    "short": {
+      "ru": "деревня фермеров и мельников.",
+      "en": "A village of farmers and millers."
+    },
+    "full": {
+      "ru": "Шермерхорн. Эта небольшая деревня имеет глубокую связь с историей голландского управления водными ресурсами. С помощью десятков ветряных мельниц озеро Шермер было осушено и превращено в обширную осушенную территорию. После осушения Шермерхорн стал деревней фермеров и мельников, окруженной плодородными полями. Первоначально здесь было более 50 ветряных мельниц; сегодня некоторые из них сохранились как музеи и памятники.",
+      "en": "This small village has a deep connection to Dutch water management: with dozens of windmills, the lake of Schermer was drained and turned into a vast reclaimed area. After the drainage Schermerhorn became a village of farmers and millers, surrounded by fertile fields. There were originally over 50 windmills here; some survive today as museums and monuments."
+    },
+    "coordinates": {
+      "lat": 52.5489,
+      "lng": 4.8961
+    },
+    "videoTime": 2641,
+    "videoTimeFormatted": "44:01"
+  },
+  {
+    "id": "shtompetoren",
+    "category": "village",
+    "name": {
+      "ru": "Штомпеторен",
+      "en": "Stompetoren"
+    },
+    "short": {
+      "ru": "«тупая башня».",
+      "en": "“Stumpy tower”."
+    },
+    "full": {
+      "ru": "Штомпеторен. Хотя сейчас это тихое поселение, оно имеет большую историческую ценность благодаря своей связи с борьбой голландцев за воду. Как и Шермерхорн, оно возникло в XVII веке после осушения озера Шермер. После осушения озера территория стала плодородными сельскохозяйственными угодьями, и Штомпеторен развился как сельскохозяйственная деревня.",
+      "en": "Now a quiet settlement, Stompetoren has great historical value through its connection to the Dutch struggle with water. Like Schermerhorn, it emerged in the 17th century after the draining of Lake Schermer. The drained land became fertile farmland, and Stompetoren grew as an agricultural village. Its name literally means “stumpy tower,” after the village’s Reformed church whose tower lacks a pointed spire."
+    },
+    "coordinates": {
+      "lat": 52.5667,
+      "lng": 4.8833
+    },
+    "videoTime": 2703,
+    "videoTimeFormatted": "45:03"
+  },
+  {
+    "id": "durgerdam",
+    "category": "village",
+    "name": {
+      "ru": "Дургердам",
+      "en": "Durgerdam"
+    },
+    "short": {
+      "ru": "деревня на дамбе Ватерландсе.",
+      "en": "Village on the Waterland dike."
+    },
+    "full": {
+      "ru": "Название буквально означает «тупая башня», что относится к реформатской церкви деревни, башня которой не имеет остроконечного шпиля. Дургердам. Эта небольшая деревня расположена к северо-востоку от Амстердама на берегу озера Эймер. Ее деревянные дома стоят вдоль дамбы Ватерландсе, построенной в Средние века для защиты региона Ватерланд. После завершения строительства Афслёйтдейка в 1932 году рыболовство пришло в упадок, и деревня превратилась в мирное жилое сообщество. Зимой воды озера Эймер часто замерзают, позволяя людям кататься на коньках по льду.",
+      "en": "A small village north-east of Amsterdam on the IJmeer shore, Durgerdam’s wooden houses line the Waterland dike, built in the Middle Ages to protect the Waterland region. After the Afsluitdijk was completed in 1932 fishing declined, and the village turned into a peaceful residential community. In winter the IJmeer often freezes, allowing ice-skating across the lake."
+    },
+    "coordinates": {
+      "lat": 52.3789,
+      "lng": 4.9728
+    },
+    "videoTime": 2748,
+    "videoTimeFormatted": "45:48"
+  },
+  {
+    "id": "reuveyk",
+    "category": "village",
+    "name": {
+      "ru": "Реувейк",
+      "en": "Reeuwijk"
+    },
+    "short": {
+      "ru": "сеть прямоугольных озёр от добычи торфа.",
+      "en": "A network of rectangular peat-extraction lakes."
+    },
+    "full": {
+      "ru": "Реувейк. Этот небольшой городок отличается сетью узких прямоугольных озер, расположенных почти параллельно друг другу, простирающихся между лугами и дамбами. Они образовались в результате добычи торфа в Средние века, когда вырытые траншеи со временем заполнились водой, создав этот характерный ландшафт. К востоку от Реувейка находится польдер Оукооп, который зависит от насосной системы, чтобы оставаться сухим. В отличие от Реувейка, где земля затоплялась, Оукооп сохранил свои луга и сельскохозяйственные угодья благодаря постоянному осушению. Польдер Слёйпвейк также находится в этом районе и сохраняет средневековую геометрическую схему прямых рвов, разделяющих участки.",
+      "en": "This small town is defined by a network of narrow rectangular lakes lying nearly parallel between meadows and dikes. They formed through peat extraction in the Middle Ages: the dug trenches filled with water over time, creating this distinctive landscape. East of Reeuwijk lies the Oukoop polder, which depends on a pumping system to stay dry. Unlike Reeuwijk, where the land was flooded, Oukoop kept its meadows and farmland through constant drainage. The Sluipwijk polder also lies here and preserves a medieval geometric pattern of straight ditches dividing parcels."
+    },
+    "coordinates": {
+      "lat": 52.05,
+      "lng": 4.7167
+    },
+    "videoTime": 2820,
+    "videoTimeFormatted": "47:00"
+  },
+  {
+    "id": "kinderdeyk",
+    "category": "village",
+    "name": {
+      "ru": "Киндердейк",
+      "en": "Kinderdijk"
+    },
+    "short": {
+      "ru": "комплекс ветряных мельниц XVIII в. (ЮНЕСКО).",
+      "en": "18th-century windmill complex (UNESCO)."
+    },
+    "full": {
+      "ru": "Киндердейк. Расположенный в Южной Голландии, этот объект объединяет исторические ветряные мельницы и гидротехнические сооружения. Он был построен в XVIII веке для откачки воды и защиты территории от частых наводнений. Сегодня каналы, шлюзы и дамбы продолжают функционировать как часть системы управления водными ресурсами.",
+      "en": "In South Holland, Kinderdijk combines historic windmills with hydraulic engineering. Built in the 18th century to pump water and protect the area from frequent floods, today its canals, sluices and dikes still function as part of the water-management system. The windmills worked as a single system, lifting water step by step until it reached the river Lek."
+    },
+    "coordinates": {
+      "lat": 51.8833,
+      "lng": 4.6333
+    },
+    "videoTime": 2902,
+    "videoTimeFormatted": "48:22"
+  },
+  {
+    "id": "nacionalnyy-park-alde-feanen",
+    "category": "nature",
+    "name": {
+      "ru": "Национальный парк Алде Феанен",
+      "en": "De Alde Feanen National Park"
+    },
+    "short": {
+      "ru": "белохвостый орлан, выдра.",
+      "en": "White-tailed eagle, otter."
+    },
+    "full": {
+      "ru": "Ветряные мельницы работали как единая система, поднимая воду с одного уровня на другой. до реки Лек. Национальный парк Алде Феанен. Это обширное водно-болотное угодье начало формироваться в Средние века, когда добыча торфа привела к образованию траншей, озер и каналов. После столетий эксплуатации многие территории заболочились и заросли растительностью, превратившись в убежища для птиц и млекопитающих. С годами здесь появились плавучие острова растительности, а также участки, покрытые тростником, которые простираются в озера. Это одно из немногих мест в Нидерландах, где гнездится белохвостый орлан — крупнейшая хищная птица Северной Европы. Этот вид исчез из страны на десятилетия, но недавно вернулся, что стало важной вехой в сохранении птиц в Нидерландах. Аналогично, европейская выдра вымерла в Нидерландах в 1980-х годах, но проекты по реинтродукции и улучшение качества воды помогли вернуть ее. Это животное зависит от чистых, спокойных вод с обилием рыбы и густой растительностью для укрытия.",
+      "en": "This vast wetland began forming in the Middle Ages when peat extraction created trenches, lakes and canals. After centuries of use, much of the area silted up and was overgrown by vegetation, becoming a refuge for birds and mammals. Floating vegetation islands and reed beds extending into the lakes have appeared over the years. It is one of the few places in the Netherlands where the white-tailed eagle — northern Europe’s largest raptor — nests. The species had been gone from the country for decades and its return marks a key milestone in Dutch bird conservation. Likewise, the European otter went extinct here in the 1980s but reintroduction projects and improved water quality have brought it back."
+    },
+    "coordinates": {
+      "lat": 53.1,
+      "lng": 5.95
+    },
+    "videoTime": 2949,
+    "videoTimeFormatted": "49:09"
+  },
+  {
+    "id": "veyk-bay-dyurstede",
+    "category": "city_historic",
+    "name": {
+      "ru": "Вейк-бай-Дюрстеде",
+      "en": "Wijk bij Duurstede"
+    },
+    "short": {
+      "ru": "мельница Рейн-эн-Лек, замок Дюрстеде.",
+      "en": "Rijn en Lek windmill, Duurstede Castle."
+    },
+    "full": {
+      "ru": "Вейк-бай-Дюрстеде. В этом небольшом городе спокойный ритм прибрежного городка сочетается с прошлым, полным стратегического значения. В Средние века город процветал как торговый центр благодаря своему порту на Рейне. Мельница Рейн-эн-Лек была построена на месте средневековых городских ворот и служила одновременно оборонительным сооружением и мукомольной мельницей. В историческом центре стоит замок Дюрстеде, окруженный рвом и расположенный в зеленом парке.",
+      "en": "In this small town the relaxed pace of a riverside community meets a past of strategic importance. In the Middle Ages Wijk bij Duurstede thrived as a trade centre thanks to its Rhine harbour. The Rijn en Lek windmill was built on the site of medieval city gates and served as both defence and grain mill. The historic centre also holds Duurstede Castle, surrounded by a moat and a leafy park."
+    },
+    "coordinates": {
+      "lat": 51.9744,
+      "lng": 5.3414
+    },
+    "videoTime": 3065,
+    "videoTimeFormatted": "51:05"
+  },
+  {
+    "id": "zirikzee",
+    "category": "city_historic",
+    "name": {
+      "ru": "Зирикзее",
+      "en": "Zierikzee"
+    },
+    "short": {
+      "ru": "член Ганзейского союза, башня «Дикке Торен».",
+      "en": "Hanseatic League member, the “Dikke Toren”."
+    },
+    "full": {
+      "ru": "Зирикзее. С населением чуть более одиннадцати тысяч человек этот город выделяется своим богатым средневековым прошлым, исторической гаванью и хорошо сохранившимися памятниками. В XIV веке он был частью Ганзейского союза, что дало ему экономическую мощь и торговые связи с Северной Европой. В XVII веке его порт расширился и процветал благодаря рыболовству, судоходству и торговле. Сегодня это популярное историческое и туристическое место, ценимое за свою пристань для яхт, старый город и морскую атмосферу. «Дикке Торен» должен был стать массивным собором, но проект так и не был завершен; сегодня посетители могут подняться на него, чтобы полюбоваться видом на остров. Хавенканал — это портовый канал, вырытый для поддержания доступа города к морю.",
+      "en": "With just over eleven thousand residents, Zierikzee stands out for its rich medieval past, historic harbour and well-preserved monuments. In the 14th century it was a member of the Hanseatic League, giving it economic clout and trade ties with northern Europe. Its 17th-century port flourished on fishing, shipping and trade. The “Dikke Toren” was meant to be part of a massive cathedral, but the project was never finished; today visitors can climb it for views over the island."
+    },
+    "coordinates": {
+      "lat": 51.65,
+      "lng": 3.9167
+    },
+    "videoTime": 3131,
+    "videoTimeFormatted": "52:11"
+  },
+  {
+    "id": "snek",
+    "category": "city_historic",
+    "name": {
+      "ru": "Снек",
+      "en": "Sneek"
+    },
+    "short": {
+      "ru": "«город воды», Неделя Снека.",
+      "en": "“City of water”, Sneek Week."
+    },
+    "full": {
+      "ru": "Снек. Этот исторический город в провинции Фрисландия известен как «город воды» благодаря своей тесной связи с каналами, озерами и водным транспортом. В течение XX и XXI веков он стал культурной столицей Фрисландии, тесно связанной с главным ежегодным парусным событием — Неделей Снека. К востоку от Снека находится озеро Снек, часть фризской озерной системы, соединенной судоходными каналами. В XX веке оно превратилось в популярное место отдыха, особенно для парусного спорта, и сегодня является ключевым направлением водного туризма в Нидерландах. В центре озера расположен остров Стартейланд, который каждое лето становится сердцем Недели Снека — крупнейшей регаты по парусному спорту на внутренних водоемах в Европе.",
+      "en": "In Friesland, Sneek is known as the “city of water” for its close ties to canals, lakes and water transport. In the 20th and 21st centuries it became Friesland’s cultural capital, closely linked to the main annual sailing event — Sneek Week. East of the town lies Lake Sneek, part of the Frisian lake system connected by navigable canals; its central island, Starteiland, becomes the heart of Sneek Week each summer — Europe’s largest inland-water sailing regatta."
+    },
+    "coordinates": {
+      "lat": 53.0333,
+      "lng": 5.6594
+    },
+    "videoTime": 3224,
+    "videoTimeFormatted": "53:44"
+  },
+  {
+    "id": "burtanzh",
+    "category": "city_historic",
+    "name": {
+      "ru": "Буртанж",
+      "en": "Bourtange"
+    },
+    "short": {
+      "ru": "город-крепость 1593, музей под открытым небом.",
+      "en": "Fortress town from 1593, an open-air museum."
+    },
+    "full": {
+      "ru": "Буртанж. Этот небольшой город-крепость является редким примером военной архитектуры эпохи Возрождения. Построенный в 1593 году во время Восьмидесятилетней войны, он был спроектирован для контроля единственной проходимой дороги между Германией и городом Гронинген. Сегодня это музей под открытым небом, где посетители могут познакомиться с жизнью внутри голландской крепости в",
+      "en": "A rare example of Renaissance military architecture, this small fortress town was built in 1593 during the Eighty Years’ War to control the only passable road between Germany and the city of Groningen. Today it is an open-air museum where visitors can experience life inside an early-modern Dutch fortress."
+    },
+    "coordinates": {
+      "lat": 53.0066,
+      "lng": 7.1894
+    },
+    "videoTime": 3307,
+    "videoTimeFormatted": "55:07"
+  },
+  {
+    "id": "makkum",
+    "category": "city_historic",
+    "name": {
+      "ru": "Маккум",
+      "en": "Makkum"
+    },
+    "short": {
+      "ru": "«Ворота в Зёйдерзе», традиционная керамика, пляж.",
+      "en": "“Gateway to the Zuiderzee”, traditional pottery, beach."
+    },
+    "full": {
+      "ru": "Сегодня это музей под открытым небом, где посетители могут познакомиться с жизнью внутри голландской крепости в раннее Новое время. Маккум, известный как «Ворота в Зёйдерзе», на протяжении веков был центром торговли, судоходства и ремесел. Его расположение на берегу озера Эйссел придавало ему стратегическое значение как порту, и сегодня это делает его крупным туристическим центром. Это одно из немногих мест, где сохранилась традиционная голландская керамика, изготовленная с использованием техник, восходящих к XVII веку. Недалеко от деревни находится пляж Маккум, популярный для кемпинга и водных видов спорта.",
+      "en": "Known as the “Gateway to the Zuiderzee,” Makkum has been a centre of trade, shipping and crafts for centuries. Its position on the IJsselmeer made it strategically valuable as a port and now turns it into a major tourist draw. It is one of the few places where traditional Dutch pottery is still made using techniques dating back to the 17th century. Just outside the village, Makkum Beach is popular for camping and water sports."
+    },
+    "coordinates": {
+      "lat": 53.05,
+      "lng": 5.4
+    },
+    "videoTime": 3341,
+    "videoTimeFormatted": "55:41"
+  },
+  {
+    "id": "ostrov-teksel",
+    "category": "nature",
+    "name": {
+      "ru": "Остров Тексел",
+      "en": "Texel"
+    },
+    "short": {
+      "ru": "крупнейший остров Западно-Фризского архипелага, тюлени.",
+      "en": "Largest of the West Frisian Islands, seals."
+    },
+    "full": {
+      "ru": "Остров Тексел, расположенный в Ваттовом море, к северу от материка, является крупнейшим островом в Западно-Фризском архипелаге. Он отличается пляжами, дюнами, лесами, сельскохозяйственными польдерами и водно-болотными угодьями, создавая необычайное ландшафтное разнообразие. В некоторых районах встречаются зыбучие пески — влажная песчаная местность, которая теряет устойчивость и ведет себя как вода. Тексел является частью Ваттового моря, экосистемы, которую делят перелетные птицы и морские млекопитающие. На песчаных отмелях часто можно увидеть тюленя обыкновенного с его округлой головой и короткой мордой. Более крупный серый тюлень также использует близлежащие песчаные отмели для отдыха и выращивания детенышей. Остров был заселен на протяжении веков, и общины разбросаны по нескольким деревням и поселкам.",
+      "en": "Located in the Wadden Sea north of the mainland, Texel is the largest of the West Frisian Islands. It features beaches, dunes, forests, agricultural polders and wetlands — an extraordinary diversity of landscapes. In some places quicksand appears: wet sandy ground that loses stability and behaves like water. Texel is part of the Wadden Sea ecosystem, shared with migratory birds and marine mammals. The harbour seal — round-headed and short-snouted — is often seen on the sandbanks; the larger grey seal also uses nearby banks to rest and rear pups. The island has been inhabited for centuries with communities scattered across several villages."
+    },
+    "coordinates": {
+      "lat": 53.0556,
+      "lng": 4.7972
+    },
+    "videoTime": 3411,
+    "videoTimeFormatted": "56:51"
+  },
+  {
+    "id": "urk",
+    "category": "village",
+    "name": {
+      "ru": "Урк",
+      "en": "Urk"
+    },
+    "short": {
+      "ru": "бывший остров посреди осушенной земли, маяк 1844.",
+      "en": "Former island amid reclaimed land, 1844 lighthouse."
+    },
+    "full": {
+      "ru": "Урк. Когда-то остров в бывшем Зёйдерзе, эта деревня теперь стоит посреди осушенной земли. Несмотря на эти изменения, ее жители сохранили сильную островную самобытность, отраженную в их диалекте, традиционной одежде и морской культуре. Старый город представляет собой лабиринт узких переулков, кирпичных домов и двускатных крыш, многие из которых выкрашены в яркие цвета. Маяк Урк, построенный в 1844 году, до сих пор является символом деревни и играл важную роль в ориентировании",
+      "en": "Once an island in the former Zuiderzee, Urk now stands amid reclaimed land. Despite the changes, residents have kept a strong island identity reflected in their dialect, traditional dress and maritime culture. The old town is a maze of narrow alleys, brick houses and gabled roofs, many painted in bright colours. The 1844 Urk lighthouse remains a village symbol and once played a key role in guiding ships."
+    },
+    "coordinates": {
+      "lat": 52.6628,
+      "lng": 5.6017
+    },
+    "videoTime": 3517,
+    "videoTimeFormatted": "58:37"
+  },
+  {
+    "id": "het-tviske",
+    "category": "nature",
+    "name": {
+      "ru": "Хет Твиске",
+      "en": "Het Twiske"
+    },
+    "short": {
+      "ru": "природная зона к северу от Амстердама.",
+      "en": "Nature area north of Amsterdam."
+    },
+    "full": {
+      "ru": "Маяк Урк, построенный в 1844 году, до сих пор является символом деревни и играл важную роль в ориентировании проходящих судов. Хет Твиске. Эта природная зона к северу от Амстердама сочетает в себе ландшафты, воду и зоны отдыха. Первоначально использовавшаяся для добычи торфа и сельского хозяйства, позже она стала большим искусственным озером, окруженным лугами и лесами. Хотя она расположена недалеко от большого города, она сохраняет мирную сельскую атмосферу с открытыми полями и классическими голландскими видами.",
+      "en": "This nature area north of Amsterdam combines landscapes, water and recreation. Originally used for peat extraction and farming, it later became a large artificial lake surrounded by meadows and woods. Despite its proximity to a big city it keeps a peaceful rural atmosphere with open fields and classic Dutch views."
+    },
+    "coordinates": {
+      "lat": 52.45,
+      "lng": 4.85
+    },
+    "videoTime": 3565,
+    "videoTimeFormatted": "59:25"
+  },
+  {
+    "id": "loenen-an-de-veht",
+    "category": "village",
+    "name": {
+      "ru": "Лоенен-ан-де-Вехт",
+      "en": "Loenen aan de Vecht"
+    },
+    "short": {
+      "ru": "деревня с усадьбами на реке Вехт.",
+      "en": "Village with riverside estates on the Vecht."
+    },
+    "full": {
+      "ru": "Лоенен-ан-де-Вехт. Расположенная вдоль реки Вехт, эта небольшая деревня может похвастаться элегантными усадьбами на берегу реки. Его история восходит к средневековью, когда он развивался как сельскохозяйственное и рыболовное поселение. В Золотой век богатые амстердамские купцы построили здесь роскошные загородные поместья, а в XVII",
+      "en": "Along the Vecht river, Loenen aan de Vecht boasts elegant riverside estates. Its history goes back to the Middle Ages, when it grew as a farming and fishing settlement. In the Golden Age wealthy Amsterdam merchants built lavish country estates here, and in the 17th century it became a retreat for the elite."
+    },
+    "coordinates": {
+      "lat": 52.2056,
+      "lng": 5.025
+    },
+    "videoTime": 3625,
+    "videoTimeFormatted": "1:00:25"
+  },
+  {
+    "id": "lemmer",
+    "category": "city_historic",
+    "name": {
+      "ru": "Леммер",
+      "en": "Lemmer"
+    },
+    "short": {
+      "ru": "рядом паровая насосная станция Вудагемаал (1920).",
+      "en": "Nearby is the Woudagemaal steam pumping station (1920)."
+    },
+    "full": {
+      "ru": "В Золотой век богатые амстердамские купцы построили здесь роскошные загородные поместья, а в XVII веке он стал местом отдыха для элиты. Леммер, расположенный на берегу озера Эйссел и связанный с фризскими озерами, является одним из главных пунктов доступа к водным путям региона. На протяжении веков он процветал благодаря рыболовству, судоходству и торговле торфом, а также пережил немало военных конфликтов. За пределами Леммера находится Вудагемаал, паровая насосная станция, построенная в 1920 году — крупнейшая из действующих в своем роде. Вдоль берега озера Эйссел расположен жилой комплекс, построенный над водой, дома в котором расположены по круговой геометрической схеме и соединены каналами. Он предназначен для любителей лодочного спорта, с пристанями и причалами всего в нескольких шагах от домов.",
+      "en": "On the IJsselmeer and linked to the Frisian lakes, Lemmer is a main gateway to the region’s waterways. For centuries it thrived on fishing, shipping and the peat trade and saw its share of military conflict. Just outside the town, the Woudagemaal — a steam pumping station built in 1920 — is the largest still in operation of its kind. A residential complex along the lakeside is built over the water with houses arranged in a circular geometric plan and connected by canals."
+    },
+    "coordinates": {
+      "lat": 52.8458,
+      "lng": 5.7172
+    },
+    "videoTime": 3663,
+    "videoTimeFormatted": "1:01:03"
+  },
+  {
+    "id": "vetropark-frislan",
+    "category": "wind",
+    "name": {
+      "ru": "Ветропарк Фрислан",
+      "en": "Windpark Fryslân"
+    },
+    "short": {
+      "ru": "крупнейшая в мире ВЭС на пресной воде, ~500 000 домов.",
+      "en": "World’s largest freshwater wind farm, ~500,000 homes."
+    },
+    "full": {
+      "ru": "Ветропарк Фрислан. Это одна из крупнейших в мире ветроэлектростанций, расположенных на пресной воде, построенная на озере Эйссел недалеко от Афслёйтдейка. В отличие от других морских ветроэлектростанций, она спроектирована в компактном варианте, чтобы уменьшить визуальное воздействие. Ее мощность обеспечивает экологически чистой электроэнергией около 500 000 голландских домохозяйств.",
+      "en": "One of the world’s largest freshwater wind farms, built on the IJsselmeer near the Afsluitdijk. Unlike other offshore farms, it is laid out in a compact pattern to reduce visual impact. Its capacity supplies clean electricity to roughly 500,000 Dutch households."
+    },
+    "coordinates": {
+      "lat": 52.9667,
+      "lng": 5.35
+    },
+    "videoTime": 3746,
+    "videoTimeFormatted": "1:02:26"
+  },
+  {
+    "id": "haringvlietdam",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Харингвлиетдам",
+      "en": "Haringvlietdam"
+    },
+    "short": {
+      "ru": "17 затворов между Северным морем и эстуарием (1971).",
+      "en": "17 gates between the North Sea and the estuary (1971)."
+    },
+    "full": {
+      "ru": "Харингвлиетдам. Это одно из крупнейших гидротехнических сооружений страны. Открытая в 1971 году, она состоит из 17 гигантских затворов , регулирующих поток воды между Северным морем и эстуарием Харингвлиет. Она играет жизненно важную роль в защите от наводнений, а также в экологическом управлении, помогая сохранять биоразнообразие эстуария. Это не только плотина; она также функционирует как мост и дорога, соединяющая ранее разделенные регионы, улучшая транспортную доступность.",
+      "en": "One of the country’s largest hydraulic structures. Opened in 1971, it consists of 17 giant gates regulating the flow between the North Sea and the Haringvliet estuary. It plays a crucial role in flood defence and ecological management, helping preserve estuarine biodiversity. It is not just a dam: it also functions as a bridge and road, connecting previously divided regions and improving transport links."
+    },
+    "coordinates": {
+      "lat": 51.8333,
+      "lng": 4.0333
+    },
+    "videoTime": 3796,
+    "videoTimeFormatted": "1:03:16"
+  },
+  {
+    "id": "prirodnyy-zapovednik-meyendel",
+    "category": "nature",
+    "name": {
+      "ru": "Природный заповедник Мейендел",
+      "en": "Meijendel Nature Reserve"
+    },
+    "short": {
+      "ru": "крупнейшая прибрежная дюнная зона, >250 видов птиц.",
+      "en": "Largest coastal dune area, >250 bird species."
+    },
+    "full": {
+      "ru": "Природный заповедник Мейендел. Это крупнейшая прибрежная дюнная зона в Нидерландах, состоящая из лесов, лугов и водно-болотных угодий. Дюны покрыты высокой травой, кустарниками и разбросанными лесными массивами. Песчаная почва служит естественным фильтром, являясь основным источником питьевой воды для Гааги и ее окрестностей. Это настоящий птичий заповедник, где зарегистрировано более 250 видов птиц. Любопытная деталь: по всей территории до сих пор можно найти заброшенные бункеры времен Второй мировой войны.",
+      "en": "The Netherlands’ largest coastal dune area, made up of forests, meadows and wetlands. The dunes are covered with tall grasses, shrubs and scattered woodland. The sandy soil acts as a natural filter and is the main source of drinking water for The Hague and the surrounding region. It is a true bird sanctuary, with more than 250 species recorded. A curious detail: abandoned WWII bunkers can still be found across the area."
+    },
+    "coordinates": {
+      "lat": 52.15,
+      "lng": 4.3333
+    },
+    "videoTime": 3851,
+    "videoTimeFormatted": "1:04:11"
+  },
+  {
+    "id": "medemblik",
+    "category": "city_historic",
+    "name": {
+      "ru": "Медемблик",
+      "en": "Medemblik"
+    },
+    "short": {
+      "ru": "историческая жемчужина на Эйсселе.",
+      "en": "Historic gem on the IJsselmeer."
+    },
+    "full": {
+      "ru": "Медемблик. На берегу озера Эйссел расположена эта историческая жемчужина, где средневековые следы сочетаются с оживленной гаванью и спокойной атмосферой, создаваемой водой. В Средние века это было поселение рыбаков и торговцев, а позже оно превратилось в туристический город с пристанью для яхт, музеями и возможностями для занятий парусным спортом. Несмотря на то, что здесь проживает менее десяти тысяч человек, город играл ключевую роль в голландской политике и обороне в средневековье.",
+      "en": "On the shore of the IJsselmeer, Medemblik is a historic gem where medieval traces meet a lively harbour. In the Middle Ages it was a fishermen’s and merchants’ settlement; later it became a touristy town with a marina, museums and sailing options. With fewer than ten thousand residents, it played a key political and defensive role in the medieval Netherlands."
+    },
+    "coordinates": {
+      "lat": 52.772,
+      "lng": 5.1058
+    },
+    "videoTime": 3935,
+    "videoTimeFormatted": "1:05:35"
+  },
+  {
+    "id": "dokkum",
+    "category": "city_historic",
+    "name": {
+      "ru": "Доккум",
+      "en": "Dokkum"
+    },
+    "short": {
+      "ru": "звёздообразные каналы, место убийства св. Бонифация в 754 г.",
+      "en": "Star-shaped canals, site of the murder of St Boniface in 754."
+    },
+    "full": {
+      "ru": "Доккум. Этот город отличается своим укрепленным наследием и исключительным состоянием сохранности. Именно здесь в 754 году был убит миссионер святой Бонифаций, событие, превратившее Доккум в христианский паломнический центр. Историческое ядро ​​окружено каналами в форме звезды, вдоль которых расположены старые купеческие дома, старинные церкви и традиционные ветряные мельницы. Эти каналы когда-то служили частью оборонительной системы, но также являлись важными транспортными путями, а сегодня они функционируют как гавани для прогулочных судов.",
+      "en": "Dokkum stands out for its fortified heritage and exceptional state of preservation. The missionary St Boniface was killed here in 754, turning Dokkum into a Christian pilgrimage centre. Its historic core is ringed by star-shaped canals lined with old merchant houses, ancient churches and traditional windmills. These canals once formed part of the defensive system and were also vital trade routes; today they shelter pleasure craft."
+    },
+    "coordinates": {
+      "lat": 53.3287,
+      "lng": 5.9978
+    },
+    "videoTime": 3984,
+    "videoTimeFormatted": "1:06:24"
+  },
+  {
+    "id": "nacionalnyy-park-veluvezum",
+    "category": "nature",
+    "name": {
+      "ru": "Национальный парк Велувезум",
+      "en": "Veluwezoom National Park"
+    },
+    "short": {
+      "ru": "первый нацпарк страны, цветение вереска.",
+      "en": "The country’s first national park, blooming heather."
+    },
+    "full": {
+      "ru": "Национальный парк Велувезум был объявлен первым национальным парком страны в 1999 году. В 1930 году он стал символом охраны природы Нидерландов. Это обширный регион песков и холмов, образовавшийся во время ледникового периода, позже покрытый лесами и вересковыми пустошами. Каждый август и сентябрь холмы превращаются в фиолетовый ковер, когда цветет вереск — завораживающее природное зрелище. Эти вересковые пустоши простираются по песчаным холмам, с которых открываются панорамные виды, редкие для такой равнинной страны. Среди животных, обитающих в парке, — рыжая лиса, млекопитающее, известное своей способностью легко адаптироваться к различным средам обитания.",
+      "en": "Veluwezoom became the country’s first national park, declared in 1930 as a symbol of Dutch nature conservation. It is a vast region of sands and hills formed during the Ice Age and later covered with forests and heaths. Each August and September the hills turn into a purple carpet as the heather blooms — a captivating natural spectacle. The heaths stretch over sandy hills offering panoramic views, rare in such a flat country. Among the animals living here is the red fox, a mammal known for its ability to adapt to many habitats."
+    },
+    "coordinates": {
+      "lat": 52.15,
+      "lng": 5.9
+    },
+    "videoTime": 4050,
+    "videoTimeFormatted": "1:07:30"
+  },
+  {
+    "id": "harlingen",
+    "category": "city_historic",
+    "name": {
+      "ru": "Харлинген",
+      "en": "Harlingen"
+    },
+    "short": {
+      "ru": "один из 11 фризских городов, паромы на Терсхеллинг и Влиланд.",
+      "en": "One of 11 Frisian cities, ferries to Terschelling and Vlieland."
+    },
+    "full": {
+      "ru": "Харлинген, один из одиннадцати исторических городов Фрисландии, расположен на побережье Ваттового моря. В период Золотого века Нидерландов он процветал благодаря морской торговле, ловле сельди и судостроению. Помимо того, что это был порт, здесь есть сеть каналов, которые когда-то соединяли склады и гавань с внутренними водными путями Фрисландии. Отсюда отправляются паромы на острова Терсхеллинг и Влиланд, и город остается",
+      "en": "One of the eleven historic cities of Friesland, Harlingen sits on the Wadden Sea coast. It thrived in the Dutch Golden Age on maritime trade, herring fishing and shipbuilding. Beyond being a port, it has a network of canals that once linked warehouses and the harbour with Friesland’s inland waterways. Ferries leave from here for the islands of Terschelling and Vlieland; the town remains a key fishing and water-recreation hub."
+    },
+    "coordinates": {
+      "lat": 53.1742,
+      "lng": 5.425
+    },
+    "videoTime": 4132,
+    "videoTimeFormatted": "1:08:52"
+  },
+  {
+    "id": "vetropark-krammer",
+    "category": "wind",
+    "name": {
+      "ru": "Ветропарк Краммер",
+      "en": "Windpark Krammer"
+    },
+    "short": {
+      "ru": "2019, крупнейшая в Европе ВЭС от местного сообщества.",
+      "en": "2019, Europe’s largest community wind farm."
+    },
+    "full": {
+      "ru": "Отсюда отправляются паромы на острова Терсхеллинг и Влиланд, и город остается ключевым центром рыболовства и водного отдыха. Ветропарк Краммер. Расположенный на большом озере, образовавшемся после строительства плотины «Дельта Уоркс», этот проект является инновационным примером устойчивой энергетики. Введенный в эксплуатацию в 2019 году, он стал крупнейшей в Европе ветроэлектростанцией, принадлежащей местному сообществу и финансируемой местными жителями.",
+      "en": "Located on a large lake formed by the Delta Works, this project is an innovative example of sustainable energy. Commissioned in 2019, it became the largest community-owned wind farm in Europe, financed by local residents. It was built on the Krammer dams, integrating hydraulic infrastructure with renewable energy."
+    },
+    "coordinates": {
+      "lat": 51.6622,
+      "lng": 4.1944
+    },
+    "videoTime": 4183,
+    "videoTimeFormatted": "1:09:43"
+  },
+  {
+    "id": "shlyuzy-krammer",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Шлюзы Краммер",
+      "en": "Krammer Locks"
+    },
+    "short": {
+      "ru": "пропускают суда круглосуточно.",
+      "en": "Pass vessels around the clock."
+    },
+    "full": {
+      "ru": "Он был построен на дамбах Краммер, интегрируя гидравлическую инфраструктуру с возобновляемыми источниками энергии. Шлюзы Краммер обеспечивают проход судов и поддерживают баланс между защитой от наводнений и судоходством. Они могут работать непрерывно и принимать сотни судов круглосуточно, от спортивных парусных лодок до больших грузовых судов.",
+      "en": "The Krammer Locks let vessels through and balance flood protection with shipping. They can operate non-stop and handle hundreds of craft a day, from sailing yachts to large cargo ships."
+    },
+    "coordinates": {
+      "lat": 51.6622,
+      "lng": 4.1844
+    },
+    "videoTime": 4232,
+    "videoTimeFormatted": "1:10:32"
+  },
+  {
+    "id": "eyndhoven",
+    "category": "city_large",
+    "name": {
+      "ru": "Эйндховен",
+      "en": "Eindhoven"
+    },
+    "short": {
+      "ru": "«Город света», штаб Philips с 1891.",
+      "en": "“City of Light”, Philips headquarters since 1891."
+    },
+    "full": {
+      "ru": "Эйндховен. Этот город известен как Город Света, потому что компания Philips основала здесь свою штаб-квартиру и заводы по производству лампочек, превратив его в крупный промышленный центр. На протяжении веков это было небольшое поселение, окруженное стенами, на слиянии рек Доммель и Гендер, сосредоточенное на сельском хозяйстве и местной торговле. Новая эра началась в 1891 году, когда братья Герард и Антон Филипс открыли завод по производству лампочек, который впоследствии превратился в глобальную электронную державу. Сегодня это не только промышленный центр , но и крупный центр передовых технологических исследований в Европе.",
+      "en": "Eindhoven is known as the “City of Light” because Philips set up its headquarters and lightbulb factories here, transforming a small walled settlement at the meeting of the Dommel and Gender rivers into a major industrial centre. A new era began in 1891 when brothers Gerard and Anton Philips opened a lightbulb factory that grew into a global electronics powerhouse. Today the city is also one of Europe’s leading hubs for advanced technology research."
+    },
+    "coordinates": {
+      "lat": 51.4416,
+      "lng": 5.4697
+    },
+    "videoTime": 4270,
+    "videoTimeFormatted": "1:11:10"
+  },
+  {
+    "id": "elburg",
+    "category": "city_historic",
+    "name": {
+      "ru": "Эльбург",
+      "en": "Elburg"
+    },
+    "short": {
+      "ru": "средневековая прямоугольная планировка 1392–1396, ворота Виссерспорт.",
+      "en": "Medieval rectangular plan (1392–1396), Vischpoort gate."
+    },
+    "full": {
+      "ru": "Эльбург. Этот город замечательно сохранил свою средневековую планировку. В период с 1392 по 1396 год, при графе Вильгельме I Гельдерском, он был полностью перестроен в прямоугольном стиле — новаторская концепция для того времени. Его стены сохранились почти в первозданном виде, как и знаменитые Виссерспорт, одни из исторических ворот, которые когда-то обеспечивали доступ в порт.",
+      "en": "Elburg has remarkably preserved its medieval layout. Between 1392 and 1396, under Count William I of Guelders, it was rebuilt entirely on a rectangular grid — pioneering for its time. Its walls are almost intact, as is the famed Vischpoort, one of the historic gates that once gave access to the harbour."
+    },
+    "coordinates": {
+      "lat": 52.4456,
+      "lng": 5.8403
+    },
+    "videoTime": 4328,
+    "videoTimeFormatted": "1:12:08"
+  },
+  {
+    "id": "zaltbommel",
+    "category": "city_historic",
+    "name": {
+      "ru": "Залтбоммель",
+      "en": "Zaltbommel"
+    },
+    "short": {
+      "ru": "ганзейский город на Ваале, рядом замок Лёвестейн.",
+      "en": "Hanseatic town on the Waal, Loevestein Castle nearby."
+    },
+    "full": {
+      "ru": "Залтбоммель. Этот исторический город расположен в провинции Гельдерс на берегу Ваала, одного из главных рукавов Рейна. В Средние века Залтбоммель процветал как ганзейский город, активно торговавший солью, зерном, вином и другими товарами.",
+      "en": "In Gelderland, on the Waal — one of the main branches of the Rhine — Zaltbommel flourished as a Hanseatic town in the Middle Ages, trading actively in salt, grain, wine and other goods. Nearby stands Loevestein Castle, at the confluence of the Waal and Maas, which served as a medieval fortress, later a prison, and today a museum."
+    },
+    "coordinates": {
+      "lat": 51.8089,
+      "lng": 5.2517
+    },
+    "videoTime": 4370,
+    "videoTimeFormatted": "1:12:50"
+  },
+  {
+    "id": "zamok-levesteyn",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Лёвестейн",
+      "en": "Loevestein Castle"
+    },
+    "short": {
+      "ru": "на слиянии Ваала и Мааса.",
+      "en": "At the confluence of the Waal and Maas."
+    },
+    "full": {
+      "ru": "Неподалеку находится замок Лёвестейн, расположенный на слиянии рек Ваал и Маас. Он служил средневековой крепостью, позже тюрьмой, а сегодня функционирует как музей.",
+      "en": "Loevestein Castle stands at the confluence of the Waal and Maas. It was a medieval fortress, later a prison, and today functions as a museum."
+    },
+    "coordinates": {
+      "lat": 51.8167,
+      "lng": 5.0167
+    },
+    "videoTime": 4399,
+    "videoTimeFormatted": "1:13:19"
+  },
+  {
+    "id": "zvolle",
+    "category": "city_large",
+    "name": {
+      "ru": "Зволле",
+      "en": "Zwolle"
+    },
+    "short": {
+      "ru": "звёздообразные каналы, башня «перечная мельница».",
+      "en": "Star-shaped canals, the “pepper-mill” tower."
+    },
+    "full": {
+      "ru": "Зволле. Столица Оверэйссела, расположенная на востоке Нидерландов. Исторический центр окружен кольцом каналов в форме звезды, а внутри него сохранились средневековые дома и памятники. В период своего расцвета Зволле был настолько богат, что мог конкурировать с Амстердамом в торговле. Его фирменными товарами были соленая сельдь и экспорт пива. Башня базилики Богоматери — достопримечательность города, прозванная «перечной мельницей» за сходство с мельницей для перца.",
+      "en": "The capital of Overijssel, in the eastern Netherlands, has a historic centre encircled by a star-shaped ring of canals enclosing medieval houses and monuments. At its peak Zwolle was wealthy enough to rival Amsterdam in trade — its hallmark goods were salted herring and beer for export. The tower of the Basilica of Our Lady, nicknamed the “pepper-mill” for its shape, is the city’s landmark."
+    },
+    "coordinates": {
+      "lat": 52.5168,
+      "lng": 6.083
+    },
+    "videoTime": 4414,
+    "videoTimeFormatted": "1:13:34"
+  },
+  {
+    "id": "iylst",
+    "category": "city_historic",
+    "name": {
+      "ru": "Ийльст",
+      "en": "IJlst"
+    },
+    "short": {
+      "ru": "фризская деревня с обсаженными деревьями каналами.",
+      "en": "Frisian village with tree-lined canals."
+    },
+    "full": {
+      "ru": "Ийльст. Небольшой по населению и мирный по атмосфере, он известен своими обсаженными деревьями каналами, традициями катания на коньках и сильной фризской самобытностью. В ранний период Нового времени он специализировался на строительстве небольших и средних лодок, высоко ценившихся для рыболовства и местной торговли. Главные каналы обсажены деревьями, а перед домами жители выращивают цветы и овощи.",
+      "en": "Small in population and peaceful in mood, IJlst is known for its tree-lined canals, skating traditions and strong Frisian identity. In the early modern period it specialised in building small and mid-sized boats, prized for fishing and local trade. Trees line the main canals, and residents grow flowers and vegetables in front of their houses."
+    },
+    "coordinates": {
+      "lat": 52.9833,
+      "lng": 5.6167
+    },
+    "videoTime": 4469,
+    "videoTimeFormatted": "1:14:29"
+  },
+  {
+    "id": "vesp",
+    "category": "city_historic",
+    "name": {
+      "ru": "Весп",
+      "en": "Weesp"
+    },
+    "short": {
+      "ru": "родина шоколада Van Houten, надземные каналы.",
+      "en": "Birthplace of Van Houten chocolate, elevated canals."
+    },
+    "full": {
+      "ru": "Весп. Этот город сочетает в себе очарование укрепленного города со спокойствием прибрежного поселения. Его средневековые оборонительные сооружения были частью системы , которая использовала дамбы и контролировала наводнения в качестве военных барьеров. С XVIII века город индустриализировался, появились шоколадные и фарфоровые фабрики. Здесь зародился знаменитый шоколадный бренд Van Houten. Вблизи Уиспа надземные каналы позволяют лодкам плыть над дорогами, в то время как автомобили проезжают под ними.",
+      "en": "Weesp combines the charm of a fortified town with the calm of a riverside settlement. Its medieval defences were part of a system that used dikes and controlled floods as military barriers. From the 18th century onward the town industrialised, with chocolate and porcelain factories — Van Houten chocolate was born here. Near Weesp, elevated canals let boats pass over roads while cars drive underneath."
+    },
+    "coordinates": {
+      "lat": 52.3081,
+      "lng": 5.0408
+    },
+    "videoTime": 4519,
+    "videoTimeFormatted": "1:15:19"
+  },
+  {
+    "id": "brouversdam",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Броуверсдам",
+      "en": "Brouwersdam"
+    },
+    "short": {
+      "ru": "построена после наводнения 1953, превратила Гревелингенмеер в крупнейшее солёное озеро Европы.",
+      "en": "Built after the 1953 flood; turned the Grevelingenmeer into Europe’s largest saltwater lake."
+    },
+    "full": {
+      "ru": "Броуверсдам. Это еще одна из великих плотин страны, построенная в Нидерландах после разрушительного наводнения 1953 года. Завершенная в 1971 году, она представляет собой не просто плотину, а многофункциональное сооружение, сочетающее в себе морскую оборону, транспорт, производство энергии, естественную среду обитания и возможности для отдыха. Она превратила озеро Гревелингенмеер в крупнейшее соленое озеро в Западной Европе, создав убежище для птиц и морских обитателей. Сегодня это международное место отдыха для серферов, кайтсерферов, дайверов и любителей парусного спорта.",
+      "en": "Another of the great Dutch dams, built after the catastrophic flood of 1953. Completed in 1971, it is more than just a dam — a multi-purpose structure combining sea defence, transport, energy generation, natural habitat and recreation. It turned the Grevelingenmeer into the largest saltwater lake in western Europe, creating a haven for birds and marine life. Today it is an international destination for surfers, kitesurfers, divers and sailors."
+    },
+    "coordinates": {
+      "lat": 51.7642,
+      "lng": 3.8833
+    },
+    "videoTime": 4584,
+    "videoTimeFormatted": "1:16:24"
+  },
+  {
+    "id": "zatoplennaya-zemlya-saftinge",
+    "category": "nature",
+    "name": {
+      "ru": "Затопленная земля Сафтинге",
+      "en": "Drowned Land of Saeftinghe"
+    },
+    "short": {
+      "ru": "крупнейшее солоноватое приливное болото Западной Европы.",
+      "en": "Largest brackish tidal marsh in western Europe."
+    },
+    "full": {
+      "ru": "Затопленная земля Сафтинге. Это крупнейшее солоноватое приливное болото в Западной Европе, расположенное в провинции Зеландия. В Средние века оно было плодородным и обитаемым, защищенным дамбами и процветавшим благодаря сельскому хозяйству и торговле. Но начиная с XIV века, сильные штормы и морские наводнения начали отнимать эту территорию. В 1584 году, во время войны между Нидерландами и Испанией, голландские войска намеренно прорвали средневековые дамбы, навсегда затопив деревни",
+      "en": "The largest brackish tidal marsh in western Europe, in Zeeland province. In the Middle Ages it was fertile, inhabited and protected by dikes, thriving on agriculture and trade. From the 14th century onward, severe storms and sea floods began taking back the area. In 1584, during the war with Spain, Dutch forces deliberately breached the medieval dikes, permanently flooding villages and fields."
+    },
+    "coordinates": {
+      "lat": 51.35,
+      "lng": 4.1833
+    },
+    "videoTime": 4639,
+    "videoTimeFormatted": "1:17:19"
+  },
+  {
+    "id": "dyuny-shorl",
+    "category": "nature",
+    "name": {
+      "ru": "Дюны Схорл",
+      "en": "Schoorl Dunes"
+    },
+    "short": {
+      "ru": "самые высокие дюны Нидерландов.",
+      "en": "The highest dunes in the Netherlands."
+    },
+    "full": {
+      "ru": "и Испанией, голландские войска намеренно прорвали средневековые дамбы, навсегда затопив деревни и поля. Дюны Схорл. Это самые высокие дюны в Нидерландах, идеальное место для пеших и велосипедных прогулок. Они образовались тысячи лет назад в результате совместного воздействия Северного моря и ветра, которые накапливали песок вдоль побережья. В некоторых местах растительность не может полностью покрыть дюны, оставляя большие белые пятна обнаженного кремнеземного песка. Дюны Схорл впечатляют не только своей высотой и пейзажами, но и тем, что являются природным убежищем с замечательным биоразнообразием. Сочетание сосновых и дубовых лесов, дюн и болот создает среду обитания для млекопитающих, птиц, рептилий, насекомых и амфибий.",
+      "en": "The highest dunes in the Netherlands and an ideal place for hiking and cycling. They formed thousands of years ago through the joint action of the North Sea and the wind, which piled sand along the coast. In some spots vegetation cannot fully cover the dunes, leaving large white patches of bare silica sand. The Schoorl Dunes are striking not only for their height and views but also for their remarkable biodiversity. The mix of pine and oak forests, dunes and marshes creates a habitat for mammals, birds, reptiles, insects and amphibians."
+    },
+    "coordinates": {
+      "lat": 52.7,
+      "lng": 4.6833
+    },
+    "videoTime": 4687,
+    "videoTimeFormatted": "1:18:07"
+  },
+  {
+    "id": "deventer",
+    "category": "city_historic",
+    "name": {
+      "ru": "Девентер",
+      "en": "Deventer"
+    },
+    "short": {
+      "ru": "средневековые ярмарки, центр торговли зерном/солью.",
+      "en": "Medieval fairs, centre of grain and salt trade."
+    },
+    "full": {
+      "ru": "Девентер. Расположенный вдоль реки Эйссел, город известен своими знаменитыми средневековыми ярмарками и рынками, которые продолжают привлекать посетителей со всей страны. В XIV и XV веках он стал центром торговли зерном, вином, текстилем и солью, а также интеллектуальным и религиозным центром.",
+      "en": "On the IJssel river, Deventer is famous for its renowned medieval fairs and markets, which still draw visitors from across the country. In the 14th and 15th centuries it became a hub of grain, wine, textile and salt trade as well as an intellectual and religious centre."
+    },
+    "coordinates": {
+      "lat": 52.266,
+      "lng": 6.1552
+    },
+    "videoTime": 4771,
+    "videoTimeFormatted": "1:19:31"
+  },
+  {
+    "id": "heysden",
+    "category": "city_historic",
+    "name": {
+      "ru": "Хёйсден",
+      "en": "Heusden"
+    },
+    "short": {
+      "ru": "звёздообразные укрепления, образцовая реставрация.",
+      "en": "Star-shaped fortifications, exemplary restoration."
+    },
+    "full": {
+      "ru": "Хёйсден. Расположенный на берегу реки Маас, этот город выделяется своими звездообразными укреплениями и историческим центром, полным отреставрированных домов. В XVI и XVII веках, во время войн против Испании, он был укреплен по образцу звездчатого форта с бастионами, рвами и кирпично-глиняными стенами. Тщательная реставрация в середине XX века, основанная на оригинальных планах, вернула Хёйсдену его облик XVII века и сделала его новаторским примером в Европе.",
+      "en": "On the Maas river, Heusden stands out for its star-shaped fortifications and its historic centre filled with restored houses. In the 16th and 17th centuries, during the wars against Spain, it was fortified as a star fort with bastions, moats and brick-and-clay walls. A meticulous mid-20th-century restoration based on the original plans returned Heusden to its 17th-century look and made it a pioneering example in Europe."
+    },
+    "coordinates": {
+      "lat": 51.7283,
+      "lng": 5.1394
+    },
+    "videoTime": 4807,
+    "videoTimeFormatted": "1:20:07"
+  },
+  {
+    "id": "virlingsbek",
+    "category": "city_historic",
+    "name": {
+      "ru": "Вирлингсбек",
+      "en": "Vierlingsbeek"
+    },
+    "short": {
+      "ru": "сельский район на Маасе.",
+      "en": "Rural area on the Maas."
+    },
+    "full": {
+      "ru": "Вирлингсбек. Расположенный вдоль реки Маас, этот сельский район отражает сочетание сельскохозяйственной жизни, стратегического значения и шрамов европейских конфликтов. После разрушения во время Второй мировой войны он был почти полностью восстановлен, хотя некоторые исторические здания сохранились. С тех пор он модернизировался, но остается верен сельскому хозяйству и животноводству, сохраняя сильный",
+      "en": "Along the Maas, this rural area reflects a mix of farming life, strategic significance and the scars of European conflict. After being destroyed in WWII it was almost entirely rebuilt, though some historic buildings remain. It has modernised since but stays rooted in agriculture and livestock farming, with a strong community spirit, local traditions and festivals."
+    },
+    "coordinates": {
+      "lat": 51.6122,
+      "lng": 6.0244
+    },
+    "videoTime": 4850,
+    "videoTimeFormatted": "1:20:50"
+  },
+  {
+    "id": "den-bosh",
+    "category": "city_large",
+    "name": {
+      "ru": "Ден Босх",
+      "en": "’s-Hertogenbosch (Den Bosch)"
+    },
+    "short": {
+      "ru": "готический собор Святого Иоанна.",
+      "en": "Gothic Cathedral of St John."
+    },
+    "full": {
+      "ru": "С тех пор он модернизировался, но остается верен сельскому хозяйству и животноводству, сохраняя сильный дух общности, местные традиции и фестивали. Ден Босх. Это столица Северного Брабанта и один из наиболее хорошо сохранившихся средневековых городов страны. Во время Восьмидесятилетней войны это был католический оплот, верный испанцам, а в 1629 году он был осажден и захвачен принцем Фридрихом Генрихом Оранским. В XIV и XV веках город процветал, и началось строительство собора Святого Иоанна — одной из главных готических церквей Европы.",
+      "en": "Capital of North Brabant, Den Bosch is one of the country’s best-preserved medieval cities. During the Eighty Years’ War it was a Catholic stronghold loyal to Spain; it was besieged and taken in 1629 by Frederick Henry of Orange. In the 14th and 15th centuries the city flourished, and construction began on the Cathedral of St John — one of Europe’s great Gothic churches."
+    },
+    "coordinates": {
+      "lat": 51.6978,
+      "lng": 5.3037
+    },
+    "videoTime": 4886,
+    "videoTimeFormatted": "1:21:26"
+  },
+  {
+    "id": "almere",
+    "category": "city_large",
+    "name": {
+      "ru": "Алмере",
+      "en": "Almere"
+    },
+    "short": {
+      "ru": "современный город на отвоёванной у моря земле, основан в 1976.",
+      "en": "Modern city on land reclaimed from the sea, founded in 1976."
+    },
+    "full": {
+      "ru": "Алмере. Расположенный в провинции Флеволанд, к востоку от Амстердама, Алмере находится на земле, которая всего несколько десятилетий назад была частью Зёйдерзе. После строительства Афслёйтдейка в 1932 году образовались заболоченные территории, а в 1976 году город был основан как пригород, призванный снизить демографическое давление Амстердама. В его центре города сочетаются жилые здания, торговые зоны и площади, а также искусственные каналы. В районах преобладают современные кирпично-стеклянные дома, многие из которых имеют выход к воде или окружены зелеными насаждениями. Дронтен.",
+      "en": "East of Amsterdam in Flevoland, Almere stands on land that only decades ago was part of the Zuiderzee. After the Afsluitdijk closed off the bay in 1932, the marshes were drained and the city was founded in 1976 as a suburb to relieve Amsterdam’s population pressure. Its centre mixes residential blocks, shopping zones, plazas and artificial canals; modern brick-and-glass houses, many with water access or green surroundings, dominate the neighbourhoods."
+    },
+    "coordinates": {
+      "lat": 52.3508,
+      "lng": 5.2647
+    },
+    "videoTime": 4946,
+    "videoTimeFormatted": "1:22:26"
+  },
+  {
+    "id": "dronten",
+    "category": "village",
+    "name": {
+      "ru": "Дронтен",
+      "en": "Dronten"
+    },
+    "short": {
+      "ru": "деревня во Флеволанде, основана в XX в.",
+      "en": "Flevoland village founded in the 20th century."
+    },
+    "full": {
+      "ru": "Эта деревня во Флеволанде была основана в XX веке в рамках проекта по освоению земель. До строительства канала Афслёйтдейк эта территория принадлежала Зёйдерзе, известному своими наводнениями, и позволила осуществить масштабный осушение земель. Первые дома были построены в 1962 году, и с тех пор город неуклонно рос, поддерживая тесные связи с Амстердамом, Зволле и другими близлежащими городами.",
+      "en": "A village in Flevoland, founded in the 20th century as part of land reclamation. Before the Afsluitdijk this area belonged to the flood-prone Zuiderzee, which made the large-scale draining possible. The first houses went up in 1962, and the town has grown steadily ever since, with strong ties to Amsterdam, Zwolle and other nearby cities."
+    },
+    "coordinates": {
+      "lat": 52.525,
+      "lng": 5.7167
+    },
+    "videoTime": 5010,
+    "videoTimeFormatted": "1:23:30"
+  },
+  {
+    "id": "dordreht",
+    "category": "city_large",
+    "name": {
+      "ru": "Дордрехт",
+      "en": "Dordrecht"
+    },
+    "short": {
+      "ru": "колыбель независимости Нидерландов (1572).",
+      "en": "Cradle of Dutch independence (1572)."
+    },
+    "full": {
+      "ru": "Дордрехт. Расположенный на юго-западе страны, он находится на острове, образованном реками Оуде-Маас, Бенеден-Мерведе и Норд. В 1421 году катастрофический шторм разрушил многие деревни в этом регионе; Дордрехт уцелел, но оказался изолированным, превратившись в остров. В 1572 году здесь состоялась встреча нескольких провинций, поддержавших Вильгельма Оранского, что",
+      "en": "In the south-west of the country, Dordrecht sits on an island formed by the Oude Maas, Beneden-Merwede and Noord rivers. A catastrophic 1421 storm destroyed many surrounding villages; Dordrecht survived but was cut off, becoming an island. In 1572 several provinces met here in support of William of Orange, earning the city the title of cradle of Dutch independence."
+    },
+    "coordinates": {
+      "lat": 51.8133,
+      "lng": 4.6901
+    },
+    "videoTime": 5053,
+    "videoTimeFormatted": "1:24:13"
+  },
+  {
+    "id": "maastriht",
+    "category": "city_large",
+    "name": {
+      "ru": "Маастрихт",
+      "en": "Maastricht"
+    },
+    "short": {
+      "ru": "Маастрихтский договор 1992, основа ЕС и евро.",
+      "en": "Maastricht Treaty (1992), foundation of the EU and the euro."
+    },
+    "full": {
+      "ru": "В 1572 году здесь состоялась встреча нескольких провинций, поддержавших Вильгельма Оранского, что принесло ему титул колыбели независимости Нидерландов. Маастрихт. Это столица провинции Лимбург, расположенная на крайнем юге страны, недалеко от границ с Бельгией и Германией. Во время французской оккупации с 1794 по 1814 год город перенял архитектурные и гастрономические влияния, которые до сих пор заметны. Переломным моментом в его истории стало подписание Маастрихтского договора в 1992 году, который положил начало Европейскому союзу и установил евро в качестве единой валюты. Город отличается средневековым историческим центром с мощеными улицами, площадями и домами из кирпича и камня, а также многочисленными романскими и готическими церквями.",
+      "en": "Maastricht is the capital of Limburg, in the far south of the country near the Belgian and German borders. During French occupation (1794–1814) it absorbed architectural and culinary influences still visible today. The defining moment in its history was the signing of the Maastricht Treaty in 1992, which launched the European Union and the euro. The city has a medieval centre of cobbled streets, brick-and-stone houses, and many Romanesque and Gothic churches."
+    },
+    "coordinates": {
+      "lat": 50.8514,
+      "lng": 5.6909
+    },
+    "videoTime": 5089,
+    "videoTimeFormatted": "1:24:49"
+  },
+  {
+    "id": "kampen",
+    "category": "city_large",
+    "name": {
+      "ru": "Кампен",
+      "en": "Kampen"
+    },
+    "short": {
+      "ru": "член Ганзейского союза, средневековые ворота.",
+      "en": "Hanseatic League member, medieval city gates."
+    },
+    "full": {
+      "ru": "Кампен. Расположенный на берегу реки Эйссел, этот средневековый город когда-то был одним из самых могущественных членов Ганзейского союза , балтийского торгового альянса. Сегодня Кампен сохраняет исключительное архитектурное наследие, атмосферу торгового города, отражающую его славное прошлое. Его центр сохранил средневековую планировку, и несколько городских ворот до сих пор стоят на страже у его",
+      "en": "On the IJssel river, this medieval city was one of the most powerful members of the Hanseatic League — the Baltic trading alliance. Today Kampen retains an exceptional architectural heritage and the atmosphere of a merchant town. The medieval street plan is intact, and several city gates still stand at its entrances."
+    },
+    "coordinates": {
+      "lat": 52.5552,
+      "lng": 5.9111
+    },
+    "videoTime": 5167,
+    "videoTimeFormatted": "1:26:07"
+  },
+  {
+    "id": "aruba",
+    "category": "caribbean",
+    "name": {
+      "ru": "Аруба",
+      "en": "Aruba"
+    },
+    "short": {
+      "ru": "Ораньестад, вне зоны ураганов.",
+      "en": "Oranjestad, outside the hurricane belt."
+    },
+    "full": {
+      "ru": "Его центр сохранил средневековую планировку, и несколько городских ворот до сих пор стоят на страже у его входов. Аруба. Этот карибский остров является составной частью Королевства Нидерландов с 1986 года, имеет собственное правительство, но разделяет с Королевством оборону и внешнюю политику. В 1636 году Голландская Вест-Индская компания взяла под контроль Арубу, превратив ее в место для выпаса коз и региональной торговли. Ее столица, Ораньестад, сочетает голландскую колониальную архитектуру с яркими тропическими цветами. Поскольку она находится вне зоны действия ураганов, это безопасное место для туристов круглый год, известное своей спокойной и жизнерадостной атмосферой.",
+      "en": "A constituent country of the Kingdom of the Netherlands since 1986, Aruba has its own government but shares defence and foreign policy with the Kingdom. In 1636 the Dutch West India Company took control, turning it into a place for goat herding and regional trade. Its capital, Oranjestad, mixes Dutch colonial architecture with vivid tropical colours. Sitting outside the hurricane belt, it is a year-round safe destination known for its calm, cheerful atmosphere."
+    },
+    "coordinates": {
+      "lat": 12.5211,
+      "lng": -69.9683
+    },
+    "videoTime": 5212,
+    "videoTimeFormatted": "1:26:52"
+  },
+  {
+    "id": "sint-marten",
+    "category": "caribbean",
+    "name": {
+      "ru": "Синт-Мартен",
+      "en": "Sint Maarten"
+    },
+    "short": {
+      "ru": "голландская половина острова.",
+      "en": "The Dutch half of the island."
+    },
+    "full": {
+      "ru": "Синт-Мартен. Эта территория является частью Королевства Нидерландов и граничит с северной половиной острова, которая принадлежит французскому Сен-Мартену. В 1493 году, во время своего второго путешествия, Христофор Колумб увидел этот остров и назвал его «Святой Мартин», потому что это было 11 ноября, день памяти этого святого. Остров на протяжении веков был предметом споров между испанцами, французами и голландцами, но в 1648 году Конкордский договор разделил его между Францией и Нидерландами.",
+      "en": "Part of the Kingdom of the Netherlands and bordering the northern half (French Saint-Martin). Christopher Columbus sighted it on his second voyage in 1493 and named it “Saint Martin” because it was 11 November, the saint’s feast day. Spaniards, French and Dutch contested it for centuries; the 1648 Treaty of Concordia split it between France and the Netherlands."
+    },
+    "coordinates": {
+      "lat": 18.0425,
+      "lng": -63.0548
+    },
+    "videoTime": 5294,
+    "videoTimeFormatted": "1:28:14"
+  },
+  {
+    "id": "sint-estatius",
+    "category": "caribbean",
+    "name": {
+      "ru": "Синт-Эстатиус",
+      "en": "Sint Eustatius"
+    },
+    "short": {
+      "ru": "вулкан Квилл, уникальные кораллы.",
+      "en": "Mount Quill volcano, unique corals."
+    },
+    "full": {
+      "ru": "С 2010 года Синт-Эстатиус является частью голландских Карибских островов как особый муниципалитет Нидерландов, наряду с Бонайре и Сабой. Колумб увидел его в 1493 году, и за последующие столетия он более двадцати раз переходил из рук в руки между испанцами, французами, англичанами и голландцами. Остров доминирует вулкан Квилл, неактивный стратовулкан, покрытый тропическим лесом, с большим кратером на вершине. Это тихое, немноголюдное место для дайвинга, идеально подходящее для путешественников, ищущих природы и покоя вдали от массового туризма. В его водах обитает множество видов кораллов — как твердых, так и мягких — включая виды, которые не встречаются",
+      "en": "Since 2010 Sint Eustatius has been part of the Caribbean Netherlands as a special municipality, alongside Bonaire and Saba. Columbus saw it in 1493 and over the following centuries it changed hands more than twenty times among Spanish, French, English and Dutch. The island is dominated by Mount Quill, a dormant stratovolcano covered in rainforest, with a large summit crater. It is a quiet, lightly populated diving destination, ideal for travellers seeking nature and peace away from mass tourism. Its waters host many coral species — both hard and soft — including some found nowhere else in the Caribbean."
+    },
+    "coordinates": {
+      "lat": 17.489,
+      "lng": -62.9733
+    },
+    "videoTime": 5347,
+    "videoTimeFormatted": "1:29:07"
+  },
+  {
+    "id": "neymegen",
+    "category": "city_large",
+    "name": {
+      "ru": "Неймеген",
+      "en": "Nijmegen"
+    },
+    "short": {
+      "ru": "один из старейших городов с римскими корнями.",
+      "en": "One of the oldest Dutch cities, with Roman roots."
+    },
+    "full": {
+      "ru": "В его водах обитает множество видов кораллов — как твердых, так и мягких — включая виды, которые не встречаются больше нигде в Карибском бассейне. Неймеген. Расположенный на берегу реки Ваал и обладающий двухтысячелетней историей с римскими корнями, это один из старейших городов Нидерландов. Во время Второй мировой войны он стал первым освобожденным голландским городом, хотя и сильно пострадал от бомбардировок и боевых действий. Близость к Германии сформировала его культурную и историческую самобытность, отмеченную столетиями обмена, конфликтов и сотрудничества.",
+      "en": "On the Waal river, Nijmegen has two thousand years of history with Roman roots, making it one of the oldest cities in the Netherlands. During WWII it was the first Dutch city to be liberated, though it suffered heavily from bombing and fighting. Its proximity to Germany has shaped its cultural and historical identity through centuries of exchange, conflict and cooperation."
+    },
+    "coordinates": {
+      "lat": 51.8126,
+      "lng": 5.8372
+    },
+    "videoTime": 5419,
+    "videoTimeFormatted": "1:30:19"
+  },
+  {
+    "id": "den-helder",
+    "category": "city_historic",
+    "name": {
+      "ru": "Ден Хелдер",
+      "en": "Den Helder"
+    },
+    "short": {
+      "ru": "«ворота в Ваттовое море», база ВМФ, маяк Ланге-Яап.",
+      "en": "“Gate to the Wadden Sea”, Royal Navy base, Lange Jaap lighthouse."
+    },
+    "full": {
+      "ru": "Ден Хелдер. Известный как «ворота в Ваттовое море», он всегда имел стратегическое значение для голландского флота. Это главная база Королевского военно-морского флота Нидерландов, где расположены верфи и военные академии. Маяк Ланге-Яап возвышается над побережьем ; построенный между 1877 и 1878 годами, он повысил безопасность на море в опасных водах Северного моря. Совсем рядом находится Юлианадорп, пляжный курорт, известный своими прибрежными бунгало и кемпингами.",
+      "en": "Known as the “gate to the Wadden Sea,” Den Helder has always been strategically important to the Dutch navy. It is the main base of the Royal Netherlands Navy, with shipyards and military academies. The Lange Jaap lighthouse, built in 1877–1878, made the dangerous North Sea waters safer to navigate. Just nearby, Julianadorp is a beach resort known for its coastal bungalows and campsites."
+    },
+    "coordinates": {
+      "lat": 52.9595,
+      "lng": 4.7595
+    },
+    "videoTime": 5477,
+    "videoTimeFormatted": "1:31:17"
+  },
+  {
+    "id": "iymuyden",
+    "category": "city_historic",
+    "name": {
+      "ru": "Иймуйден",
+      "en": "IJmuiden"
+    },
+    "short": {
+      "ru": "портовые ворота Амстердама, пляж Иймуйден-ан-Зее.",
+      "en": "Amsterdam’s port gate, IJmuiden aan Zee beach."
+    },
+    "full": {
+      "ru": "Иймуйден. Этот крупный портовый город расположен вдоль Североморского канала. Он служит морскими воротами Амстердама — каждое крупное судно, заходящее в столицу, должно пройти здесь. Город возник в 1876 году после строительства канала. что обеспечило Амстердаму прямой доступ к морю. Неподалеку находится Иймуйден-ан-Зее, широкий пляж, популярный для серфинга, кайтсерфинга и виндсерфинга.",
+      "en": "A major port city on the North Sea Canal, IJmuiden is Amsterdam’s gateway to the sea — every large vessel bound for the capital passes here. The town came into being in 1876 with the canal that gave Amsterdam direct sea access. Nearby IJmuiden aan Zee is a wide beach popular for surfing, kitesurfing and windsurfing."
+    },
+    "coordinates": {
+      "lat": 52.4628,
+      "lng": 4.6076
+    },
+    "videoTime": 5550,
+    "videoTimeFormatted": "1:32:30"
+  },
+  {
+    "id": "brille",
+    "category": "city_historic",
+    "name": {
+      "ru": "Брилле",
+      "en": "Brielle"
+    },
+    "short": {
+      "ru": "первый город, освобождённый от испанцев.",
+      "en": "First city liberated from the Spanish."
+    },
+    "full": {
+      "ru": "Брилле — небольшой укрепленный город в Южной Голландии. Он известен в голландской истории как первый город, освобожденный от испанского владычества во время Восьмидесятилетней войны. После обретения страной независимости Брилле стал образцовым укрепленным городом со стенами в форме звезды и бастионами в итальянском стиле. Сегодня он напоминает музей под открытым небом: большая часть исторического центра словно застыла во времени, с домами XVII века и мощеными улицами.",
+      "en": "A small fortified town in South Holland, Brielle is famed in Dutch history as the first city freed from Spanish rule during the Eighty Years’ War. After independence it became a model fortified town with star-shaped walls and Italian-style bastions. Today it feels like an open-air museum: much of the historic centre seems frozen in time, with 17th-century houses and cobbled streets."
+    },
+    "coordinates": {
+      "lat": 51.905,
+      "lng": 4.1684
+    },
+    "videoTime": 5615,
+    "videoTimeFormatted": "1:33:35"
+  },
+  {
+    "id": "zyutfen",
+    "category": "city_historic",
+    "name": {
+      "ru": "Зютфен",
+      "en": "Zutphen"
+    },
+    "short": {
+      "ru": "«город башен», церковь Вальбургискерк.",
+      "en": "“City of towers”, the Walburgiskerk."
+    },
+    "full": {
+      "ru": "Зютфен, расположенный в провинции Гелдерланд, сохранил исторический центр, полный башен, церквей и старинных домов. Имея более чем 1700-летнюю историю, он называется «городом башен» за обилие средневековых башен и колоколен. Главная церковь города, Вальбургискерк, была связана с властью графов Зютфенских, а позже — с епископством Утрехта.",
+      "en": "In Gelderland, Zutphen has preserved a historic centre full of towers, churches and old houses. With over 1,700 years of history, it is called the “city of towers” for its many medieval towers and belfries. Its main church, the Walburgiskerk, was tied to the power of the counts of Zutphen and later to the Bishopric of Utrecht."
+    },
+    "coordinates": {
+      "lat": 52.1383,
+      "lng": 6.1944
+    },
+    "videoTime": 5680,
+    "videoTimeFormatted": "1:34:40"
+  },
+  {
+    "id": "leyden",
+    "category": "city_large",
+    "name": {
+      "ru": "Лейден",
+      "en": "Leiden"
+    },
+    "short": {
+      "ru": "«Город науки», старейший университет Нидерландов (1575).",
+      "en": "“City of Science”, the oldest university in the Netherlands (1575)."
+    },
+    "full": {
+      "ru": "Лейден, расположенный между Амстердамом и Гаагой, известен как «Город науки», поскольку является местом рождения и работы великих ученых и художников. Здесь находится старейший университет Нидерландов , основанный в 1575 году, где учились и преподавали такие деятели, как Рене Декарт, Альберт Эйнштейн и несколько лауреатов Нобелевской премии. Каналы Лейдена были построены в Средние века для обороны и транспорта, а в Золотой век они были расширены. В 1574 году город героически сопротивлялся испанской осаде во время Восьмидесятилетней войны, что стало определяющим",
+      "en": "Between Amsterdam and The Hague, Leiden is known as the “City of Science,” birthplace and workplace of great scholars and artists. The country’s oldest university, founded in 1575, has hosted figures from Descartes and Einstein to several Nobel laureates. The medieval canals were dug for defence and transport and expanded in the Golden Age. In 1574 the city heroically resisted a Spanish siege during the Eighty Years’ War — a defining moment for Dutch independence."
+    },
+    "coordinates": {
+      "lat": 52.1601,
+      "lng": 4.497
+    },
+    "videoTime": 5726,
+    "videoTimeFormatted": "1:35:26"
+  },
+  {
+    "id": "delft",
+    "category": "city_large",
+    "name": {
+      "ru": "Делфт",
+      "en": "Delft"
+    },
+    "short": {
+      "ru": "сине-белая керамика, могила Вильгельма Оранского.",
+      "en": "Blue-and-white pottery, William of Orange’s tomb."
+    },
+    "full": {
+      "ru": "В 1574 году город героически сопротивлялся испанской осаде во время Восьмидесятилетней войны, что стало определяющим моментом в обретении Нидерландами независимости. Делфт, расположенный между Роттердамом и Гаагой, этот исторический город славится своей сине-белой керамикой. Он тесно связан с голландской монархией: Вильгельм Оранский, основатель голландской нации, был убит здесь и похоронен в Новой церкви (Ньюве Керк). Первый канал города был вырыт в Средние века для осушения болотистых земель, и с этого момента Делфт начал расширяться. Делфтская керамика стала европейской альтернативой высоко ценимому китайскому фарфору и вскоре превратилась в культурный символ Нидерландов.",
+      "en": "Between Rotterdam and The Hague, Delft is famous for its blue-and-white pottery and is closely tied to the Dutch monarchy: William of Orange, founder of the nation, was assassinated here and is buried in the Nieuwe Kerk. The first canal was dug in the Middle Ages to drain marshland, after which the city expanded. Delftware became Europe’s answer to prized Chinese porcelain and turned into a Dutch cultural symbol."
+    },
+    "coordinates": {
+      "lat": 52.0116,
+      "lng": 4.3571
+    },
+    "videoTime": 5782,
+    "videoTimeFormatted": "1:36:22"
+  },
+  {
+    "id": "groningen",
+    "category": "city_large",
+    "name": {
+      "ru": "Гронинген",
+      "en": "Groningen"
+    },
+    "short": {
+      "ru": "университет 1614, башня Мартиниторен 97 м.",
+      "en": "University since 1614, the 97-metre Martinitoren tower."
+    },
+    "full": {
+      "ru": "Гронинген. Часто называемый «старейшим молодым городом Нидерландов», этот оживленный университетский мегаполис имеет средневековые корни. Здесь находится Гронингенский университет, основанный в 1614 году — один из старейших в стране и крупный культурный и научный центр. Мартиниторена, известная как Старая башня, возвышается на 97 метров (318 футов) и является самым высоким сооружением в северных Нидерландах.",
+      "en": "Often called the “oldest young city in the Netherlands,” Groningen is a lively university metropolis with medieval roots. The University of Groningen, founded in 1614, is one of the country’s oldest and a major cultural and scientific centre. The Martinitoren — known as the Old Tower — rises 97 metres (318 ft) and is the tallest structure in the northern Netherlands."
+    },
+    "coordinates": {
+      "lat": 53.2194,
+      "lng": 6.5665
+    },
+    "videoTime": 5857,
+    "videoTimeFormatted": "1:37:37"
+  },
+  {
+    "id": "hindlopen",
+    "category": "city_historic",
+    "name": {
+      "ru": "Хиндлопен",
+      "en": "Hindeloopen"
+    },
+    "short": {
+      "ru": "фризский городок ~800 жителей.",
+      "en": "Frisian town of ~800 inhabitants."
+    },
+    "full": {
+      "ru": "Хиндлопен. Еще один из одиннадцати городов Фрисландии, он известен своей морской культурой, традиционным стилем живописи и яркими народными костюмами. С населением около 800 жителей это один из самых маленьких городов в мире, официально обладающих городскими правами. В Золотой век он достиг своего расцвета как морской центр; моряки принесли культурные и художественные влияния со всей Европы. Хёйзен.",
+      "en": "Another of the eleven Frisian cities, Hindeloopen is famous for its maritime culture, traditional painting style and vivid folk costumes. With about 800 inhabitants it is one of the smallest officially chartered towns in the world. In the Golden Age it peaked as a maritime centre, and its sailors brought back cultural and artistic influences from across Europe."
+    },
+    "coordinates": {
+      "lat": 52.9333,
+      "lng": 5.4
+    },
+    "videoTime": 5898,
+    "videoTimeFormatted": "1:38:18"
+  },
+  {
+    "id": "heyzen",
+    "category": "city_historic",
+    "name": {
+      "ru": "Хёйзен",
+      "en": "Huizen"
+    },
+    "short": {
+      "ru": "рыбацкие дома на Гуймеере.",
+      "en": "Fishing houses on the Gooimeer."
+    },
+    "full": {
+      "ru": "Этот город в Северной Голландии расположен на берегу реки Гуймеер, к востоку от Амстердама. Его название буквально означает «дома» на голландском языке, что отсылает к ранним каменным поселениям, построенным в этом районе. В историческом центре сохранились традиционные рыбацкие дома из кирпича и дерева, выстроившиеся вдоль узких улочек. Другие места.",
+      "en": "In North Holland on the Gooimeer, east of Amsterdam, Huizen takes its name — literally “houses” in Dutch — from the early stone settlements built here. The historic centre preserves traditional fishing houses of brick and wood lining narrow streets."
+    },
+    "coordinates": {
+      "lat": 52.3,
+      "lng": 5.24
+    },
+    "videoTime": 5949,
+    "videoTimeFormatted": "1:39:09"
+  },
+  {
+    "id": "reytdifaven",
+    "category": "other",
+    "name": {
+      "ru": "Рейтдифавен",
+      "en": "Reitdiephaven"
+    },
+    "short": {
+      "ru": "жилой порт в Гронингене с яркими домами.",
+      "en": "Residential harbour in Groningen with brightly painted houses."
+    },
+    "full": {
+      "ru": "Другие места. Хотя Нидерланды — относительно небольшая страна, здесь есть бесчисленное множество других мест, которые стоит посетить. Рейтдифавен — небольшой жилой порт в городе Гронинген, известный своими современными домами, выкрашенными в яркие цвета.",
+      "en": "A small residential harbour in Groningen known for its modern houses painted in bright colours."
+    },
+    "coordinates": {
+      "lat": 53.215,
+      "lng": 6.5567
+    },
+    "videoTime": 5994,
+    "videoTimeFormatted": "1:39:54"
+  },
+  {
+    "id": "bruk-in-vaterland",
+    "category": "other",
+    "name": {
+      "ru": "Брук-ин-Ватерланд",
+      "en": "Broek in Waterland"
+    },
+    "short": {
+      "ru": "деревня с пастельными деревянными домами.",
+      "en": "Village with pastel wooden houses."
+    },
+    "full": {
+      "ru": "Брук-ин-Ватерланд — северная деревня недалеко от Амстердама с деревянными домами пастельных тонов",
+      "en": "A northern village near Amsterdam with pastel-coloured wooden houses and quiet canals surrounded by nature."
+    },
+    "coordinates": {
+      "lat": 52.4308,
+      "lng": 4.9819
+    },
+    "videoTime": 6012,
+    "videoTimeFormatted": "1:40:12"
+  },
+  {
+    "id": "valkenburg",
+    "category": "other",
+    "name": {
+      "ru": "Валкенбург",
+      "en": "Valkenburg"
+    },
+    "short": {
+      "ru": "холмистый городок с руинами замка.",
+      "en": "Hilly town with castle ruins."
+    },
+    "full": {
+      "ru": "Брук-ин-Ватерланд — северная деревня недалеко от Амстердама с деревянными домами пастельных тонов и тихими каналами, окруженными природой. Валкенбург — небольшой холмистый городок — редкость для Нидерландов — сформированный руинами средневекового замка, возвышающегося над ландшафтом.",
+      "en": "A small hilly town — rare in the Netherlands — shaped by the ruins of a medieval castle that rises over the landscape."
+    },
+    "coordinates": {
+      "lat": 50.865,
+      "lng": 5.8311
+    },
+    "videoTime": 6017,
+    "videoTimeFormatted": "1:40:17"
+  },
+  {
+    "id": "arnem",
+    "category": "other",
+    "name": {
+      "ru": "Арнем",
+      "en": "Arnhem"
+    },
+    "short": {
+      "ru": "столица Гелдерланда.",
+      "en": "Capital of Gelderland."
+    },
+    "full": {
+      "ru": "Арнем, столица Гелдерланда, сочетает современную архитектуру с историческими зданиями и известен своими зелеными окрестностями.",
+      "en": "The capital of Gelderland combines modern architecture with historic buildings and is known for its green surroundings."
+    },
+    "coordinates": {
+      "lat": 51.9851,
+      "lng": 5.8987
+    },
+    "videoTime": 6044,
+    "videoTimeFormatted": "1:40:44"
+  },
+  {
+    "id": "breda",
+    "category": "other",
+    "name": {
+      "ru": "Бреда",
+      "en": "Breda"
+    },
+    "short": {
+      "ru": "культурный центр Северного Брабанта.",
+      "en": "Cultural centre of North Brabant."
+    },
+    "full": {
+      "ru": "Бреда, в Северном Брабанте, стала культурным и университетским центром с молодежной атмосферой.",
+      "en": "In North Brabant, Breda has become a cultural and university centre with a youthful atmosphere."
+    },
+    "coordinates": {
+      "lat": 51.5719,
+      "lng": 4.7683
+    },
+    "videoTime": 6060,
+    "videoTimeFormatted": "1:41:00"
+  },
+  {
+    "id": "zamok-meyderslot",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Мёйдерслот",
+      "en": "Muiderslot Castle"
+    },
+    "short": {
+      "ru": "в Мёйдене недалеко от Амстердама.",
+      "en": "In Muiden near Amsterdam."
+    },
+    "full": {
+      "ru": "",
+      "en": "Muiderslot Castle, in the town of Muiden near Amsterdam, is surrounded by a moat, towers and medieval walls."
+    },
+    "coordinates": {
+      "lat": 52.3328,
+      "lng": 5.0731
+    },
+    "videoTime": 6073,
+    "videoTimeFormatted": "1:41:13"
+  },
+  {
+    "id": "zamok-mersbergen",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Мёрсберген",
+      "en": "Moersbergen Castle"
+    },
+    "short": {
+      "ru": "в Утрехте среди лесов.",
+      "en": "In Utrecht province, surrounded by woods."
+    },
+    "full": {
+      "ru": "Замок Мёйдерслот в городе Мёйден недалеко от Амстердама окружен рвом, башнями и средневековыми стенами. Замок Мёрсберген в провинции Утрехт окружен лесами и классическими голландскими пейзажами.",
+      "en": "Moersbergen Castle in Utrecht province is set among forests and classic Dutch landscapes."
+    },
+    "coordinates": {
+      "lat": 52.0667,
+      "lng": 5.4333
+    },
+    "videoTime": 6077,
+    "videoTimeFormatted": "1:41:17"
+  },
+  {
+    "id": "zelandskiy-most",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Зеландский мост",
+      "en": "Zeelandbrug"
+    },
+    "short": {
+      "ru": "1965, когда-то самый длинный мост Европы.",
+      "en": "Opened 1965, once the longest bridge in Europe."
+    },
+    "full": {
+      "ru": "Зеландский мост, открытый в 1965 году, соединяет острова. Мост через проливы Схаувен-Дуйвеланд и Норд-Бевеланд когда-то был самым длинным мостом в Европе.",
+      "en": "Opened in 1965, the Zeelandbrug links the islands of Schouwen-Duiveland and Noord-Beveland and was once the longest bridge in Europe."
+    },
+    "coordinates": {
+      "lat": 51.65,
+      "lng": 3.75
+    },
+    "videoTime": 6100,
+    "videoTimeFormatted": "1:41:40"
+  },
+  {
+    "id": "stavoren",
+    "category": "other",
+    "name": {
+      "ru": "Ставорен",
+      "en": "Stavoren"
+    },
+    "short": {
+      "ru": "портовый город Фрисландии.",
+      "en": "Frisian port town."
+    },
+    "full": {
+      "ru": "Ставорен, небольшой портовый город во Фрисландии, насчитывает чуть более тысячи жителей.",
+      "en": "A small Frisian port town with just over a thousand residents."
+    },
+    "coordinates": {
+      "lat": 52.8833,
+      "lng": 5.3667
+    },
+    "videoTime": 6118,
+    "videoTimeFormatted": "1:41:58"
+  },
+  {
+    "id": "burdard",
+    "category": "other",
+    "name": {
+      "ru": "Бурдард",
+      "en": "Burdaard"
+    },
+    "short": {
+      "ru": "деревня на канале Доккумер-Эе.",
+      "en": "Village on the Dokkumer Ee canal."
+    },
+    "full": {
+      "ru": "Бурдард, тихая деревня во Фрисландии, расположена вдоль канала Доккумер-Эе.",
+      "en": "A quiet Frisian village on the Dokkumer Ee canal."
+    },
+    "coordinates": {
+      "lat": 53.3167,
+      "lng": 5.9
+    },
+    "videoTime": 6129,
+    "videoTimeFormatted": "1:42:09"
+  },
+  {
+    "id": "nacionalnyy-park-oostvaardersplassen",
+    "category": "nature",
+    "name": {
+      "ru": "Национальный парк Оостваардерсплассен",
+      "en": "Oostvaardersplassen National Park"
+    },
+    "short": {
+      "ru": "важнейшие водно-болотные угодья Европы.",
+      "en": "One of Europe’s most important wetlands."
+    },
+    "full": {
+      "ru": "Национальный парк Оостваардерсплассен — одно из важнейших водно-болотных угодий Европы, убежище для перелетных птиц и крупных млекопитающих.",
+      "en": "Oostvaardersplassen is one of the most important wetlands in Europe, a refuge for migratory birds and large mammals."
+    },
+    "coordinates": {
+      "lat": 52.45,
+      "lng": 5.4
+    },
+    "videoTime": 6143,
+    "videoTimeFormatted": "1:42:23"
+  },
+  {
+    "id": "zamok-dorvert",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Дорверт",
+      "en": "Doorwerth Castle"
+    },
+    "short": {
+      "ru": "в Гелдерланде на Рейне.",
+      "en": "In Gelderland on the Rhine."
+    },
+    "full": {
+      "ru": "Замок Дорверт в Гелдерланде возвышается среди лесов и лугов вдоль реки Рейн. Вдохновленные его историей, каналами и землями, отвоеванными у моря, мы надеемся вскоре вернуться в это сокровище Северной Европы. До скорой встречи, Нидерланды!",
+      "en": "Doorwerth Castle in Gelderland rises among forests and meadows along the Rhine."
+    },
+    "coordinates": {
+      "lat": 51.9942,
+      "lng": 5.93
+    },
+    "videoTime": 6158,
+    "videoTimeFormatted": "1:42:38"
+  }
+]

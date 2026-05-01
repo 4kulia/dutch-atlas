@@ -1,0 +1,49 @@
+import { useLang } from '../i18n/LanguageProvider';
+import { UI } from '../i18n/strings';
+import { LanguageToggle } from './LanguageToggle';
+import { UserMenu } from './UserMenu';
+
+export function Header() {
+  const { lang } = useLang();
+  return (
+    <header
+      className="pointer-events-none absolute inset-x-0 top-0 z-30"
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
+    >
+      <div className="pointer-events-auto mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-3 py-3 md:px-5 md:py-4">
+        <div className="flex items-center gap-2.5 rounded-full border border-ink-700/60 bg-ink-900/70 px-3 py-1.5 backdrop-blur-md">
+          <Logo />
+          <span className="hidden md:inline text-[13px] font-semibold text-ink-100 leading-none">
+            {UI.app_title[lang]}
+          </span>
+          <span className="md:hidden text-[13px] font-semibold text-ink-100 leading-none">
+            NL · {UI.short_title[lang]}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <UserMenu />
+          <LanguageToggle />
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Logo() {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M16 4c5.523 0 10 4.378 10 9.778C26 21.111 16 28 16 28S6 21.111 6 13.778C6 8.378 10.477 4 16 4z"
+        fill="#ff6a3d"
+      />
+      <circle cx="16" cy="13.5" r="3.6" fill="#0b0f17" />
+    </svg>
+  );
+}
