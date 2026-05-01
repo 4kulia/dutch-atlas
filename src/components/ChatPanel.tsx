@@ -57,6 +57,10 @@ const T = {
 // ─── Snap-point machinery ───────────────────────────────────────────
 type Snap = 'peek' | 'mid' | 'full';
 
+// Heights are in `svh` (small viewport height) — guaranteed to fit even when
+// the iOS Safari URL bar is fully visible. Using `dvh` here looked correct on
+// desktop but cropped the composer on iPhone Safari because dvh shrinks
+// asynchronously while the bar transitions.
 const SNAP_DVH: Record<Snap, number> = { peek: 9, mid: 62, full: 92 };
 
 interface Props {
@@ -267,7 +271,7 @@ export function ChatPanel({
           // Mobile bottom sheet (height comes from CSS var `--sheet-h`)
           'inset-x-0 bottom-0 h-[var(--sheet-h)] rounded-t-[20px] border-t border-ink-700/60',
           // Desktop right drawer (full height, fixed width on the right)
-          'md:inset-x-auto md:top-0 md:right-0 md:h-[100dvh] md:w-[440px] md:rounded-none md:border-l md:border-t-0 md:border-ink-700/60',
+          'md:inset-x-auto md:top-0 md:right-0 md:h-[100svh] md:w-[440px] md:rounded-none md:border-l md:border-t-0 md:border-ink-700/60',
           // Closed states differ by direction. On mobile the sheet slides
           // down (translateY); on desktop the drawer slides right (translateX).
           open
@@ -276,11 +280,12 @@ export function ChatPanel({
           'transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
         ].join(' ')}
         style={{
-          // Mobile-only height — utility classes h-[var(--sheet-h)] (mobile)
-          // and md:h-[100dvh] (desktop) read from this variable.
-          ['--sheet-h' as never]: `min(${mobileHeightDvh}dvh, 92dvh)`,
+          // svh (small viewport) so the sheet always fits even when the iOS
+          // Safari URL bar is showing. Top edge is fine; bottom-pinned + svh
+          // means the composer stays above the browser chrome.
+          ['--sheet-h' as never]: `min(${mobileHeightDvh}svh, 92svh)`,
           transform: dragInlineTransform,
-          paddingBottom: 'env(safe-area-inset-bottom)',
+          paddingBottom: 'max(env(safe-area-inset-bottom), 8px)',
         }}
       >
         {/* — Mobile drag handle (desktop hides it) — */}
