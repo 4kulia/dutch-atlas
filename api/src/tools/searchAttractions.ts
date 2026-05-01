@@ -2,6 +2,7 @@ import pgvector from 'pgvector/pg';
 import { embedQuery } from '../embed.js';
 import { query } from '../db.js';
 import type { ToolResult } from './types.js';
+import type { ToolContext } from './index.js';
 
 export type Lang = 'ru' | 'en';
 
@@ -12,6 +13,8 @@ interface Args {
   categories?: string[];
   exclude_slugs?: string[];
   limit?: number;
+  exclude_visited?: boolean;
+  visited_only?: boolean;
 }
 
 export const searchAttractionsToolDef = {
@@ -45,6 +48,16 @@ export const searchAttractionsToolDef = {
       },
       exclude_slugs: { type: 'array', items: { type: 'string' } },
       limit: { type: 'integer', description: 'Max results (default 6, max 12)' },
+      exclude_visited: {
+        type: 'boolean',
+        description:
+          'Exclude places the user has marked as visited. Default true — pass false ONLY when the user explicitly references their visited list ("куда я уже ездил", "что-то знакомое").',
+      },
+      visited_only: {
+        type: 'boolean',
+        description:
+          'Restrict to places the user has marked as visited. Use for explicit "show my visited" / "where have I been" queries.',
+      },
     },
     required: ['query', 'lang'],
   },
@@ -60,7 +73,7 @@ interface Row {
   score: number;
 }
 
-export async function searchAttractions(args: Args): Promise<ToolResult> {
+export async function searchAttractions(args: Args, ctx: ToolContext): Promise<ToolResult> {
   const limit = Math.min(Math.max(args.limit ?? 6, 1), 12);
   const vector = await embedQuery(args.query);
   const vectorSql = pgvector.toSql(vector);
@@ -80,6 +93,16 @@ export async function searchAttractions(args: Args): Promise<ToolResult> {
   if (args.exclude_slugs && args.exclude_slugs.length > 0) {
     params.push(args.exclude_slugs);
     where.push(`id <> ALL($${params.length}::text[])`);
+  }
+  // Visited filter — default behaviour is to exclude places the user has
+  // already marked as visited. visited_only flips it to "only those places".
+  // Both default to (true, false) so we never show repeats unless asked.
+  if (args.visited_only) {
+    params.push(ctx.userId);
+    where.push(`id IN (SELECT attraction_id FROM visits WHERE user_id = $${params.length})`);
+  } else if (args.exclude_visited !== false) {
+    params.push(ctx.userId);
+    where.push(`id NOT IN (SELECT attraction_id FROM visits WHERE user_id = $${params.length})`);
   }
   if (args.near) {
     // Cheap haversine-ish filter using a degree bounding box. Good enough

@@ -12,6 +12,9 @@ interface Props {
   favoritesOnly?: boolean;
   onToggleFavoritesOnly?: () => void;
   favoritesCount?: number;
+  hideVisited?: boolean;
+  onToggleHideVisited?: () => void;
+  visitedCount?: number;
 }
 
 export function CategoryFilter({
@@ -22,6 +25,9 @@ export function CategoryFilter({
   favoritesOnly = false,
   onToggleFavoritesOnly,
   favoritesCount = 0,
+  hideVisited = false,
+  onToggleHideVisited,
+  visitedCount = 0,
 }: Props) {
   const { lang } = useLang();
   const allActive = active.size === CATEGORIES.length && !favoritesOnly;
@@ -77,6 +83,35 @@ export function CategoryFilter({
           </svg>
           {UI.favorites_only[lang]}
           <span className={favoritesOnly ? 'text-accent/80' : 'text-ink-500'}>{favoritesCount}</span>
+        </button>
+      )}
+      {onToggleHideVisited && visitedCount > 0 && (
+        <button
+          type="button"
+          onClick={onToggleHideVisited}
+          aria-pressed={hideVisited}
+          className={[
+            'snap-start shrink-0 inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium backdrop-blur-md transition-colors md:gap-1.5 md:px-3 md:py-1.5 md:text-xs',
+            hideVisited
+              ? 'border-emerald-400/50 bg-emerald-400/15 text-emerald-300'
+              : 'border-ink-700/60 bg-ink-900/85 text-ink-300 hover:text-ink-100',
+          ].join(' ')}
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M5 12.5l4.2 4.2L19 7" />
+          </svg>
+          {UI.hide_visited[lang]}
+          <span className={hideVisited ? 'text-emerald-200/80' : 'text-ink-500'}>{visitedCount}</span>
         </button>
       )}
       {CATEGORIES.map((c) => {

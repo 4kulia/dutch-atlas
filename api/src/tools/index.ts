@@ -5,6 +5,10 @@ import { buildRouteToolDef, buildRoute } from './buildRoute.js';
 import type { ToolResult } from './types.js';
 export type { UiEvent, ToolResult } from './types.js';
 
+export interface ToolContext {
+  userId: string;
+}
+
 export const TOOL_DEFS = [
   searchAttractionsToolDef,
   getAttractionDetailsToolDef,
@@ -13,7 +17,7 @@ export const TOOL_DEFS = [
   buildRouteToolDef,
 ];
 
-type ToolFn = (args: any) => Promise<ToolResult>;
+type ToolFn = (args: any, ctx: ToolContext) => Promise<ToolResult>;
 
 const dispatch: Record<string, ToolFn> = {
   search_attractions: searchAttractions as ToolFn,
@@ -23,11 +27,11 @@ const dispatch: Record<string, ToolFn> = {
   build_route: buildRoute as ToolFn,
 };
 
-export async function runTool(name: string, args: unknown): Promise<ToolResult> {
+export async function runTool(name: string, args: unknown, ctx: ToolContext): Promise<ToolResult> {
   const fn = dispatch[name];
   if (!fn) return { forModel: { error: 'unknown_tool', name } };
   try {
-    return await fn(args);
+    return await fn(args, ctx);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error(`[tool ${name}] failed`, err);

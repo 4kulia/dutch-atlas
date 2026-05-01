@@ -98,6 +98,11 @@ export const UI: Dict = {
     ru: 'Войдите через Google, чтобы сохранять места и оставлять заметки.',
     en: 'Sign in with Google to save places and add personal notes.',
   },
+  visited_add: { ru: 'Я был', en: "I've been" },
+  visited_remove: { ru: 'Был', en: 'Been' },
+  visited_section: { ru: 'Где я был', en: "Places I've been" },
+  hide_visited: { ru: 'Без посещённых', en: 'Hide visited' },
+  hide_visited_off: { ru: 'Все', en: 'All' },
   notes_title: { ru: 'Мои заметки', en: 'My notes' },
   notes_placeholder: {
     ru: 'Запишите, что хотите запомнить про это место…',

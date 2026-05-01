@@ -76,7 +76,7 @@ function estimateDriveMinutes(km: number): number {
   return Math.round(5 + (km / 70) * 60);
 }
 
-export async function buildRoute(args: Args): Promise<ToolResult> {
+export async function buildRoute(args: Args, _ctx: { userId: string }): Promise<ToolResult> {
   const allSlugs = args.days.flatMap((d) => d.stops.map((s) => s.slug));
   if (allSlugs.length === 0) {
     return { forModel: { error: 'no_stops' } };

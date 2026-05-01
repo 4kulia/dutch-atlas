@@ -28,6 +28,7 @@ interface Props {
   activeCategories: Set<Category>;
   attractions?: Attraction[];
   highlightedIds?: Set<string> | null;
+  visitedIds?: ReadonlySet<string>;
   route?: { title?: string; days: RouteDay[] } | null;
   travelMode?: TravelMode;
 }
@@ -39,6 +40,7 @@ export function MapView({
   activeCategories,
   attractions,
   highlightedIds,
+  visitedIds,
   route,
   travelMode,
 }: Props) {
@@ -82,6 +84,7 @@ export function MapView({
           selectedId={selectedId}
           onSelect={onSelect}
           highlightedIds={highlightedIds ?? null}
+          visitedIds={visitedIds ?? null}
           route={route ?? null}
           travelMode={travelMode ?? 'DRIVING'}
           flyTo={onlyCaribbean ? CARIBBEAN_CENTER : NETHERLANDS_CENTER}
@@ -98,6 +101,7 @@ interface BodyProps {
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   highlightedIds: Set<string> | null;
+  visitedIds: ReadonlySet<string> | null;
   route: { title?: string; days: RouteDay[] } | null;
   travelMode: TravelMode;
   flyTo: google.maps.LatLngLiteral;
@@ -110,6 +114,7 @@ function MapBody({
   selectedId,
   onSelect,
   highlightedIds,
+  visitedIds,
   route,
   travelMode,
   flyTo,
@@ -177,6 +182,7 @@ function MapBody({
         selectedId={selectedId}
         onSelect={onSelect}
         highlightedIds={highlightedIds}
+        visitedIds={visitedIds}
         // When a route is active, hide the regular markers for its stops —
         // the numbered overlay represents them instead.
         suppressedIds={routeStopIds(route)}
@@ -203,10 +209,18 @@ interface ClusterProps {
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   highlightedIds: Set<string> | null;
+  visitedIds: ReadonlySet<string> | null;
   suppressedIds: Set<string> | null;
 }
 
-function ClusteredMarkers({ visible, selectedId, onSelect, highlightedIds, suppressedIds }: ClusterProps) {
+function ClusteredMarkers({
+  visible,
+  selectedId,
+  onSelect,
+  highlightedIds,
+  visitedIds,
+  suppressedIds,
+}: ClusterProps) {
   const map = useMap();
   const [markers, setMarkers] = useState<Record<string, Marker>>({});
 
@@ -262,6 +276,7 @@ function ClusteredMarkers({ visible, selectedId, onSelect, highlightedIds, suppr
           attraction={a}
           selected={selectedId === a.id}
           dimmed={highlightedIds ? !highlightedIds.has(a.id) : false}
+          visited={visitedIds ? visitedIds.has(a.id) : false}
           updateMarker={updateMarker}
           onClick={() => onSelect(a.id)}
         />
@@ -274,11 +289,12 @@ interface MarkerProps {
   attraction: Attraction;
   selected: boolean;
   dimmed: boolean;
+  visited: boolean;
   updateMarker: (id: string, marker: Marker | null) => void;
   onClick: () => void;
 }
 
-function AttractionMarker({ attraction, selected, dimmed, updateMarker, onClick }: MarkerProps) {
+function AttractionMarker({ attraction, selected, dimmed, visited, updateMarker, onClick }: MarkerProps) {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const id = attraction.id;
 
@@ -295,7 +311,7 @@ function AttractionMarker({ attraction, selected, dimmed, updateMarker, onClick 
       title={attraction.name.ru}
     >
       <div style={{ opacity: dimmed ? 0.28 : 1, transition: 'opacity 200ms ease' }}>
-        <MarkerIcon category={attraction.category} selected={selected} />
+        <MarkerIcon category={attraction.category} selected={selected} visited={visited} />
       </div>
     </AdvancedMarker>
   );

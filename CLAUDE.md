@@ -19,7 +19,7 @@ User-submitted places are part of the schema (`source`, `status`, `author`, opti
 - **Embeddings:** Voyage AI (`voyage-3.5`).
 - **LLM:** Anthropic `claude-sonnet-4-6` for tool-use, streamed via SSE.
 - **Auth:** server-side Google OAuth (`jose` for id_token JWKs verification + own HS256 session JWT in HTTP-only cookie).
-- **Deploy:** four `docker compose` services (`web`, `postgres`, `api`, plus optional `qdrant` if reintroduced) bound to `127.0.0.1`. Host nginx terminates TLS and proxies `/` → 8080, `/api/` → 8091.
+- **Deploy:** three `docker compose` services (`web`, `postgres`, `api`) bound to `127.0.0.1`. Host nginx terminates TLS and proxies `/` → 8080, `/api/` → 8091.
 
 ## Common commands
 
@@ -73,6 +73,7 @@ There are no automated tests in this repo.
 - `users(id, email, name, avatar_url, google_sub UNIQUE, created_at, updated_at)`
 - `attractions` — slug PK, RU+EN text, `lat/lng`, optional video, `embedding_ru/en vector(1024)`, `embedding_hash_ru/en`, `source CHECK ('curated','user')`, `status CHECK ('draft','pending','published','rejected')`, `author_id REFERENCES users` (nullable for curated rows). `ivfflat` indexes per language.
 - `favorites(user_id, attraction_id, created_at)` — composite PK.
+- `visits(user_id, attraction_id, created_at)` — composite PK. "I've been here" toggles. Used to dim markers on the map, hide them under a filter chip, and feed `search_attractions` (which excludes visited by default — see system prompt rules).
 - `notes(id ULID, user_id, attraction_id, body, created_at, updated_at)`.
 - `chat_sessions(id ULID, user_id, title, created_at, updated_at)`.
 - `chat_messages(id ULID, user_id, session_id REFERENCES chat_sessions, role, content, ui_events JSONB, created_at)`.
