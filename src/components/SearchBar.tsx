@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ATTRACTIONS } from '../data/attractions';
+import { useAttractions } from '../data/AttractionsProvider';
 import { CATEGORY_LABEL, UI } from '../i18n/strings';
 import { useLang } from '../i18n/LanguageProvider';
 import { CategoryDot } from './MarkerIcon';
@@ -25,6 +25,7 @@ function score(query: string, a: Attraction): number {
 
 export function SearchBar({ onSelect }: Props) {
   const { lang } = useLang();
+  const { attractions } = useAttractions();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,12 +36,13 @@ export function SearchBar({ onSelect }: Props) {
   const results = useMemo(() => {
     const q = query.trim();
     if (q.length < 1) return [];
-    return ATTRACTIONS.map((a) => ({ a, s: score(q, a) }))
+    return attractions
+      .map((a) => ({ a, s: score(q, a) }))
       .filter((x) => x.s > 0)
       .sort((x, y) => y.s - x.s)
       .slice(0, MAX_RESULTS)
       .map((x) => x.a);
-  }, [query]);
+  }, [query, attractions]);
 
   // Reset active index when results change.
   useEffect(() => {
@@ -187,7 +189,8 @@ export function SearchBar({ onSelect }: Props) {
                       {a.name[lang]}
                     </div>
                     <div className="truncate text-[11px] text-ink-500">
-                      {CATEGORY_LABEL[a.category][lang]} · {a.videoTimeFormatted}
+                      {CATEGORY_LABEL[a.category][lang]}
+                      {a.videoTimeFormatted ? ` · ${a.videoTimeFormatted}` : ''}
                     </div>
                   </div>
                 </button>

@@ -5,6 +5,7 @@ interface Props {
   startSeconds: number;
   title: string;
   lang: Lang;
+  videoId?: string;
 }
 
 // NOTE on audio language: this video has Russian/German/French/Polish/etc.
@@ -16,7 +17,7 @@ interface Props {
 //   - hl=<lang> sets the player UI language and *hints* at preferred audio
 //   - cc_lang_pref + cc_load_policy=1 force-enable subtitles in the UI language
 //   - the AudioHint component (rendered separately) tells users how to switch.
-export function VideoEmbed({ startSeconds, title, lang }: Props) {
+export function VideoEmbed({ startSeconds, title, lang, videoId = VIDEO_ID }: Props) {
   const params = new URLSearchParams({
     start: String(startSeconds),
     autoplay: '1',
@@ -27,7 +28,7 @@ export function VideoEmbed({ startSeconds, title, lang }: Props) {
     cc_lang_pref: lang,
     cc_load_policy: '1',
   });
-  const src = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?${params.toString()}`;
+  const src = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
 
   return (
     <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>

@@ -4,14 +4,13 @@ import { CategoryFilter } from './components/CategoryFilter';
 import { MapView } from './components/MapView';
 import { AttractionDrawer } from './components/AttractionDrawer';
 import { MyPlacesPanel } from './components/MyPlacesPanel';
-import { ATTRACTIONS, ATTRACTIONS_BY_ID, countByCategory } from './data/attractions';
+import { useAttractions } from './data/AttractionsProvider';
 import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
 
 function readInitialId(): string | null {
   if (typeof window === 'undefined') return null;
-  const id = new URL(window.location.href).searchParams.get('id');
-  return id && ATTRACTIONS_BY_ID.has(id) ? id : null;
+  return new URL(window.location.href).searchParams.get('id');
 }
 
 function syncIdToUrl(id: string | null) {
@@ -31,18 +30,17 @@ export default function App() {
   const [myPlacesOpen, setMyPlacesOpen] = useState(false);
   const [myPlacesRefreshKey, setMyPlacesRefreshKey] = useState(0);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
+  const { attractions, byId, countByCategory: counts } = useAttractions();
 
   useEffect(() => {
     syncIdToUrl(selectedId);
   }, [selectedId]);
 
-  const counts = useMemo(() => countByCategory(), []);
-
   const visibleAttractions = useMemo(() => {
-    let result = ATTRACTIONS.filter((a) => active.has(a.category));
+    let result = attractions.filter((a) => active.has(a.category));
     if (favoritesOnly) result = result.filter((a) => favoriteIds.has(a.id));
     return result;
-  }, [active, favoritesOnly, favoriteIds]);
+  }, [attractions, active, favoritesOnly, favoriteIds]);
 
   const toggleCategory = useCallback((c: Category) => {
     setActive((prev) => {
@@ -78,7 +76,7 @@ export default function App() {
     setMyPlacesOpen(true);
   }, []);
   const onCloseMyPlaces = useCallback(() => setMyPlacesOpen(false), []);
-  const selected = selectedId ? ATTRACTIONS_BY_ID.get(selectedId) ?? null : null;
+  const selected = selectedId ? byId.get(selectedId) ?? null : null;
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
   }, [selectedId, toggleFavorite]);
