@@ -1,0 +1,310 @@
+{
+  "extracted_from": [
+    {"id": "ypimgc3SlH0", "channel": "TheTravelWaves", "title": "Hidden Gems of the Netherlands That No One Talks About!"},
+    {"id": "xSyDOn5xX5A", "channel": "avventuri", "title": "UNCOVER these 10 Hidden Gems in the Netherlands Most Visitors Miss!"},
+    {"id": "D3ioBbot6jw", "channel": "Heartland Horizons", "title": "Wonderen van Nederland | 10 mooiste dorpen die je gezien moet hebben!"},
+    {"id": "6WD4f-LpLjs", "channel": "Journey Decoded", "title": "Top 10 Hidden Gems Unique Dutch Villages (The Netherlands)"},
+    {"id": "sJ1EEaOoVgs", "channel": "Anna Karpenko", "title": "Атмосферные Нидерланды: секретные места, лучшие винтажки и замки"}
+  ],
+  "method": "manual cross-reference of 4 subtitle texts against existing 99 attractions in data/attractions.json",
+  "candidates": [
+    {
+      "name_en": "Vlieland",
+      "name_ru": "Влиланд",
+      "type": "island",
+      "province": "Friesland",
+      "coordinates": {"lat": 53.295, "lng": 4.97},
+      "why_interesting": "Wadden island, almost car-free; quiet beaches and forest, much less touristy than Texel.",
+      "source_videos": ["TheTravelWaves", "avventuri"]
+    },
+    {
+      "name_en": "Terschelling",
+      "name_ru": "Терсхеллинг",
+      "type": "island",
+      "province": "Friesland",
+      "coordinates": {"lat": 53.39, "lng": 5.31},
+      "why_interesting": "Wadden island famous for the Oerol open-air arts festival every June.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Ameland",
+      "name_ru": "Амеланд",
+      "type": "island",
+      "province": "Friesland",
+      "coordinates": {"lat": 53.45, "lng": 5.75},
+      "why_interesting": "Wadden island blending villages and nature; kite-surfing, seal-watching, bird-watching.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Schiermonnikoog",
+      "name_ru": "Схирмонниког",
+      "type": "island",
+      "province": "Friesland",
+      "coordinates": {"lat": 53.48, "lng": 6.16},
+      "why_interesting": "Smallest, quietest Wadden island — birdwatcher's paradise, dramatic sunsets.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Wadden Sea",
+      "name_ru": "Ваттовое море",
+      "type": "nature",
+      "province": "Friesland/Groningen/Noord-Holland",
+      "coordinates": {"lat": 53.45, "lng": 5.6},
+      "why_interesting": "UNESCO tidal ecosystem; mud-flats walk (wadlopen) at low tide along the seabed.",
+      "source_videos": ["TheTravelWaves", "avventuri"]
+    },
+    {
+      "name_en": "Thorn",
+      "name_ru": "Торн",
+      "type": "village",
+      "province": "Limburg",
+      "coordinates": {"lat": 51.165, "lng": 5.835},
+      "why_interesting": "“The White Village” — 10th-century mini-principality with whitewashed houses and an abbey church.",
+      "source_videos": ["Heartland", "Journey"]
+    },
+    {
+      "name_en": "Gulpen",
+      "name_ru": "Гюлпен",
+      "type": "village",
+      "province": "Limburg",
+      "coordinates": {"lat": 50.81, "lng": 5.886},
+      "why_interesting": "Zuid-Limburg village with breweries and rolling hills — a non-flat Netherlands.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Middelburg",
+      "name_ru": "Мидделбург",
+      "type": "town",
+      "province": "Zeeland",
+      "coordinates": {"lat": 51.498, "lng": 3.613},
+      "why_interesting": "Capital of Zeeland — medieval old town, town hall, the Lange Jan tower with panoramic views.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Veere",
+      "name_ru": "Веере",
+      "type": "town",
+      "province": "Zeeland",
+      "coordinates": {"lat": 51.547, "lng": 3.667},
+      "why_interesting": "Once a major Scottish-trade port; cobblestone streets, harbour, ornate town hall in Zeeland.",
+      "source_videos": ["Heartland"]
+    },
+    {
+      "name_en": "Hunebed Centrum (Borger)",
+      "name_ru": "Хунебед-центр (Боргер)",
+      "type": "museum",
+      "province": "Drenthe",
+      "coordinates": {"lat": 52.913, "lng": 6.792},
+      "why_interesting": "Prehistoric Stone-Age burial chambers (hunebedden) — 5,000-year-old megaliths scattered across Drenthe.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Dwingeloo",
+      "name_ru": "Двингело",
+      "type": "village",
+      "province": "Drenthe",
+      "coordinates": {"lat": 52.835, "lng": 6.376},
+      "why_interesting": "Charming base for exploring Drents heath; nearby radio telescope and dark-sky reserve.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Dwingelderveld National Park",
+      "name_ru": "Национальный парк Двингелдервелд",
+      "type": "nature",
+      "province": "Drenthe",
+      "coordinates": {"lat": 52.81, "lng": 6.41},
+      "why_interesting": "Largest wet-heath area in Europe — boardwalks, juniper, sheep, very quiet trails.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Drents-Friese Wold National Park",
+      "name_ru": "Национальный парк Дрентс-Фризе-Волд",
+      "type": "nature",
+      "province": "Drenthe/Friesland",
+      "coordinates": {"lat": 52.87, "lng": 6.20},
+      "why_interesting": "Pine forests, drift-sand dunes and heath; one of NL's largest forested NPs.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Blokzijl",
+      "name_ru": "Блокзейл",
+      "type": "village",
+      "province": "Overijssel",
+      "coordinates": {"lat": 52.728, "lng": 5.967},
+      "why_interesting": "Tiny former Zuiderzee fortified harbour-town near Giethoorn but a fraction of the visitors.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Winsum",
+      "name_ru": "Винсюм",
+      "type": "village",
+      "province": "Groningen",
+      "coordinates": {"lat": 53.328, "lng": 6.518},
+      "why_interesting": "Twice voted “most beautiful village in the Netherlands” — terps, canals, traditional Groningen architecture.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Pieterburen",
+      "name_ru": "Питербюрен",
+      "type": "village",
+      "province": "Groningen",
+      "coordinates": {"lat": 53.412, "lng": 6.499},
+      "why_interesting": "Seal Rehabilitation & Research Centre — see rescued seals released back into the Wadden Sea.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "De Rijp",
+      "name_ru": "Де-Рейп",
+      "type": "village",
+      "province": "Noord-Holland",
+      "coordinates": {"lat": 52.557, "lng": 4.842},
+      "why_interesting": "Mini-Amsterdam: 17th-century merchant houses and canals from the Dutch Golden Age, tiny crowd.",
+      "source_videos": ["Journey"]
+    },
+    {
+      "name_en": "Edam",
+      "name_ru": "Эдам",
+      "type": "town",
+      "province": "Noord-Holland",
+      "coordinates": {"lat": 52.508, "lng": 5.046},
+      "why_interesting": "Cheese town with summer Wednesday cheese-market re-enactment in traditional dress.",
+      "source_videos": ["Heartland"]
+    },
+    {
+      "name_en": "Hoge Veluwe National Park",
+      "name_ru": "Национальный парк Хоге-Велюве",
+      "type": "nature",
+      "province": "Gelderland",
+      "coordinates": {"lat": 52.083, "lng": 5.833},
+      "why_interesting": "Distinct from Veluwe NP — fenced 55 km² park with free white bikes, deer/boar, and the Kröller-Müller museum inside.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Kröller-Müller Museum",
+      "name_ru": "Музей Крёллер-Мюллер",
+      "type": "museum",
+      "province": "Gelderland",
+      "coordinates": {"lat": 52.099, "lng": 5.819},
+      "why_interesting": "Second-largest Van Gogh collection in the world; sculpture garden inside Hoge Veluwe.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Posbank",
+      "name_ru": "Посбанк",
+      "type": "nature",
+      "province": "Gelderland",
+      "coordinates": {"lat": 52.020, "lng": 6.012},
+      "why_interesting": "Famed lookout in Veluwezoom — purple heathland in late summer; classic Dutch landscape vista.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Slot Zuylen / Oud-Zuilen",
+      "name_ru": "Слот Зёйлен / Ауд-Зёйлен",
+      "type": "castle",
+      "province": "Utrecht",
+      "coordinates": {"lat": 52.121, "lng": 5.066},
+      "why_interesting": "13th-century castle on Utrecht's edge; preserved interiors, lush gardens, easy day-trip from Utrecht.",
+      "source_videos": ["Heartland"]
+    },
+    {
+      "name_en": "Bronkhorst",
+      "name_ru": "Бронкхорст",
+      "type": "village",
+      "province": "Gelderland",
+      "coordinates": {"lat": 52.063, "lng": 6.215},
+      "why_interesting": "Officially the smallest city in the Netherlands; medieval charm, annual Dickens Festival.",
+      "source_videos": ["Journey"]
+    },
+    {
+      "name_en": "Oudewater",
+      "name_ru": "Аудеватер",
+      "type": "town",
+      "province": "Utrecht",
+      "coordinates": {"lat": 52.025, "lng": 4.866},
+      "why_interesting": "Home of the Heksenwaag — the historic ‘witches' weigh-house’ where suspected witches were exonerated.",
+      "source_videos": ["Journey"]
+    },
+    {
+      "name_en": "Rijksmuseum",
+      "name_ru": "Рейксмюсеум",
+      "type": "museum",
+      "province": "Noord-Holland",
+      "coordinates": {"lat": 52.360, "lng": 4.885},
+      "why_interesting": "Rembrandt's Night Watch + 8,000 works spanning the Dutch Golden Age.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Mauritshuis",
+      "name_ru": "Маурицхёйс",
+      "type": "museum",
+      "province": "Zuid-Holland",
+      "coordinates": {"lat": 52.080, "lng": 4.314},
+      "why_interesting": "The Hague gem holding Vermeer's Girl with a Pearl Earring and Fabritius's Goldfinch.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Vermeer Centrum Delft",
+      "name_ru": "Центр Вермеера в Делфте",
+      "type": "museum",
+      "province": "Zuid-Holland",
+      "coordinates": {"lat": 52.011, "lng": 4.360},
+      "why_interesting": "Reconstructions and biography of Vermeer in his birthplace.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Cube Houses (Kubuswoningen)",
+      "name_ru": "Кубические дома Кубусвонинген",
+      "type": "building",
+      "province": "Zuid-Holland",
+      "coordinates": {"lat": 51.920, "lng": 4.490},
+      "why_interesting": "Piet Blom's tilted-cube apartments above Rotterdam's old harbour — one is open as a show-cube museum.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Euromast",
+      "name_ru": "Евромачта",
+      "type": "building",
+      "province": "Zuid-Holland",
+      "coordinates": {"lat": 51.905, "lng": 4.467},
+      "why_interesting": "185 m observation tower with rotating top; abseil and dinner-on-top experiences.",
+      "source_videos": ["TheTravelWaves"]
+    },
+    {
+      "name_en": "Koppelpoort",
+      "name_ru": "Коппелпорт",
+      "type": "building",
+      "province": "Utrecht",
+      "coordinates": {"lat": 52.158, "lng": 5.387},
+      "why_interesting": "Rare 15th-century combined land-and-water city gate in Amersfoort.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Mondriaanhuis",
+      "name_ru": "Дом Мондриана",
+      "type": "museum",
+      "province": "Utrecht",
+      "coordinates": {"lat": 52.156, "lng": 5.389},
+      "why_interesting": "Birthplace of Piet Mondrian, now a museum tracing his De Stijl evolution.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Onze-Lieve-Vrouwetoren",
+      "name_ru": "Башня Онзе-Ливе-Вроуэторен",
+      "type": "building",
+      "province": "Utrecht",
+      "coordinates": {"lat": 52.155, "lng": 5.388},
+      "why_interesting": "98 m gothic church tower in Amersfoort — third-tallest in NL; geographic centre point of the country.",
+      "source_videos": ["avventuri"]
+    },
+    {
+      "name_en": "Kasteel Wittem",
+      "name_ru": "Замок Виттем",
+      "type": "castle",
+      "province": "Limburg",
+      "coordinates": {"lat": 50.819, "lng": 5.901},
+      "why_interesting": "1650-built castle (reconstructed 1929) now a 4-star castle-hotel and restaurant in Zuid-Limburg; quiet, deer-grazing grounds.",
+      "source_videos": ["Anna Karpenko"],
+      "confidence": "low — Anna's auto-RU transcript names dates (1650, 1929) and ‘castle now a hotel ~€100/night’ that match Kasteel Wittem; verify before adding"
+    }
+  ]
+}
