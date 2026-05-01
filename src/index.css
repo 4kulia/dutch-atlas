@@ -39,3 +39,19 @@ button {
 .gm-style-iw button[aria-label='Close'] {
   display: none !important;
 }
+
+/* Selected-marker pulse */
+@keyframes mk-pulse {
+  0% {
+    transform: translate(-50%, 18%) scale(0.6);
+    opacity: 0.55;
+  }
+  70% {
+    transform: translate(-50%, 18%) scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 18%) scale(1.6);
+    opacity: 0;
+  }
+}

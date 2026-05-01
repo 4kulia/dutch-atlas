@@ -1,7 +1,7 @@
 import { APIProvider, AdvancedMarker, Map as GMap, useAdvancedMarkerRef, useMap } from '@vis.gl/react-google-maps';
 import { MarkerClusterer, type Marker } from '@googlemaps/markerclusterer';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ATTRACTIONS } from '../data/attractions';
+import { ATTRACTIONS, ATTRACTIONS_BY_ID } from '../data/attractions';
 import type { Attraction, Category } from '../types';
 import { MarkerIcon } from './MarkerIcon';
 import { useLang } from '../i18n/LanguageProvider';
@@ -85,6 +85,22 @@ function MapBody({ visible, selectedId, onSelect, flyTo, flyZoom, flyKey }: Body
     map.panTo(flyTo);
     map.setZoom(flyZoom);
   }, [map, flyKey, flyTo, flyZoom]);
+
+  // When a marker is selected, pan to it and ensure zoom is high enough that
+  // it sits outside any cluster — otherwise the user can't see what they
+  // picked.
+  useEffect(() => {
+    if (!map || !selectedId) return;
+    const a = ATTRACTIONS_BY_ID.get(selectedId);
+    if (!a) return;
+    const currentZoom = map.getZoom() ?? 7;
+    const targetZoom = Math.max(currentZoom, 10);
+    map.panTo(a.coordinates);
+    if (targetZoom !== currentZoom) {
+      // Brief delay so the pan animates first.
+      window.setTimeout(() => map.setZoom(targetZoom), 220);
+    }
+  }, [map, selectedId]);
 
   return (
     <ClusteredMarkers
