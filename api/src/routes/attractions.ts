@@ -18,6 +18,7 @@ interface AttractionRow {
   video_id: string | null;
   video_time: number | null;
   video_time_fmt: string | null;
+  tags: string[];
   source: 'curated' | 'user';
   status: 'draft' | 'pending' | 'published' | 'rejected';
   author_id: string | null;
@@ -31,7 +32,7 @@ attractionsRouter.get('/', maybeAuth, async (req: AuthedRequest, res) => {
   const userId = req.user?.id ?? null;
   const r = await query<AttractionRow>(
     `SELECT id, category, name_ru, name_en, short_ru, short_en, full_ru, full_en,
-            lat, lng, video_id, video_time, video_time_fmt,
+            lat, lng, video_id, video_time, video_time_fmt, tags,
             source, status, author_id
        FROM attractions
       WHERE status = 'published'
@@ -46,7 +47,7 @@ attractionsRouter.get('/:id', maybeAuth, async (req: AuthedRequest, res) => {
   const userId = req.user?.id ?? null;
   const r = await query<AttractionRow>(
     `SELECT id, category, name_ru, name_en, short_ru, short_en, full_ru, full_en,
-            lat, lng, video_id, video_time, video_time_fmt,
+            lat, lng, video_id, video_time, video_time_fmt, tags,
             source, status, author_id
        FROM attractions
       WHERE id = $1
