@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
 import { pb } from './pb';
 import { useAuth } from './AuthProvider';
+import type { NoteRecord } from './useNotes';
 
 interface MyPlacesState {
   favoriteIds: Set<string>;
-  notesByAttraction: Map<string, number>;
+  notesByAttraction: Map<string, NoteRecord[]>;
   isLoading: boolean;
-  reload: () => void;
 }
 
 export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
   const { user } = useAuth();
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
-  const [notesByAttraction, setNotesByAttraction] = useState<Map<string, number>>(new Map());
+  const [notesByAttraction, setNotesByAttraction] = useState<Map<string, NoteRecord[]>>(new Map());
   const [isLoading, setIsLoading] = useState(false);
-  const [internalKey, setInternalKey] = useState(0);
 
   useEffect(() => {
     if (!user) {
@@ -29,18 +28,21 @@ export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
       pb.collection('favorites').getFullList<{ attraction_id: string }>({
         filter: `user = "${user.id}"`,
       }),
-      pb.collection('notes').getFullList<{ attraction_id: string }>({
+      pb.collection('notes').getFullList<NoteRecord>({
         filter: `user = "${user.id}"`,
+        sort: '-created',
       }),
     ])
       .then(([favs, notes]) => {
         if (cancelled) return;
         setFavoriteIds(new Set(favs.map((f) => f.attraction_id)));
-        const counts = new Map<string, number>();
+        const grouped = new Map<string, NoteRecord[]>();
         for (const n of notes) {
-          counts.set(n.attraction_id, (counts.get(n.attraction_id) ?? 0) + 1);
+          const list = grouped.get(n.attraction_id);
+          if (list) list.push(n);
+          else grouped.set(n.attraction_id, [n]);
         }
-        setNotesByAttraction(counts);
+        setNotesByAttraction(grouped);
       })
       .catch((err) => {
         if (!cancelled) console.error('[my-places] load failed', err);
@@ -52,12 +54,7 @@ export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
     return () => {
       cancelled = true;
     };
-  }, [user, refreshKey, internalKey]);
+  }, [user, refreshKey]);
 
-  return {
-    favoriteIds,
-    notesByAttraction,
-    isLoading,
-    reload: () => setInternalKey((k) => k + 1),
-  };
+  return { favoriteIds, notesByAttraction, isLoading };
 }

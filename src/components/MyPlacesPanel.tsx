@@ -2,9 +2,11 @@ import { useEffect, useMemo } from 'react';
 import { ATTRACTIONS_BY_ID } from '../data/attractions';
 import { useLang } from '../i18n/LanguageProvider';
 import { CATEGORY_LABEL, UI } from '../i18n/strings';
+import { plural } from '../i18n/plurals';
 import { useMyPlaces } from '../auth/useMyPlaces';
+import type { NoteRecord } from '../auth/useNotes';
 import { CategoryDot } from './MarkerIcon';
-import type { Attraction } from '../types';
+import type { Attraction, Lang } from '../types';
 
 interface Props {
   open: boolean;
@@ -17,20 +19,18 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
   const { lang } = useLang();
   const { favoriteIds, notesByAttraction } = useMyPlaces(refreshKey);
 
-  // Aggregate: any attraction that's favorited or has notes.
   const items = useMemo(() => {
     const ids = new Set<string>([...favoriteIds, ...notesByAttraction.keys()]);
-    const list: Array<{ a: Attraction; favorite: boolean; notes: number }> = [];
+    const list: Array<{ a: Attraction; favorite: boolean; notes: NoteRecord[] }> = [];
     for (const id of ids) {
       const a = ATTRACTIONS_BY_ID.get(id);
       if (!a) continue;
       list.push({
         a,
         favorite: favoriteIds.has(id),
-        notes: notesByAttraction.get(id) ?? 0,
+        notes: notesByAttraction.get(id) ?? [],
       });
     }
-    // Favorites first, then by name.
     list.sort((x, y) => {
       if (x.favorite !== y.favorite) return x.favorite ? -1 : 1;
       return x.a.name[lang].localeCompare(y.a.name[lang]);
@@ -38,7 +38,6 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
     return list;
   }, [favoriteIds, notesByAttraction, lang]);
 
-  // Close on Escape.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -50,7 +49,6 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
 
   return (
     <>
-      {/* Backdrop on mobile */}
       <div
         onClick={onClose}
         className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] md:hidden ${
@@ -97,67 +95,22 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
             </button>
           </header>
 
-          <div className="flex-1 overflow-y-auto px-5 pb-6 md:px-6">
+          <div className="flex-1 overflow-y-auto px-4 pb-6 md:px-5">
             {items.length === 0 ? (
               <p className="rounded-xl border border-dashed border-ink-700/40 px-4 py-8 text-center text-[13px] leading-relaxed text-ink-500">
                 {UI.my_places_empty[lang]}
               </p>
             ) : (
-              <ul className="divide-y divide-ink-800/50">
+              <ul className="space-y-3">
                 {items.map(({ a, favorite, notes }) => (
-                  <li key={a.id}>
-                    <button
-                      type="button"
-                      onClick={() => onSelect(a.id)}
-                      className="flex w-full items-center gap-3 py-3 text-left transition-colors hover:bg-ink-800/40"
-                    >
-                      <CategoryDot category={a.category} size={12} />
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5">
-                          <span className="truncate text-[15px] font-medium text-ink-100">
-                            {a.name[lang]}
-                          </span>
-                          {favorite && (
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                              className="shrink-0 text-accent"
-                              aria-hidden
-                            >
-                              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                            </svg>
-                          )}
-                        </div>
-                        <div className="mt-0.5 truncate text-[12px] text-ink-500">
-                          {CATEGORY_LABEL[a.category][lang]}
-                          {notes > 0 && (
-                            <>
-                              {' · '}
-                              {notes} {UI.my_places_notes_count[lang]}
-                            </>
-                          )}
-                        </div>
-                      </div>
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="shrink-0 text-ink-500"
-                        aria-hidden
-                      >
-                        <path
-                          d="M9 6l6 6-6 6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </li>
+                  <PlaceCard
+                    key={a.id}
+                    attraction={a}
+                    favorite={favorite}
+                    notes={notes}
+                    lang={lang}
+                    onSelect={() => onSelect(a.id)}
+                  />
                 ))}
               </ul>
             )}
@@ -165,5 +118,102 @@ export function MyPlacesPanel({ open, refreshKey, onClose, onSelect }: Props) {
         </div>
       </aside>
     </>
+  );
+}
+
+interface CardProps {
+  attraction: Attraction;
+  favorite: boolean;
+  notes: NoteRecord[];
+  lang: Lang;
+  onSelect: () => void;
+}
+
+function parsePbDate(value: string): Date | null {
+  if (!value) return null;
+  const iso = value.includes('T') ? value : value.replace(' ', 'T');
+  const d = new Date(iso);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+function formatDate(value: string, lang: Lang): string {
+  const d = parsePbDate(value);
+  if (!d) return '';
+  return d.toLocaleString(lang === 'ru' ? 'ru-RU' : 'en-US', {
+    day: 'numeric',
+    month: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+function PlaceCard({ attraction, favorite, notes, lang, onSelect }: CardProps) {
+  return (
+    <li className="overflow-hidden rounded-xl border border-ink-700/40 bg-ink-900/40">
+      <button
+        type="button"
+        onClick={onSelect}
+        className="flex w-full items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-ink-800/40"
+      >
+        <CategoryDot category={attraction.category} size={12} />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-1.5">
+            <span className="truncate text-[15px] font-medium text-ink-100">
+              {attraction.name[lang]}
+            </span>
+            {favorite && (
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="shrink-0 text-accent"
+                aria-hidden
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            )}
+          </div>
+          <div className="mt-0.5 truncate text-[12px] text-ink-500">
+            {CATEGORY_LABEL[attraction.category][lang]}
+            {notes.length > 0 && ` · ${plural('notes', notes.length, lang)}`}
+          </div>
+        </div>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          className="shrink-0 text-ink-500"
+          aria-hidden
+        >
+          <path
+            d="M9 6l6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {notes.length > 0 && (
+        <ul className="space-y-1.5 border-t border-ink-700/40 bg-ink-950/30 px-3 py-2">
+          {notes.map((n) => (
+            <li
+              key={n.id}
+              className="rounded-md border border-ink-700/30 bg-ink-900/40 px-2.5 py-1.5"
+            >
+              <p className="whitespace-pre-line text-[13px] leading-snug text-ink-100">
+                {n.body}
+              </p>
+              <time dateTime={n.created} className="mt-1 block text-[10px] text-ink-500">
+                {formatDate(n.created, lang)}
+              </time>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
   );
 }

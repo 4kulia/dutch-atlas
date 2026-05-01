@@ -4,6 +4,10 @@ import { useLang } from '../i18n/LanguageProvider';
 import { UI } from '../i18n/strings';
 import type { Lang } from '../types';
 
+// Strings file used to have a single "заметок" suffix; now plural rules
+// are handled in i18n/plurals.ts. UI.notes_count remains for compatibility
+// with existing translations.
+
 interface Props {
   attractionId: string;
 }
