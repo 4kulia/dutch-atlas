@@ -30,7 +30,7 @@ export interface RouteCardData {
 // instead of bucketising everything into separate sections.
 export type TimelineItem =
   | { kind: 'text'; value: string }
-  | { kind: 'tool'; label: string }
+  | { kind: 'tool'; label: string; count: number }
   | { kind: 'cards'; items: CardItem[] }
   | { kind: 'route'; data: RouteCardData; sig: string };
 
@@ -73,13 +73,24 @@ export function useAgentChat({ lang, travelMode, sessionId, onSessionCreated }: 
   });
   const abortRef = useRef<AbortController | null>(null);
 
-  // When the active session changes (user picks a different conversation,
-  // or "New chat" was triggered), hydrate from the server.
+  // We track the session id we own internally so we can ignore prop changes
+  // that simply echo back what we just told the parent (e.g. the agent
+  // reported `sessionFresh=true` and we called onSessionCreated, which
+  // bumped the parent's prop to that same id).
+  const internalSidRef = useRef<string | null>(null);
+  useEffect(() => {
+    internalSidRef.current = state.sessionId;
+  });
+
+  // When the active session changes from the OUTSIDE (user picks another
+  // chat), hydrate from the server. Skip when the prop simply matches what
+  // we already have internally — that would clobber a stream in progress.
   useEffect(() => {
     if (!sessionId) {
       setState({ messages: [], isStreaming: false, error: null, sessionId: null });
       return;
     }
+    if (internalSidRef.current === sessionId) return;
     let cancelled = false;
     apiFetch<{ session: { id: string }; messages: ApiSessionMessage[] }>(`/api/chat/sessions/${sessionId}`)
       .then((res) => {
@@ -322,7 +333,16 @@ function handleEvent(
       ...prev,
       messages: prev.messages.map((m) => {
         if (m.id !== assistantId) return m;
-        return { ...m, items: [...m.items, { kind: 'tool', label }] };
+        const items = m.items.slice();
+        const last = items[items.length - 1];
+        // Collapse consecutive identical tool hints — e.g. agent looking up
+        // 7 places in a row should show "📖 читаю описание ×7", not 7 lines.
+        if (last && last.kind === 'tool' && last.label === label) {
+          items[items.length - 1] = { ...last, count: last.count + 1 };
+        } else {
+          items.push({ kind: 'tool', label, count: 1 });
+        }
+        return { ...m, items };
       }),
     }));
     return;

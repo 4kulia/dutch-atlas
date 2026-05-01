@@ -116,13 +116,11 @@ export default function App() {
     });
   }, []);
 
-  // Clear the map's highlight/route overlay when the user picks a marker
-  // directly — they're done with the agent's pre-built focus.
-  useEffect(() => {
-    if (selectedId) {
-      setHighlightedIds(null);
-    }
-  }, [selectedId]);
+  // We deliberately do NOT clear highlightedIds when selectedId changes —
+  // a route should stay highlighted while the user opens individual stops
+  // from the RouteCard. The highlight clears only when the agent emits a
+  // new map.show / route.show, or when the user activates a different
+  // RouteCard from the chat.
 
   // Activate a different route on the map (called when the user clicks an
   // older RouteCard in the chat).
@@ -135,6 +133,15 @@ export default function App() {
     },
     [],
   );
+
+  // Drop the active highlight + route from the map, going back to the
+  // unfiltered marker view. Only renders the chip when something is on.
+  const hasMapFocus = activeRoute !== null || (highlightedIds !== null && highlightedIds.size > 0);
+  const onClearMapFocus = useCallback(() => {
+    setActiveRoute(null);
+    setActiveRouteSig(null);
+    setHighlightedIds(null);
+  }, []);
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
   }, [selectedId, toggleFavorite]);
@@ -171,6 +178,25 @@ export default function App() {
             favoritesCount={favoriteIds.size}
           />
         </div>
+        {hasMapFocus && (
+          <div className="pointer-events-auto mt-2 flex justify-center">
+            <button
+              type="button"
+              onClick={onClearMapFocus}
+              className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-ink-900/85 px-3 py-1.5 text-[12px] font-medium text-ink-100 backdrop-blur-md transition-colors hover:border-accent/70"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              Снять выделение
+            </button>
+          </div>
+        )}
       </div>
       <AttractionDrawer
         attraction={selected}

@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { useLang } from '../i18n/LanguageProvider';
 import { useAuth } from '../auth/AuthProvider';
+import { useAttractions } from '../data/AttractionsProvider';
 import { useAgentChat, type AgentMessage, type CardItem, type RouteCardData } from '../agent/useAgentChat';
 import { agentBus } from '../agent/events';
 import { renderMarkdown } from '../agent/markdown';
@@ -541,6 +542,11 @@ function AssistantTurn({
           return (
             <div key={idx} className="text-[12px] italic text-ink-500">
               {item.label}
+              {item.count > 1 && (
+                <span className="ml-1.5 rounded bg-ink-800/60 px-1.5 py-[1px] not-italic text-[10.5px] tabular-nums text-ink-300">
+                  ×{item.count}
+                </span>
+              )}
             </div>
           );
         }
@@ -696,6 +702,7 @@ function RouteCard({
   onTravelModeChange: (m: TravelMode) => void;
 }) {
   const directions = useRouteDirections();
+  const { byId } = useAttractions();
   let counter = 0;
   void sig;
   return (
@@ -765,7 +772,20 @@ function RouteCard({
                   className="h-1.5 w-6 rounded-full"
                   style={{ background: color }}
                 />
-                <span className="text-[13px] font-semibold text-ink-100">{day.title}</span>
+                <span className="flex-1 truncate text-[13px] font-semibold text-ink-100">
+                  {day.title}
+                </span>
+                <a
+                  href={buildGoogleMapsDirUrl(day, byId, travelMode)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={lang === 'ru' ? 'Открыть в Google Maps' : 'Open in Google Maps'}
+                  aria-label={lang === 'ru' ? 'Открыть в Google Maps' : 'Open in Google Maps'}
+                  className="inline-flex items-center gap-1 rounded-full border border-ink-700/55 px-2 py-[2px] text-[10.5px] font-medium text-ink-300 transition-colors hover:border-accent/55 hover:text-accent"
+                >
+                  <IconExternal />
+                  Maps
+                </a>
               </div>
               <ul className="px-3 pb-2.5">
                 {day.stops.map((stop, idx) => {
@@ -838,6 +858,60 @@ const TRAVEL_MODE_ICON: Record<TravelMode, string> = {
   BICYCLING: '🚲',
   TRANSIT: '🚌',
 };
+
+const TRAVEL_MODE_GMAPS: Record<TravelMode, string> = {
+  DRIVING: 'driving',
+  WALKING: 'walking',
+  BICYCLING: 'bicycling',
+  TRANSIT: 'transit',
+};
+
+// Build a Google Maps "directions" deeplink for one route day.
+// https://developers.google.com/maps/documentation/urls/get-started#directions-action
+//
+// Up to 9 waypoints between origin and destination (free-tier limit). When
+// the day has more stops, we keep origin + destination and shrink the
+// waypoint list down — this matches what Google Maps would do anyway.
+function buildGoogleMapsDirUrl(
+  day: RouteCardData['days'][number],
+  byId: ReadonlyMap<string, import('../types').Attraction>,
+  travelMode: TravelMode,
+): string {
+  const stops = day.stops
+    .map((s) => byId.get(s.slug)?.coordinates)
+    .filter((c): c is { lat: number; lng: number } => !!c);
+  if (stops.length === 0) return 'https://maps.google.com/';
+  const fmt = (c: { lat: number; lng: number }) => `${c.lat},${c.lng}`;
+  const origin = stops[0]!;
+  const destination = stops[stops.length - 1] ?? origin;
+  const middle = stops.slice(1, -1);
+  // Cap waypoints at 9 (free-tier Google Maps URL limit).
+  const trimmed = middle.length > 9 ? middle.slice(0, 9) : middle;
+  const params = new URLSearchParams({
+    api: '1',
+    origin: fmt(origin),
+    destination: fmt(destination),
+    travelmode: TRAVEL_MODE_GMAPS[travelMode],
+  });
+  if (trimmed.length > 0) {
+    params.set('waypoints', trimmed.map(fmt).join('|'));
+  }
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
+
+function IconExternal() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M14 5h5v5M19 5L10 14M5 9v10h10"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 function ScoreBadge({ value }: { value: number }) {
   const text = value.toFixed(2);

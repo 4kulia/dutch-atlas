@@ -338,110 +338,240 @@ function RouteOverlay({ route, byId, onSelect, travelMode }: RouteOverlayProps) 
     const service = new google.maps.DirectionsService();
     const collectedLegs: RouteLeg[] = [];
 
+    function drawSolidLine(path: google.maps.LatLngLiteral[], color: string) {
+      if (path.length < 2) return;
+      const line = new google.maps.Polyline({
+        path,
+        strokeColor: color,
+        strokeOpacity: travelMode === 'WALKING' || travelMode === 'BICYCLING' ? 0 : 0.85,
+        strokeWeight: 4,
+        icons:
+          travelMode === 'WALKING' || travelMode === 'BICYCLING'
+            ? [
+                {
+                  icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, strokeColor: color, strokeWeight: 3, scale: 3 },
+                  offset: '0',
+                  repeat: '12px',
+                },
+              ]
+            : undefined,
+        map,
+      });
+      overlays.push(line);
+    }
+
+    function drawDashedFallback(from: google.maps.LatLngLiteral, to: google.maps.LatLngLiteral, color: string) {
+      const fallback = new google.maps.Polyline({
+        path: [from, to],
+        strokeColor: color,
+        strokeOpacity: 0,
+        icons: [
+          {
+            icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, strokeColor: color, strokeWeight: 3, scale: 3 },
+            offset: '0',
+            repeat: '14px',
+          },
+        ],
+        map,
+      });
+      overlays.push(fallback);
+    }
+
+    function pathFromResult(result: google.maps.DirectionsResult): {
+      path: google.maps.LatLngLiteral[];
+      legMinutes: number;
+      legMeters: number;
+    } {
+      const path: google.maps.LatLngLiteral[] = [];
+      let legMinutes = 0;
+      let legMeters = 0;
+      const legs = result.routes[0]?.legs ?? [];
+      for (const leg of legs) {
+        if (leg.steps) {
+          for (const step of leg.steps) {
+            if (step.path) for (const p of step.path) path.push({ lat: p.lat(), lng: p.lng() });
+          }
+        }
+        legMinutes += Math.round((leg.duration?.value ?? 0) / 60);
+        legMeters += leg.distance?.value ?? 0;
+      }
+      return { path, legMinutes, legMeters };
+    }
+
+    async function tryPair(
+      from: google.maps.LatLngLiteral,
+      to: google.maps.LatLngLiteral,
+    ): Promise<google.maps.DirectionsResult | null> {
+      const params: google.maps.DirectionsRequest = {
+        origin: from,
+        destination: to,
+        travelMode: googleTravelMode(travelMode),
+        ...(travelMode === 'TRANSIT' ? { transitOptions: { departureTime: nextMorning() } } : {}),
+      };
+      try {
+        return await service.route(params);
+      } catch (err) {
+        console.warn('[directions] pair failed', err);
+        return null;
+      }
+    }
+
+    // When a stop's coordinates land somewhere unrouteable (a dam in the
+    // middle of water, a beach, an offshore island), reverse-geocode it to
+    // the nearest street address and use THAT for the routing request. The
+    // numbered pin still sits at the original point on the map, but the
+    // polyline reaches as close as Google can manage by car/bike.
+    const snapCache = new Map<string, google.maps.LatLngLiteral | null>();
+    async function snapToNearestRoad(
+      point: google.maps.LatLngLiteral,
+    ): Promise<google.maps.LatLngLiteral | null> {
+      const key = `${point.lat.toFixed(4)},${point.lng.toFixed(4)}`;
+      if (snapCache.has(key)) return snapCache.get(key) ?? null;
+      const geocoder = new google.maps.Geocoder();
+      try {
+        const res = await geocoder.geocode({ location: point });
+        // Prefer types that imply a routable place — fall back to anything
+        // with a geometry.location, since the Geocoder returns the closest
+        // address it can find for water/forest points.
+        const ranked = (res.results ?? []).slice().sort((a, b) => {
+          const score = (r: google.maps.GeocoderResult) =>
+            r.types.includes('street_address') ? 0
+            : r.types.includes('route') ? 1
+            : r.types.includes('premise') ? 2
+            : r.types.includes('postal_code') ? 3
+            : r.types.includes('locality') ? 4
+            : 5;
+          return score(a) - score(b);
+        });
+        const best = ranked[0];
+        if (best?.geometry?.location) {
+          const snapped = {
+            lat: best.geometry.location.lat(),
+            lng: best.geometry.location.lng(),
+          };
+          // Skip the snap if it didn't actually move — saves a redundant retry.
+          if (Math.abs(snapped.lat - point.lat) < 1e-5 && Math.abs(snapped.lng - point.lng) < 1e-5) {
+            snapCache.set(key, null);
+            return null;
+          }
+          snapCache.set(key, snapped);
+          return snapped;
+        }
+      } catch (err) {
+        console.warn('[directions] geocode snap failed', err);
+      }
+      snapCache.set(key, null);
+      return null;
+    }
+
+    async function tryPairWithSnap(
+      from: google.maps.LatLngLiteral,
+      to: google.maps.LatLngLiteral,
+    ): Promise<google.maps.DirectionsResult | null> {
+      // 1. Direct first.
+      const direct = await tryPair(from, to);
+      if (direct) return direct;
+      // 2. Snap the destination to the nearest road and retry. Most failures
+      //    we see are caused by a point landing in water (Afsluitdijk, etc).
+      const snappedTo = await snapToNearestRoad(to);
+      if (snappedTo) {
+        const r = await tryPair(from, snappedTo);
+        if (r) return r;
+      }
+      // 3. Same for the origin. Useful when the *previous* stop is also
+      //    a problematic dam/island and its point bleeds into this leg.
+      const snappedFrom = await snapToNearestRoad(from);
+      if (snappedFrom && snappedTo) {
+        const r = await tryPair(snappedFrom, snappedTo);
+        if (r) return r;
+      }
+      if (snappedFrom) {
+        const r = await tryPair(snappedFrom, to);
+        if (r) return r;
+      }
+      return null;
+    }
+
     async function buildDay(day: RouteDay, dayIdx: number) {
       const stops = day.stops
         .map((s) => ({ slug: s.slug, coords: byId.get(s.slug)?.coordinates }))
         .filter((s): s is { slug: string; coords: google.maps.LatLngLiteral } => !!s.coords);
       if (stops.length < 2) return;
-      const origin = stops[0]!.coords;
-      const destination = stops[stops.length - 1]!.coords;
-      const waypoints = stops.slice(1, -1).map((s) => ({ location: s.coords, stopover: true }));
       const color = DAY_COLORS[dayIdx % DAY_COLORS.length] ?? '#ff6a3d';
 
-      // For TRANSIT we can't pass intermediate waypoints — Google rejects them.
-      // Build the day in pairwise legs in that case.
-      const requests = travelMode === 'TRANSIT'
-        ? stops.slice(1).map((to, i) => ({
-            origin: stops[i]!.coords,
-            destination: to.coords,
-            mode: travelMode,
-            stopIdx: i + 1,
-          }))
-        : [{
-            origin,
-            destination,
-            waypoints,
-            mode: travelMode,
-            stopIdx: -1, // single multi-leg request
-          }];
-
-      for (const req of requests) {
+      // Strategy A — for non-transit modes, try the whole day in one request
+      // with waypoints. Fast and low-quota.
+      if (travelMode !== 'TRANSIT' && stops.length >= 2) {
         const params: google.maps.DirectionsRequest = {
-          origin: req.origin,
-          destination: req.destination,
-          travelMode: googleTravelMode(req.mode),
-          ...(req.stopIdx === -1 && 'waypoints' in req && req.waypoints?.length
-            ? { waypoints: req.waypoints }
-            : {}),
-          ...(req.mode === 'TRANSIT'
-            ? { transitOptions: { departureTime: nextMorning() } }
-            : {}),
+          origin: stops[0]!.coords,
+          destination: stops[stops.length - 1]!.coords,
+          waypoints: stops.slice(1, -1).map((s) => ({ location: s.coords, stopover: true })),
+          travelMode: googleTravelMode(travelMode),
         };
-
         try {
           const result = await service.route(params);
           if (cancelled) return;
-
-          // Build a polyline from the path of every leg's overview coordinates.
-          const path: google.maps.LatLngLiteral[] = [];
           const legs = result.routes[0]?.legs ?? [];
-          legs.forEach((leg, legIdx) => {
-            if (leg.steps) {
-              for (const step of leg.steps) {
-                if (step.path) for (const p of step.path) path.push({ lat: p.lat(), lng: p.lng() });
+          if (legs.length === stops.length - 1) {
+            const fullPath: google.maps.LatLngLiteral[] = [];
+            legs.forEach((leg, legIdx) => {
+              if (leg.steps) {
+                for (const step of leg.steps) {
+                  if (step.path) for (const p of step.path) fullPath.push({ lat: p.lat(), lng: p.lng() });
+                }
               }
-            }
-            const minutes = Math.round((leg.duration?.value ?? 0) / 60);
-            const meters = leg.distance?.value ?? 0;
-            const stopIdx = req.stopIdx === -1 ? legIdx + 1 : req.stopIdx;
-            collectedLegs.push({ dayIdx, stopIdx, minutes, meters });
-          });
-
-          if (path.length >= 2) {
-            const line = new google.maps.Polyline({
-              path,
-              strokeColor: color,
-              strokeOpacity: travelMode === 'WALKING' || travelMode === 'BICYCLING' ? 0 : 0.85,
-              strokeWeight: 4,
-              icons:
-                travelMode === 'WALKING' || travelMode === 'BICYCLING'
-                  ? [
-                      {
-                        icon: {
-                          path: 'M 0,-1 0,1',
-                          strokeOpacity: 1,
-                          strokeColor: color,
-                          strokeWeight: 3,
-                          scale: 3,
-                        },
-                        offset: '0',
-                        repeat: '12px',
-                      },
-                    ]
-                  : undefined,
-              map,
+              const minutes = Math.round((leg.duration?.value ?? 0) / 60);
+              const meters = leg.distance?.value ?? 0;
+              collectedLegs.push({ dayIdx, stopIdx: legIdx + 1, minutes, meters });
             });
-            overlays.push(line);
+            drawSolidLine(fullPath, color);
+            return;
           }
         } catch (err) {
-          // Directions failed for this leg — drop a straight dashed fallback.
-          console.warn('[directions] leg failed', err);
-          const fallback = new google.maps.Polyline({
-            path: [req.origin, req.destination],
-            strokeColor: color,
-            strokeOpacity: 0,
-            icons: [
-              {
-                icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, strokeColor: color, strokeWeight: 3, scale: 3 },
-                offset: '0',
-                repeat: '14px',
-              },
-            ],
-            map,
-          });
-          overlays.push(fallback);
-          if (!cancelled) directions.setError(humanizeDirectionsError(err));
+          // Fall through to pairwise.
+          console.warn('[directions] day request failed, trying pairwise', err);
         }
+      }
+
+      // Strategy B — pairwise with snap-to-road fallback. Each leg gets its
+      // own request; if it fails we reverse-geocode the endpoints to the
+      // nearest road and retry, then fall back to a dashed line.
+      let degraded = false;
+      for (let i = 1; i < stops.length; i++) {
+        if (cancelled) return;
+        const from = stops[i - 1]!.coords;
+        const to = stops[i]!.coords;
+        const result = await tryPairWithSnap(from, to);
+        if (!result) {
+          drawDashedFallback(from, to, color);
+          degraded = true;
+          continue;
+        }
+        const { path, legMinutes, legMeters } = pathFromResult(result);
+        if (path.length < 2) {
+          drawDashedFallback(from, to, color);
+          degraded = true;
+          continue;
+        }
+
+        // The snapped endpoints can be tens of metres from the original
+        // numbered pin. Add a short dashed tail from the routed end-point
+        // back to the original stop coordinate so the line visually meets
+        // the marker even when the actual road stops short.
+        const first = path[0]!;
+        const last = path[path.length - 1]!;
+        if (distanceMeters(first, from) > 50) drawDashedFallback(from, first, color);
+        drawSolidLine(path, color);
+        if (distanceMeters(last, to) > 50) drawDashedFallback(last, to, color);
+
+        collectedLegs.push({ dayIdx, stopIdx: i, minutes: legMinutes, meters: legMeters });
+      }
+      if (degraded && !cancelled) {
+        directions.setError(
+          travelMode === 'TRANSIT'
+            ? 'Для некоторых отрезков нет общественного транспорта — показаны пунктиром.'
+            : 'Часть отрезков не пробивается — показаны пунктиром.',
+        );
       }
     }
 
@@ -515,12 +645,18 @@ function nextMorning(): Date {
   return d;
 }
 
-function humanizeDirectionsError(err: unknown): string {
-  const msg = err instanceof Error ? err.message : String(err);
-  if (/ZERO_RESULTS/i.test(msg)) return 'Маршрут не найден для выбранного транспорта.';
-  if (/OVER_QUERY_LIMIT/i.test(msg)) return 'Слишком много запросов к Directions, попробуйте позже.';
-  if (/NOT_FOUND/i.test(msg)) return 'Не удалось найти точку маршрута.';
-  return 'Не удалось построить маршрут — показан прямой пунктир.';
+// Quick haversine in metres — used to decide whether the snapped-routed
+// endpoint diverged from the original stop enough to warrant a small
+// dashed "last metres" connector to the marker.
+function distanceMeters(a: google.maps.LatLngLiteral, b: google.maps.LatLngLiteral): number {
+  const R = 6_371_000;
+  const toRad = (x: number) => (x * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
 }
 
 function NumberedPin({ n, color }: { n: number; color: string }) {

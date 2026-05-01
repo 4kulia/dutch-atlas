@@ -11,15 +11,17 @@ agentRouter.use(requireAuth);
 
 const Body = z.object({
   message: z.string().min(1).max(2000),
-  lang: z.enum(['ru', 'en']).optional(),
-  travelMode: z.enum(['DRIVING', 'WALKING', 'BICYCLING', 'TRANSIT']).optional(),
-  sessionId: z.string().min(1).max(40).optional(),
+  lang: z.enum(['ru', 'en']).optional().nullable(),
+  travelMode: z.enum(['DRIVING', 'WALKING', 'BICYCLING', 'TRANSIT']).optional().nullable(),
+  // Frontend sends `null` when no session is active yet — we accept it as
+  // "create a new one for me".
+  sessionId: z.string().min(1).max(40).optional().nullable(),
   history: z.array(
     z.object({
       role: z.enum(['user', 'assistant']),
       content: z.string().max(10_000),
     }),
-  ).max(20).optional(),
+  ).max(20).optional().nullable(),
 });
 
 // Per-user rate limit: 60 messages per hour. Tracked in-memory; sufficient
@@ -55,10 +57,13 @@ agentRouter.post('/messages', async (req: AuthedRequest, res) => {
   const travelMode = parsed.data.travelMode ?? 'DRIVING';
   const history: ChatTurn[] = parsed.data.history ?? [];
   const message = parsed.data.message.trim();
+  // Normalise null → undefined for the rest of the function.
+  // (zod's `.optional().nullable()` lets `null` through; we treat it as absent.)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   // Resolve session — either an existing one owned by the caller, or a
   // freshly created session whose title we'll set from this first prompt.
-  let sessionId = parsed.data.sessionId ?? null;
+  let sessionId: string | null = parsed.data.sessionId ?? null;
   let sessionFresh = false;
   if (sessionId) {
     const owner = await query<{ id: string }>(
