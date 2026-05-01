@@ -25,12 +25,14 @@ User-submitted places are part of the schema (`source`, `status`, `author`, opti
 
 ```bash
 # dev — bring postgres up, run api in a container, run vite locally
-docker compose up -d postgres                 # postgres on 127.0.0.1:5440
-docker compose up -d api                      # auto-migrates schema; on :8091
+docker compose up -d postgres                 # postgres on 127.0.0.1:5440 (host) → :5432 (container)
+docker compose up -d api                      # auto-migrates schema on every boot; listens on :8091
 npm run dev                                   # vite on :5173 (proxies /api → :8091)
 
 # api dev outside docker (faster iteration)
+cd api && npm install
 cd api && npm run dev                         # tsx watch src/index.ts
+cd api && npm run migrate                     # apply schema migrations against DATABASE_URL
 
 # production build / preview
 npm run build                                 # tsc -b && vite build → dist/
@@ -77,6 +79,55 @@ There are no automated tests in this repo.
 
 Schema migration runner lives in `api/src/migrate.ts`. Each `*.sql` in `api/src/schema/` runs once, in lexical order, recorded in `_migrations`. The init file (`001_init.sql`) is idempotent and runs on every boot — it bootstraps `pgvector` and the bookkeeping table.
 
+### Top-level UI orchestration
+
+`App.tsx` owns the cross-cutting state that ties the chat panel, the map, and the drawer together:
+
+- `selectedId` — drives the drawer; written to `?id=` in the URL.
+- `active: Set<Category>` + `favoritesOnly` — filter chips.
+- `chatOpen`, `myPlacesOpen` — sheets/drawers visibility.
+- `highlightedIds: Set<string> | null` — which markers stay full-opacity. Non-matching markers fade to `opacity: 0.28`. Set when the agent emits `map.show` (multi-slug) or `route.show`, or when the user clicks an inactive RouteCard in the chat.
+- `activeRoute` + `activeRouteSig` — the structured route currently drawn on the map. `sig` is a UUID minted in `useAgentChat` when each `route.show` event arrives, so multiple RouteCards in the same conversation can be told apart and individually re-activated.
+- `travelMode: 'DRIVING' | 'WALKING' | 'BICYCLING' | 'TRANSIT'` — sent to the agent on every turn AND to `RouteOverlay` for Directions requests. Single source of truth, lives in App and is mirrored down through `ChatPanel` props.
+
+`App` subscribes to `agentBus` (`src/agent/events.ts`) — the only channel between the chat hook and the rest of the UI. Three event types: `drawer.open`, `map.show`, `route.show`. The hook emits, App orchestrates state. We don't lift state up into a context because only App needs it; passing through props is shallower.
+
+The "Снять выделение / Clear selection" chip under the category filters appears whenever `highlightedIds` or `activeRoute` is non-null, and reverts the map to the unfiltered marker view in one click. Selecting a marker via the drawer does NOT clear the highlight (a route should stay drawn while you read about its stops).
+
+### Chat panel & timeline state
+
+`useAgentChat({lang, travelMode, sessionId, onSessionCreated})` is the only hook that talks to `/api/agent/messages`. State shape is intentional:
+
+```ts
+type TimelineItem =
+  | { kind: 'text'; value: string }
+  | { kind: 'tool'; label: string; count: number }
+  | { kind: 'cards'; items: CardItem[] }
+  | { kind: 'route'; data: RouteCardData; sig: string };
+
+interface AgentMessage {
+  id; role; text; items: TimelineItem[]; isStreaming?
+}
+```
+
+Every assistant turn is a *timeline of items in arrival order*, not separate buckets for text/cards/route. Critical reasons:
+
+1. The model often interleaves tool calls and text — bucketing by type would put all cards at the bottom regardless of when they appeared.
+2. Consecutive identical tool hints collapse: when the model calls `get_attraction_details` 7 times in a row we render one row with `×7`. Logic lives in the `tool` event handler — if `last item is tool with same label`, bump `count`; otherwise push a new item.
+3. Card dedup is global per turn — a slug shown earlier in any `cards` item is filtered out of subsequent ones. Order of the *first* mention is preserved.
+
+Markdown rendering for assistant text uses a homemade ~80-line parser (`src/agent/markdown.tsx`). Supports paragraphs, `#/##/###` headings, `---` rules, ordered/unordered lists, **bold**, *italic*, `code`. No HTML injection. Don't add `react-markdown` — we explicitly chose not to.
+
+Replaying a stored session needs a different path: `rebuildAssistantTimeline(text, uiEvents)` reconstructs items from the persisted reply text + the `ui_events` JSON column. Tool hints are dropped (they were ephemeral progress indicators — re-showing them out of order would be misleading).
+
+### Chat panel layout (mobile)
+
+Bottom sheet with three snap points: `peek` (~9svh), `mid` (~62svh), `full` (~92svh). Drag handle at the top supports both tap-to-cycle and pointer drag (60-px threshold). On desktop (`md:`) it switches to a 440-px right drawer with full height — closed-state transform is responsive (`translate-y-full` on mobile, `translate-x-full` on desktop), pointer-events disabled when closed.
+
+Heights use `svh`, not `dvh`, on iOS — Safari's URL bar transition makes `dvh` shrink with a delay and crops the composer. Don't change this without testing on a real iPhone.
+
+The composer auto-grows to ~5 lines and pulls the sheet to `full` on focus. `visualViewport` API watches for keyboard appearance — when the viewport ratio drops below 0.8 we force `full`.
+
 ### AI agent
 
 `api/src/agent.ts` owns the Anthropic streaming loop. Tools registered in `api/src/tools/index.ts`:
@@ -97,18 +148,27 @@ System prompt rules worth knowing about:
 
 ### Google Directions on the frontend
 
-`MapView.RouteOverlay` runs the active route through `google.maps.DirectionsService` per day. The strategy:
+`MapView.RouteOverlay` runs the active route through `google.maps.DirectionsService` per day. The strategy stack:
 
-1. **Whole-day request** with waypoints in non-transit modes. If it succeeds and the leg count matches the stop count, draw one solid polyline.
-2. **Pairwise** otherwise. Each leg gets its own request.
-3. **Snap-to-road** on `ZERO_RESULTS`: reverse-geocode the failing endpoint via `google.maps.Geocoder` (preferring `street_address` → `route` → `premise` → `postal_code` → `locality`) and retry.
-4. **Dashed fallback** if even snap fails.
+1. **Whole-day request** with waypoints in non-transit modes (one API call per day).
+2. **Pairwise** otherwise — each leg becomes its own request. Used when (1) fails or for `TRANSIT` (Google rejects waypoints in transit mode).
+3. **Snap-to-road** on `ZERO_RESULTS`: `google.maps.Geocoder` reverse-geocodes the failing endpoint, preferring `street_address` → `route` → `premise` → `postal_code` → `locality`. Retry with the snapped point. Snap results are cached per-coordinate within a single overlay build to avoid re-asking for the same dam.
+4. **Dashed fallback** as a last resort. The RouteCard surfaces a short explanation that some legs degraded.
 
-If a snapped endpoint diverges from the original numbered marker by more than 50 m, a short dashed "last metres" tail visually links them.
+If a snapped endpoint diverged from the original numbered pin by more than 50 m (typical for stops on dams or man-made islands), a short **dashed "last metres" tail** visually links the routed path back to the marker. This makes it honest: the line says "you can drive here, the rest of the way is on foot".
 
-`RouteDirectionsContext` collects per-leg duration + distance and feeds them back to the RouteCard so the chat shows real ETAs (not haversine guesses).
+`RouteDirectionsContext` (`src/agent/routeDirections.tsx`) is the read/write surface for live timing data. `RouteOverlay` writes per-leg `{minutes, meters}` into it as Directions returns; `RouteCard` reads via `findLeg(legs, dayIdx, stopIdx)` and shows actual ETAs and distances next to each stop. When live data isn't available yet the card falls back to the haversine estimate emitted by `build_route` (with a leading `≈`).
 
-The travel-mode segmented control lives in App state and is sent to the API on every turn. For TRANSIT we split into pairwise requests (Google rejects waypoints) and use `departureTime = tomorrow 09:00`.
+For TRANSIT we use `transitOptions.departureTime = tomorrow 09:00` — better schedule matches than "right now" if the user is browsing late.
+
+### RouteCard internals
+
+Lives in `ChatPanel.tsx`. Per route:
+
+- Travel-mode segmented control (Drive / Walk / Bike / Transit) — single source of truth in App state, change reaches every RouteCard via prop.
+- Active vs inactive visual: active card has accent ring + "НА КАРТЕ / on map" pill; inactive cards have a "На карту / show map" button that calls `onActivateRoute(sig, data)` to reactivate that itinerary on the map.
+- Each day header has a **Maps** deeplink — formatted as `https://www.google.com/maps/dir/?api=1&origin=…&destination=…&waypoints=…|…&travelmode=driving`. Capped at 9 waypoints (Google's free-tier URL limit). Travel mode follows the segmented control.
+- Each stop button goes through `onSelectStop(slug)` → opens the drawer for that place; the active route stays highlighted.
 
 ### Auth
 
@@ -122,9 +182,14 @@ The frontend reads no JWT directly — `apiFetch` always sends `credentials: 'in
 
 ### Sessions UI
 
-`SessionsOverlay` in `ChatPanel` lists past chats (newest first), with first user message as preview. New chat = `setSessionId(null)`; the next prompt creates one. Switching to an existing session re-hydrates messages from `/api/chat/sessions/:id` and re-emits the latest route on the bus so the map matches.
+`SessionsOverlay` in `ChatPanel` slides in over the chat body (`absolute inset-0`) — list of past chats newest-first, each with the first user prompt as preview, hover-to-reveal delete button.
 
-There's a race-fix that's load-bearing: the `useEffect` on `sessionId` skips the network round-trip when the prop simply echoes a session id we just created during a streaming send (otherwise it would clobber the in-flight reply with the half-saved DB state).
+Lifecycle:
+- "New chat" button → `setSessionId(null)` + `chat.reset()`. The next `send()` creates a server-side session in `POST /api/agent/messages` (sessionId is omitted in the body) and the SSE `start` event echoes back `{ sessionId, sessionFresh: true }`. The hook calls `onSessionCreated(id)` so `ChatPanel.setSessionId(id)` happens, and `refreshSessions()` re-pulls the list.
+- Picking an old session → `setSessionId(id)`. `useEffect on sessionId` fetches `/api/chat/sessions/:id`, calls `rebuildAssistantTimeline(text, uiEvents)` for each assistant message, and **re-emits the latest `route.show` on the bus** so the map snaps back to whatever this conversation last looked like. Without that re-emit, switching sessions would leave a stale or empty map.
+- Delete → cascade-deletes messages on the server (FK `ON DELETE CASCADE`), then if the deleted session was active we drop chat state.
+
+There's a race-fix that's **load-bearing**: `useEffect on sessionId` keeps `internalSidRef.current` in sync with the hook's own state.sessionId, and skips the network round-trip when the prop simply echoes a session id we just minted ourselves during a streaming send. Without this guard, the `onSessionCreated → setSessionId(prop) → useEffect` chain hits the API while the stream is still writing, gets the half-saved DB state (only the user message), and clobbers the in-flight assistant reply with empty timeline.
 
 ### i18n
 
