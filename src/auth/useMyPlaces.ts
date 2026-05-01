@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { pb } from './pb';
+import { apiFetch } from './api';
 import { useAuth } from './AuthProvider';
 import type { NoteRecord } from './useNotes';
 
@@ -7,6 +7,13 @@ interface MyPlacesState {
   favoriteIds: Set<string>;
   notesByAttraction: Map<string, NoteRecord[]>;
   isLoading: boolean;
+}
+
+interface ApiNote {
+  id: string;
+  body: string;
+  created_at: string;
+  attraction_id: string;
 }
 
 export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
@@ -25,22 +32,23 @@ export function useMyPlaces(refreshKey: number = 0): MyPlacesState {
     setIsLoading(true);
 
     Promise.all([
-      pb.collection('favorites').getFullList<{ attraction_id: string }>({
-        filter: `user = "${user.id}"`,
-      }),
-      pb.collection('notes').getFullList<NoteRecord>({
-        filter: `user = "${user.id}"`,
-        sort: '-created',
-      }),
+      apiFetch<{ favorites: Array<{ attractionId: string }> }>('/api/favorites'),
+      apiFetch<{ notes: ApiNote[] }>('/api/notes'),
     ])
       .then(([favs, notes]) => {
         if (cancelled) return;
-        setFavoriteIds(new Set(favs.map((f) => f.attraction_id)));
+        setFavoriteIds(new Set(favs.favorites.map((f) => f.attractionId)));
         const grouped = new Map<string, NoteRecord[]>();
-        for (const n of notes) {
+        for (const n of notes.notes) {
+          const rec: NoteRecord = {
+            id: n.id,
+            body: n.body,
+            created: n.created_at,
+            attraction_id: n.attraction_id,
+          };
           const list = grouped.get(n.attraction_id);
-          if (list) list.push(n);
-          else grouped.set(n.attraction_id, [n]);
+          if (list) list.push(rec);
+          else grouped.set(n.attraction_id, [rec]);
         }
         setNotesByAttraction(grouped);
       })

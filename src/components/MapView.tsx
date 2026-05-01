@@ -1,4 +1,10 @@
-import { APIProvider, AdvancedMarker, Map as GMap, useAdvancedMarkerRef, useMap } from '@vis.gl/react-google-maps';
+import {
+  APIProvider,
+  AdvancedMarker,
+  Map as GMap,
+  useAdvancedMarkerRef,
+  useMap,
+} from '@vis.gl/react-google-maps';
 import { MarkerClusterer, type Marker } from '@googlemaps/markerclusterer';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAttractions } from '../data/AttractionsProvider';
@@ -6,6 +12,9 @@ import type { Attraction, Category } from '../types';
 import { MarkerIcon } from './MarkerIcon';
 import { useLang } from '../i18n/LanguageProvider';
 import { UI } from '../i18n/strings';
+import type { RouteDay } from '../agent/events';
+import { useRouteDirections, type RouteLeg } from '../agent/routeDirections';
+import type { TravelMode } from '../agent/travelMode';
 
 const NETHERLANDS_CENTER = { lat: 52.1, lng: 5.3 };
 const CARIBBEAN_CENTER = { lat: 14.5, lng: -67.5 };
@@ -18,9 +27,21 @@ interface Props {
   onSelect: (id: string | null) => void;
   activeCategories: Set<Category>;
   attractions?: Attraction[];
+  highlightedIds?: Set<string> | null;
+  route?: { title?: string; days: RouteDay[] } | null;
+  travelMode?: TravelMode;
 }
 
-export function MapView({ apiKey, selectedId, onSelect, activeCategories, attractions }: Props) {
+export function MapView({
+  apiKey,
+  selectedId,
+  onSelect,
+  activeCategories,
+  attractions,
+  highlightedIds,
+  route,
+  travelMode,
+}: Props) {
   const { lang } = useLang();
   const { attractions: allAttractions } = useAttractions();
   const visible = useMemo(
@@ -60,6 +81,9 @@ export function MapView({ apiKey, selectedId, onSelect, activeCategories, attrac
           visible={visible}
           selectedId={selectedId}
           onSelect={onSelect}
+          highlightedIds={highlightedIds ?? null}
+          route={route ?? null}
+          travelMode={travelMode ?? 'DRIVING'}
           flyTo={onlyCaribbean ? CARIBBEAN_CENTER : NETHERLANDS_CENTER}
           flyZoom={onlyCaribbean ? 6 : 7}
           flyKey={onlyCaribbean ? 'carib' : 'nl'}
@@ -73,12 +97,25 @@ interface BodyProps {
   visible: Attraction[];
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  highlightedIds: Set<string> | null;
+  route: { title?: string; days: RouteDay[] } | null;
+  travelMode: TravelMode;
   flyTo: google.maps.LatLngLiteral;
   flyZoom: number;
   flyKey: string;
 }
 
-function MapBody({ visible, selectedId, onSelect, flyTo, flyZoom, flyKey }: BodyProps) {
+function MapBody({
+  visible,
+  selectedId,
+  onSelect,
+  highlightedIds,
+  route,
+  travelMode,
+  flyTo,
+  flyZoom,
+  flyKey,
+}: BodyProps) {
   const map = useMap();
   const { byId } = useAttractions();
 
@@ -99,27 +136,77 @@ function MapBody({ visible, selectedId, onSelect, flyTo, flyZoom, flyKey }: Body
     const targetZoom = Math.max(currentZoom, 10);
     map.panTo(a.coordinates);
     if (targetZoom !== currentZoom) {
-      // Brief delay so the pan animates first.
       window.setTimeout(() => map.setZoom(targetZoom), 220);
     }
   }, [map, selectedId, byId]);
 
+  // When the agent highlights a set of places (search shortlist or route),
+  // fit them all in the viewport with some padding so the user immediately
+  // sees the answer without panning.
+  useEffect(() => {
+    if (!map) return;
+    const slugs = highlightedIds && highlightedIds.size > 0
+      ? Array.from(highlightedIds)
+      : route
+        ? route.days.flatMap((d) => d.stops.map((s) => s.slug))
+        : null;
+    if (!slugs || slugs.length === 0) return;
+    const bounds = new google.maps.LatLngBounds();
+    let hits = 0;
+    for (const s of slugs) {
+      const a = byId.get(s);
+      if (!a) continue;
+      bounds.extend(a.coordinates);
+      hits += 1;
+    }
+    if (hits === 0) return;
+    if (hits === 1) {
+      // fitBounds with one point would zoom to max; pan + reasonable zoom instead.
+      map.panTo(bounds.getCenter());
+      const z = map.getZoom() ?? 7;
+      if (z < 10) map.setZoom(10);
+    } else {
+      map.fitBounds(bounds, { top: 80, right: 80, bottom: 80, left: 80 });
+    }
+  }, [map, highlightedIds, route, byId]);
+
   return (
-    <ClusteredMarkers
-      visible={visible}
-      selectedId={selectedId}
-      onSelect={onSelect}
-    />
+    <>
+      <ClusteredMarkers
+        visible={visible}
+        selectedId={selectedId}
+        onSelect={onSelect}
+        highlightedIds={highlightedIds}
+        // When a route is active, hide the regular markers for its stops —
+        // the numbered overlay represents them instead.
+        suppressedIds={routeStopIds(route)}
+      />
+      {route && (
+        <RouteOverlay
+          route={route}
+          byId={byId}
+          onSelect={onSelect}
+          travelMode={travelMode}
+        />
+      )}
+    </>
   );
+}
+
+function routeStopIds(route: { days: RouteDay[] } | null): Set<string> | null {
+  if (!route) return null;
+  return new Set(route.days.flatMap((d) => d.stops.map((s) => s.slug)));
 }
 
 interface ClusterProps {
   visible: Attraction[];
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  highlightedIds: Set<string> | null;
+  suppressedIds: Set<string> | null;
 }
 
-function ClusteredMarkers({ visible, selectedId, onSelect }: ClusterProps) {
+function ClusteredMarkers({ visible, selectedId, onSelect, highlightedIds, suppressedIds }: ClusterProps) {
   const map = useMap();
   const [markers, setMarkers] = useState<Record<string, Marker>>({});
 
@@ -135,7 +222,11 @@ function ClusteredMarkers({ visible, selectedId, onSelect }: ClusterProps) {
     if (toAdd.length > 0) clusterer.addMarkers(toAdd);
   }, [clusterer, markers]);
 
-  const visibleIds = useMemo(() => new Set(visible.map((a) => a.id)), [visible]);
+  const renderable = useMemo(
+    () => (suppressedIds ? visible.filter((a) => !suppressedIds.has(a.id)) : visible),
+    [visible, suppressedIds],
+  );
+  const visibleIds = useMemo(() => new Set(renderable.map((a) => a.id)), [renderable]);
 
   // Drop registered markers that are no longer visible (filtered out).
   useEffect(() => {
@@ -165,11 +256,12 @@ function ClusteredMarkers({ visible, selectedId, onSelect }: ClusterProps) {
 
   return (
     <>
-      {visible.map((a) => (
+      {renderable.map((a) => (
         <AttractionMarker
           key={a.id}
           attraction={a}
           selected={selectedId === a.id}
+          dimmed={highlightedIds ? !highlightedIds.has(a.id) : false}
           updateMarker={updateMarker}
           onClick={() => onSelect(a.id)}
         />
@@ -181,11 +273,12 @@ function ClusteredMarkers({ visible, selectedId, onSelect }: ClusterProps) {
 interface MarkerProps {
   attraction: Attraction;
   selected: boolean;
+  dimmed: boolean;
   updateMarker: (id: string, marker: Marker | null) => void;
   onClick: () => void;
 }
 
-function AttractionMarker({ attraction, selected, updateMarker, onClick }: MarkerProps) {
+function AttractionMarker({ attraction, selected, dimmed, updateMarker, onClick }: MarkerProps) {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const id = attraction.id;
 
@@ -201,7 +294,390 @@ function AttractionMarker({ attraction, selected, updateMarker, onClick }: Marke
       onClick={onClick}
       title={attraction.name.ru}
     >
-      <MarkerIcon category={attraction.category} selected={selected} />
+      <div style={{ opacity: dimmed ? 0.28 : 1, transition: 'opacity 200ms ease' }}>
+        <MarkerIcon category={attraction.category} selected={selected} />
+      </div>
     </AdvancedMarker>
+  );
+}
+
+// ── Route overlay ──────────────────────────────────────────────────────
+// Numbered markers + a polyline connecting them. We use the Google Maps
+// Polyline directly (not a wrapper) since @vis.gl/react-google-maps
+// doesn't ship a Polyline component yet for the v3 API.
+
+interface RouteOverlayProps {
+  route: { title?: string; days: RouteDay[] };
+  byId: ReadonlyMap<string, Attraction>;
+  onSelect: (id: string | null) => void;
+  travelMode: TravelMode;
+}
+
+const DAY_COLORS = ['#ff6a3d', '#0ea5e9', '#a855f7', '#10b981', '#f59e0b'];
+
+function RouteOverlay({ route, byId, onSelect, travelMode }: RouteOverlayProps) {
+  const map = useMap();
+  const directions = useRouteDirections();
+
+  // Build the actual route polyline via google.maps.DirectionsService — same
+  // engine Google Maps uses, so the line follows real roads/transit/bike lanes.
+  // We render our own polyline (not DirectionsRenderer) so we can colour it
+  // per day and keep our existing numbered pins. Falls back to a straight
+  // dashed line between stops when DirectionsService refuses (e.g. transit
+  // unavailable for a leg).
+  useEffect(() => {
+    if (!map || !route) return;
+    if (typeof google === 'undefined' || !google.maps?.DirectionsService) return;
+
+    let cancelled = false;
+    const overlays: google.maps.Polyline[] = [];
+
+    directions.setLoading(true);
+    directions.setError(null);
+
+    const service = new google.maps.DirectionsService();
+    const collectedLegs: RouteLeg[] = [];
+
+    function drawSolidLine(path: google.maps.LatLngLiteral[], color: string) {
+      if (path.length < 2) return;
+      const line = new google.maps.Polyline({
+        path,
+        strokeColor: color,
+        strokeOpacity: travelMode === 'WALKING' || travelMode === 'BICYCLING' ? 0 : 0.85,
+        strokeWeight: 4,
+        icons:
+          travelMode === 'WALKING' || travelMode === 'BICYCLING'
+            ? [
+                {
+                  icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, strokeColor: color, strokeWeight: 3, scale: 3 },
+                  offset: '0',
+                  repeat: '12px',
+                },
+              ]
+            : undefined,
+        map,
+      });
+      overlays.push(line);
+    }
+
+    function drawDashedFallback(from: google.maps.LatLngLiteral, to: google.maps.LatLngLiteral, color: string) {
+      const fallback = new google.maps.Polyline({
+        path: [from, to],
+        strokeColor: color,
+        strokeOpacity: 0,
+        icons: [
+          {
+            icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, strokeColor: color, strokeWeight: 3, scale: 3 },
+            offset: '0',
+            repeat: '14px',
+          },
+        ],
+        map,
+      });
+      overlays.push(fallback);
+    }
+
+    function pathFromResult(result: google.maps.DirectionsResult): {
+      path: google.maps.LatLngLiteral[];
+      legMinutes: number;
+      legMeters: number;
+    } {
+      const path: google.maps.LatLngLiteral[] = [];
+      let legMinutes = 0;
+      let legMeters = 0;
+      const legs = result.routes[0]?.legs ?? [];
+      for (const leg of legs) {
+        if (leg.steps) {
+          for (const step of leg.steps) {
+            if (step.path) for (const p of step.path) path.push({ lat: p.lat(), lng: p.lng() });
+          }
+        }
+        legMinutes += Math.round((leg.duration?.value ?? 0) / 60);
+        legMeters += leg.distance?.value ?? 0;
+      }
+      return { path, legMinutes, legMeters };
+    }
+
+    async function tryPair(
+      from: google.maps.LatLngLiteral,
+      to: google.maps.LatLngLiteral,
+    ): Promise<google.maps.DirectionsResult | null> {
+      const params: google.maps.DirectionsRequest = {
+        origin: from,
+        destination: to,
+        travelMode: googleTravelMode(travelMode),
+        ...(travelMode === 'TRANSIT' ? { transitOptions: { departureTime: nextMorning() } } : {}),
+      };
+      try {
+        return await service.route(params);
+      } catch (err) {
+        console.warn('[directions] pair failed', err);
+        return null;
+      }
+    }
+
+    // When a stop's coordinates land somewhere unrouteable (a dam in the
+    // middle of water, a beach, an offshore island), reverse-geocode it to
+    // the nearest street address and use THAT for the routing request. The
+    // numbered pin still sits at the original point on the map, but the
+    // polyline reaches as close as Google can manage by car/bike.
+    const snapCache = new Map<string, google.maps.LatLngLiteral | null>();
+    async function snapToNearestRoad(
+      point: google.maps.LatLngLiteral,
+    ): Promise<google.maps.LatLngLiteral | null> {
+      const key = `${point.lat.toFixed(4)},${point.lng.toFixed(4)}`;
+      if (snapCache.has(key)) return snapCache.get(key) ?? null;
+      const geocoder = new google.maps.Geocoder();
+      try {
+        const res = await geocoder.geocode({ location: point });
+        // Prefer types that imply a routable place — fall back to anything
+        // with a geometry.location, since the Geocoder returns the closest
+        // address it can find for water/forest points.
+        const ranked = (res.results ?? []).slice().sort((a, b) => {
+          const score = (r: google.maps.GeocoderResult) =>
+            r.types.includes('street_address') ? 0
+            : r.types.includes('route') ? 1
+            : r.types.includes('premise') ? 2
+            : r.types.includes('postal_code') ? 3
+            : r.types.includes('locality') ? 4
+            : 5;
+          return score(a) - score(b);
+        });
+        const best = ranked[0];
+        if (best?.geometry?.location) {
+          const snapped = {
+            lat: best.geometry.location.lat(),
+            lng: best.geometry.location.lng(),
+          };
+          // Skip the snap if it didn't actually move — saves a redundant retry.
+          if (Math.abs(snapped.lat - point.lat) < 1e-5 && Math.abs(snapped.lng - point.lng) < 1e-5) {
+            snapCache.set(key, null);
+            return null;
+          }
+          snapCache.set(key, snapped);
+          return snapped;
+        }
+      } catch (err) {
+        console.warn('[directions] geocode snap failed', err);
+      }
+      snapCache.set(key, null);
+      return null;
+    }
+
+    async function tryPairWithSnap(
+      from: google.maps.LatLngLiteral,
+      to: google.maps.LatLngLiteral,
+    ): Promise<google.maps.DirectionsResult | null> {
+      // 1. Direct first.
+      const direct = await tryPair(from, to);
+      if (direct) return direct;
+      // 2. Snap the destination to the nearest road and retry. Most failures
+      //    we see are caused by a point landing in water (Afsluitdijk, etc).
+      const snappedTo = await snapToNearestRoad(to);
+      if (snappedTo) {
+        const r = await tryPair(from, snappedTo);
+        if (r) return r;
+      }
+      // 3. Same for the origin. Useful when the *previous* stop is also
+      //    a problematic dam/island and its point bleeds into this leg.
+      const snappedFrom = await snapToNearestRoad(from);
+      if (snappedFrom && snappedTo) {
+        const r = await tryPair(snappedFrom, snappedTo);
+        if (r) return r;
+      }
+      if (snappedFrom) {
+        const r = await tryPair(snappedFrom, to);
+        if (r) return r;
+      }
+      return null;
+    }
+
+    async function buildDay(day: RouteDay, dayIdx: number) {
+      const stops = day.stops
+        .map((s) => ({ slug: s.slug, coords: byId.get(s.slug)?.coordinates }))
+        .filter((s): s is { slug: string; coords: google.maps.LatLngLiteral } => !!s.coords);
+      if (stops.length < 2) return;
+      const color = DAY_COLORS[dayIdx % DAY_COLORS.length] ?? '#ff6a3d';
+
+      // Strategy A — for non-transit modes, try the whole day in one request
+      // with waypoints. Fast and low-quota.
+      if (travelMode !== 'TRANSIT' && stops.length >= 2) {
+        const params: google.maps.DirectionsRequest = {
+          origin: stops[0]!.coords,
+          destination: stops[stops.length - 1]!.coords,
+          waypoints: stops.slice(1, -1).map((s) => ({ location: s.coords, stopover: true })),
+          travelMode: googleTravelMode(travelMode),
+        };
+        try {
+          const result = await service.route(params);
+          if (cancelled) return;
+          const legs = result.routes[0]?.legs ?? [];
+          if (legs.length === stops.length - 1) {
+            const fullPath: google.maps.LatLngLiteral[] = [];
+            legs.forEach((leg, legIdx) => {
+              if (leg.steps) {
+                for (const step of leg.steps) {
+                  if (step.path) for (const p of step.path) fullPath.push({ lat: p.lat(), lng: p.lng() });
+                }
+              }
+              const minutes = Math.round((leg.duration?.value ?? 0) / 60);
+              const meters = leg.distance?.value ?? 0;
+              collectedLegs.push({ dayIdx, stopIdx: legIdx + 1, minutes, meters });
+            });
+            drawSolidLine(fullPath, color);
+            return;
+          }
+        } catch (err) {
+          // Fall through to pairwise.
+          console.warn('[directions] day request failed, trying pairwise', err);
+        }
+      }
+
+      // Strategy B — pairwise with snap-to-road fallback. Each leg gets its
+      // own request; if it fails we reverse-geocode the endpoints to the
+      // nearest road and retry, then fall back to a dashed line.
+      let degraded = false;
+      for (let i = 1; i < stops.length; i++) {
+        if (cancelled) return;
+        const from = stops[i - 1]!.coords;
+        const to = stops[i]!.coords;
+        const result = await tryPairWithSnap(from, to);
+        if (!result) {
+          drawDashedFallback(from, to, color);
+          degraded = true;
+          continue;
+        }
+        const { path, legMinutes, legMeters } = pathFromResult(result);
+        if (path.length < 2) {
+          drawDashedFallback(from, to, color);
+          degraded = true;
+          continue;
+        }
+
+        // The snapped endpoints can be tens of metres from the original
+        // numbered pin. Add a short dashed tail from the routed end-point
+        // back to the original stop coordinate so the line visually meets
+        // the marker even when the actual road stops short.
+        const first = path[0]!;
+        const last = path[path.length - 1]!;
+        if (distanceMeters(first, from) > 50) drawDashedFallback(from, first, color);
+        drawSolidLine(path, color);
+        if (distanceMeters(last, to) > 50) drawDashedFallback(last, to, color);
+
+        collectedLegs.push({ dayIdx, stopIdx: i, minutes: legMinutes, meters: legMeters });
+      }
+      if (degraded && !cancelled) {
+        directions.setError(
+          travelMode === 'TRANSIT'
+            ? 'Для некоторых отрезков нет общественного транспорта — показаны пунктиром.'
+            : 'Часть отрезков не пробивается — показаны пунктиром.',
+        );
+      }
+    }
+
+    (async () => {
+      try {
+        for (let i = 0; i < route.days.length; i++) {
+          if (cancelled) return;
+          await buildDay(route.days[i]!, i);
+        }
+      } finally {
+        if (!cancelled) {
+          directions.setLegs(collectedLegs);
+          directions.setLoading(false);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      for (const l of overlays) l.setMap(null);
+    };
+    // We intentionally exclude `directions` from deps — its setters are stable
+    // and including the whole context value would re-fire on every leg update.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map, route, byId, travelMode]);
+
+  let counter = 0;
+  return (
+    <>
+      {route.days.flatMap((day, dayIdx) =>
+        day.stops.map((stop) => {
+          const a = byId.get(stop.slug);
+          if (!a) return null;
+          const n = ++counter;
+          const color = DAY_COLORS[dayIdx % DAY_COLORS.length] ?? '#ff6a3d';
+          return (
+            <AdvancedMarker
+              key={`route-${dayIdx}-${stop.slug}`}
+              position={a.coordinates}
+              title={`${n}. ${a.name.ru}`}
+              onClick={() => onSelect(stop.slug)}
+            >
+              <NumberedPin n={n} color={color} />
+            </AdvancedMarker>
+          );
+        }),
+      )}
+    </>
+  );
+}
+
+function googleTravelMode(mode: TravelMode): google.maps.TravelMode {
+  switch (mode) {
+    case 'WALKING':
+      return google.maps.TravelMode.WALKING;
+    case 'BICYCLING':
+      return google.maps.TravelMode.BICYCLING;
+    case 'TRANSIT':
+      return google.maps.TravelMode.TRANSIT;
+    default:
+      return google.maps.TravelMode.DRIVING;
+  }
+}
+
+function nextMorning(): Date {
+  // Use tomorrow at 09:00 local — better transit matches than "right now"
+  // (and avoids midnight schedule gaps when the user is browsing late).
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  d.setHours(9, 0, 0, 0);
+  return d;
+}
+
+// Quick haversine in metres — used to decide whether the snapped-routed
+// endpoint diverged from the original stop enough to warrant a small
+// dashed "last metres" connector to the marker.
+function distanceMeters(a: google.maps.LatLngLiteral, b: google.maps.LatLngLiteral): number {
+  const R = 6_371_000;
+  const toRad = (x: number) => (x * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+function NumberedPin({ n, color }: { n: number; color: string }) {
+  return (
+    <div
+      style={{
+        width: 32,
+        height: 32,
+        borderRadius: 999,
+        background: color,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.35), 0 0 0 3px rgba(255,255,255,0.85)',
+        color: '#0b0f17',
+        fontWeight: 700,
+        fontSize: 14,
+        display: 'grid',
+        placeItems: 'center',
+        fontVariantNumeric: 'tabular-nums',
+        cursor: 'pointer',
+      }}
+    >
+      {n}
+    </div>
   );
 }

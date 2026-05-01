@@ -13,3 +13,5 @@ pb/pb_data
 .vscode
 .idea
 coverage
+.env.api
+.env.agent

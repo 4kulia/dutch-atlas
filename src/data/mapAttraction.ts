@@ -1,25 +1,25 @@
 import type { Attraction, AttractionSource, AttractionStatus, Category } from '../types';
 import { isCategory } from '../types';
 
-// PocketBase row shape returned by /api/collections/attractions/records.
-export interface PbAttractionRecord {
+// Shape returned by GET /api/attractions and /api/attractions/:id.
+// Snake_case mirrors the Postgres column names — keeps the client thin.
+export interface ApiAttractionRecord {
   id: string;
-  slug: string;
   category: string;
   name_ru: string;
   name_en: string;
-  short_ru: string;
-  short_en: string;
-  full_ru: string;
-  full_en: string;
+  short_ru: string | null;
+  short_en: string | null;
+  full_ru: string | null;
+  full_en: string | null;
   lat: number;
   lng: number;
-  video_id?: string;
-  video_time?: number | null;
-  video_time_fmt?: string;
-  author?: string;
+  video_id: string | null;
+  video_time: number | null;
+  video_time_fmt: string | null;
   source: AttractionSource;
   status: AttractionStatus;
+  author_id: string | null;
 }
 
 function formatVideoTime(seconds?: number | null): string | undefined {
@@ -29,12 +29,12 @@ function formatVideoTime(seconds?: number | null): string | undefined {
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-export function mapPbToAttraction(r: PbAttractionRecord): Attraction {
+export function mapApiToAttraction(r: ApiAttractionRecord): Attraction {
   const canonical: Category = isCategory(r.category) ? r.category : 'other';
   const hasVideo = r.video_id && r.video_time != null;
 
   return {
-    id: r.slug,
+    id: r.id,
     recordId: r.id,
     category: canonical,
     rawCategory: canonical === r.category ? undefined : r.category,
@@ -42,11 +42,11 @@ export function mapPbToAttraction(r: PbAttractionRecord): Attraction {
     short: { ru: r.short_ru ?? '', en: r.short_en ?? '' },
     full: { ru: r.full_ru ?? '', en: r.full_en ?? '' },
     coordinates: { lat: r.lat, lng: r.lng },
-    videoId: hasVideo ? r.video_id : undefined,
+    videoId: hasVideo ? r.video_id ?? undefined : undefined,
     videoTime: hasVideo ? r.video_time ?? undefined : undefined,
     videoTimeFormatted: hasVideo ? r.video_time_fmt || formatVideoTime(r.video_time) : undefined,
     source: r.source,
     status: r.status,
-    authorId: r.author || undefined,
+    authorId: r.author_id ?? undefined,
   };
 }

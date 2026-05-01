@@ -6,14 +6,13 @@ services:
       args:
         VITE_GOOGLE_MAPS_API_KEY: ${VITE_GOOGLE_MAPS_API_KEY:-}
         VITE_GOOGLE_MAPS_MAP_ID: ${VITE_GOOGLE_MAPS_MAP_ID:-}
-        VITE_POCKETBASE_URL: ${VITE_POCKETBASE_URL:-/pb}
     image: nl-attractions:latest
     container_name: nl-attractions
     restart: unless-stopped
     depends_on:
-      - pb
+      - api
     ports:
-      # Bind to localhost only — the host nginx in front handles TLS and the public port.
+      # Bind to localhost only — host nginx terminates TLS and exposes the public port.
       - "127.0.0.1:8080:80"
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
@@ -21,26 +20,53 @@ services:
       timeout: 5s
       retries: 3
 
-  pb:
-    build:
-      context: ./pb
-      dockerfile: Dockerfile
-    image: nl-attractions-pb:latest
-    container_name: nl-attractions-pb
+  postgres:
+    # pgvector image is the official postgres + the pgvector extension preinstalled.
+    image: pgvector/pgvector:pg17
+    container_name: nl-attractions-postgres
     restart: unless-stopped
-    ports:
-      # Same pattern: localhost-only; host nginx exposes /pb/* publicly.
-      - "127.0.0.1:8090:8090"
+    environment:
+      POSTGRES_USER: nl_attractions
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+      POSTGRES_DB: nl_attractions
     volumes:
-      - pb_data:/pb/pb_data
-      # Bind-mount migrations so adding a new file in pb/pb_migrations
-      # is picked up on container restart without rebuilding the image.
-      - ./pb/pb_migrations:/pb/pb_migrations:ro
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      # Localhost only. The api service reaches it via the docker network as `postgres`.
+      # External port 5440 to avoid clashing with the docker desktop reserved range.
+      - "127.0.0.1:5440:5432"
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8090/api/health"]
+      test: ["CMD-SHELL", "pg_isready -U nl_attractions -d nl_attractions"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: nl-attractions-api:latest
+    container_name: nl-attractions-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env.api
+    environment:
+      DATABASE_URL: postgres://nl_attractions:${POSTGRES_PASSWORD}@postgres:5432/nl_attractions
+      NODE_ENV: ${NODE_ENV:-production}
+      # Force IPv4 first — Docker bridge has no IPv6 connectivity by default,
+      # and undici (Node fetch) stalls on Happy Eyeballs to e.g. oauth2.googleapis.com
+      # when the AAAA record is preferred.
+      NODE_OPTIONS: --dns-result-order=ipv4first
+    ports:
+      - "127.0.0.1:8091:8091"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8091/api/health"]
       interval: 30s
       timeout: 5s
       retries: 3
 
 volumes:
-  pb_data:
+  postgres_data:

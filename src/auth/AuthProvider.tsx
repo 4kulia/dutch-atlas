@@ -1,82 +1,82 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { pb, toAuthUser, type AuthUser } from './pb';
+import { ApiError, apiFetch } from './api';
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+  avatarUrl: string | null;
+}
 
 interface AuthContextValue {
   user: AuthUser | null;
   isAuthenticated: boolean;
-  signInWithGoogle: () => Promise<void>;
-  signOut: () => void;
-  isSigningIn: boolean;
+  isLoading: boolean;
+  signInWithGoogle: () => void;
+  signOut: () => Promise<void>;
   error: string | null;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(() => toAuthUser(pb.authStore.record));
-  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // pb.authStore persists in localStorage across reloads. Subscribe to changes
-  // (login/logout/refresh) and mirror them into React state.
+  // Hydrate on mount from the session cookie. /api/auth/me returns 401 when
+  // the cookie is absent or the session has expired — both treated as
+  // signed-out, no error to surface to the user.
   useEffect(() => {
-    const unsubscribe = pb.authStore.onChange(() => {
-      setUser(toAuthUser(pb.authStore.record));
-    });
-    return () => unsubscribe();
-  }, []);
-
-  // Validate that the persisted token still maps to an existing user record.
-  // If we wiped pb_data on the server (or the user got deleted), the token
-  // looks valid but every subsequent write fails with relation errors. Detect
-  // by calling authRefresh — if PB rejects it, drop the auth state and let
-  // the user sign in again with a fresh token.
-  useEffect(() => {
-    if (!pb.authStore.isValid) return;
-    pb.collection('users')
-      .authRefresh()
+    let cancelled = false;
+    apiFetch<{ user: AuthUser }>('/api/auth/me')
+      .then((res) => {
+        if (!cancelled) setUser(res.user);
+      })
       .catch((err) => {
-        const status = (err as { status?: number })?.status;
-        if (status === 401 || status === 403 || status === 404) {
-          console.warn('[auth] stored token references a missing user — clearing');
-          pb.authStore.clear();
+        if (cancelled) return;
+        if (err instanceof ApiError && err.status === 401) {
+          setUser(null);
+        } else {
+          console.error('[auth] /me failed', err);
         }
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoading(false);
       });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const signInWithGoogle = useCallback(async () => {
+  const signInWithGoogle = useCallback(() => {
     setError(null);
-    setIsSigningIn(true);
+    const returnTo = encodeURIComponent(
+      window.location.pathname + window.location.search + window.location.hash,
+    );
+    window.location.assign(`/api/auth/google?return_to=${returnTo}`);
+  }, []);
+
+  const signOut = useCallback(async () => {
     try {
-      await pb.collection('users').authWithOAuth2({ provider: 'google' });
-      // The store change above will populate `user`.
+      await apiFetch('/api/auth/logout', { method: 'POST' });
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Sign-in failed';
-      // Distinguish user closing the popup from real failures.
-      if (!/cancel|popup|abort/i.test(message)) {
-        setError(message);
-        console.error('[auth] Google sign-in failed', err);
-      }
+      console.warn('[auth] logout failed', err);
     } finally {
-      setIsSigningIn(false);
+      setUser(null);
     }
-  }, []);
-
-  const signOut = useCallback(() => {
-    pb.authStore.clear();
-    setError(null);
   }, []);
 
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
       isAuthenticated: user !== null,
+      isLoading,
       signInWithGoogle,
       signOut,
-      isSigningIn,
       error,
     }),
-    [user, signInWithGoogle, signOut, isSigningIn, error],
+    [user, isLoading, signInWithGoogle, signOut, error],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

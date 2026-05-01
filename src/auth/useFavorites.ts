@@ -1,16 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
-import { pb } from './pb';
+import { ApiError, apiFetch } from './api';
 import { useAuth } from './AuthProvider';
 
-interface FavoriteRecord {
-  id: string;
-  user: string;
-  attraction_id: string;
+interface FavoritesResponse {
+  favorites: Array<{ attractionId: string; createdAt: string }>;
 }
 
 interface FavoritesState {
   ids: Set<string>;
-  recordsByAttraction: Map<string, string>; // attraction_id → favorite record id
   isLoading: boolean;
   toggle: (attractionId: string) => Promise<void>;
 }
@@ -18,25 +15,22 @@ interface FavoritesState {
 export function useFavorites(): FavoritesState {
   const { user } = useAuth();
   const [ids, setIds] = useState<Set<string>>(new Set());
-  const [recordsByAttraction, setRecords] = useState<Map<string, string>>(new Map());
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!user) {
       setIds(new Set());
-      setRecords(new Map());
       return;
     }
     let cancelled = false;
     setIsLoading(true);
-    pb.collection('favorites')
-      .getFullList<FavoriteRecord>({ filter: `user = "${user.id}"` })
-      .then((records) => {
-        if (cancelled) return;
-        setIds(new Set(records.map((r) => r.attraction_id)));
-        setRecords(new Map(records.map((r) => [r.attraction_id, r.id])));
+    apiFetch<FavoritesResponse>('/api/favorites')
+      .then((res) => {
+        if (!cancelled) setIds(new Set(res.favorites.map((f) => f.attractionId)));
       })
       .catch((err) => {
+        if (cancelled) return;
+        if (err instanceof ApiError && err.status === 401) return;
         console.error('[favorites] load failed', err);
       })
       .finally(() => {
@@ -50,45 +44,24 @@ export function useFavorites(): FavoritesState {
   const toggle = useCallback(
     async (attractionId: string) => {
       if (!user) return;
-      const existingId = recordsByAttraction.get(attractionId);
-
-      // Optimistic UI: flip immediately, roll back on error.
       const wasFavorite = ids.has(attractionId);
-      const optimisticIds = new Set(ids);
-      const optimisticRecords = new Map(recordsByAttraction);
-      if (wasFavorite) {
-        optimisticIds.delete(attractionId);
-        optimisticRecords.delete(attractionId);
-      } else {
-        optimisticIds.add(attractionId);
-        optimisticRecords.set(attractionId, '__pending__');
-      }
-      setIds(optimisticIds);
-      setRecords(optimisticRecords);
+      const next = new Set(ids);
+      if (wasFavorite) next.delete(attractionId);
+      else next.add(attractionId);
+      setIds(next); // optimistic
 
       try {
-        if (wasFavorite && existingId) {
-          await pb.collection('favorites').delete(existingId);
-        } else {
-          const created = await pb.collection('favorites').create<FavoriteRecord>({
-            user: user.id,
-            attraction_id: attractionId,
-          });
-          setRecords((prev) => {
-            const next = new Map(prev);
-            next.set(attractionId, created.id);
-            return next;
-          });
-        }
+        await apiFetch('/api/favorites', {
+          method: 'POST',
+          body: JSON.stringify({ attractionId, state: wasFavorite ? 'off' : 'on' }),
+        });
       } catch (err) {
-        // Rollback
-        setIds(ids);
-        setRecords(recordsByAttraction);
+        setIds(ids); // rollback
         console.error('[favorites] toggle failed', err);
       }
     },
-    [user, ids, recordsByAttraction],
+    [user, ids],
   );
 
-  return { ids, recordsByAttraction, isLoading, toggle };
+  return { ids, isLoading, toggle };
 }

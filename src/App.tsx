@@ -4,9 +4,12 @@ import { CategoryFilter } from './components/CategoryFilter';
 import { MapView } from './components/MapView';
 import { AttractionDrawer } from './components/AttractionDrawer';
 import { MyPlacesPanel } from './components/MyPlacesPanel';
+import { ChatPanel } from './components/ChatPanel';
 import { useAttractions } from './data/AttractionsProvider';
 import { CATEGORIES, type Category } from './types';
 import { useFavorites } from './auth/useFavorites';
+import { agentBus, type RouteDay } from './agent/events';
+import { DEFAULT_TRAVEL_MODE, type TravelMode } from './agent/travelMode';
 
 function readInitialId(): string | null {
   if (typeof window === 'undefined') return null;
@@ -29,6 +32,11 @@ export default function App() {
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [myPlacesOpen, setMyPlacesOpen] = useState(false);
   const [myPlacesRefreshKey, setMyPlacesRefreshKey] = useState(0);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [highlightedIds, setHighlightedIds] = useState<Set<string> | null>(null);
+  const [activeRoute, setActiveRoute] = useState<{ title?: string; days: RouteDay[] } | null>(null);
+  const [activeRouteSig, setActiveRouteSig] = useState<string | null>(null);
+  const [travelMode, setTravelMode] = useState<TravelMode>(DEFAULT_TRAVEL_MODE);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
   const { attractions, byId, countByCategory: counts } = useAttractions();
 
@@ -76,7 +84,64 @@ export default function App() {
     setMyPlacesOpen(true);
   }, []);
   const onCloseMyPlaces = useCallback(() => setMyPlacesOpen(false), []);
+  const onOpenChat = useCallback(() => setChatOpen(true), []);
+  const onCloseChat = useCallback(() => setChatOpen(false), []);
   const selected = selectedId ? byId.get(selectedId) ?? null : null;
+
+  // Wire the agent's UI events into the existing map+drawer state.
+  useEffect(() => {
+    return agentBus.subscribe((event) => {
+      if (event.type === 'drawer.open') {
+        setSelectedId(event.slug);
+        setMyPlacesOpen(false);
+      } else if (event.type === 'map.show') {
+        if (event.slugs.length === 1) {
+          // Single pick → open it directly; the existing pan/zoom flow runs.
+          setSelectedId(event.slugs[0] ?? null);
+          setHighlightedIds(null);
+          setActiveRoute(null);
+        } else if (event.slugs.length > 1) {
+          // Multi-slug → highlight and let the map fit them in view.
+          setHighlightedIds(new Set(event.slugs));
+          setActiveRoute(null);
+          setSelectedId(null);
+        }
+      } else if (event.type === 'route.show') {
+        setActiveRoute({ title: event.title, days: event.days });
+        setActiveRouteSig(event.sig ?? null);
+        const slugs = event.days.flatMap((d) => d.stops.map((s) => s.slug));
+        setHighlightedIds(new Set(slugs));
+        setSelectedId(null);
+      }
+    });
+  }, []);
+
+  // We deliberately do NOT clear highlightedIds when selectedId changes —
+  // a route should stay highlighted while the user opens individual stops
+  // from the RouteCard. The highlight clears only when the agent emits a
+  // new map.show / route.show, or when the user activates a different
+  // RouteCard from the chat.
+
+  // Activate a different route on the map (called when the user clicks an
+  // older RouteCard in the chat).
+  const onActivateRoute = useCallback(
+    (sig: string, data: { title?: string; days: RouteDay[] }) => {
+      setActiveRoute(data);
+      setActiveRouteSig(sig);
+      setHighlightedIds(new Set(data.days.flatMap((d) => d.stops.map((s) => s.slug))));
+      setSelectedId(null);
+    },
+    [],
+  );
+
+  // Drop the active highlight + route from the map, going back to the
+  // unfiltered marker view. Only renders the chip when something is on.
+  const hasMapFocus = activeRoute !== null || (highlightedIds !== null && highlightedIds.size > 0);
+  const onClearMapFocus = useCallback(() => {
+    setActiveRoute(null);
+    setActiveRouteSig(null);
+    setHighlightedIds(null);
+  }, []);
   const handleToggleFavorite = useCallback(() => {
     if (selectedId) toggleFavorite(selectedId);
   }, [selectedId, toggleFavorite]);
@@ -89,8 +154,15 @@ export default function App() {
         onSelect={onSelect}
         activeCategories={active}
         attractions={visibleAttractions}
+        highlightedIds={highlightedIds}
+        route={activeRoute}
+        travelMode={travelMode}
       />
-      <Header onSelectAttraction={onSelect} onOpenMyPlaces={onOpenMyPlaces} />
+      <Header
+        onSelectAttraction={onSelect}
+        onOpenMyPlaces={onOpenMyPlaces}
+        onOpenChat={onOpenChat}
+      />
       <div
         className="pointer-events-none absolute inset-x-0 z-20"
         style={{ top: 'calc(env(safe-area-inset-top) + 60px)' }}
@@ -106,6 +178,25 @@ export default function App() {
             favoritesCount={favoriteIds.size}
           />
         </div>
+        {hasMapFocus && (
+          <div className="pointer-events-auto mt-2 flex justify-center">
+            <button
+              type="button"
+              onClick={onClearMapFocus}
+              className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-ink-900/85 px-3 py-1.5 text-[12px] font-medium text-ink-100 backdrop-blur-md transition-colors hover:border-accent/70"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+              Снять выделение
+            </button>
+          </div>
+        )}
       </div>
       <AttractionDrawer
         attraction={selected}
@@ -118,6 +209,15 @@ export default function App() {
         refreshKey={myPlacesRefreshKey}
         onClose={onCloseMyPlaces}
         onSelect={onSelect}
+      />
+      <ChatPanel
+        open={chatOpen}
+        onClose={onCloseChat}
+        onSelectAttraction={onSelect}
+        travelMode={travelMode}
+        onTravelModeChange={setTravelMode}
+        activeRouteSig={activeRouteSig}
+        onActivateRoute={onActivateRoute}
       />
     </div>
   );
