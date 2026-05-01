@@ -157,6 +157,50 @@ docker compose logs -f web
 
 После запуска: `curl -I http://127.0.0.1:8080/` должен вернуть `200 OK`.
 
+### Полный шаг‑за‑шагом деплой на сервер (`dutch-atlas.com`)
+
+Один раз настроить:
+
+```bash
+# 1. Установить Docker + compose plugin (если ещё нет)
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER  # перелогиньтесь
+
+# 2. Склонировать репо
+cd /opt
+sudo mkdir dutch-atlas && sudo chown $USER:$USER dutch-atlas
+git clone https://github.com/4kulia/dutch-atlas.git dutch-atlas
+cd dutch-atlas
+
+# 3. Создать .env с production-ключом Google Maps
+cat > .env <<EOF
+VITE_GOOGLE_MAPS_API_KEY=AIza...prod_key
+VITE_POCKETBASE_URL=/pb
+EOF
+
+# 4. Запустить контейнеры
+docker compose up -d
+
+# 5. Создать PocketBase superuser
+docker compose exec pb /pb/pocketbase superuser upsert your-email@example.com 'StrongPasswordHere'
+
+# 6. Подключить Google OAuth (см. Раздел "Аутентификация" выше — Шаг 3)
+#    Загрузите client_secret_*.json на сервер (scp), затем:
+POCKETBASE_URL=http://localhost:8090 \
+POCKETBASE_ADMIN_EMAIL=your-email@example.com \
+POCKETBASE_ADMIN_PASSWORD='StrongPasswordHere' \
+node scripts/setup-pb-oauth.mjs /path/to/client_secret_xxx.json
+#    (или вручную в http://localhost:8090/_/ через SSH-туннель)
+
+# 7. Настроить host nginx (см. ниже) и certbot
+sudo certbot --nginx -d dutch-atlas.com
+```
+
+После каждого `git pull`:
+```bash
+docker compose build && docker compose up -d
+```
+
 ### Пример конфига host nginx (reverse proxy + TLS)
 
 ```nginx
