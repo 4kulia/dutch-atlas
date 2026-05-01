@@ -1,0 +1,668 @@
+{
+  "generated_at": "2026-05-01T21:55:48.039Z",
+  "input_file": "/raw.json",
+  "semantic_threshold": 0.95,
+  "totals": {
+    "raw": 28,
+    "merged": 27,
+    "accepted": 27,
+    "duplicates": 0,
+    "low_score": 0
+  },
+  "voyage_tokens_used": 2971,
+  "proposals": [
+    {
+      "name": "Hall of Fame Tilburg",
+      "coordinates": {
+        "lat": 51.557,
+        "lng": 5.083
+      },
+      "sources": [
+        {
+          "url": "https://www.visitbrabant.com/en/locations/4072/hall-of-fame",
+          "label": "exa-visitbrabant"
+        },
+        {
+          "url": "https://www.visitbrabant.com/en/locations/4073/bartkira",
+          "label": "exa-visitbrabant"
+        }
+      ],
+      "evidence": "Massive Bartkira (Bart Simpson + Akira mashup) mural on Hall of Fame facade since 2015 — Erik Veldmeijer / Frans Boukas project, cult-favourite in Tilburg.",
+      "raw_text": "Huge mural by Frans Boukas, installed by artist Erik Veldmeijer, on Hall of Fame facade since 2015. References the internet Bartkira project — deliberately strange hybrid of pop culture and graphic anarchy. One of the most recognisable, locally-loved murals in Tilburg.",
+      "_meta": {
+        "score": 0.616,
+        "novelty": 0.426,
+        "top_neighbour": {
+          "id": "breda",
+          "name_en": "Breda",
+          "sim": 0.574
+        }
+      }
+    },
+    {
+      "name": "Writer's Block Haniasteeg",
+      "coordinates": {
+        "lat": 53.201,
+        "lng": 5.793
+      },
+      "sources": [
+        {
+          "url": "https://www.friesland.nl/en/leeuwarden-writers-block",
+          "label": "exa-friesland"
+        }
+      ],
+      "evidence": "Mural alley in Leeuwarden — works by Fake Stencils, Kenny Cookwell, Twitch — dense small-passage street-art rather than big single facade.",
+      "raw_text": "Writer's Block in Leeuwarden has multiple mural points; Haniasteeg officially highlighted as place for works by Fake Stencils, Kenny Cookwell and Twitch. Functions as a 'dense' alley location.",
+      "_meta": {
+        "score": 0.495,
+        "novelty": 0.492,
+        "top_neighbour": {
+          "id": "bruk-in-vaterland",
+          "name_en": "Broek in Waterland",
+          "sim": 0.508
+        }
+      }
+    },
+    {
+      "name": "Santa Claus (Buttplug Gnome)",
+      "coordinates": {
+        "lat": 51.918,
+        "lng": 4.476
+      },
+      "sources": [
+        {
+          "url": "https://en.rotterdam.info/locations/santa-claus",
+          "label": "exa-rotterdam-info"
+        }
+      ],
+      "evidence": "Paul McCarthy's bronze 'Santa Claus' / 'Kabouter Buttplug' — Christmas + uncomfortable silhouette + consumerism critique on Eendrachtsplein.",
+      "raw_text": "Eendrachtsplein, Rotterdam. Bronze sculpture by Paul McCarthy, better known as 'Buttplug Gnome', combines a Christmas image with deliberately uncomfortable silhouette and consumerism critique. Long-standing one of Rotterdam's most photographed street oddities. Open public square, accessible 24/7.",
+      "_meta": {
+        "score": 0.481,
+        "novelty": 0.468,
+        "top_neighbour": {
+          "id": "kubicheskie-doma-rotterdam",
+          "name_en": "Cube Houses (Kubuswoningen)",
+          "sim": 0.532
+        }
+      }
+    },
+    {
+      "name": "Exposure",
+      "coordinates": {
+        "lat": 52.519,
+        "lng": 5.461
+      },
+      "sources": [
+        {
+          "url": "https://www.visitflevoland.nl/exposure",
+          "label": "exa-visitflevoland"
+        }
+      ],
+      "evidence": "Antony Gormley's 26-metre crouching man on a Markermeer breakwater — assembled from 1,800 metal elements.",
+      "raw_text": "Strekdam, Lelystad. Almost 26-metre crouching man by Antony Gormley looks at Markermeer from Bataviahaven breakwater. Silhouette assembled from 1,800 metal elements, reads sometimes as a giant, sometimes as a ghost. Best big open sculpture for 'bizarre but not kitsch' searches. Best shots from a distance, weather-dependent.",
+      "_meta": {
+        "score": 0.47,
+        "novelty": 0.45,
+        "top_neighbour": {
+          "id": "evromast",
+          "name_en": "Euromast",
+          "sim": 0.55
+        }
+      }
+    },
+    {
+      "name": "Aurora Mural Heerlen",
+      "coordinates": {
+        "lat": 50.886,
+        "lng": 5.985
+      },
+      "sources": [
+        {
+          "url": "https://www.visitzuidlimburg.com/en/heerlen-street-art-aurora",
+          "label": "exa-visitzuidlimburg"
+        }
+      ],
+      "evidence": "Boa Mistura's ~18,000 m² wrap of an apartment complex — claimed largest mural in Europe, painted with residents' participation.",
+      "raw_text": "Boa Mistura art project on Aurora apartment complex — claimed largest mural in Europe at ~18,000 m². Made together with residents of the complex. One of the rare cases where a mural is simultaneously gigantic, residential and socially oriented.",
+      "_meta": {
+        "score": 0.462,
+        "novelty": 0.436,
+        "top_neighbour": {
+          "id": "centr-vermeera-delft",
+          "name_en": "Vermeer Centrum Delft",
+          "sim": 0.564
+        }
+      }
+    },
+    {
+      "name": "Graffiti Hall of Fame Boxtel",
+      "coordinates": {
+        "lat": 51.591,
+        "lng": 5.331
+      },
+      "sources": [
+        {
+          "url": "https://www.visitbrabant.com/en/locations/3914/graffiti-hall-of-fame-boxtel",
+          "label": "exa-visitbrabant"
+        }
+      ],
+      "evidence": "Tunnel Vision graffiti jam location — annual community-driven legal wall in a Boxtel underpass.",
+      "raw_text": "Grew out of Tunnel Vision graffiti jam, used as legal zone where dozens of artists work annually. The rest of the year tunnel and walls open as gallery. A community-driven counterpoint to Berenkuil.",
+      "_meta": {
+        "score": 0.462,
+        "novelty": 0.437,
+        "top_neighbour": {
+          "id": "kubicheskie-doma-rotterdam",
+          "name_en": "Cube Houses (Kubuswoningen)",
+          "sim": 0.563
+        }
+      }
+    },
+    {
+      "name": "Heerlen Heron",
+      "coordinates": {
+        "lat": 50.888,
+        "lng": 5.969
+      },
+      "sources": [
+        {
+          "url": "https://www.visitzuidlimburg.com/en/heerlen-street-art-heron",
+          "label": "exa-visitzuidlimburg"
+        }
+      ],
+      "evidence": "Black-and-white heron-creature mural by Dave de Leeuw + Vincent Lancee on a former CBS building in Heerlen.",
+      "raw_text": "Black-and-white mural by Dave de Leeuw and Vincent Lancee, fantastical heron-like creature on a former CBS building. Shows how Heerlen murals integrate into post-industrial urban context. One of the strongest single-piece works in Heerlen if you want a single shot rather than a route.",
+      "_meta": {
+        "score": 0.459,
+        "novelty": 0.431,
+        "top_neighbour": {
+          "id": "centr-vermeera-delft",
+          "name_en": "Vermeer Centrum Delft",
+          "sim": 0.569
+        }
+      }
+    },
+    {
+      "name": "Boekenmuur (Bookcase Mural)",
+      "coordinates": {
+        "lat": 52.099,
+        "lng": 5.116
+      },
+      "sources": [
+        {
+          "url": "https://www.discover-utrecht.com/jan-is-de-man-street-art",
+          "label": "exa-discover-utrecht"
+        }
+      ],
+      "evidence": "JanIsDeMan's photoreal bookcase facade at 2e Daalsedijk 69 — the books are favourites of the building's residents.",
+      "raw_text": "Most famous Utrecht mural bookshelf, by artist JanIsDeMan and neighbourhood storytelling. A friendly, instantly-recognisable photoreal bookcase facade where titles are the actual residents' favourites. Best viewed frontally from across the street.",
+      "_meta": {
+        "score": 0.456,
+        "novelty": 0.427,
+        "top_neighbour": {
+          "id": "esher-vo-dvorce",
+          "name_en": "Escher in Het Paleis",
+          "sim": 0.573
+        }
+      }
+    },
+    {
+      "name": "Glass Farm Schijndel",
+      "coordinates": {
+        "lat": 51.62,
+        "lng": 5.434
+      },
+      "sources": [
+        {
+          "url": "https://www.mvrdv.com/projects/176/glass-farm",
+          "label": "exa-mvrdv"
+        }
+      ],
+      "evidence": "MVRDV-designed oversized glass facsimile of an average local farm — civic functions inside, ghost-like translucent farm outside.",
+      "raw_text": "MVRDV project enlarges the image of an 'average local farm' into a glass hybrid public building. Inside — everyday functions; outside — almost ghostly image of a giant glass barn/farm. Visit in changing weather for best reflections and translucency.",
+      "_meta": {
+        "score": 0.454,
+        "novelty": 0.424,
+        "top_neighbour": {
+          "id": "muzey-kreller-myuller",
+          "name_en": "Kröller-Müller Museum",
+          "sim": 0.576
+        }
+      }
+    },
+    {
+      "name": "Groninger Museum",
+      "coordinates": {
+        "lat": 53.215,
+        "lng": 6.566
+      },
+      "sources": [
+        {
+          "url": "https://www.groningermuseum.nl/en/about/architecture",
+          "label": "exa-groninger-museum"
+        }
+      ],
+      "evidence": "Alessandro Mendini's 1994 postmodern pavilion-pile on a museum island — officially considered a 'building of debate'.",
+      "raw_text": "Modern museum building opened 1994, designed as a vivid postmodern composition with Alessandro Mendini as lead architect. The museum itself acknowledges that its appearance still triggers debates about contemporary museum architecture. Best viewed from both pedestrian bridge and embankment to see the pavilion composition.",
+      "_meta": {
+        "score": 0.45,
+        "novelty": 0.416,
+        "top_neighbour": {
+          "id": "muzey-kreller-myuller",
+          "name_en": "Kröller-Müller Museum",
+          "sim": 0.584
+        }
+      }
+    },
+    {
+      "name": "Wall House #2",
+      "coordinates": {
+        "lat": 53.219,
+        "lng": 6.518
+      },
+      "sources": [
+        {
+          "url": "https://www.groningermuseum.nl/en/about/wall-house",
+          "label": "exa-groninger-museum"
+        }
+      ],
+      "evidence": "John Hejduk's only realised Wall House (designed 1973, built 2001) — a philosophical wall with rooms hanging off it like surreal stage scenery.",
+      "raw_text": "The only realised Wall House by John Hejduk — conceived 1973, built in Groningen 2001. Huge central wall with suspended volumes makes the building look both like a theoretical manifesto and a surrealist stage decoration. One of the most radical architectural objects in NL — a philosophical construction more than a livable house. Open only on special occasions/seasonal programs.",
+      "_meta": {
+        "score": 0.442,
+        "novelty": 0.403,
+        "top_neighbour": {
+          "id": "kubicheskie-doma-rotterdam",
+          "name_en": "Cube Houses (Kubuswoningen)",
+          "sim": 0.597
+        }
+      }
+    },
+    {
+      "name": "Het Solse Gat",
+      "coordinates": {
+        "lat": 52.328,
+        "lng": 5.711
+      },
+      "sources": [
+        {
+          "url": "https://www.veluwe.nl/en/solse-gat",
+          "label": "exa-veluwe"
+        }
+      ],
+      "evidence": "Legendary 'hole' in Speulderbos linked to a sinful-monks tale — locals say bells can still be heard at night underground.",
+      "raw_text": "Sprielderweg 205, Drie. In Speulderbos — a legendary 'hole' linked to a tale of sinful monks and a monastery sunk underground. Local legend says bells can still be heard at night. Modern tourist descriptions retain it as officially recognised local saga. Best candidate for 'folk horror' rather than documented tragedy. Visit in daylight, dry weather.",
+      "_meta": {
+        "score": 0.441,
+        "novelty": 0.401,
+        "top_neighbour": {
+          "id": "valkenburg",
+          "name_en": "Valkenburg",
+          "sim": 0.599
+        }
+      }
+    },
+    {
+      "name": "Museum Tot Zover",
+      "coordinates": {
+        "lat": 52.353,
+        "lng": 4.937
+      },
+      "sources": [
+        {
+          "url": "https://totzover.nl/en",
+          "label": "exa-totzover"
+        }
+      ],
+      "evidence": "Dutch museum of death, mourning culture and changing farewell rituals — on the De Nieuwe Ooster cemetery grounds.",
+      "raw_text": "Kruislaan 124, Amsterdam. Dutch museum about death, mourning culture and changing farewell rituals, on grounds of De Nieuwe Ooster. Collection joins historic funerary objects with contemporary art reflection on death. One of the most intelligent 'darkish but not sensational' museums in NL. Tue-Sun 11:00-17:00.",
+      "_meta": {
+        "score": 0.437,
+        "novelty": 0.395,
+        "top_neighbour": {
+          "id": "muzey-kreller-myuller",
+          "name_en": "Kröller-Müller Museum",
+          "sim": 0.605
+        }
+      }
+    },
+    {
+      "name": "Bijlmerramp Memorial",
+      "coordinates": {
+        "lat": 52.314,
+        "lng": 4.957
+      },
+      "sources": [
+        {
+          "url": "https://buitenkunstamsterdam.nl/groeiend-monument",
+          "label": "exa-buitenkunst"
+        }
+      ],
+      "evidence": "'Tree That Saw Everything' marks the spot of the 4 October 1992 El Al cargo crash into Klein Kruitberg & Groeneveen — 43 dead.",
+      "raw_text": "Memorial space marks the place of the 4 October 1992 plane crash, when the aircraft crashed into the residential blocks Klein Kruitberg and Groeneveen; 43 killed. 'Tree That Saw Everything' became the heart of Groeiend Monument. One of the most important urban tragic memorials in modern NL. Open public space — keep respectful distance for photos.",
+      "_meta": {
+        "score": 0.436,
+        "novelty": 0.394,
+        "top_neighbour": {
+          "id": "evromast",
+          "name_en": "Euromast",
+          "sim": 0.606
+        }
+      }
+    },
+    {
+      "name": "Herinneringscentrum Kamp Westerbork",
+      "coordinates": {
+        "lat": 52.917,
+        "lng": 6.605
+      },
+      "sources": [
+        {
+          "url": "https://kampwesterbork.nl/en",
+          "label": "exa-kampwesterbork"
+        }
+      ],
+      "evidence": "Started 1939 as Jewish refugee camp, became transit gate to Auschwitz/Sobibor — traces of barracks visible on the historic terrain.",
+      "raw_text": "Westerbork started 1939 as a camp for Jewish refugees, then became a transit camp — 'gateway to hell' on path to Auschwitz and Sobibor. Traces of former camp still visible on historic terrain. Key place for understanding mechanics of deportations from NL. Museum/cafe Mon-Fri 10:00-17:00, weekends/holidays 11:00-17:00; May 4 until 19:00.",
+      "_meta": {
+        "score": 0.435,
+        "novelty": 0.392,
+        "top_neighbour": {
+          "id": "burtanzh",
+          "name_en": "Bourtange",
+          "sim": 0.608
+        }
+      }
+    },
+    {
+      "name": "Sluishuis",
+      "coordinates": {
+        "lat": 52.357,
+        "lng": 4.998
+      },
+      "sources": [
+        {
+          "url": "https://big.dk/projects/sluishuis-3057",
+          "label": "exa-big"
+        }
+      ],
+      "evidence": "BIG / Barcode Architects 'floating' block on IJburg — a mega-block, bridge, arch and pier all at once with a giant water cut-out.",
+      "raw_text": "Floating quarter-block in the water, designed by BIG and Barcode Architects. Modern Amsterdam block with huge cut-out and water passage. One side raised, other steps down to the city. The silhouette makes it one of the most anomalous new residential buildings in NL — simultaneously mega-block, bridge, arch, pier.",
+      "_meta": {
+        "score": 0.432,
+        "novelty": 0.386,
+        "top_neighbour": {
+          "id": "kubicheskie-doma-rotterdam",
+          "name_en": "Cube Houses (Kubuswoningen)",
+          "sim": 0.614
+        }
+      }
+    },
+    {
+      "name": "Nationaal Monument Kamp Vught",
+      "coordinates": {
+        "lat": 51.659,
+        "lng": 5.275
+      },
+      "sources": [
+        {
+          "url": "https://www.nmkampvught.nl/en/visit",
+          "label": "exa-kampvught"
+        }
+      ],
+      "evidence": "Only SS concentration camp officially active outside Germany on then-occupied territory beyond the Reich — preserved barrack 1B, execution site, 32,000 prisoner stories.",
+      "raw_text": "Lunettenlaan 600, Vught. Only SS concentration camp outside Germany officially in operation on then-occupied territory outside the Reich. Memorial tells of 32,000 prisoners' stories, preserved authentic barrack 1B and place of executions. One of the strongest, heaviest memorial sites in NL. Mon-Fri 10:00-17:00, weekends 12:00-17:00.",
+      "_meta": {
+        "score": 0.432,
+        "novelty": 0.386,
+        "top_neighbour": {
+          "id": "zamok-levesteyn",
+          "name_en": "Loevestein Castle",
+          "sim": 0.614
+        }
+      }
+    },
+    {
+      "name": "Nationaal Monument Oranjehotel",
+      "coordinates": {
+        "lat": 52.099,
+        "lng": 4.301
+      },
+      "sources": [
+        {
+          "url": "https://www.oranjehotel.org/en",
+          "label": "exa-oranjehotel"
+        }
+      ],
+      "evidence": "Scheveningen prison nicknamed 'Oranjehotel' during WWII — the German occupier held 25,000+ resistance fighters, Jews, JWs, 'economic' arrests.",
+      "raw_text": "Van Alkemadelaan 1258, The Hague. The Dutch nickname for the Scheveningen prison during WWII; the German occupier held over 25,000 people. Among prisoners — resistance, Jews, Jehovah's Witnesses, people arrested for 'economic' cases. Strong place for understanding how an ordinary prison becomes a mechanism of occupation terror.",
+      "_meta": {
+        "score": 0.422,
+        "novelty": 0.37,
+        "top_neighbour": {
+          "id": "zamok-binnenhof",
+          "name_en": "Binnenhof",
+          "sim": 0.63
+        }
+      }
+    },
+    {
+      "name": "De Blob Eindhoven",
+      "coordinates": {
+        "lat": 51.443,
+        "lng": 5.476
+      },
+      "sources": [
+        {
+          "url": "https://www.thisiseindhoven.com/en/things-to-do/architecture/de-blob",
+          "label": "exa-eindhoven"
+        }
+      ],
+      "evidence": "Massimiliano Fuksas's 2010 organic glass-and-steel 'blob' — pure love-it-or-hate-it Dutch postmodern attention-seeker.",
+      "raw_text": "Organic glass-and-steel form by Massimiliano Fuksas, completed 2010 as a 'transparent, seductive' building for new shopping district. In practice an attention seeker; locals note that part of viewers consider it an eyesore. One of the cleanest Dutch examples of love-it-or-hate-it 2010s architecture. Best ракурс from 18 Septemberplein.",
+      "_meta": {
+        "score": 0.421,
+        "novelty": 0.369,
+        "top_neighbour": {
+          "id": "evromast",
+          "name_en": "Euromast",
+          "sim": 0.631
+        }
+      }
+    },
+    {
+      "name": "Nationaal Monument Kamp Amersfoort",
+      "coordinates": {
+        "lat": 52.151,
+        "lng": 5.388
+      },
+      "sources": [
+        {
+          "url": "https://www.kampamersfoort.nl/en",
+          "label": "exa-kampamersfoort"
+        }
+      ],
+      "evidence": "Transit prison/camp 1941–1945 — over 30,000 deported in ~800 transports; underground museum analyses both prisoners and guards.",
+      "raw_text": "Loes van Overeemlaan 19, Leusden. Transit prison/camp 1941-1945, from where over 30,000 people were sent on in ~800 transports. Underground museum and reconstructed yard focus equally on prisoners and figures of guards. One of the analytically strongest museums of Nazi violence in the country. Tue-Sun 11:00-17:00, Mon closed.",
+      "_meta": {
+        "score": 0.42,
+        "novelty": 0.366,
+        "top_neighbour": {
+          "id": "zamok-levesteyn",
+          "name_en": "Loevestein Castle",
+          "sim": 0.634
+        }
+      }
+    },
+    {
+      "name": "Deltawerk//",
+      "coordinates": {
+        "lat": 52.677,
+        "lng": 5.918
+      },
+      "sources": [
+        {
+          "url": "https://www.visitflevoland.nl/deltawerk",
+          "label": "exa-visitflevoland"
+        }
+      ],
+      "evidence": "RAAAF + Atelier de Lyon transformed the giant Delta-flume wave basin into a ruin / landscape sculpture inside Waterloopbos.",
+      "raw_text": "Inside Waterloopbos, Marknesse. Giant former Delta flume wave-basin transformed by artists RAAAF and Atelier de Lyon into a large-scale work Deltawerk//. Result is on the boundary between landscape sculpture, ruin and engineering monument. Best visited as part of a Waterloopbos route.",
+      "_meta": {
+        "score": 0.411,
+        "novelty": 0.352,
+        "top_neighbour": {
+          "id": "maaslantkering",
+          "name_en": "Maeslantkering",
+          "sim": 0.648
+        }
+      }
+    },
+    {
+      "name": "De Groene Kathedraal",
+      "coordinates": {
+        "lat": 52.349,
+        "lng": 5.282
+      },
+      "sources": [
+        {
+          "url": "https://www.visitflevoland.nl/groene-kathedraal",
+          "label": "exa-visitflevoland"
+        }
+      ],
+      "evidence": "Marinus Boezem's 178-poplar living reproduction of the Reims cathedral floor plan — a literal 'cathedral without stone' in the polder.",
+      "raw_text": "Kathedralenpad, Almere. Land art by Marinus Boezem reproduces the Reims Notre-Dame cathedral floor plan via 178 poplars and concrete pathways. Literally a 'cathedral without stone' growing in the polder landscape. Free outdoor visit; best in dry weather with time for the surrounding Kathedralenbos walk.",
+      "_meta": {
+        "score": 0.409,
+        "novelty": 0.348,
+        "top_neighbour": {
+          "id": "kekenhof",
+          "name_en": "Keukenhof",
+          "sim": 0.652
+        }
+      }
+    },
+    {
+      "name": "Watersnoodmuseum",
+      "coordinates": {
+        "lat": 51.621,
+        "lng": 3.972
+      },
+      "sources": [
+        {
+          "url": "https://www.watersnoodmuseum.nl/en",
+          "label": "exa-watersnoodmuseum"
+        }
+      ],
+      "evidence": "Museum inside the four caissons that closed the last 1953-flood breach — combines the catastrophe with broader Dutch water memory.",
+      "raw_text": "Weg van de Buitenlandse Pers 5, Ouwerkerk. Museum housed in the caissons connected to the memory of the catastrophic 1953 flood. Exhibits explain both the catastrophe itself and broader Dutch experience of living with water. Daily 10:00-17:00. Best 'dark' water-history place in NL — not horror but national trauma + engineering memory.",
+      "_meta": {
+        "score": 0.397,
+        "novelty": 0.329,
+        "top_neighbour": {
+          "id": "maaslantkering",
+          "name_en": "Maeslantkering",
+          "sim": 0.671
+        }
+      }
+    },
+    {
+      "name": "Museum de Gevangenpoort",
+      "coordinates": {
+        "lat": 52.08,
+        "lng": 4.311
+      },
+      "sources": [
+        {
+          "url": "https://www.gevangenpoort.nl",
+          "label": "exa-gevangenpoort"
+        }
+      ],
+      "evidence": "Medieval gate / former prison museum — cells, stockzolder, pijnkelder and history of corporal punishment in The Hague.",
+      "raw_text": "Buitenhof 33, The Hague. Medieval gate/prison and museum of punishments showing cells, stockzolder, pijnkelder and history of corporal punishment. Museum directly tells story of crime and punishment through the real history of the place. Most 'gothic' historical space in the country without invented horror. Mon 11:00-17:00, Tue-Fri 10:00-17:00, weekends 11:00-17:00.",
+      "_meta": {
+        "score": 0.392,
+        "novelty": 0.32,
+        "top_neighbour": {
+          "id": "burtanzh",
+          "name_en": "Bourtange",
+          "sim": 0.68
+        }
+      }
+    },
+    {
+      "name": "De Kasbah Hengelo",
+      "coordinates": {
+        "lat": 52.262,
+        "lng": 6.794
+      },
+      "sources": [
+        {
+          "url": "https://www.uitinhengelo.nl/de-kasbah",
+          "label": "exa-uitinhengelo"
+        }
+      ],
+      "evidence": "Piet Blom 1973 radical-housing — 184 apartments lifted on concrete columns, the ground level becoming a semi-public urban roof.",
+      "raw_text": "Kasbah from 1973 — 184 apartments raised on concrete columns. The 'wonen als stedelijk dak' idea turns the space under the houses into a semi-public common territory. One of the most convincing Dutch examples of utopian post-war social housing.",
+      "_meta": {
+        "score": 0.381,
+        "novelty": 0.302,
+        "top_neighbour": {
+          "id": "kubicheskie-doma-rotterdam",
+          "name_en": "Cube Houses (Kubuswoningen)",
+          "sim": 0.698
+        }
+      }
+    },
+    {
+      "name": "Kubuswoningen Helmond",
+      "coordinates": {
+        "lat": 51.484,
+        "lng": 5.661
+      },
+      "sources": [
+        {
+          "url": "https://www.visithelmond.com/en/kubuswoningen",
+          "label": "exa-visithelmond"
+        }
+      ],
+      "evidence": "Piet Blom's 1970s pole-house experiment that predates Rotterdam's famous cubes — sits next to the burned-out 't Speelhuis theatre site.",
+      "raw_text": "These paalwoningen were a 1970s experiment that predated the more famous Rotterdam version. Part of a composition around former 't Speelhuis theatre; after 2011 fire context changed but the houses remain a key part of Helmond heritage. A residential zone — view from outside only.",
+      "_meta": {
+        "score": 0.372,
+        "novelty": 0.287,
+        "top_neighbour": {
+          "id": "kubicheskie-doma-rotterdam",
+          "name_en": "Cube Houses (Kubuswoningen)",
+          "sim": 0.713
+        }
+      }
+    },
+    {
+      "name": "Inntel Hotel Zaandam",
+      "coordinates": {
+        "lat": 52.439,
+        "lng": 4.821
+      },
+      "sources": [
+        {
+          "url": "https://www.architectuur.org/inntel-zaandam",
+          "label": "exa-architectuur"
+        }
+      ],
+      "evidence": "Wilfried van Winden's 2010 hotel tower made of ~70 stacked traditional Zaan houses — instant architectural meme.",
+      "raw_text": "Tower hotel by Wilfried van Winden, stacked from almost 70 traditional Zaanse houses, opened 2010. Combination of folkloric silhouette and hotel tower turned the building into a global architectural meme. View from outside or enter as guest.",
+      "_meta": {
+        "score": 0.34,
+        "novelty": 0.234,
+        "top_neighbour": {
+          "id": "zaandam",
+          "name_en": "Zaandam",
+          "sim": 0.766
+        }
+      }
+    }
+  ],
+  "duplicates": []
+}

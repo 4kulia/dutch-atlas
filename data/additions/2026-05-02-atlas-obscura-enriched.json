@@ -1,0 +1,1365 @@
+[
+  {
+    "id": "memorial-ludolfa-van-keilena",
+    "category": "monument",
+    "name": {
+      "ru": "Мемориал Людольфа ван Кейлена",
+      "en": "Ludolph van Ceulen Memorial"
+    },
+    "short": {
+      "ru": "Надгробная плита в Питерскерк с числом π до 35 знаков — память о пожизненном труде математика XVI века.",
+      "en": "A gravestone in Pieterskerk inscribed with pi to 35 decimal places — the life's work of a 16th-century mathematician."
+    },
+    "full": {
+      "ru": "Под полом 900-летней готической Питерскерк в Лейдене покоится Людольф ван Кейлен, математик, посвятивший жизнь вычислению числа π. На его надгробной плите высечены 35 десятичных знаков — результат десятилетий расчётов вручную. Рядом покоится Виллеброрд Снеллиус, открывший закон преломления света. Церковь, деосвященная в 1970-х, теперь служит общественным пространством, но память о великих умах осталась в камне.",
+      "en": "Beneath the floor of the 900-year-old Gothic Pieterskerk in Leiden lies Ludolph van Ceulen, a mathematician who devoted his life to calculating pi. His gravestone is engraved with 35 decimal places — the fruit of decades of manual computation. Nearby rests Willebrord Snellius, who formulated the law of refraction. The church, deconsecrated in the 1970s, now serves as a community space, but the memory of these brilliant minds endures in stone."
+    },
+    "coordinates": {
+      "lat": 52.157525,
+      "lng": 4.48737
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "science",
+      "history",
+      "golden_age",
+      "hidden_gem",
+      "quirky"
+    ]
+  },
+  {
+    "id": "zhukovskiy-shar",
+    "category": "oddity",
+    "name": {
+      "ru": "Жуковский шар",
+      "en": "Beetle Sphere"
+    },
+    "short": {
+      "ru": "Копия «Фольксвагена-Жука» 1953 года, идеально свёрнутая в алюминиевый шар художником Ихваном Нуром.",
+      "en": "A replica 1953 Volkswagen Beetle perfectly rolled into an aluminum sphere by artist Ichwan Noor."
+    },
+    "full": {
+      "ru": "В торговом центре Kalverpassage рядом с Хейлигевег посетителей встречает сюрреалистичная скульптура — легендарный «Жук» превращён в идеальную сферу. Индонезийский художник Ихван Нур создал точную копию автомобиля 1953 года, вырезал каждую деталь экстерьера и интерьера и отлил её в алюминии. Результат — тревожное столкновение знакомого и невозможного. Скульптуру можно видеть в часы работы центра, а после закрытия — сквозь стекло.",
+      "en": "Inside the Kalverpassage shopping center near Heiligeweg, visitors encounter a surreal sculpture — the iconic Beetle transformed into a perfect sphere. Indonesian artist Ichwan Noor crafted a precise replica of the 1953 Volkswagen, carved every detail of the exterior and interior, and cast it in aluminum. The result is a disquieting collision of the familiar and the impossible. The sculpture is freely accessible during mall hours and visible through glass after closing."
+    },
+    "coordinates": {
+      "lat": 52.367521,
+      "lng": 4.891019
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "art",
+      "quirky",
+      "modern_arch",
+      "photogenic",
+      "indoor"
+    ]
+  },
+  {
+    "id": "makkammonpleyn",
+    "category": "monument",
+    "name": {
+      "ru": "Маккаммонплейн",
+      "en": "McCammonplein"
+    },
+    "short": {
+      "ru": "Мемориал в форме бомбардировщика B-17, выложенный брусчаткой, — память о крушении «Man-O-War» в 1943 году.",
+      "en": "A paving-stone memorial shaped like a B-17 bomber marking the 1943 crash site of 'Man-O-War'."
+    },
+    "full": {
+      "ru": "30 июля 1943 года американский бомбардировщик B-17 «Man-O-War» был сбит немецкими истребителями над Опейненом. Восемь членов экипажа погибли, двое попали в плен. Жители городка построили мемориал из брусчатки в форме самолёта с гранитным хвостом, на котором выгравированы имена погибших. Близлежащие улицы названы в честь экипажа, тела покоятся на местном кладбище. Это тихое место помнит о цене освобождения.",
+      "en": "On July 30, 1943, the American B-17 bomber 'Man-O-War' was shot down by German fighters over Opijnen. Eight crew members were killed, two captured. Townspeople built a paving-stone monument in the shape of a B-17, with a granite tail bearing the names of the fallen. Nearby streets are named after the crew, and their bodies rest in the local churchyard. This quiet memorial remembers the price of liberation."
+    },
+    "coordinates": {
+      "lat": 51.828484,
+      "lng": 5.294658
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "military",
+      "wwii",
+      "dark_tourism",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "kardus-pes-ada",
+    "category": "dark_legend",
+    "name": {
+      "ru": "Кардус — пёс ада",
+      "en": "Kardoes the Hellhound"
+    },
+    "short": {
+      "ru": "Бронзовая статуя чёрного пса-призрака, который в легендах Оверэйсела предвещает смерть и связан с Дикой Охотой Одина.",
+      "en": "A bronze statue of the legendary black hellhound that haunts cemeteries and foretells death, linked to Odin's Wild Hunt."
+    },
+    "full": {
+      "ru": "В деревне Де Лютте стоит памятник местной легенде — Кардусу, адскому псу с острыми ушами и горящими глазами. Как и британский «чёрный пёс», Кардус бродит по кладбищам и считается предвестником смерти. Некоторые связывают его с Диким Охотой скандинавского бога Одина. Бронзовую скульптуру создал Питер де Монши в 1950 году. Это воплощение древнего страха, застывшее в металле.",
+      "en": "In the village of De Lutte stands a monument to local legend — Kardoes, a hellhound with pointed ears and glowing eyes. Like the British black dog, Kardoes haunts cemeteries and heralds death. Some link him to the Wild Hunt of the Norse god Odin. The bronze statue was created by Pieter de Monchy in 1950. It is ancient fear frozen in metal."
+    },
+    "coordinates": {
+      "lat": 52.315111,
+      "lng": 6.987138
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "legend",
+      "spooky",
+      "dark_tourism",
+      "quirky",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "dom-mnimoumirayushih",
+    "category": "oddity",
+    "name": {
+      "ru": "Дом мнимоумирающих",
+      "en": "Apparent Dead House"
+    },
+    "short": {
+      "ru": "Здание 1830 года, где недавно умерших наблюдали днями на предмет признаков жизни — с перьями, зеркалами и колокольчиками.",
+      "en": "An 1830 building where the recently dead were watched for days for signs of life using feathers, mirrors, and bells."
+    },
+    "full": {
+      "ru": "Построенный в 1830 году на кладбище Керкхофлан в Гааге, этот странный дом отвечал на панический страх быть похороненным заживо. Умерших помещали в центральный зал, где служители следили за признаками дыхания с помощью перьев и зеркал, а сложные системы колокольчиков и верёвок должны были зафиксировать движение. Большинство подобных зданий в мире снесено; этот остался как памятник странной науке смерти. Застывшее эхо викторианской паранойи.",
+      "en": "Built in 1830 at the Kerkhoflaan cemetery in The Hague, this peculiar building responded to the Victorian panic of premature burial. The recently dead were placed in a central hall where attendants checked for signs of breath using feathers and mirrors, while elaborate systems of bells and strings were rigged to detect movement. Most such buildings worldwide have been demolished; this one stands as a monument to the strange science of death. It is the frozen echo of Victorian paranoia."
+    },
+    "coordinates": {
+      "lat": 52.0795,
+      "lng": 4.2783
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "eccentric",
+      "history",
+      "spooky",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "sovetskoye-pole-slavy",
+    "category": "monument",
+    "name": {
+      "ru": "Советское поле славы",
+      "en": "Soviet Field of Honor"
+    },
+    "short": {
+      "ru": "Участок кладбища, посвящённый советским солдатам Второй мировой войны, сражавшимся под Амерсфортом или попавшим в плен.",
+      "en": "A cemetery section dedicated to Soviet WWII soldiers who fought near Amersfoort or were captured by the enemy."
+    },
+    "full": {
+      "ru": "На кладбище Рюстхоф в Лёйсдене выделен мемориальный участок для павших советских солдат, сражавшихся на территории Нидерландов во время Второй мировой войны. Ряды надгробий хранят память о тех, кто погиб в боях или попал в плен. Рядом работает музей, где можно узнать истории этих солдат и даже увидеть их судьбы через VR-опыт. Посещение бесплатно. Тихое место скорби и исторической благодарности.",
+      "en": "At Rusthof Cemetery in Leusden, a memorial section is dedicated to fallen Soviet soldiers who fought on Dutch soil during World War II. Rows of headstones preserve the memory of those who died in battle or fell into captivity. Nearby, a museum tells the soldiers' stories, even offering a VR experience of their fates. Admission is free. It is a quiet place of mourning and historical gratitude."
+    },
+    "coordinates": {
+      "lat": 52.130972,
+      "lng": 5.373192
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "military",
+      "wwii",
+      "history",
+      "dark_tourism",
+      "free_entry"
+    ]
+  },
+  {
+    "id": "muzey-boergave",
+    "category": "museum",
+    "name": {
+      "ru": "Музей Бургаве",
+      "en": "Museum Boerhaave"
+    },
+    "short": {
+      "ru": "Бывший чумной госпиталь и монастырь превращены в медицинский музей с заспиртованными органами и латинскими девизами на скелетах.",
+      "en": "A former plague hospital and nunnery turned medical museum, featuring preserved organs and articulated skeletons holding Latin mottos."
+    },
+    "full": {
+      "ru": "Изначально монастырь святой Цецилии, затем чумной госпиталь и дом умалишённых — в 1653 году здание стало университетской клиникой. В 1720 году Герман Бургаве провёл здесь свои легендарные «уроки у постели больного», заложив основы клинической медицины. Сегодня музей хранит 400 лет истории медицины: от старинных хирургических инструментов до анатомического театра, от заспиртованных конечностей до скелетов, держащих в костяных руках таблички с латинскими размышлениями о смертности.",
+      "en": "Originally the St. Caecilia nunnery, then a plague hospital and madhouse, the building became a university hospital in 1653. In 1720, Herman Boerhaave held his famous 'sickbed lessons' here, founding the practice of clinical teaching. Today the museum preserves 400 years of medical history: from antique surgical instruments to an old operating theatre, from preserved limbs in jars to articulated skeletons holding tablets inscribed with Latin meditations on mortality."
+    },
+    "coordinates": {
+      "lat": 52.161355,
+      "lng": 4.488902
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "science",
+      "history",
+      "golden_age",
+      "dark_tourism",
+      "indoor"
+    ]
+  },
+  {
+    "id": "nacionalnyy-memorial-holokosta",
+    "category": "monument",
+    "name": {
+      "ru": "Национальный мемориал Холокоста",
+      "en": "National Holocaust Monument"
+    },
+    "short": {
+      "ru": "Кирпичные стены с именами 102 000 евреев и 220 цыган — стальные формы образуют ивритское «в память о».",
+      "en": "Brick walls inscribed with 102,000 Jewish and 220 Roma victims' names — stainless steel forms spell 'in memory of' in Hebrew."
+    },
+    "full": {
+      "ru": "Мемориал посвящён 102 000 евреев и 220 рома и синти, убитых в Нидерландах во время Холокоста. Посетители идут по коридорам между красными кирпичными стенами, на которых высечены имена, даты рождения и возраст на момент смерти. Профили из нержавеющей стали над стенами образуют ивритские буквы לזכר — «в память о». «Стена тысячи имён» оставлена пустой для будущих идентификаций жертв. Это пространство скорби, выгравированное в камне.",
+      "en": "The memorial honors 102,000 Jewish and 220 Roma and Sinti victims murdered in the Netherlands during the Holocaust. Visitors walk corridors between red-brick walls inscribed with names, birth dates, and ages at death. Stainless steel profiles atop the walls form the Hebrew letters לזכר — 'in memory of'. The '1000-Names Wall' is left blank for future victim identifications. This is grief engraved in stone."
+    },
+    "coordinates": {
+      "lat": 52.365724,
+      "lng": 4.904924
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "wwii",
+      "history",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "missionerskiy-muzey-steyl",
+    "category": "museum",
+    "name": {
+      "ru": "Миссионерский музей Стейл",
+      "en": "Mission Museum Steyl"
+    },
+    "short": {
+      "ru": "Католическая коллекция из тысячи чучел животных, собранных миссионерами с 1870-х годов по всему миру.",
+      "en": "Catholic mission collection of over 1,000 stuffed animals gathered by missionaries since the 1870s from around the world."
+    },
+    "full": {
+      "ru": "В деревне Стейл, где расположено пять монастырей, гостей встречает косоглазый чучельный медведь на монетоприёмнике. Музей хранит более тысячи экспонатов — млекопитающих, птиц, рептилий, амфибий, рыб, бабочек, жуков, скорпионов и других насекомых, привезённых католическими миссионерами с 1870-х годов. Среди монастырей деревни — обитель «розовых сестёр», монахинь, которые никогда не покидают стен своей обители.",
+      "en": "Visitors to the village of Steyl—home to five monasteries—are greeted by a cross-eyed coin-operated taxidermy bear. The museum houses over 1,000 specimens: mammals, birds, reptiles, amphibians, fish, butterflies, beetles, scorpions and other insects collected by Catholic missionaries from the 1870s onward. Among the village's monasteries is the residence of the 'pink sisters,' nuns who never leave their cloister."
+    },
+    "coordinates": {
+      "lat": 51.333191,
+      "lng": 6.120732
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "religion",
+      "history",
+      "quirky",
+      "hidden_gem",
+      "eccentric"
+    ]
+  },
+  {
+    "id": "dom-s-krovavymi-pyatnami",
+    "category": "dark_legend",
+    "name": {
+      "ru": "Дом с кровавыми пятнами",
+      "en": "The House with The Blood Stains"
+    },
+    "short": {
+      "ru": "Серый дом на Амстеле с каббалистическими знаками, якобы нарисованными кровью безумного мэра XVII века.",
+      "en": "Gray canal house on the Amstel marked with Kabbalistic symbols rumored to have been painted in blood by a mad 17th-century mayor."
+    },
+    "full": {
+      "ru": "Скромный серый фасад с видом на Амстел украшен странными красновато-коричневыми символами. Дом построен в начале 1670-х для Гейсберта Дамбера. Знаменит благодаря Конрааду ван Беунингену — шестикратному мэру Амстердама и послу, который в последние годы жизни (вероятно, страдая биполярным расстройством) нарисовал на фасаде каббалистические знаки — по слухам, собственной кровью. Метки выцвели, но видны до сих пор. Частный дом, требует уважительного отношения.",
+      "en": "A plain gray facade overlooking the Amstel is marked with strange reddish-brown symbols. Built in the early 1670s for Gijsbert Dumber, the house became famous through Coenraad van Beuningen—six-time mayor of Amsterdam and ambassador—who in his final years (likely bipolar) painted Kabbalistic signs on the facade, rumored to be in his own blood. The marks have faded but remain visible. It is a private residence; visitors should be respectful."
+    },
+    "coordinates": {
+      "lat": 52.365008,
+      "lng": 4.90071
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "legend",
+      "history",
+      "spooky",
+      "eccentric"
+    ]
+  },
+  {
+    "id": "muzey-pianoly",
+    "category": "museum",
+    "name": {
+      "ru": "Музей пианолы",
+      "en": "Pianola Museum"
+    },
+    "short": {
+      "ru": "Крошечный эксцентричный музей в Йордане с пятьюдесятью механическими пианолами и 20 000 перфорированных нотных роликов.",
+      "en": "Tiny eccentric museum in the Jordaan with fifty mechanical player pianos and 20,000 punched music rolls."
+    },
+    "full": {
+      "ru": "Один из самых маленьких и обаятельно эксцентричных музеев Амстердама. Около пятидесяти механических пианол и почти 20 000 перфорированных нотных роликов. Волонтёры проводят персональные экскурсии, показывая работу инструментов. К концу Второй мировой рынок пианол иссяк — радио и винил вытеснили механическую музыку.",
+      "en": "One of the smallest and most delightfully eccentric museums in Amsterdam. About fifty mechanical player pianos and almost 20,000 punched rolls of music fill the space. Volunteers give personalized tours, demonstrating the instruments in action. By the end of World War II the pianola market had dried up, overtaken by radio and vinyl."
+    },
+    "coordinates": {
+      "lat": 52.37851,
+      "lng": 4.883544
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "music",
+      "quirky",
+      "hidden_gem",
+      "eccentric",
+      "indoor"
+    ]
+  },
+  {
+    "id": "kladbishe-heys-te-frah",
+    "category": "monument",
+    "name": {
+      "ru": "Кладбище Хёйс-те-Фраг",
+      "en": "Huis te Vraag Cemetery"
+    },
+    "short": {
+      "ru": "Заросшее плющом викторианское кладбище на окраине Амстердама, последнее захоронение в 1960-х, около 16 000 могил.",
+      "en": "Overgrown ivy-clad Victorian-era cemetery on Amsterdam's outskirts, with last burial in the 1960s and around 16,000 graves."
+    },
+    "full": {
+      "ru": "Заброшенное и почти забытое кладбище на окраине Амстердама. Название якобы происходит от 1489 года, когда император Максимилиан I спросил дорогу в Амстердам у трактира, стоявшего на этом месте. Кладбище вновь открыто в 1891 году как частное место захоронений Голландской реформатской церкви. Здесь покоятся около 16 000 человек, включая безымянных погибших Второй мировой.",
+      "en": "An overgrown and largely forgotten cemetery on Amsterdam's outskirts. Its name allegedly dates from 1489, when Maximilian I asked for directions to Amsterdam at the inn that once stood here. Reopened in 1891 as a private Dutch Reformed Church gravesite, it holds around 16,000 bodies, including some anonymous World War II burials."
+    },
+    "coordinates": {
+      "lat": 52.347114,
+      "lng": 4.848861
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "dark_tourism",
+      "hidden_gem",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "chasovnya-beyneyhof",
+    "category": "religious",
+    "name": {
+      "ru": "Часовня Бейнёйхоф",
+      "en": "Begijnhof Chapel"
+    },
+    "short": {
+      "ru": "Скрытая церковь в старинном дворе, хранящая память о Чуде Амстердама 1345 года — неповреждённой огнём облатке причастия.",
+      "en": "Hidden church in a historic courtyard preserving the memory of the Miracle of Amsterdam—a communion wafer found pristine in ashes in 1345."
+    },
+    "full": {
+      "ru": "Скрытая церковь в одном из старейших внутренних дворов Амстердама. Бегинки — католический женский орден мирянок, живших в бедности. Часовня Бейнёйхоф когда-то хранила священную реликвию Чуда Амстердама 1345 года: умирающий причастился и изверг облатку, которую служанка выбросила в камин. Наутро облатка была найдена целой в пепле. Паломники хлынули в город, дав толчок экономике Амстердама.",
+      "en": "A hidden church in one of Amsterdam's oldest inner courtyards. The Beguines were a lay female Catholic order living in poverty. Begijnhof Chapel once held the holy relic of the Miracle of Amsterdam: in 1345 a dying man took communion and vomited up the host, which the maid disposed of in the fireplace. The next morning the wafer was found pristine in the ashes, sparking a pilgrimage that jumpstarted Amsterdam's economy."
+    },
+    "coordinates": {
+      "lat": 52.369359,
+      "lng": 4.889617
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "religion",
+      "history",
+      "medieval",
+      "legend",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": "mezhdunarodnyy-muzey-klompenov",
+    "category": "museum",
+    "name": {
+      "ru": "Международный музей кломпенов",
+      "en": "Internationaal Klompenmuseum"
+    },
+    "short": {
+      "ru": "Крупнейшая в мире коллекция деревянных башмаков: 2000 пар из 43 стран, включая тайники контрабандистов и кломпены-коньки.",
+      "en": "World's largest clog collection: 2,000 pairs from 43 countries, including smuggler's clogs with inverted soles and clogs with built-in skates."
+    },
+    "full": {
+      "ru": "Музей основан на коллекции братьев Витсес — последних мастеров кломпенов в Элде — и открыт в 1990 году. Более 2000 пар из 43 стран. Среди экспонатов — кломпены, похожие на туфли, контрабандистские кломпены с перевёрнутым узором подошвы и кломпены со встроенными коньками.",
+      "en": "Built on the collection of the Wietzes brothers—the last clog makers of Eelde—the museum opened in 1990. It houses over 2,000 pairs from 43 different countries. Exhibits include clogs resembling dress shoes, smuggler's clogs with inverted sole profiles, and clogs with built-in skates."
+    },
+    "coordinates": {
+      "lat": 53.138161,
+      "lng": 6.567993
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "quirky",
+      "largest_in_world",
+      "family_friendly",
+      "indoor"
+    ]
+  },
+  {
+    "id": "zamok-dultremont",
+    "category": "oddity",
+    "name": {
+      "ru": "Замок д'Ультремон",
+      "en": "Castle d'Oultremont"
+    },
+    "short": {
+      "ru": "Средневековый замок, выкрашенный в ярко-розовый цвет как часть заброшенного детского тематического парка.",
+      "en": "Medieval castle painted bright pink as part of an abandoned children's theme park."
+    },
+    "full": {
+      "ru": "Средневековый замок в Ньивкёйке, выкрашенный в ярко-розовый цвет как часть ныне заброшенного детского тематического парка. Розовый фасад резко контрастирует с историческим обликом здания, превратив его в сюрреалистическую достопримечательность.",
+      "en": "A medieval castle in Nieuwkuijk painted bright pink as part of a now-abandoned children's theme park. The pink facade starkly contrasts with the building's historic architecture, transforming it into a surrealist landmark."
+    },
+    "coordinates": {
+      "lat": 51.732,
+      "lng": 5.183
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "medieval",
+      "quirky",
+      "eccentric",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "kladbishe-bet-hayim",
+    "category": "monument",
+    "name": {
+      "ru": "Кладбище Бет-Хаим",
+      "en": "Beth Haim Cemetery"
+    },
+    "short": {
+      "ru": "Старейшее еврейское кладбище Нидерландов с 28 000 сефардских могил с 1614 года, включая могилы родителей Спинозы.",
+      "en": "Oldest Jewish cemetery in the Netherlands with 28,000 Sephardic graves dating from 1614, including the graves of Spinoza's parents."
+    },
+    "full": {
+      "ru": "На окраине Амстердама, в Ауделрек-ан-де-Амстел, расположено старейшее еврейское кладбище Нидерландов — 28 000 могил. Предки сефардских евреев прибыли из Испании и Португалии. Надписи на голландском, португальском и иврите. Здесь похоронены родители философа Спинозы. Дом Родеаментос 1705 года разделяет старинный мемориальный участок и новую часть.",
+      "en": "On the outskirts of Amsterdam, in Ouderkerk aan de Amstel, lies the oldest Jewish cemetery in the Netherlands, holding 28,000 graves. It preserves the memory of Sephardic Jewish ancestors from Spain and Portugal. Inscriptions are in Dutch, Portuguese and Hebrew, and the graves include those of philosopher Spinoza's parents. The Rodeamentos House (1705) divides the old monumental tombs from the newer section."
+    },
+    "coordinates": {
+      "lat": 52.295629,
+      "lng": 4.902913
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "religion",
+      "history",
+      "dark_tourism",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "trompettersteeg",
+    "category": "street_art",
+    "name": {
+      "ru": "Тромпеттерстег",
+      "en": "Trompettersteeg"
+    },
+    "short": {
+      "ru": "Самая узкая улица Амстердама шириной всего 1 метр у канала, покрытая постоянно меняющимися граффити.",
+      "en": "Amsterdam's narrowest street at just 1 meter wide near the canal, covered in ever-changing graffiti."
+    },
+    "full": {
+      "ru": "Тромпеттерстег, расположенная к югу от Ауде Керк в квартале Де Валлен, является самой узкой улицей Амстердама — всего 1 метр в ширину у выхода к каналу. Когда-то эта аллея была частью знаменитого квартала красных фонарей, а сегодня её восточная часть превратилась в постоянно обновляющуюся галерею уличного искусства. В 2021 году художники Dopie и Ultimo.11 создали здесь трёхмерную версию герба Амстердама. Это место сочетает историческое прошлое района с современной культурой граффити.",
+      "en": "Located just south of the Oude Kerk in the De Wallen district, Trompettersteeg holds the title of Amsterdam's narrowest street, measuring only 1 meter wide at its canal end. Once a highlight of the famous Red Light District lined with windows, the alley has transformed into an ever-evolving canvas for street artists. In 2021, artists Dopie and Ultimo.11 painted a striking 3D rendition of Amsterdam's coat of arms on its eastern end. The street offers a unique blend of the district's historic past and contemporary graffiti culture."
+    },
+    "coordinates": {
+      "lat": 52.3735,
+      "lng": 4.8983
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "hidden_gem",
+      "history",
+      "photogenic",
+      "quirky"
+    ]
+  },
+  {
+    "id": "mural-kita-haringa",
+    "category": "street_art",
+    "name": {
+      "ru": "Мурал Кита Харинга",
+      "en": "Keith Haring Mural"
+    },
+    "short": {
+      "ru": "Крупнейшая работа Кита Харинга в Европе — 12-метровый мурал, скрытый за досками 30 лет и заново открытый в 2018 году.",
+      "en": "Keith Haring's largest European work — a 40-foot mural hidden behind industrial boarding for 30 years, rediscovered in 2018."
+    },
+    "full": {
+      "ru": "В 1986 году американский художник Кит Харинг во время визита в музей Стеделейк подарил Амстердаму монументальную настенную роспись, украсившую внешнюю стену бывшего музейного хранилища. Это самая большая работа Харинга, созданная в Европе. В 1989 году мурал был закрыт промышленными панелями и оставался скрытым почти три десятилетия. В 2018 году голландский граффити-художник Мик Ла Рок наткнулся на старую фотографию и запустил кампанию по поиску утраченного произведения. Благодаря его усилиям мурал был заново открыт и теперь доступен для обозрения.",
+      "en": "In 1986, American artist Keith Haring gifted Amsterdam with a monumental mural during a visit to the Stedelijk Museum, adorning an outdoor wall at the museum's former storage facility. This remains the largest painting Haring ever created in Europe. The work was concealed behind industrial boarding in 1989 and remained hidden for almost 30 years. In 2018, Dutch graffiti artist Mick La Rock stumbled upon an old photograph and launched a campaign to locate the lost masterpiece. Thanks to his efforts, the mural was rediscovered and is now accessible to the public."
+    },
+    "coordinates": {
+      "lat": 52.380906,
+      "lng": 4.860792
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "art",
+      "urban_art",
+      "hidden_gem",
+      "largest_in_world",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "chaynyk-vest-kreyskade",
+    "category": "street_art",
+    "name": {
+      "ru": "Чайник на Вест-Крёйскаде",
+      "en": "West Kruiskade Teapot"
+    },
+    "short": {
+      "ru": "Гигантский чайник из делфтской плитки на фасаде дома престарелых в Роттердаме, подсвечиваемый по ночам.",
+      "en": "A giant Delft-tile teapot mural on a Rotterdam nursing home façade, illuminated at night."
+    },
+    "full": {
+      "ru": "В мультикультурном районе Вест-Крёйскаде в Роттердаме верхние этажи дома престарелых украшает монументальный сине-белый чайник. Художница Анне Мерседес Лангхорст создала его из традиционных делфтских узоров — ветряных мельниц, коров и лодок. По ночам контуры чайника подсвечиваются, создавая эффектное зрелище. Мурал расположен прямо над магазином мороженого De IJssalon, что делает это место особенно любимым у местных жителей.",
+      "en": "In Rotterdam's multicultural West Kruiskade neighborhood, the upper floors of a nursing home are adorned with a monumental blue-and-white teapot. Artist Anne Mercedes Langhorst crafted the piece using traditional Delft tile designs featuring windmills, cows, and boats. At night, the teapot's edges are illuminated, creating a striking spectacle. The mural sits directly above De IJssalon ice-cream shop, making this location a beloved local landmark."
+    },
+    "coordinates": {
+      "lat": 51.92006,
+      "lng": 4.467597
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "photogenic",
+      "quirky",
+      "family_friendly",
+      "modern_arch"
+    ]
+  },
+  {
+    "id": "muzey-kuritelnykh-trubok",
+    "category": "museum",
+    "name": {
+      "ru": "Музей курительных трубок",
+      "en": "Amsterdam Pipe Museum"
+    },
+    "short": {
+      "ru": "Коллекция из 20 000 курительных трубок со всего мира, включая церемониальные свадебные трубки с лентами.",
+      "en": "A 20,000-object archive of smoking pipes from around the world, including ceremonial wedding pipes adorned with ribbons."
+    },
+    "full": {
+      "ru": "Музей курительных трубок работает уже более 40 лет недалеко от канала Принсенграхт. В его коллекции насчитывается 20 000 экспонатов — курительных трубок со всего мира, охватывающих несколько столетий. Музей начинался как частная коллекция Дона Дюко в 1969 году. Среди экспонатов — глиняные, фарфоровые и деревянные трубки, а также церемониальные свадебные трубки, которые в традиционных голландских свадьбах украшались лентами подружками невесты. Это уникальное собрание рассказывает культурную историю курения через призму декоративного искусства.",
+      "en": "The Amsterdam Pipe Museum has been open for over 40 years near the Prinsengracht canal. Its archive contains 20,000 smoking pipes from across the world, spanning several centuries of history. The museum began as Don Duco's private collection in 1969. The exhibits include clay, porcelain, and wooden pipes, as well as ceremonial pipes decorated with ribbons by bridesmaids in traditional Dutch weddings. This unique collection tells the cultural history of smoking through the lens of decorative arts."
+    },
+    "coordinates": {
+      "lat": 52.36412,
+      "lng": 4.885286
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "art",
+      "history",
+      "quirky",
+      "hidden_gem",
+      "indoor"
+    ]
+  },
+  {
+    "id": "volfsdreyvik",
+    "category": "architecture",
+    "name": {
+      "ru": "Вольфсдрёйвик",
+      "en": "Wolfsdreuvik"
+    },
+    "short": {
+      "ru": "Лесная башня-убежище 1938 года, построенная архитектором Яном Ребелем для куратора музея, доступна только пешком или на велосипеде.",
+      "en": "A 1938 forest tower hideaway designed by architect Jan Rebel for a museum curator, accessible only by foot or bike."
+    },
+    "full": {
+      "ru": "Скрытый в лесах Лаге-Вюрше близ Хилверсюма, Вольфсдрёйвик представляет собой архитектурный монумент, о существовании которого знают очень немногие. Башня была построена в 1938 году знаменитым архитектором Яном Ребелем в качестве уединённого убежища для Д.П.Р.А. Баувей, президента и куратора Архиепископского музея в Утрехте. Автомобильного доступа к постройке нет — добраться можно только пешком или на велосипеде. Объект открыт для посещения только в дни памятников архитектуры, что делает его настоящей скрытой жемчужиной голландского модернизма.",
+      "en": "Hidden in the woods of Lage Vuursche near Hilversum, Wolfsdreuvik is an architectural monument known to very few. The tower was built in 1938 by renowned architect Jan Rebel as a secluded getaway for D.P.R.A. Bouvy, president and curator of the Archbishop's Museum in Utrecht. There is no car access to the structure — visitors can only reach it by foot or bicycle. The site opens only on monument days, making it a true hidden gem of Dutch modernism."
+    },
+    "coordinates": {
+      "lat": 52.194645,
+      "lng": 5.203461
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "modern_arch",
+      "hidden_gem",
+      "byo_bike"
+    ]
+  },
+  {
+    "id": "skelet-uniastate",
+    "category": "monument",
+    "name": {
+      "ru": "Скелет Униастате",
+      "en": "Uniastate Bears"
+    },
+    "short": {
+      "ru": "Стальной каркасный «призрак» каменной усадьбы 1530 года, снесённой в 1756-м, — монумент исчезнувшему зданию во Фрисландии.",
+      "en": "A steel-frame 'ghost' of a 1530 stone manor demolished in 1756 — a monument to the vanished building in Friesland."
+    },
+    "full": {
+      "ru": "В деревне Беарс во Фрисландии стоит уникальный памятник — стальной контурный каркас, воспроизводящий очертания каменной усадьбы «стинс» 1530 года постройки, разрушенной в 1756 году. Оригинальные привратные ворота сохранились до наших дней. Этот «призрачный» силуэт позволяет представить масштаб и форму утраченного здания. Посетить монумент можно пешком, на велосипеде или на лодке по каналу Беарстерфеарт — это место, где архитектурная память материализуется в минималистичной стальной конструкции.",
+      "en": "In the village of Bears in Friesland stands a unique monument — a steel-frame skeletal outline reproducing the contours of a 'stins' (stone manor) built in 1530 and demolished in 1756. The original gatehouse has survived to this day. This 'ghostly' silhouette allows visitors to imagine the scale and form of the lost building. The monument can be reached by foot, bicycle, or boat along the Bearsterfeart canal — a place where architectural memory materializes in a minimalist steel structure."
+    },
+    "coordinates": {
+      "lat": 53.155728,
+      "lng": 5.733021
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "medieval",
+      "hidden_gem",
+      "byo_bike"
+    ]
+  },
+  {
+    "id": "muzey-pinbola",
+    "category": "museum",
+    "name": {
+      "ru": "Музей пинбола",
+      "en": "Dutch Pinball Museum"
+    },
+    "short": {
+      "ru": "Более 100 винтажных игровых автоматов в роттердамском Дельфсхавене, включая довоенные столы и игру с волчком 1853 года.",
+      "en": "Over 100 vintage pinball machines in Rotterdam's Delfshaven, including pre-WWII tables and an 1853 spinning-top game."
+    },
+    "full": {
+      "ru": "Расположенный в историческом квартале Дельфсхавен в Роттердаме, Музей пинбола предлагает сыграть на более чем 100 винтажных автоматах, многие из которых относятся к довоенному периоду. В музее есть специальная секция, посвящённая «спейкербалу» — голландской разновидности пинбола. Старейший экспонат — игра с вращающимся волчком «toupie hollandaise» 1853 года, предшественница современного пинбола. Музей работает по средам, субботам и воскресеньям, игра стоит 25 центов за партию — настоящее путешествие в историю игровых автоматов.",
+      "en": "Located in Rotterdam's historic Delfshaven district, the Dutch Pinball Museum offers visitors the chance to play over 100 vintage pinball machines, many dating from before World War II. The museum features a special section dedicated to 'spijkerbal' — a Dutch variant of pinball. The oldest piece is an 1853 'toupie hollandaise' spinning-top game, a predecessor of modern pinball. The museum opens on Wednesdays, Saturdays, and Sundays, with games costing 25 cents per play — a true journey through the history of arcade gaming."
+    },
+    "coordinates": {
+      "lat": 51.901,
+      "lng": 4.45
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "technology",
+      "history",
+      "family_friendly",
+      "quirky",
+      "indoor"
+    ]
+  },
+  {
+    "id": "dom-ritveld-shryoder",
+    "category": "architecture",
+    "name": {
+      "ru": "Дом Ритвельд-Шрёдер",
+      "en": "Rietveld-Schröder House"
+    },
+    "short": {
+      "ru": "Единственное здание 1924 года, полностью воплотившее принципы Де Стейл — без внутренних стен, только раздвижные панели; объект ЮНЕСКО.",
+      "en": "The only 1924 building fully embodying De Stijl principles — no internal walls, only sliding panels; a UNESCO site."
+    },
+    "full": {
+      "ru": "Построенный в 1924 году Герритом Ритвельдом для Трюс Шрёдер, этот дом считается единственным зданием, полностью воплотившим дух движения Де Стейл — радикальное упрощение до базовых форм и основных цветов. Стены, мебель и трубы перетекают изнутри наружу, создавая единое пространство. Окна открываются только под углом 90°, чтобы сохранить целостность плоскостей. Верхний уровень не имеет стационарных стен — только раздвижные и вращающиеся панели. С 2000 года дом включён в список Всемирного наследия ЮНЕСКО как выдающийся образец архитектуры модернизма.",
+      "en": "Built in 1924 by Gerrit Rietveld for Truus Schröder, this house is considered the only building to fully embody the spirit of the De Stijl movement — a radical reduction to basic forms and primary colors. Walls, furniture, and pipes flow seamlessly from inside to outside, creating unified space. Windows open only at 90-degree angles to preserve the integrity of planes. The upper level has no fixed walls, only sliding and revolving panels. Since 2000, the house has been a UNESCO World Heritage site as an outstanding example of modernist architecture."
+    },
+    "coordinates": {
+      "lat": 52.085303,
+      "lng": 5.14752
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "modern_arch",
+      "unesco",
+      "art",
+      "ticketed_only"
+    ]
+  },
+  {
+    "id": "dama-iz-stavorena",
+    "category": "dark_legend",
+    "name": {
+      "ru": "Дама из Ставорена",
+      "en": "Lady of Stavoren"
+    },
+    "short": {
+      "ru": "Бронзовая статуя у гавани воплощает легенду о гордой купчихе, чьё проклятие превратило процветающий ганзейский порт в песчаную отмель.",
+      "en": "Bronze statue at the harbour embodies the legend of a proud merchant whose curse turned a prosperous Hanseatic port into a sandbank."
+    },
+    "full": {
+      "ru": "В фризском Ставорене на берегу стоит бронзовая скульптура дамы, чья легендарная гордыня, как говорят, погубила некогда процветающий ганзейский порт. По преданию, она послала капитана в Данциг за «самым драгоценным грузом» — тот привёз пшеницу. Разгневанная купчиха велела высыпать зерно в гавань; насыпь заилила вход, разрушив торговлю и сам город. Песчаная отмель Vrouwezand до сих пор носит её имя, напоминая о цене высокомерия.",
+      "en": "In Frisian Stavoren stands a bronze statue of the lady whose legendary arrogance is said to have ruined the once-prosperous Hanseatic harbour. She ordered her captain to sail to Danzig and bring back the most precious cargo; he chose wheat. Furious, she had it dumped in the harbour. The grain mound silted up the entrance, destroying trade and the town itself. The Vrouwezand sandbank still bears her name, a reminder of the price of pride."
+    },
+    "coordinates": {
+      "lat": 52.886,
+      "lng": 5.358
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "legend",
+      "history",
+      "dark_tourism",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "radio-kotvejk",
+    "category": "industrial",
+    "name": {
+      "ru": "Радио Котвейк",
+      "en": "Radio Kootwijk"
+    },
+    "short": {
+      "ru": "КНЧ-станция 1918 года, связывавшая Нидерланды с Голландской Ост-Индией — атмосферное здание в духе Берлина и Амстердама, ныне концертный зал.",
+      "en": "A 1918 VLF radio station that connected the Netherlands to the Dutch East Indies — atmospheric Berlin-meets-Amsterdam architecture, now a concert venue."
+    },
+    "full": {
+      "ru": "Построенная с 1918 года, станция работала на крайне низких частотах для связи с Голландской Ост-Индией (ныне Индонезия). Главное здание (корпус A) в стиле экспрессионизма теперь принимает концерты и киносъёмки. Городок вокруг станции носит её имя. Комплекс выстроен в глубине национального парка Велюве, чтобы избежать радиопомех — изолированный памятник эпохе колониальных коммуникаций.",
+      "en": "Built from 1918, this Very Low Frequency station connected the Netherlands to the Dutch East Indies (now Indonesia). The expressionist main building (Building A) now hosts concerts and film shoots. The surrounding town bears the station's name. The complex was built deep inside Veluwe national park to avoid radio interference — an isolated monument to the age of colonial communications."
+    },
+    "coordinates": {
+      "lat": 52.173379,
+      "lng": 5.818847
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "technology",
+      "industrial_era",
+      "hidden_gem",
+      "history"
+    ]
+  },
+  {
+    "id": "berenkeil",
+    "category": "street_art",
+    "name": {
+      "ru": "Де Беренкёйл",
+      "en": "De Berenkuil"
+    },
+    "short": {
+      "ru": "Велокольцо под переходом у Технического университета Эйндховена — крупнейшая легальная площадка для граффити в Нидерландах, музей под открытым небом с 1997 года.",
+      "en": "A bike-only roundabout beneath a TU Eindhoven crossing — the largest legal graffiti site in the Netherlands, an open-air museum since 1997."
+    },
+    "full": {
+      "ru": "Под автомобильным переходом у Технического университета Эйндховена расположена велосипедная развязка, окружённая захватывающим уличным искусством. С 1997 года это крупнейшее в Нидерландах место, где граффити разрешено законом — музей под открытым небом для велосипедистов и пешеходов. Фестиваль Step Into the Arena (2010–2024) собирал здесь свыше 150 художников на два дня ежегодно. «Медвежья яма» стала культовым символом легального стрит-арта.",
+      "en": "Below a crossing for cars outside Eindhoven University of Technology is a roundabout for cyclists surrounded by captivating graffiti art. Since 1997 it has been the largest spot in the Netherlands where graffiti is legally allowed — an open-air museum for bikers and pedestrians. The Step Into the Arena festival (2010–2024) invited over 150 artists to gather here for two days annually. The 'Bear Pit' has become an iconic symbol of legal street art."
+    },
+    "coordinates": {
+      "lat": 51.447138,
+      "lng": 5.500351
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "mural",
+      "largest_in_world",
+      "modern_arch"
+    ]
+  },
+  {
+    "id": "belgiyskiy-monument",
+    "category": "monument",
+    "name": {
+      "ru": "Бельгийский монумент",
+      "en": "Belgian Monument"
+    },
+    "short": {
+      "ru": "Крупнейший памятник Первой мировой в Нидерландах — дар благодарности от бельгийских беженцев, укрывшихся в Амерсфорте.",
+      "en": "The largest WWI monument in the Netherlands — a gift of gratitude from Belgian refugees who sheltered in Amersfoort."
+    },
+    "full": {
+      "ru": "Возведён в 1919 году бельгийскими солдатами в знак благодарности за то, что Нидерланды приютили около 100 тысяч беженцев во время Первой мировой. Монумент шириной около 18 метров включает мемориальную стену и девять цветочных ящиков — по одному на каждую провинцию Бельгии. Ныне скрыт в лесу на Амерсфортсе-Берг; даже местные жители часто не знают о его существовании.",
+      "en": "Built in 1919 by Belgian soldiers as a gift of gratitude after the Netherlands sheltered around 100,000 refugees during WWI. The monument is roughly 60 feet wide, with a memorial wall and nine flower boxes — one for each Belgian province. Now hidden in the woods on Amersfoortse Berg, even locals often do not know it exists."
+    },
+    "coordinates": {
+      "lat": 52.142774,
+      "lng": 5.358279
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "wwii",
+      "military",
+      "hidden_gem",
+      "history"
+    ]
+  },
+  {
+    "id": "muzey-korablikov-v-butylkah",
+    "category": "museum",
+    "name": {
+      "ru": "Музей корабликов в бутылках",
+      "en": "Bottle-ship Museum"
+    },
+    "short": {
+      "ru": "Крупнейшая в мире коллекция кораблей в бутылках — в Энкхёйзене, у гавани Эйсселмер.",
+      "en": "The world's largest collection of ships in bottles — in Enkhuizen, near the IJsselmeer harbour."
+    },
+    "full": {
+      "ru": "В старинном портовом Энкхёйзене на берегу Эйсселмера собрана самая большая в мире коллекция кораблей в бутылках. Миниатюрные фрегаты, баркентины и рыбацкие ботики демонстрируют виртуозность мастеров-любителей разных эпох. Коллекция отражает морскую историю Нидерландов в неожиданном ключе — через призму народного искусства и терпеливого ремесла.",
+      "en": "In the old harbour town of Enkhuizen on the IJsselmeer sits the world's largest collection of ships in bottles. Miniature frigates, barquentines, and fishing boats showcase the virtuosity of hobbyist builders across eras. The collection reflects Dutch maritime history in an unexpected key — through the lens of folk art and patient craft."
+    },
+    "coordinates": {
+      "lat": 52.703,
+      "lng": 5.293
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "quirky",
+      "largest_in_world",
+      "history",
+      "family_friendly"
+    ]
+  },
+  {
+    "id": "muzey-klompov",
+    "category": "museum",
+    "name": {
+      "ru": "Музей кломпов",
+      "en": "The Clog Museum"
+    },
+    "short": {
+      "ru": "Фабрика деревянных башмаков в Зандаме празднует кломпы — экспонаты из разных эпох и «бриллиантовый кломп» в стиле Дэмиена Хёрста.",
+      "en": "A clog company in Zaandam celebrates wooden shoes — clogs from many eras and a 'Diamond Clog' homage to Damien Hirst."
+    },
+    "full": {
+      "ru": "Местная фабрика Kooijman Souvenirs & Clogs собрала кломпы разных эпох и стран. Демонстрируются резьба и украшение. По форме башмака можно было определить ремесло хозяина: острые носы носили рыбаки, широкая подошва годилась для торфяных болот, шипованные — для обледенелых дорог. В коллекции есть и «бриллиантовый кломп» — отсылка к Дэмиену Хёрсту и памятник голландской народной культуре в музейной витрине.",
+      "en": "Local clog company Kooijman Souvenirs & Clogs has collected clogs from different eras and countries. Carving and decoration demonstrations show the craft. Clogs identified owners' occupations: pointy-toed for fishermen, broad-soled for peat bogs, cleated for icy roads. The collection includes a 'Diamond Clog' — a nod to Damien Hirst and a monument to Dutch folk culture in a museum vitrine."
+    },
+    "coordinates": {
+      "lat": 52.473069,
+      "lng": 4.81983
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "quirky",
+      "history",
+      "family_friendly",
+      "golden_age"
+    ]
+  },
+  {
+    "id": "oudemanxeysport",
+    "category": "architecture",
+    "name": {
+      "ru": "Аудеманхёйспорт",
+      "en": "Oudemanhuispoort"
+    },
+    "short": {
+      "ru": "Старинный крытый переход с лавками подержанных книг (с 1886 года), который посещал Ван Гог — был домом престарелых, холерным госпиталем, предшественником Рейксмузеума.",
+      "en": "An ancient covered passage of used-book stalls (since 1886) once frequented by Van Gogh — was a senior home, cholera hospital, Rijksmuseum precursor."
+    },
+    "full": {
+      "ru": "Древний переход, заполненный лавками букинистов, теперь часть юридического факультета Университета Амстердама. «Переход Старого Дома» — первый дом престарелых в Нидерландах XVIII века. За 400 лет истории был монастырём, холерным госпиталем, академией искусств, музеем, ставшим основой Рейксмузеума. Книжные лавки работают с 1886 года, торгуя нотами, гравюрами и старыми изданиями. Говорят, здесь Ван Гог находил японские гравюры.",
+      "en": "An ancient passage filled with stalls selling used books, now part of University of Amsterdam law faculty. 'Old Man's House Passage' — the first senior citizen home in the Netherlands in the 18th century. Over 400 years of history: convent, cholera hospital, arts academy, museum that became the basis of the Rijksmuseum. Stalls have been selling secondhand prints, sheet music, and books since 1886. It is said Van Gogh found Japanese prints here."
+    },
+    "coordinates": {
+      "lat": 52.3691,
+      "lng": 4.8976
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "art",
+      "hidden_gem",
+      "golden_age"
+    ]
+  },
+  {
+    "id": "kolokolnya-starogo-leydena",
+    "category": "monument",
+    "name": {
+      "ru": "Колокольня старого Лейдена",
+      "en": "Old Leiden Belltower"
+    },
+    "short": {
+      "ru": "Остатки колокольни XIV века, обнаруженные в 2014 году в подвале ювелирного магазина — центр средневекового Лейдена.",
+      "en": "14th-century bell tower remains discovered in 2014 in a jewelry-store basement — the center of medieval Leiden."
+    },
+    "full": {
+      "ru": "Давно потерянный фрагмент средневекового Лейдена был обнаружен в 2014 году в подвале ювелирного магазина на углу Бреестраат и Маарсманстег. Остатки стен первой колокольни Лейдена, заказанной в XIV веке Виллемом II, графом Голландским. Камни уложены парами, толщина стен 80 см — только дворяне имели законное право использовать столь массивную кладку. Случайная находка открыла окно в феодальную эпоху города.",
+      "en": "A long-lost piece of medieval Leiden recovered in 2014 in the basement of a jewelry store at Breestraat and Maarsmansteeg. Wall remnants of the first bell tower of Leiden, commissioned by Willem II Count of Holland in the 14th century. Stones laid two abreast, 80 cm thick — only noblemen were legally allowed to use such heavy masonry. The chance discovery opened a window into the city's feudal era."
+    },
+    "coordinates": {
+      "lat": 52.158446,
+      "lng": 4.490286
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "medieval",
+      "history",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": "defensiekanaal",
+    "category": "monument",
+    "name": {
+      "ru": "Оборонительный канал",
+      "en": "Defensiekanaal"
+    },
+    "short": {
+      "ru": "Противотанковый канал 1939 года протяжённостью 80 км с 47 дотами, ставший местом ожесточённого боя в первый день немецкого вторжения.",
+      "en": "An 80-kilometer anti-tank canal built in 1939 with 47 casemates, site of fierce fighting on the first day of the German invasion."
+    },
+    "full": {
+      "ru": "Построенный в 1939 году Оборонительный канал тянется на 80 километров вдоль восточной границы Нидерландов, укреплённый 47 бетонными дотами. 10 мая 1940 года немецкий бронепоезд протаранил голландский заслон у железнодорожного моста и частично сошёл с рельсов — с этого эпизода началась битва за канал. Большинство дотов сохранились до наших дней. Возле моста воссозданы траншеи и заграждение, напоминающие о той майской ночи.",
+      "en": "Built in 1939, the Defensiekanaal stretches 80 kilometers along the eastern Dutch border, fortified with 47 concrete casemates. On May 10, 1940, a German armored train crashed into a Dutch barricade at the railway bridge and partially derailed, marking the opening of the battle for the canal. Most of the casemates remain standing today. Near the bridge, reconstructed trenches and the barricade recall that fateful May night."
+    },
+    "coordinates": {
+      "lat": 51.685737,
+      "lng": 5.776566
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "wwii",
+      "military",
+      "history",
+      "dark_tourism",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "draaiorgel-muzey-harlem",
+    "category": "museum",
+    "name": {
+      "ru": "Музей шарманок",
+      "en": "Draaiorgel Museum Haarlem"
+    },
+    "short": {
+      "ru": "Скромный музей голландских шарманок, основанный в 1969 году, хранит 15 инструментов — от 90-клавишных до гигантских 112-клавишных органов.",
+      "en": "A modest museum founded in 1969 dedicated to Dutch barrel organs, housing 15 instruments ranging from 90-key models to massive 112-key organs."
+    },
+    "full": {
+      "ru": "Спрятанный в Харлеме музей собрал шарманки, ушедшие в отставку с танцплощадок и уличных углов. Среди 15 экспонатов — первый 90-клавишный шедевр мастера Карла Фрая и грандиозный «Het Kunkels Organ» на 112 клавиш с 14 регистрами. В конце 1990-х музей едва не закрылся, но был спасён публичным протестом. Работает только по воскресеньям, вход свободный — посетители оставляют пожертвования.",
+      "en": "Hidden in Haarlem, this museum collects barrel organs retired from dance halls and street corners. Among the 15 pieces are Carl Frei's first 90-key masterpiece and the magnificent Het Kunkels Organ with 112 keys and 14 registers. In the late 1990s the museum nearly closed but was rescued by public protest. Open Sundays only; free admission via donations."
+    },
+    "coordinates": {
+      "lat": 52.391014,
+      "lng": 4.653117
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "music",
+      "hidden_gem",
+      "free_entry",
+      "quirky",
+      "indoor"
+    ]
+  },
+  {
+    "id": "nash-gospodin-na-cherdake",
+    "category": "religious",
+    "name": {
+      "ru": "Наш Господин на чердаке",
+      "en": "Our Lord in the Attic"
+    },
+    "short": {
+      "ru": "Тайная католическая церковь XVII века, спрятанная на чердаке канального дома 1630 года — второй старейший музей Амстердама.",
+      "en": "A clandestine 17th-century Catholic church hidden in the attic of a 1630 canal house, Amsterdam's second-oldest museum."
+    },
+    "full": {
+      "ru": "Жилой дом 1630 года в старейшей части Амстердама, на границе квартала красных фонарей, скрывает под крышей миниатюрную католическую церковь. Построенную в 1663 году Яном Хартманном во времена гонений на католиков, её вход замаскирован фальшивой дверью в гостиной. Крутая лестница ведёт к алтарю с мрамором и позолотой, росписи «Крещение Христа» работы Якоба де Вита и сиденьям на 150 верующих. Церковь стала музеем в 1888 году — вторым по старшинству в городе. Службы в ней идут до сих пор.",
+      "en": "A residential home built in 1630 in Amsterdam's oldest quarter, bordering the red-light district, hides a magnificent miniature Catholic church beneath its roof. Built in 1663 by Jan Hartmann during Catholic persecution, its entrance is disguised as a fake door in the living room. A steep staircase climbs to a marble-and-gilt altar, Jacob de Wit's Baptism of Christ, and seating for 150 worshippers. The church became a museum in 1888, Amsterdam's second-oldest. Services are still held in the attic today."
+    },
+    "coordinates": {
+      "lat": 52.376,
+      "lng": 4.9
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "religion",
+      "history",
+      "golden_age",
+      "hidden_gem",
+      "indoor"
+    ]
+  },
+  {
+    "id": "straat",
+    "category": "street_art",
+    "name": {
+      "ru": "STRAAT",
+      "en": "STRAAT"
+    },
+    "short": {
+      "ru": "Крупнейший в мире музей уличного искусства — 8000 м² цехов бывшей верфи NDSM с доставочным фургоном, подвешенным под потолок.",
+      "en": "The world's largest street-art museum, occupying 8,000 square meters of a former NDSM shipyard with a delivery van hanging from the ceiling."
+    },
+    "full": {
+      "ru": "Задуманный в 2015-м и открытый в 2020 году музей занял здание бывшей судоверфи NDSM, десятилетиями стоявшей заброшенной и расписанной тэгами. Международные стрит-артисты создали здесь курируемые полотна на стенах трёхэтажного зала площадью 8000 м², дополненные скульптурами и сохранёнными промышленными механизмами. Доставочный фургон парит под потолком, гигантская Анна Франк высится над входом. Квартал NDSM доступен бесплатным паромом от вокзала Centraal.",
+      "en": "Conceived in 2015 and opened in 2020, the museum occupies a former NDSM shipyard building that stood abandoned and tagged for decades. International street artists created curated works on large canvases across the 8,000-square-meter, three-story-high hall, supplemented by sculptures and retained industrial machinery. A delivery van hangs suspended from the ceiling; a towering Anne Frank rises above the entrance. The NDSM neighborhood is reached by free ferry from Centraal Station."
+    },
+    "coordinates": {
+      "lat": 52.402138,
+      "lng": 4.89426
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "urban_art",
+      "modern_arch",
+      "industrial_era",
+      "photogenic",
+      "indoor"
+    ]
+  },
+  {
+    "id": "ijssellinie",
+    "category": "monument",
+    "name": {
+      "ru": "Линия Эйссел",
+      "en": "IJssellinie"
+    },
+    "short": {
+      "ru": "Секретная линия обороны холодной войны, построенная около 1950 года для затопления огромных территорий в случае советского вторжения — уцелело ~30 бункеров.",
+      "en": "A secret Cold War defense line built around 1950 to flood vast territories in case of Soviet invasion, with ~30 surviving bunkers."
+    },
+    "full": {
+      "ru": "Построенная в секрете около 1950 года, линия Эйссел была способна перекрыть Ваал у Неймегена и Недеррейн у Арнема плавучими дамбами, затопив Эйссел и обширные земли. Между Девентером и Олстом сохранилось примерно 30 бункеров, около восьми из них по-прежнему оборудованы так же, как в 1950 году. Свободный доступ, возле каждого бункера стоит информационный щит.",
+      "en": "Built in secret around 1950, the IJssellinie was designed to close the Waal at Nijmegen and the Nederrijn at Arnhem with floating dams, flooding the IJssel and large land areas. About 30 bunkers remain between Deventer and Olst; roughly eight are still equipped as they were in 1950. Free to walk, with explanation panels at every bunker."
+    },
+    "coordinates": {
+      "lat": 52.307425,
+      "lng": 6.116121
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "cold_war",
+      "military",
+      "history",
+      "hidden_gem",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "plompe-toren",
+    "category": "dark_legend",
+    "name": {
+      "ru": "Пломпе-торен",
+      "en": "Plompe Toren"
+    },
+    "short": {
+      "ru": "Одинокая кирпичная церковная башня на побережье — всё, что осталось от города, смытого штормом; внутри 360° панорама рассказывает легенду о русалке и проклятии.",
+      "en": "A lonely brick church tower on the coast, all that remains of a town swept away by storm; inside, a 360° panorama tells the legend of a mermaid and a curse."
+    },
+    "full": {
+      "ru": "Кирпичная церковная башня на побережье Зеландии — единственное, что осталось от города, поглощённого морем столетия назад. Башня хранит историю о пойманной русалке, её обезумевшем муже-тритоне и проклятии, которое они наложили на общину XVI века. Панорама внутри башни разворачивает легенду на 360 градусов, делая Пломпе-торен не просто руиной, а хранителем морского предания.",
+      "en": "A brick church tower along Zeeland's coast is all that remains of a town swallowed by the sea centuries ago. The tower preserves the story of a trapped mermaid, her frantic merman husband, and the curse they laid upon a 16th-century community. A 360-degree panorama inside unfolds the legend, making the Plompe Toren not merely a ruin but a keeper of maritime folklore."
+    },
+    "coordinates": {
+      "lat": 51.683404,
+      "lng": 3.775199
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "legend",
+      "dark_tourism",
+      "spooky",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "klein-kyurasao",
+    "category": "caribbean",
+    "name": {
+      "ru": "Кляйн-Кюрасао",
+      "en": "Klein Curaçao"
+    },
+    "short": {
+      "ru": "Необитаемый коралловый атолл площадью полквадратной мили с заброшенным коралловым маяком 1850 года и остовами кораблекрушений — добраться можно на катамаране с Кюрасао.",
+      "en": "An uninhabited half-square-mile coral atoll with an abandoned 1850 coral-pink lighthouse and shipwrecks, reachable by catamaran from Curaçao."
+    },
+    "full": {
+      "ru": "Призрачный необитаемый коралловый атолл площадью около полквадратной мили. Коралловый маяк розового цвета, заброшенный с 1850 года, стоит среди остовов кораблей, которые он не смог спасти. В 1888 году германский флот попытался основать здесь базу в рамках имперской колонизации Карибов — тропический шторм прогнал солдат. Однодневные поездки на катамаране с Кюрасао. На острове водятся черепахи, ящерицы и выцветший розовый маяк встречает редких гостей.",
+      "en": "A ghostly uninhabited coral atoll spanning roughly half a square mile. An abandoned coral-pink lighthouse from 1850 stands among the wrecks of vessels it failed to save. In 1888 the German Navy attempted to establish a base here for Imperial Caribbean colonization but was driven off by a tropical storm. Day trips by catamaran from Curaçao bring visitors to an island inhabited by turtles, lizards, and the faded pink lighthouse."
+    },
+    "coordinates": {
+      "lat": 11.989,
+      "lng": -68.642
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "dark_tourism",
+      "hidden_gem",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "waterloopbos",
+    "category": "hydraulic",
+    "name": {
+      "ru": "Ватерлопбос",
+      "en": "Waterloopbos"
+    },
+    "short": {
+      "ru": "Лес, усеянный заброшенными гидравлическими моделями 1954–1996 годов — порт Бангкока, датское побережье, система «Дельта-Воркс» в натуральном масштабе.",
+      "en": "A forest dotted with abandoned 1954–1996 hydraulic engineering models including Bangkok harbor, Denmark's coast, and the Delta Works at scale."
+    },
+    "full": {
+      "ru": "С 1954 по 1996 год в этом лесу работала гидравлическая лаборатория под открытым небом. Десятки масштабных моделей — порт Бангкока, побережье Дании, система «Дельта-Воркс» — были построены здесь для испытаний, в которых участвовали исследователи из многих стран. После закрытия лаборатории в 1996 году природа взяла своё. По лесу проложены маркированные маршруты. Павильон «Het ProefLab» открыт со среды по воскресенье.",
+      "en": "From 1954 to 1996, this forest housed an open-air hydraulic laboratory. Dozens of scale models—Bangkok harbor, Denmark's coast, the Delta Works—were built here for experiments conducted by researchers from many countries. After the lab closed in 1996, nature reclaimed the site. Marked walking routes wind through the woods. The Het ProefLab pavilion is open Wednesday through Sunday."
+    },
+    "coordinates": {
+      "lat": 52.67648,
+      "lng": 5.921356
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "technology",
+      "industrial_era",
+      "nature",
+      "hidden_gem",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "shoklant",
+    "category": "nature",
+    "name": {
+      "ru": "Схокланд",
+      "en": "Schokland"
+    },
+    "short": {
+      "ru": "Бывший остров в Зёйдерзе, насильно эвакуированный в 1859 году и превращённый в сухопутный ландшафт после осушения польдера.",
+      "en": "Former Zuiderzee island forcibly evacuated in 1859, now a UNESCO landscape in the reclaimed Noordoostpolder."
+    },
+    "full": {
+      "ru": "Схокланд — место с человеческими поселениями с 4500 года до н.э., превратившееся в остров около 1450 года. К середине XIX века 650 жителей теснились на трёх искусственных холмах-«вердах», пока в 1859-м указ короля Виллема III не заставил всех покинуть опасную землю. После осушения Ноордостполдера в 1942 году остров стал частью суши. Сегодня на месте бывшего острова работает музей, ландшафт свободно доступен для посещения, а вся территория входит в список Всемирного наследия ЮНЕСКО.",
+      "en": "Schokland has been inhabited since 4500 BC and became an island around 1450 when rising waters cut it off from the mainland. By the mid-19th century, 650 residents lived on three artificial mounds, but King William III's 1859 decree forced complete evacuation due to flooding risks. After the Noordoostpolder was drained in 1942, the former island became part of dry land. Today a museum stands on the site, the landscape is freely accessible, and the entire area is a UNESCO World Heritage Site celebrating human interaction with water."
+    },
+    "coordinates": {
+      "lat": 52.6356,
+      "lng": 5.7833
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "unesco",
+      "history",
+      "nature",
+      "free_entry",
+      "hidden_gem"
+    ]
+  },
+  {
+    "id": "muzey-shahmatnyh-figur-rotterdam",
+    "category": "museum",
+    "name": {
+      "ru": "Музей шахматных фигур",
+      "en": "Schaakstukkenmuseum"
+    },
+    "short": {
+      "ru": "Коллекция из 30 000 шахматных фигур в 928 уникальных наборах, спрятанная под кубическими домами Роттердама.",
+      "en": "Collection of 30,000 chess pieces in 928 unique sets, hidden beneath Rotterdam's iconic Cube Houses."
+    },
+    "full": {
+      "ru": "В подвале знаменитых кубических домов Роттердама прячется необычный музей с почти тысячей уникальных шахматных наборов — от антикварных резных до современных поп-культурных. Здесь можно увидеть ручную роспись, фигуры из мультфильмов и арт-объекты, созданные для ежегодного конкурса дизайна шахмат. Всего в коллекции около 30 000 отдельных фигур. Вход стоит символические 1 евро для детей и 2 евро для взрослых.",
+      "en": "Hidden in the basement beneath Rotterdam's famous Cube Houses, this quirky museum houses nearly a thousand unique chess sets — from hand-carved antiques to modern cartoon and pop-culture editions. You'll find hand-painted pieces, sculptural art sets, and entries from an annual chess-design competition. The collection totals around 30,000 individual pieces. Admission is a modest €1 for children and €2 for adults."
+    },
+    "coordinates": {
+      "lat": 51.920156,
+      "lng": 4.490499
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "quirky",
+      "art",
+      "indoor",
+      "ticketed_only"
+    ]
+  },
+  {
+    "id": "melnica-kilsdonk",
+    "category": "wind",
+    "name": {
+      "ru": "Мельница Килсдонк",
+      "en": "The Kilsdonk Mill"
+    },
+    "short": {
+      "ru": "Редкая двойная мельница, способная работать как от ветра, так и от водяного колеса — восстановлена в 2008 году по оригинальным чертежам.",
+      "en": "Rare dual-powered mill that can run on both wind and water, rebuilt in 2008 to its original 15th-century design."
+    },
+    "full": {
+      "ru": "Мельница в деревне Хесвейк-Динтер известна как редкий тип «ватерфлухт» — она приводится в движение и ветром, и водяным колесом. Считается, что первая постройка датируется 1433 годом. В 1840-м мельница сгорела дотла, после чего проработала ещё четыре десятилетия и пришла в упадок. В 2008 году её полностью восстановили по историческим чертежам, вернув уникальную двухприводную конструкцию.",
+      "en": "This mill in the village of Heeswijk-Dinther is a rare 'watervlucht' type, capable of being powered by both wind and a water wheel. It's believed to date back to 1433. The mill burned down in 1840, was rebuilt and operated for another forty years before falling into ruin. In 2008 it was fully reconstructed to its original design, restoring the unique dual-drive mechanism that makes it one of a kind."
+    },
+    "coordinates": {
+      "lat": 51.637096,
+      "lng": 5.504256
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "technology",
+      "history",
+      "medieval",
+      "photogenic",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "niderlandskiy-muzey-pod-otkrytym-nebom",
+    "category": "museum",
+    "name": {
+      "ru": "Нидерландский музей под открытым небом",
+      "en": "Nederlands Openluchtmuseum"
+    },
+    "short": {
+      "ru": "Музей из более чем сотни исторических домов и ферм, показывающий быт Нидерландов до индустриализации; укрывал сотни жителей во время битвы при Арнеме.",
+      "en": "Open-air museum with over 100 historic homes and farmhouses depicting pre-industrial Dutch life; sheltered hundreds during the Battle of Arnhem."
+    },
+    "full": {
+      "ru": "Этот музей под открытым небом, открытый в 1918 году, собрал более сотни подлинных зданий со всей страны — от торфяных хижин с низкими потолками до рыбацких лачуг, крестьянских усадеб и дачных трейлеров. В одном здании воссозданы рядные дома с интерьерами 1860-х, 1910-х, 1950-х и 1970-х годов. Во время Второй мировой музей пострадал от бомбардировок, но сыграл важную роль: во время битвы при Арнеме здесь нашли убежище сотни местных жителей.",
+      "en": "Opened in 1918, this large open-air museum brings together over a hundred authentic buildings from across the Netherlands — from low-ceilinged peat homes to eel-peddler shacks, farmhouses, and holiday caravans. One building contains row houses with period interiors set to the 1860s, 1910s, 1950s, and 1970s. The museum sustained bomb damage during WWII but played a vital role during the Battle of Arnheim, sheltering hundreds of civilians in its historic structures."
+    },
+    "coordinates": {
+      "lat": 51.999,
+      "lng": 5.948
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "history",
+      "wwii",
+      "family_friendly",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "zamok-i-barhatnaya-peshtshera",
+    "category": "castle",
+    "name": {
+      "ru": "Замок и Бархатная пещера",
+      "en": "Kasteelruine Fluweelengrot"
+    },
+    "short": {
+      "ru": "Руины замка XIV века на холме над лабиринтом мергелевых туннелей с граффити американских солдат времён Второй мировой.",
+      "en": "Ruins of a 14th-century hilltop castle atop a labyrinth of marlstone tunnels with WWII-era American soldier graffiti."
+    },
+    "full": {
+      "ru": "На холме в Валкенбурге стоят руины замка, впервые укреплённого в 1115 году; нынешняя постройка датируется XIV веком и была разрушена в XVI–XVII столетиях во время Восьмидесятилетней войны. Под замком залегает Бархатная пещера — лабиринт туннелей из мергеля, веками использовавшихся для добычи камня и как тайные ходы. В 1944 году сотни жителей укрывались здесь от бомбёжек, а американские солдаты оставили на мягких стенах свои имена и рисунки, превратив пещеру в живую хронику войны.",
+      "en": "Atop a hill in Valkenburg stand the ruins of a castle first fortified in 1115; the current structure dates to the 14th century and was destroyed in the 16th–17th centuries during the Eighty Years' War. Beneath the castle lies the Velvet Cave — a labyrinth of marlstone tunnels quarried over centuries and used as secret escape routes. In 1944, hundreds of citizens sheltered here during WWII bombings, and American soldiers etched their names and doodles into the soft cave walls, turning the tunnels into a living wartime chronicle."
+    },
+    "coordinates": {
+      "lat": 50.866,
+      "lng": 5.836
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "medieval",
+      "wwii",
+      "history",
+      "dark_tourism",
+      "photogenic"
+    ]
+  },
+  {
+    "id": "zamok-brederode",
+    "category": "castle",
+    "name": {
+      "ru": "Замок Бредероде",
+      "en": "Brederode Castle"
+    },
+    "short": {
+      "ru": "Руины замка XIII века одной из самых могущественных голландских семей, ставшие первым государственным памятником страны.",
+      "en": "Ruins of a 13th-century castle of one of the most powerful Dutch noble families, restored as the country's first state monument."
+    },
+    "full": {
+      "ru": "Замок Бредероде в Сантпорт-Зёйд был построен около 1285 года Виллемом ван Бредероде и расширен в 1300-м до квадратной крепости. Род Бредероде принадлежал к высшей нидерландской знати. Замок был разрушен во время осады Харлема в 1573 году, в эпоху Восьмидесятилетней войны. В XIX веке руины стали первым национальным памятником Нидерландов, реставрированным государством, и остаются важным символом средневековой истории страны.",
+      "en": "Brederode Castle in Santpoort-Zuid was built around 1285 by Willem van Brederode and expanded in 1300 into a square fortress. The Brederode family was among the most powerful Dutch noble houses. The castle was destroyed during the 1573 Siege of Haarlem in the Eighty Years' War. In the 19th century, the ruins became the first national monument in the Netherlands to be restored by the state, and they remain an important symbol of the country's medieval history."
+    },
+    "coordinates": {
+      "lat": 52.42561,
+      "lng": 4.622612
+    },
+    "videoId": null,
+    "videoTime": null,
+    "videoTimeFormatted": null,
+    "tags": [
+      "medieval",
+      "history",
+      "photogenic",
+      "outdoor"
+    ]
+  }
+]

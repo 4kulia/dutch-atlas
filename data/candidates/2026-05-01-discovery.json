@@ -1,0 +1,1147 @@
+{
+  "generated_at": "2026-05-01T21:40:29.645Z",
+  "input_file": "/raw.json",
+  "semantic_threshold": 0.95,
+  "totals": {
+    "raw": 49,
+    "merged": 48,
+    "accepted": 46,
+    "duplicates": 2,
+    "low_score": 0
+  },
+  "voyage_tokens_used": 5231,
+  "proposals": [
+    {
+      "name": "Ludolph van Ceulen Memorial",
+      "coordinates": {
+        "lat": 52.157525,
+        "lng": 4.48737
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/ludolph-van-ceulen-memorial-leiden",
+          "label": "exa-ao"
+        },
+        {
+          "url": "https://www.atlasobscura.com/places/willebrord-snellius-grave",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Gravestone in Pieterskerk Leiden with pi to 35 decimals — the 16th-century mathematician's life work.",
+      "raw_text": "Under the floor at Pieterskerk Leiden — 900-year-old Gothic, oldest church in the city. Resting place of Willebrord Snel van Royen (Snellius) — author of the law of refraction. Marked by a flat stone and small plaque. Pieterskerk is now a public/community space, deconsecrated since 1970s.",
+      "_meta": {
+        "score": 0.611,
+        "novelty": 0.418,
+        "top_neighbour": {
+          "id": "bashnya-onze-live-vroue",
+          "name_en": "Onze-Lieve-Vrouwetoren",
+          "sim": 0.582
+        }
+      }
+    },
+    {
+      "name": "Beetle Sphere",
+      "coordinates": {
+        "lat": 52.367521,
+        "lng": 4.891019
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/beetle-ball",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Replica 1953 VW Beetle perfectly rolled into an aluminium sphere — by Ichwan Noor, inside Kalverpassage mall.",
+      "raw_text": "Inside Kalverpassage shopping centre near Heiligeweg. Crafted by Ichwan Noor — a replica 1953 Volkswagen Beetle rolled into a perfect sphere. Carved a replica of the vehicle's exterior, cast in aluminum. Similar process for interior. Freely accessible during mall hours; visible through glass after closing.",
+      "_meta": {
+        "score": 0.483,
+        "novelty": 0.471,
+        "top_neighbour": {
+          "id": "evromast",
+          "name_en": "Euromast",
+          "sim": 0.529
+        }
+      }
+    },
+    {
+      "name": "McCammonplein",
+      "coordinates": {
+        "lat": 51.828484,
+        "lng": 5.294658
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/mccammonplein-opijnen-netherlands",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Memorial in shape of a B-17 bomber paved with stones, marking the 1943 Man-O-War crash site in Opijnen.",
+      "raw_text": "On July 30 1943, American B-17 'Man-O-War' was shot down by German fighters over Opijnen. Eight crew killed, two captured. Townspeople built a paving-stone monument in the shape of a B-17 with a granite tail bearing the crew's names. Streets named after the crew; bodies in nearby churchyard.",
+      "_meta": {
+        "score": 0.478,
+        "novelty": 0.463,
+        "top_neighbour": {
+          "id": "valkenburg",
+          "name_en": "Valkenburg",
+          "sim": 0.537
+        }
+      }
+    },
+    {
+      "name": "Kardoes the Hellhound",
+      "coordinates": {
+        "lat": 52.315111,
+        "lng": 6.987138
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/kardoes-the-hellhound",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Bronze statue of the Hellehond legend — black-dog omen of death, sometimes linked to Odin's Wild Hunt.",
+      "raw_text": "Village of De Lutte in Overijssel. Legend of the Kardoes / Hellehond — infernal beast haunting cemeteries, with pointy ears and glowing eyes, omen of death like the British black dog. Sometimes associated with the Norse god Odin (Wodanshelper). Statue by Pieter de Monchy (1950).",
+      "_meta": {
+        "score": 0.466,
+        "novelty": 0.444,
+        "top_neighbour": {
+          "id": "dokkum",
+          "name_en": "Dokkum",
+          "sim": 0.556
+        }
+      }
+    },
+    {
+      "name": "Apparent Dead House",
+      "coordinates": {
+        "lat": 52.0795,
+        "lng": 4.2783
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/apparent-dead-house-in-the-hague",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "1830 building where the recently dead were watched for days for signs of life — feathers, mirrors, bells.",
+      "raw_text": "Built 1830 in Kerkhoflaan general cemetery The Hague. Recently dead were placed in a central room where attendants checked for signs of life — feathers and mirrors for breath, elaborate bells/strings to detect movement. Most such buildings worldwide are demolished; this one stands as a monument to the strange science of death.",
+      "_meta": {
+        "score": 0.465,
+        "novelty": 0.442,
+        "top_neighbour": {
+          "id": "zamok-binnenhof",
+          "name_en": "Binnenhof",
+          "sim": 0.558
+        }
+      }
+    },
+    {
+      "name": "Sovjet Ereveld (Soviet Field of Honor)",
+      "coordinates": {
+        "lat": 52.130972,
+        "lng": 5.373192
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/sovjet-ereveld",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Cemetery section dedicated to Soviet WWII soldiers who fought near Amersfoort or were captured by the enemy.",
+      "raw_text": "A prominent section of Rusthof Cemetery in Leusden dedicated to fallen Soviet soldiers from WWII. Free to visit; nearby museum tells the soldiers' stories with VR experience.",
+      "_meta": {
+        "score": 0.464,
+        "novelty": 0.44,
+        "top_neighbour": {
+          "id": "zamok-levesteyn",
+          "name_en": "Loevestein Castle",
+          "sim": 0.56
+        }
+      }
+    },
+    {
+      "name": "Museum Boerhaave",
+      "coordinates": {
+        "lat": 52.161355,
+        "lng": 4.488902
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/museum-boerhaave",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Former plague hospital + nunnery turned medical museum; arms in jars, articulated skeletons holding mortality-themed Latin phrases.",
+      "raw_text": "Originally St. Caecilia nunnery, then a plague hospital and madhouse, converted to university hospital in 1653. In 1720 Herman Boerhaave gave his famous 'sickbed lessons' marking the start of clinical teaching. 400+ years of medical history, antique scientific instruments, an old operating theatre.",
+      "_meta": {
+        "score": 0.454,
+        "novelty": 0.423,
+        "top_neighbour": {
+          "id": "mauritsheys",
+          "name_en": "Mauritshuis",
+          "sim": 0.577
+        }
+      }
+    },
+    {
+      "name": "National Holocaust Monument",
+      "coordinates": {
+        "lat": 52.365724,
+        "lng": 4.904924
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/national-holocaust-monument-amsterdam",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Brick walls inscribed with names of 102,000 Jewish + 220 Roma victims — stainless steel forms Hebrew word 'in memory of'.",
+      "raw_text": "Memorial for 102,000 Jewish and 220 Roma/Sinti victims of the Holocaust in NL. Visitors walk corridors of red-brick walls inscribed with names, dates of birth, and ages at death. Stainless steel profiles atop the walls form the Hebrew letters לזכר ('in memory of'). 1000-Names Wall left blank for future identifications.",
+      "_meta": {
+        "score": 0.454,
+        "novelty": 0.424,
+        "top_neighbour": {
+          "id": "neymegen",
+          "name_en": "Nijmegen",
+          "sim": 0.576
+        }
+      }
+    },
+    {
+      "name": "Mission Museum Steyl",
+      "coordinates": {
+        "lat": 51.333191,
+        "lng": 6.120732
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/mission-museum-steyl",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Catholic-mission taxidermy collection; 1000+ stuffed mammals, birds and insects collected on missionaries' travels.",
+      "raw_text": "Visitors are greeted by a cross-eyed coin-operated taxidermy bear. Houses over 1000 stuffed mammals, birds, reptiles, amphibians, fish, butterflies, beetles, scorpions and other insects collected by Catholic missionaries from the 1870s. The village of Steyl hosts five monasteries, including the 'pink sisters' who never leave.",
+      "_meta": {
+        "score": 0.451,
+        "novelty": 0.418,
+        "top_neighbour": {
+          "id": "nacionalnyy-park-hoge-velyuve",
+          "name_en": "De Hoge Veluwe National Park",
+          "sim": 0.582
+        }
+      }
+    },
+    {
+      "name": "The House with The Blood Stains",
+      "coordinates": {
+        "lat": 52.365008,
+        "lng": 4.90071
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/amsterdams-house-with-the-blood-stains",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Amstel canal house with arcane Kabbalistic symbols said to be painted in the blood of a mad 17th-c. ambassador.",
+      "raw_text": "Plain gray facade overlooking the Amstel marked with strange reddish-brown symbols. Built early 1670s for Gijsbert Dumber. Famous for Coenraad van Beuningen — six-time mayor of Amsterdam, ambassador, who in his final years (likely bipolar) painted Kabbalistic signs on the facade — rumored to be in his own blood. Marks faded but visible. Private residence, be respectful.",
+      "_meta": {
+        "score": 0.451,
+        "novelty": 0.418,
+        "top_neighbour": {
+          "id": "de-reyp",
+          "name_en": "De Rijp",
+          "sim": 0.582
+        }
+      }
+    },
+    {
+      "name": "Pianola Museum",
+      "coordinates": {
+        "lat": 52.37851,
+        "lng": 4.883544
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/pianola-museum",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "~50 mechanical player pianos and 20,000 punched music rolls; tiny eccentric museum in the Jordaan.",
+      "raw_text": "One of the smallest and most delightfully eccentric museums in Amsterdam. About 50 mechanical player pianos and almost 20,000 punched rolls of music. Volunteers give personalised tours. By the end of WWII, the pianola market had dried up — radio and vinyl took over.",
+      "_meta": {
+        "score": 0.443,
+        "novelty": 0.405,
+        "top_neighbour": {
+          "id": "esher-vo-dvorce",
+          "name_en": "Escher in Het Paleis",
+          "sim": 0.595
+        }
+      }
+    },
+    {
+      "name": "Huis te Vraag Cemetery",
+      "coordinates": {
+        "lat": 52.347114,
+        "lng": 4.848861
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/huis-te-vraag-cemetery",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Overgrown ivy-clad Victorian-era graveyard hidden in Amsterdam's outskirts — last burial in the 1960s, still open to the living.",
+      "raw_text": "Overgrown and largely forgotten cemetery in Amsterdam's outskirts. Name allegedly from 1489 — Maximilian I asked for directions to Amsterdam at the inn that once stood here. Reopened 1891 as Dutch Reformed Church private gravesite. ~16,000 bodies including some WWII anonymous burials.",
+      "_meta": {
+        "score": 0.441,
+        "novelty": 0.401,
+        "top_neighbour": {
+          "id": "valkenburg",
+          "name_en": "Valkenburg",
+          "sim": 0.599
+        }
+      }
+    },
+    {
+      "name": "Begijnhof Chapel",
+      "coordinates": {
+        "lat": 52.369359,
+        "lng": 4.889617
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/begijnhof-chapel",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Hidden-courtyard hidden church telling the Miracle of Amsterdam (1345) — a vomited communion wafer found pristine in ashes.",
+      "raw_text": "Hidden church in a hidden courtyard. Begijnhof — one of Amsterdam's oldest inner courtyards. Beguines were a lay female Catholic order living in poverty. Begijn Chapel once held the holy relic of the Miracle of Amsterdam: a dying man took communion and vomited up the host, which the maid disposed of in the fireplace. Next morning the wafer was found pristine in the ashes — pilgrims came, jumpstarting Amsterdam's economy.",
+      "_meta": {
+        "score": 0.44,
+        "novelty": 0.4,
+        "top_neighbour": {
+          "id": "de-reyp",
+          "name_en": "De Rijp",
+          "sim": 0.6
+        }
+      }
+    },
+    {
+      "name": "Internationaal Klompenmuseum",
+      "coordinates": {
+        "lat": 53.138161,
+        "lng": 6.567993
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/internationaal-klompenmuseum-international-clog-museum",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Largest clog collection in the world (2,000 pairs from 43 countries) — based on the Wietzes brothers' last-clog-makers archive.",
+      "raw_text": "Built on the Wietzes brothers' collection — last clog makers of Eelde — opened 1990. 2000+ pairs from 43 different countries. Includes clogs resembling dress shoes, smuggler's clogs with inverted profiles, and clogs with built-in skates.",
+      "_meta": {
+        "score": 0.439,
+        "novelty": 0.399,
+        "top_neighbour": {
+          "id": "hunebed-centr-borger",
+          "name_en": "Hunebed Centrum (Borger)",
+          "sim": 0.601
+        }
+      }
+    },
+    {
+      "name": "Castle d'Oultremont",
+      "coordinates": {
+        "lat": 51.732,
+        "lng": 5.183
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/castle-doultremont",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Medieval castle painted bright pink as part of an abandoned children's theme park.",
+      "raw_text": "Medieval castle in Nieuwkuijk painted pink as part of a now-abandoned children's theme park.",
+      "_meta": {
+        "score": 0.438,
+        "novelty": 0.397,
+        "top_neighbour": {
+          "id": "valkenburg",
+          "name_en": "Valkenburg",
+          "sim": 0.603
+        }
+      }
+    },
+    {
+      "name": "Beth Haim Cemetery",
+      "coordinates": {
+        "lat": 52.295629,
+        "lng": 4.902913
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/beth-haim-cemetery",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Oldest Jewish cemetery in NL — Sephardic graves dating to 1614, including Spinoza's parents'.",
+      "raw_text": "On the outskirts of Amsterdam, Ouderkerk aan de Amstel. Oldest Jewish cemetery in the Netherlands — 28,000 graves. Sephardi Jewish ancestors from Spain and Portugal. Inscriptions in Dutch, Portuguese and Hebrew. Includes graves of philosopher Spinoza's parents. Rodeamentos House (1705) divides old monumental tombs from newer section.",
+      "_meta": {
+        "score": 0.437,
+        "novelty": 0.395,
+        "top_neighbour": {
+          "id": "de-reyp",
+          "name_en": "De Rijp",
+          "sim": 0.605
+        }
+      }
+    },
+    {
+      "name": "Trompettersteeg",
+      "coordinates": {
+        "lat": 52.3735,
+        "lng": 4.8983
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/trompettersteeg",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Amsterdam's narrowest street (1m wide at the canal end) covered in ever-changing graffiti — historic Red-Light alley.",
+      "raw_text": "Just south of the Oude Kerk, only 1 meter wide near the canal end. Narrowest street in Amsterdam. Once a highlight of De Wallen — Red Light District — lined with windows. The eastern end is coated with ever-changing graffiti. In 2021 Dopie & Ultimo.11 painted a 3D version of Amsterdam's coat of arms.",
+      "_meta": {
+        "score": 0.436,
+        "novelty": 0.394,
+        "top_neighbour": {
+          "id": "reytdifaven",
+          "name_en": "Reitdiephaven",
+          "sim": 0.606
+        }
+      }
+    },
+    {
+      "name": "Keith Haring Mural",
+      "coordinates": {
+        "lat": 52.380906,
+        "lng": 4.860792
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/keith-haring-mural",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "40-foot Keith Haring mural — the largest he made in Europe — hidden 30 years behind industrial boarding, rediscovered 2018.",
+      "raw_text": "Painted by Keith Haring 1986 as gift to Amsterdam during a Stedelijk Museum visit. Adorned an outdoor wall at the museum's former storage facility until 1989. Concealed by industrial boarding for almost 30 years. Largest Haring painting created in Europe. Rediscovered after Dutch graffiti artist Mick La Rock came across an old photo and launched a campaign.",
+      "_meta": {
+        "score": 0.435,
+        "novelty": 0.391,
+        "top_neighbour": {
+          "id": "muzey-kreller-myuller",
+          "name_en": "Kröller-Müller Museum",
+          "sim": 0.609
+        }
+      }
+    },
+    {
+      "name": "West Kruiskade Teapot",
+      "coordinates": {
+        "lat": 51.92006,
+        "lng": 4.467597
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/west-kruiskade-teapot",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Giant Delft-tile teapot mural above a Rotterdam ice-cream shop & nursing home — illuminated at night.",
+      "raw_text": "Multicultural West Kruiskade neighborhood, Rotterdam. Giant blue-and-white teapot covering the upper floors of a nursing home. Made by Anne Mercedes Langhorst from Delft tile designs — windmills, cows, boats. Edges illuminated at night. Right above De IJssalon ice-cream shop.",
+      "_meta": {
+        "score": 0.434,
+        "novelty": 0.39,
+        "top_neighbour": {
+          "id": "bruk-in-vaterland",
+          "name_en": "Broek in Waterland",
+          "sim": 0.61
+        }
+      }
+    },
+    {
+      "name": "Pijpencabinet (Amsterdam Pipe Museum)",
+      "coordinates": {
+        "lat": 52.36412,
+        "lng": 4.885286
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/amsterdam-pipe-museum",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "20,000-object archive of smoking pipes near Prinsengracht — clay, porcelain, wooden, ceremonial wedding pipes.",
+      "raw_text": "Open 40+ years near Prinsengracht. 20,000-object archive of smoking pipes from across the world spanning centuries. Started as Don Duco's private collection in 1969. Includes ceremonial pipes decorated with ribbons by bridesmaids in traditional Dutch weddings.",
+      "_meta": {
+        "score": 0.429,
+        "novelty": 0.381,
+        "top_neighbour": {
+          "id": "de-reyp",
+          "name_en": "De Rijp",
+          "sim": 0.619
+        }
+      }
+    },
+    {
+      "name": "Wolfsdreuvik",
+      "coordinates": {
+        "lat": 52.194645,
+        "lng": 5.203461
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/wolfsdreuvik",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "1938 forest tower hideaway built as a getaway for an Archbishop's-Museum curator — accessible only by foot/bike on monument days.",
+      "raw_text": "A monument hidden in the woods of Lage Vuursche near Hilversum. Built in 1938 by famed architect Jan Rebel as a getaway for D.P.R.A. Bouvy, president and curator of the Archbishop's Museum in Utrecht. Very few people know it exists. No car access, walking or bike only, open only on monument days.",
+      "_meta": {
+        "score": 0.429,
+        "novelty": 0.382,
+        "top_neighbour": {
+          "id": "valkenburg",
+          "name_en": "Valkenburg",
+          "sim": 0.618
+        }
+      }
+    },
+    {
+      "name": "Uniastate Bears",
+      "coordinates": {
+        "lat": 53.155728,
+        "lng": 5.733021
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/uniastate-bears",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Steel skeleton outline of a vanished 1530 stone manor — a 'mirage' of the lost building in Friesland.",
+      "raw_text": "In Bears, Friesland — a steel-frame skeletal outline of a 1530 stone building (a 'state' or 'stins' — stone house) that was demolished in 1756. The original gatehouse survives. Visit by foot, bike or boat along the Bearsterfeart canal.",
+      "_meta": {
+        "score": 0.429,
+        "novelty": 0.381,
+        "top_neighbour": {
+          "id": "zamok-mersbergen",
+          "name_en": "Moersbergen Castle",
+          "sim": 0.619
+        }
+      }
+    },
+    {
+      "name": "Dutch Pinball Museum",
+      "coordinates": {
+        "lat": 51.901,
+        "lng": 4.45
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/dutch-pinball-museum-3",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "100+ vintage pinball machines in Rotterdam's Delfshaven, including pre-WWII tables and an 1853 spinning-top game.",
+      "raw_text": "In Rotterdam's historic Delfshaven. 100+ vintage pinball machines available to play, many from before WWII. Also section on spijkerbal (Dutch pinball). Oldest piece — 1853 toupie hollandaise spinning-top game, predecessor of modern pinball. Open Wed/Sat/Sun, 25 cents per play.",
+      "_meta": {
+        "score": 0.429,
+        "novelty": 0.382,
+        "top_neighbour": {
+          "id": "evromast",
+          "name_en": "Euromast",
+          "sim": 0.618
+        }
+      }
+    },
+    {
+      "name": "Rietveld-Schröder House",
+      "coordinates": {
+        "lat": 52.085303,
+        "lng": 5.14752
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/rietveld-schroder-house",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "1924 De Stijl experiment with no internal walls — UNESCO; 90° hinged windows preserve plane integrity.",
+      "raw_text": "Built 1924 by Gerrit Rietveld for Truus Schröder. Argued only building constructed completely within De Stijl spirit — paring down to basics of form and primary colors. Walls, furniture and pipes flow from inside to outside. Hinged windows open only at 90° to preserve plane integrity. Upper level has no walls, just sliding/revolving panels. UNESCO World Heritage.",
+      "_meta": {
+        "score": 0.428,
+        "novelty": 0.38,
+        "top_neighbour": {
+          "id": "dom-mondriana",
+          "name_en": "Mondriaanhuis",
+          "sim": 0.62
+        }
+      }
+    },
+    {
+      "name": "Lady of Stavoren",
+      "coordinates": {
+        "lat": 52.886,
+        "lng": 5.358
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/lady-of-stavoren",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Bronze statue and harbour legend — proud merchant lady whose curse turned the prosperous Stavoren harbour to sand.",
+      "raw_text": "Stavoren in Friesland — bronze statue of the lady whose legendary arrogance is said to have ruined the once-prosperous Hanseatic harbour. She ordered her captain to sail to Danzig and bring back the most precious cargo; he chose wheat. Furious, she had it dumped in the harbour. The grain mound silted up the entrance, ruining trade — and the town. The Vrouwezand sandbank still bears her name.",
+      "_meta": {
+        "score": 0.427,
+        "novelty": 0.379,
+        "top_neighbour": {
+          "id": "stavoren",
+          "name_en": "Stavoren",
+          "sim": 0.621
+        }
+      }
+    },
+    {
+      "name": "Radio Kootwijk",
+      "coordinates": {
+        "lat": 52.173379,
+        "lng": 5.818847
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/radio-kootwijk",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "1918 VLF radio station that connected the Netherlands to the Dutch East Indies — atmospheric Berlin-meets-Amsterdam main building, now a concert venue.",
+      "raw_text": "Built from 1918, used as a Very Low Frequency station to connect to the Dutch East Indies (now Indonesia). The town surrounding the station bears its name. Main building (Building A) hosts concerts and film shoots. Built deep inside a national park to avoid radio interference.",
+      "_meta": {
+        "score": 0.42,
+        "novelty": 0.366,
+        "top_neighbour": {
+          "id": "dvingelo",
+          "name_en": "Dwingeloo",
+          "sim": 0.634
+        }
+      }
+    },
+    {
+      "name": "De Berenkuil",
+      "coordinates": {
+        "lat": 51.447138,
+        "lng": 5.500351
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/de-berenkuil",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Bike-only roundabout under a TU Eindhoven crossing — the largest legal graffiti site in NL, an open-air mural museum since 1997.",
+      "raw_text": "Below a crossing for cars outside Eindhoven University of Technology is a roundabout for bikers surrounded by captivating graffiti art. Largest spot in the Netherlands where graffiti is legally allowed. Since 1997 an open-air museum for bikers and pedestrians. Step Into the Arena festival 2010-2024 invited 150+ artists to gather here for two days.",
+      "_meta": {
+        "score": 0.42,
+        "novelty": 0.366,
+        "top_neighbour": {
+          "id": "nacionalnyy-park-hoge-velyuve",
+          "name_en": "De Hoge Veluwe National Park",
+          "sim": 0.634
+        }
+      }
+    },
+    {
+      "name": "Belgian Monument (Belgenmonument)",
+      "coordinates": {
+        "lat": 52.142774,
+        "lng": 5.358279
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/belgian-monument",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Largest WWI monument in the Netherlands — gift of gratitude from Belgian refugees who took shelter in Amersfoort.",
+      "raw_text": "Built 1919 by Belgian soldiers as a gift of gratitude after the Netherlands sheltered ~100,000 refugees during WWI. ~60 feet wide, with a memorial wall and nine flower boxes (one per Belgian province). Now hidden in the woods on Amersfoortse Berg — even locals often don't know it exists.",
+      "_meta": {
+        "score": 0.418,
+        "novelty": 0.363,
+        "top_neighbour": {
+          "id": "bashnya-onze-live-vroue",
+          "name_en": "Onze-Lieve-Vrouwetoren",
+          "sim": 0.637
+        }
+      }
+    },
+    {
+      "name": "Bottle-ship Museum",
+      "coordinates": {
+        "lat": 52.703,
+        "lng": 5.293
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/bottle-ship-museum",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "World's largest collection of ships in bottles — Enkhuizen, near the IJsselmeer harbour.",
+      "raw_text": "The world's largest collection of ships in bottles. Located in Enkhuizen, near the IJsselmeer.",
+      "_meta": {
+        "score": 0.417,
+        "novelty": 0.362,
+        "top_neighbour": {
+          "id": "makkum",
+          "name_en": "Makkum",
+          "sim": 0.638
+        }
+      }
+    },
+    {
+      "name": "The Clog Museum",
+      "coordinates": {
+        "lat": 52.473069,
+        "lng": 4.81983
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/the-clog-museum-zaandam-netherlands",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Clog company in Zaandam celebrates wooden shoes — clogs from many eras and a 'Diamond Clog' homage to Damien Hirst.",
+      "raw_text": "Local clog company Kooijman Souvenirs & Clogs has collected clogs from different eras and countries. Carving and decoration demonstrations. Clogs identified owners' craft — pointy-toed for fishermen, broad-soled for peat bogs, cleated for icy roads.",
+      "_meta": {
+        "score": 0.415,
+        "novelty": 0.359,
+        "top_neighbour": {
+          "id": "makkum",
+          "name_en": "Makkum",
+          "sim": 0.641
+        }
+      }
+    },
+    {
+      "name": "Oudemanhuispoort",
+      "coordinates": {
+        "lat": 52.3691,
+        "lng": 4.8976
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/oudemanhuispoort",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Ancient covered passage of used-book stalls (since 1886) once frequented by Van Gogh — was a senior home, cholera hospital, Rijksmuseum precursor.",
+      "raw_text": "An ancient passage filled with stalls selling used books, now part of University of Amsterdam law faculty. 'Old Man's House Passage' — first senior citizen home in NL in the 18th century. 400-year history: convent, cholera hospital, arts academy, museum that became the basis of the Rijksmuseum. Stalls since 1886 selling secondhand prints, sheet music, books. Said to be where Van Gogh found Japanese prints.",
+      "_meta": {
+        "score": 0.415,
+        "novelty": 0.358,
+        "top_neighbour": {
+          "id": "mauritsheys",
+          "name_en": "Mauritshuis",
+          "sim": 0.642
+        }
+      }
+    },
+    {
+      "name": "Old Leiden Belltower",
+      "coordinates": {
+        "lat": 52.158446,
+        "lng": 4.490286
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/the-old-leiden-belltower-leiden-netherlands",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "14th-century bell tower remains discovered in 2014 in a jewelry-store basement — center of medieval Leiden.",
+      "raw_text": "A long-lost piece of medieval Leiden recovered 2014 in the basement of a jewelry store on Breestraat/Maarsmansteeg. Wall remnants of the first bell tower of Leiden, commissioned by Willem II Count of Holland in the 14th century. Stones laid two abreast, 80 cm thick — only noblemen were legally allowed to use such heavy masonry.",
+      "_meta": {
+        "score": 0.414,
+        "novelty": 0.356,
+        "top_neighbour": {
+          "id": "zyutfen",
+          "name_en": "Zutphen",
+          "sim": 0.644
+        }
+      }
+    },
+    {
+      "name": "Defensiekanaal",
+      "coordinates": {
+        "lat": 51.685737,
+        "lng": 5.776566
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/defensiekanaal",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "1939 anti-tank canal with 47 casemates — site of fierce battle on day 1 of the German invasion (May 10 1940).",
+      "raw_text": "An 80-km-long defensive canal built in 1939 lined with 47 casemates. Breached on May 10 1940 when a German armored train crashed into a Dutch barricade and partially derailed. The canal and most casemates remain. Reconstructed barricade and trenches near the train bridge.",
+      "_meta": {
+        "score": 0.412,
+        "novelty": 0.354,
+        "top_neighbour": {
+          "id": "afsleytdeyk",
+          "name_en": "Afsluitdijk",
+          "sim": 0.646
+        }
+      }
+    },
+    {
+      "name": "Draaiorgel Museum Haarlem",
+      "coordinates": {
+        "lat": 52.391014,
+        "lng": 4.653117
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/draaiorgel-museum-haarlem",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "1969-founded barrel-organ museum; 15 ornate organs (90- and 112-key) including Carl Frei's first 90-key piece.",
+      "raw_text": "Hidden in Haarlem, dedicated to Dutch barrel organs retired from dance halls and street corners. 15 organs in various sizes including Carl Frei's first 90-key masterpiece and the 112-key, 14-register Het Kunkels Organ. Saved from closure in the late 1990s by a public protest. Open Sundays only, free admission via donations.",
+      "_meta": {
+        "score": 0.409,
+        "novelty": 0.348,
+        "top_neighbour": {
+          "id": "harlem",
+          "name_en": "Haarlem",
+          "sim": 0.652
+        }
+      }
+    },
+    {
+      "name": "Our Lord in the Attic",
+      "coordinates": {
+        "lat": 52.376,
+        "lng": 4.9
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/our-lord-in-the-attic",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Clandestine 17th-century Catholic church hidden in the attic of a 1630 canal house — 2nd oldest museum in Amsterdam.",
+      "raw_text": "1630 residential home in oldest Amsterdam, bordering the red-light district. Steep staircase leads to a magnificent miniature Catholic church in the attic. Built 1663 by Jan Hartmann due to Catholic persecution. Entrance via a fake door in the living room. Seating for 150 worshippers, marble-and-gilt altar, Baptism of Christ by Jacob de Wit. Became a museum in 1888 — second oldest in Amsterdam. Services still held in the attic today.",
+      "_meta": {
+        "score": 0.406,
+        "novelty": 0.344,
+        "top_neighbour": {
+          "id": "mauritsheys",
+          "name_en": "Mauritshuis",
+          "sim": 0.656
+        }
+      }
+    },
+    {
+      "name": "STRAAT",
+      "coordinates": {
+        "lat": 52.402138,
+        "lng": 4.89426
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/straat",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "World's largest street-art museum — 8000m² hall in a former NDSM shipyard with a delivery van hanging from the ceiling.",
+      "raw_text": "Conceived 2015, opened 2020. Internationally-renowned street artists. Former NDSM Dock and Shipbuilding Company building, abandoned for decades and tagged before conversion. Curated works on large 'canvases' in 8000m², 3-story-high hall. Statues, hanging delivery van, retained industrial machinery. Towering Anne Frank above the entrance. NDSM neighborhood, free ferry from Centraal Station.",
+      "_meta": {
+        "score": 0.405,
+        "novelty": 0.341,
+        "top_neighbour": {
+          "id": "reyksmyuseum",
+          "name_en": "Rijksmuseum",
+          "sim": 0.659
+        }
+      }
+    },
+    {
+      "name": "IJssellinie Fortress",
+      "coordinates": {
+        "lat": 52.307425,
+        "lng": 6.116121
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/ijssellinie",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Cold War line built in secret c.1950 to flood vast areas of land if Russia invaded — ~30 surviving bunkers between Deventer and Olst.",
+      "raw_text": "Built in secret around 1950, capable of closing the Waal at Nijmegen and Nederrijn at Arnhem with floating dams to flood the IJssel and large land areas. ~30 bunkers between Deventer and Olst still remain; ~8 still equipped as in 1950. Free to walk; explanation panels at every bunker.",
+      "_meta": {
+        "score": 0.403,
+        "novelty": 0.339,
+        "top_neighbour": {
+          "id": "afsleytdeyk",
+          "name_en": "Afsluitdijk",
+          "sim": 0.661
+        }
+      }
+    },
+    {
+      "name": "Plompe Toren",
+      "coordinates": {
+        "lat": 51.683404,
+        "lng": 3.775199
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/plompe-toren",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Lonely brick church tower of a town swept away by storm — 360° panorama inside tells a mermaid-curse legend.",
+      "raw_text": "Its town washed away centuries ago, this lonely tower by the sea tells the tale of a mermaid and a curse. A brick church tower along coastal Zeeland is all that remains of a town lost to the sea. The tower is the keeper of story of a trapped mermaid, her frantic merman husband, and their curse on a 16th-century community.",
+      "_meta": {
+        "score": 0.402,
+        "novelty": 0.337,
+        "top_neighbour": {
+          "id": "shtompetoren",
+          "name_en": "Stompetoren",
+          "sim": 0.663
+        }
+      }
+    },
+    {
+      "name": "Klein Curaçao",
+      "coordinates": {
+        "lat": 11.989,
+        "lng": -68.642
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/klein-curacao",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Uninhabited half-square-mile coral atoll with abandoned coral-pink lighthouse + shipwrecks; reachable by catamaran from Curaçao.",
+      "raw_text": "Ghostly uninhabited coral atoll, ~half-square-mile. Abandoned coral-pink lighthouse from 1850. Shipwrecks of vessels it failed to save. 1888 German Navy attempted base for Imperial Deutsche Karibik colonization — driven off by tropical storm. Day trips by catamaran from Curaçao. Turtles, lizards, faded pink lighthouse.",
+      "_meta": {
+        "score": 0.402,
+        "novelty": 0.337,
+        "top_neighbour": {
+          "id": "kyurasao",
+          "name_en": "Curaçao",
+          "sim": 0.663
+        }
+      }
+    },
+    {
+      "name": "Waterloopbos",
+      "coordinates": {
+        "lat": 52.67648,
+        "lng": 5.921356
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/waterloopbos",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Forest dotted with abandoned 1954-1996 hydraulic engineering models — Bangkok harbor, Danish coast, Delta Works.",
+      "raw_text": "Former hydraulic open-air laboratory 1954-1996. Dozens of hydraulic engineering scale models built in the forest — researchers from many countries tested ideas here. Models of Bangkok harbor, Denmark's coast, the Delta Works. Closed 1996 — nature took over. Marked routes through the woods. Pavilion 'Het ProefLab' open Wed-Sun.",
+      "_meta": {
+        "score": 0.401,
+        "novelty": 0.335,
+        "top_neighbour": {
+          "id": "brouversdam",
+          "name_en": "Brouwersdam",
+          "sim": 0.665
+        }
+      }
+    },
+    {
+      "name": "Schokland",
+      "coordinates": {
+        "lat": 52.6356,
+        "lng": 5.7833
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/schokland",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Former Zuiderzee island that lost its connection in 1450, was forcibly evacuated in 1859 — now a UNESCO landscape in dry polder.",
+      "raw_text": "Wasn't always an island. Human settlements from 4500 BC. Became an island around 1450. 650 residents lived on three artificial mounds. Forced evacuation by King William III's law in 1859. After Noordoostpolder draining in 1942, island no more. Museum on the former island, freely accessible.",
+      "_meta": {
+        "score": 0.399,
+        "novelty": 0.331,
+        "top_neighbour": {
+          "id": "zatoplennaya-zemlya-saftinge",
+          "name_en": "Drowned Land of Saeftinghe",
+          "sim": 0.669
+        }
+      }
+    },
+    {
+      "name": "Schaakstukkenmuseum",
+      "coordinates": {
+        "lat": 51.920156,
+        "lng": 4.490499
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/chessmen-museum-schaakstukkenmuseum",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "30,000 chess pieces in 928 unique sets, hidden under Rotterdam's Cube Houses.",
+      "raw_text": "Hidden below the Rotterdam cube houses. ~928 unique chess sets, ~30,000 individual pieces. Modern, antique, hand-carved, hand-painted, cartoon and pop-culture sets. Annual chess-game-design competition. Tickets €1 children, €2 adults.",
+      "_meta": {
+        "score": 0.394,
+        "novelty": 0.324,
+        "top_neighbour": {
+          "id": "esher-vo-dvorce",
+          "name_en": "Escher in Het Paleis",
+          "sim": 0.676
+        }
+      }
+    },
+    {
+      "name": "The Kilsdonk Mill",
+      "coordinates": {
+        "lat": 51.637096,
+        "lng": 5.504256
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/the-kildonks-mill",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Rare double mill driven by both wind and water; ~1433 origins, fully rebuilt 2008.",
+      "raw_text": "A rare 'watervlucht' mill in Heeswijk Dinther — capable of being driven by water and wind. Believed to date back to 1433. Burned down in 1840, ran another 40 years, fell to ruin, rebuilt in 2008 to its original design.",
+      "_meta": {
+        "score": 0.387,
+        "novelty": 0.311,
+        "top_neighbour": {
+          "id": "kinderdeyk",
+          "name_en": "Kinderdijk",
+          "sim": 0.689
+        }
+      }
+    },
+    {
+      "name": "Nederlands Openluchtmuseum",
+      "coordinates": {
+        "lat": 51.999,
+        "lng": 5.948
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/nederlands-openlucht-museum",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Open-air museum of 100+ historic homes/farmhouses showing pre-industrial Dutch life — sheltered hundreds during Battle of Arnhem.",
+      "raw_text": "Large open-air museum showcasing the ordinary lives of the people of the Netherlands. Walk through a low-ceilinged peat home, eel-peddler's shack, farmhouse, or holiday caravan. One building has rowhouses with interiors set to 1860s, 1910s, 1950s and 1970s. Opened 1918, sustained bomb damage in WWII.",
+      "_meta": {
+        "score": 0.386,
+        "novelty": 0.31,
+        "top_neighbour": {
+          "id": "burtanzh",
+          "name_en": "Bourtange",
+          "sim": 0.69
+        }
+      }
+    },
+    {
+      "name": "Kasteelruine Fluweelengrot",
+      "coordinates": {
+        "lat": 50.866,
+        "lng": 5.836
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/kasteelruine-fluweelengrot",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "Ruined 14th c. hilltop castle + Velvet Cave tunnels with WWII-era US-soldier graffiti and centuries of marlstone mining.",
+      "raw_text": "Castle ruins on a hill in Valkenburg sitting on a network of tunnels. Originally fortified 1115; current castle 14th century, ruined 16th-17th c. during Eighty Years War. Velvet Cave underneath — labyrinth of marlstone tunnels used as castle escape routes; 1944 sheltered hundreds of citizens during WWII. American soldiers etched names and doodles on the soft cave walls.",
+      "_meta": {
+        "score": 0.384,
+        "novelty": 0.306,
+        "top_neighbour": {
+          "id": "valkenburg",
+          "name_en": "Valkenburg",
+          "sim": 0.694
+        }
+      }
+    },
+    {
+      "name": "Brederode Castle",
+      "coordinates": {
+        "lat": 52.42561,
+        "lng": 4.622612
+      },
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/brederode-castle",
+          "label": "exa-ao"
+        }
+      ],
+      "evidence": "13th-century castle ruins of one of the most powerful Dutch noble families, restored as the country's first state monument.",
+      "raw_text": "Brederode Castle, or the Ruins of Brederode, is situated in Santpoort-Zuid. Constructed around 1285 by Willem van Brederode, extended in 1300 into a square castle. Destroyed during the siege of Haarlem 1573. Became the first national monument of the Netherlands to be restored by the state in the 19th century.",
+      "_meta": {
+        "score": 0.379,
+        "novelty": 0.298,
+        "top_neighbour": {
+          "id": "burtanzh",
+          "name_en": "Bourtange",
+          "sim": 0.702
+        }
+      }
+    }
+  ],
+  "duplicates": [
+    {
+      "name": "Mauritshuis",
+      "matched_id": "mauritsheys",
+      "reason": "geo+name (0m, sim=1.00)",
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/mauritshuis",
+          "label": "exa-ao"
+        }
+      ]
+    },
+    {
+      "name": "Giethoorn",
+      "matched_id": "gitorn",
+      "reason": "name+semantic (name_sim=1.00, embed_sim=0.84)",
+      "sources": [
+        {
+          "url": "https://www.atlasobscura.com/places/giethoorn",
+          "label": "exa-ao"
+        }
+      ]
+    }
+  ]
+}
