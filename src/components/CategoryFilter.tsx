@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Category } from '../types';
 import { CATEGORIES } from '../types';
 import { useLang } from '../i18n/LanguageProvider';
-import { CATEGORY_LABEL, PRIMARY_CATEGORIES, UI } from '../i18n/strings';
+import { CATEGORY_LABEL, PRIMARY_CATEGORIES, TAG_GROUPS, TAG_LABEL, UI } from '../i18n/strings';
 import { CategoryDot } from './MarkerIcon';
 
 interface Props {
@@ -10,6 +10,8 @@ interface Props {
   counts: Record<Category, number>;
   onToggle: (category: Category) => void;
   onAll: () => void;
+  activeTags?: Set<string>;
+  onToggleTag?: (tag: string) => void;
   favoritesOnly?: boolean;
   onToggleFavoritesOnly?: () => void;
   favoritesCount?: number;
@@ -25,6 +27,8 @@ export function CategoryFilter({
   counts,
   onToggle,
   onAll,
+  activeTags = new Set(),
+  onToggleTag,
   favoritesOnly = false,
   onToggleFavoritesOnly,
   favoritesCount = 0,
@@ -179,7 +183,22 @@ export function CategoryFilter({
         );
       })}
 
-      {hiddenCount > 0 && (
+      {/* Active tag chips — float into the main bar so users always see
+          what tag filters are applied. Click ✕ to remove. */}
+      {onToggleTag && [...activeTags].map((tag) => (
+        <button
+          key={`tag-${tag}`}
+          type="button"
+          onClick={() => onToggleTag(tag)}
+          className="snap-start shrink-0 inline-flex items-center gap-1 rounded-full border border-accent/40 bg-accent/15 px-2.5 py-1 text-[11px] font-medium text-accent backdrop-blur-md transition-colors hover:border-accent/70 md:gap-1.5 md:px-3 md:py-1.5 md:text-xs"
+          aria-label={`remove tag ${tag}`}
+        >
+          <span aria-hidden className="text-[9px] opacity-80">●</span>
+          {TAG_LABEL[tag]?.[lang] ?? tag}
+          <span aria-hidden className="text-accent/70 text-[10px]">×</span>
+        </button>
+      ))}
+      {(hiddenCount > 0 || onToggleTag) && (
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -193,7 +212,9 @@ export function CategoryFilter({
         >
           <span aria-hidden className="text-base leading-none">+</span>
           {UI.more_filters[lang]}
-          <span className={open ? 'text-ink-500' : 'text-ink-500'}>{hiddenCount}</span>
+          {hiddenCount > 0 && (
+            <span className={open ? 'text-ink-500' : 'text-ink-500'}>{hiddenCount}</span>
+          )}
         </button>
       )}
 
@@ -202,7 +223,7 @@ export function CategoryFilter({
           role="dialog"
           aria-label={UI.filter_panel_title[lang]}
           className={[
-            'absolute z-50 mt-1 w-[min(92vw,360px)] rounded-2xl border border-ink-700/60',
+            'absolute z-50 mt-1 w-[min(92vw,420px)] max-h-[70vh] overflow-y-auto rounded-2xl border border-ink-700/60',
             'bg-ink-900/95 p-3 shadow-2xl backdrop-blur-md',
             // Position right under the bar: anchored to the parent's bottom edge.
             'top-full right-3 md:right-4',
@@ -242,6 +263,41 @@ export function CategoryFilter({
               );
             })}
           </div>
+
+          {/* Tag filters, grouped. Multiple tags within or across groups
+              act as OR — matches places carrying ANY of the selected tags. */}
+          {onToggleTag && (
+            <>
+              {TAG_GROUPS.map((group) => (
+                <div key={group.key} className="mt-3">
+                  <div className="mb-1.5 text-[10px] uppercase tracking-wide text-ink-500 md:text-[11px]">
+                    {group.label[lang]}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.tags.map((tag) => {
+                      const isActive = activeTags.has(tag);
+                      return (
+                        <button
+                          key={tag}
+                          type="button"
+                          onClick={() => onToggleTag(tag)}
+                          className={[
+                            'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors md:px-3 md:py-1 md:text-xs',
+                            isActive
+                              ? 'border-accent/60 bg-accent/15 text-accent'
+                              : 'border-ink-700/60 bg-ink-950 text-ink-300 hover:text-ink-100',
+                          ].join(' ')}
+                          aria-pressed={isActive}
+                        >
+                          {TAG_LABEL[tag]?.[lang] ?? tag}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       )}
     </div>

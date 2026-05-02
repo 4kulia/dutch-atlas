@@ -17,6 +17,8 @@ interface Props {
   onToggleFavorite: () => void;
   isVisited: boolean;
   onToggleVisited: () => void;
+  activeTags?: Set<string>;
+  onToggleTag?: (tag: string) => void;
 }
 
 export function AttractionDrawer({
@@ -26,6 +28,8 @@ export function AttractionDrawer({
   onToggleFavorite,
   isVisited,
   onToggleVisited,
+  activeTags,
+  onToggleTag,
 }: Props) {
   const { lang } = useLang();
   const { isAuthenticated, signInWithGoogle } = useAuth();
@@ -106,7 +110,27 @@ export function AttractionDrawer({
                   <div className="mt-2 flex flex-wrap gap-1">
                     {attraction.tags.map((tag) => {
                       const label = TAG_LABEL[tag]?.[lang] ?? tag;
-                      return (
+                      const isActive = activeTags?.has(tag) ?? false;
+                      // Click → toggle the global tag filter so users can
+                      // jump from "this place is spooky" to "show me all
+                      // spooky places". Falls back to non-clickable span
+                      // when no handler is wired.
+                      return onToggleTag ? (
+                        <button
+                          key={tag}
+                          type="button"
+                          onClick={() => onToggleTag(tag)}
+                          aria-pressed={isActive}
+                          className={[
+                            'inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors md:text-[11px]',
+                            isActive
+                              ? 'bg-accent/20 text-accent ring-1 ring-accent/50'
+                              : 'bg-ink-800/70 text-ink-200 hover:bg-ink-700/70',
+                          ].join(' ')}
+                        >
+                          {label}
+                        </button>
+                      ) : (
                         <span
                           key={tag}
                           className="inline-flex items-center rounded-full bg-ink-800/70 px-2 py-0.5 text-[10px] font-medium text-ink-200 md:text-[11px]"
