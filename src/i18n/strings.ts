@@ -124,6 +124,15 @@ export const CATEGORY_LABEL: Record<Category, { ru: string; en: string }> = {
   wind: { ru: 'Ветроэлектростанции', en: 'Wind farms' },
   castle: { ru: 'Замки', en: 'Castles' },
   caribbean: { ru: 'Карибы', en: 'Caribbean' },
+  museum: { ru: 'Музеи', en: 'Museums' },
+  monument: { ru: 'Памятники', en: 'Monuments' },
+  architecture: { ru: 'Архитектура', en: 'Architecture' },
+  coastal: { ru: 'Побережье', en: 'Coastal' },
+  religious: { ru: 'Религиозные места', en: 'Religious sites' },
+  industrial: { ru: 'Промышленность', en: 'Industrial' },
+  street_art: { ru: 'Стрит-арт', en: 'Street art' },
+  dark_legend: { ru: 'Тёмные легенды', en: 'Dark legends' },
+  oddity: { ru: 'Странности', en: 'Oddities' },
   other: { ru: 'Прочие места', en: 'Other places' },
 };
 

@@ -1,15 +1,24 @@
 import type { Category } from '../types';
 
 const CATEGORY_COLOR: Record<Category, string> = {
-  city_large: '#e11d48',
-  city_historic: '#f59e0b',
-  village: '#84cc16',
-  hydraulic: '#0ea5e9',
-  wind: '#06b6d4',
-  nature: '#10b981',
-  castle: '#a855f7',
-  caribbean: '#ec4899',
-  other: '#64748b',
+  city_large: '#e11d48',     // rose
+  city_historic: '#f59e0b',  // amber
+  village: '#84cc16',        // lime
+  hydraulic: '#0ea5e9',      // sky
+  wind: '#06b6d4',           // cyan
+  nature: '#10b981',         // emerald
+  castle: '#a855f7',         // purple
+  caribbean: '#ec4899',      // pink
+  museum: '#6366f1',         // indigo
+  monument: '#78716c',       // stone — solemn
+  architecture: '#f97316',   // orange
+  coastal: '#14b8a6',        // teal
+  religious: '#b45309',      // amber-700
+  industrial: '#52525b',     // zinc
+  street_art: '#d946ef',     // fuchsia
+  dark_legend: '#4c1d95',    // violet-900
+  oddity: '#eab308',         // yellow
+  other: '#64748b',          // slate
 };
 
 interface Props {

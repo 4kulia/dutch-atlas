@@ -1,8 +1,10 @@
 export type Lang = 'ru' | 'en';
 
-// The 9 canonical categories used by curated attractions and by the map's
-// filter chips. User-submitted attractions may use any string for `category`
-// (we render unknown values as the "other" bucket); see `isCategory`.
+// The canonical categories used by curated attractions and the map's
+// filter chips. Extended in 008_categories_and_tags.sql with finer-grained
+// types and flavour categories. User-submitted attractions may use any
+// string for `category` — unknown values fall through to the `other`
+// bucket via `isCategory`.
 export type Category =
   | 'city_large'
   | 'city_historic'
@@ -12,6 +14,15 @@ export type Category =
   | 'nature'
   | 'castle'
   | 'caribbean'
+  | 'museum'
+  | 'monument'
+  | 'architecture'
+  | 'coastal'
+  | 'religious'
+  | 'industrial'
+  | 'street_art'
+  | 'dark_legend'
+  | 'oddity'
   | 'other';
 
 export interface LocalizedString {
@@ -47,9 +58,18 @@ export const CATEGORIES: Category[] = [
   'city_historic',
   'village',
   'nature',
+  'castle',
+  'religious',
+  'museum',
+  'monument',
+  'architecture',
+  'street_art',
+  'oddity',
+  'dark_legend',
+  'coastal',
   'hydraulic',
   'wind',
-  'castle',
+  'industrial',
   'caribbean',
   'other',
 ];
