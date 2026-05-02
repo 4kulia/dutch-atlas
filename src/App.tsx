@@ -34,6 +34,9 @@ export default function App() {
 
   const [selectedId, setSelectedId] = useState<string | null>(() => readInitialId());
   const [active, setActive] = useState<Set<Category>>(() => new Set(CATEGORIES));
+  // Tag filter. Empty set = no tag filter (all places pass). Multiple
+  // active tags = OR semantics (a place matches if it has ANY of them).
+  const [activeTags, setActiveTags] = useState<Set<string>>(() => new Set());
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [myPlacesOpen, setMyPlacesOpen] = useState(false);
   const [myPlacesRefreshKey, setMyPlacesRefreshKey] = useState(0);
@@ -53,10 +56,13 @@ export default function App() {
 
   const visibleAttractions = useMemo(() => {
     let result = attractions.filter((a) => active.has(a.category));
+    if (activeTags.size > 0) {
+      result = result.filter((a) => a.tags?.some((t) => activeTags.has(t)) ?? false);
+    }
     if (favoritesOnly) result = result.filter((a) => favoriteIds.has(a.id));
     if (hideVisited) result = result.filter((a) => !visitedIds.has(a.id));
     return result;
-  }, [attractions, active, favoritesOnly, favoriteIds, hideVisited, visitedIds]);
+  }, [attractions, active, activeTags, favoritesOnly, favoriteIds, hideVisited, visitedIds]);
 
   const toggleCategory = useCallback((c: Category) => {
     setActive((prev) => {
@@ -79,8 +85,17 @@ export default function App() {
 
   const onAll = useCallback(() => {
     setActive(new Set(CATEGORIES));
+    setActiveTags(new Set());
     setFavoritesOnly(false);
     setHideVisited(false);
+  }, []);
+  const toggleTag = useCallback((tag: string) => {
+    setActiveTags((prev) => {
+      const next = new Set(prev);
+      if (next.has(tag)) next.delete(tag);
+      else next.add(tag);
+      return next;
+    });
   }, []);
   const onSelect = useCallback((id: string | null) => {
     setSelectedId(id);
@@ -186,6 +201,8 @@ export default function App() {
             counts={counts}
             onToggle={toggleCategory}
             onAll={onAll}
+            activeTags={activeTags}
+            onToggleTag={toggleTag}
             favoritesOnly={favoritesOnly}
             onToggleFavoritesOnly={onToggleFavoritesOnly}
             favoritesCount={favoriteIds.size}
@@ -221,6 +238,8 @@ export default function App() {
         onToggleFavorite={handleToggleFavorite}
         isVisited={selectedId ? visitedIds.has(selectedId) : false}
         onToggleVisited={handleToggleVisited}
+        activeTags={activeTags}
+        onToggleTag={toggleTag}
       />
       <MyPlacesPanel
         open={myPlacesOpen}

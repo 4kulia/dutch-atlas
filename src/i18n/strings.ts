@@ -193,6 +193,39 @@ export const PRIMARY_CATEGORIES: Category[] = [
   'museum',
 ];
 
+// Tag groupings for the filter popover. Order matches the i18n vocab in
+// scripts/seed-attractions.mjs.
+export const TAG_GROUPS: ReadonlyArray<{
+  key: 'theme' | 'era' | 'vibe' | 'practical';
+  label: { ru: string; en: string };
+  tags: string[];
+}> = [
+  {
+    key: 'theme',
+    label: { ru: 'Тематика', en: 'Theme' },
+    tags: ['art', 'music', 'science', 'nature', 'history', 'military', 'religion', 'food', 'sport', 'technology'],
+  },
+  {
+    key: 'era',
+    label: { ru: 'Эпоха', en: 'Era' },
+    tags: ['medieval', 'golden_age', 'industrial_era', 'wwii', 'cold_war', 'modern_arch'],
+  },
+  {
+    key: 'vibe',
+    label: { ru: 'Настроение', en: 'Vibe' },
+    tags: [
+      'quirky', 'spooky', 'romantic', 'family_friendly', 'dark_tourism',
+      'hidden_gem', 'photogenic', 'legend', 'ghost_story', 'eccentric',
+      'mural', 'urban_art', 'largest_in_world', 'oldest_in_country',
+    ],
+  },
+  {
+    key: 'practical',
+    label: { ru: 'Практическое', en: 'Practical' },
+    tags: ['unesco', 'free_entry', 'seasonal', 'byo_bike', 'ticketed_only', 'indoor', 'outdoor'],
+  },
+];
+
 export function t(key: keyof typeof UI, lang: Lang): string {
   return UI[key][lang];
 }
