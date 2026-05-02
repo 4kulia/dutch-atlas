@@ -7,6 +7,7 @@ import type { Attraction } from '../types';
 
 interface Props {
   onSelect: (id: string) => void;
+  onExpandChange?: (expanded: boolean) => void;
 }
 
 const MAX_RESULTS = 8;
@@ -23,7 +24,7 @@ function score(query: string, a: Attraction): number {
   return 0;
 }
 
-export function SearchBar({ onSelect }: Props) {
+export function SearchBar({ onSelect, onExpandChange }: Props) {
   const { lang } = useLang();
   const { attractions } = useAttractions();
   const [query, setQuery] = useState('');
@@ -32,6 +33,12 @@ export function SearchBar({ onSelect }: Props) {
   const [expanded, setExpanded] = useState(false); // mobile: icon-only by default
   const inputRef = useRef<HTMLInputElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+
+  // Notify parent so it can hide neighbours (e.g. the logo pill) and let
+  // the search field claim the full row width on mobile.
+  useEffect(() => {
+    onExpandChange?.(expanded);
+  }, [expanded, onExpandChange]);
 
   const results = useMemo(() => {
     const q = query.trim();
@@ -167,7 +174,12 @@ export function SearchBar({ onSelect }: Props) {
         <ul
           id="search-results"
           role="listbox"
-          className="absolute right-0 top-[calc(100%+6px)] z-50 w-[min(92vw,420px)] overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900/95 shadow-2xl backdrop-blur-md"
+          className={[
+            'absolute top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900/95 shadow-2xl backdrop-blur-md',
+            // Match the input wrapper's width exactly so the dropdown is
+            // flush with the search field on every viewport.
+            'left-0 right-0',
+          ].join(' ')}
         >
           {results.length === 0 ? (
             <li className="px-4 py-3 text-[13px] text-ink-500">{UI.no_results[lang]}</li>
