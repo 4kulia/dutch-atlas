@@ -174,7 +174,12 @@ export function SearchBar({ onSelect, onExpandChange }: Props) {
         <ul
           id="search-results"
           role="listbox"
-          className="absolute right-0 top-[calc(100%+6px)] z-50 w-[min(92vw,420px)] overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900/95 shadow-2xl backdrop-blur-md"
+          className={[
+            'absolute top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-ink-700/60 bg-ink-900/95 shadow-2xl backdrop-blur-md',
+            // Match the input wrapper's width exactly so the dropdown is
+            // flush with the search field on every viewport.
+            'left-0 right-0',
+          ].join(' ')}
         >
           {results.length === 0 ? (
             <li className="px-4 py-3 text-[13px] text-ink-500">{UI.no_results[lang]}</li>
