@@ -20,7 +20,14 @@
     },
     "videoTime": 523,
     "videoTimeFormatted": "8:43",
-    "videoId": "7d5yVHi4Q4w"
+    "videoId": "7d5yVHi4Q4w",
+    "tags": [
+      "sport",
+      "modern_arch",
+      "family_friendly",
+      "outdoor",
+      "seasonal"
+    ]
   },
   {
     "id": "edam",
@@ -43,7 +50,13 @@
     },
     "videoTime": 213,
     "videoTimeFormatted": "3:33",
-    "videoId": "7d5yVHi4Q4w"
+    "videoId": "7d5yVHi4Q4w",
+    "tags": [
+      "food",
+      "medieval",
+      "hidden_gem",
+      "oldest_in_country"
+    ]
   },
   {
     "id": "muzey-van-goga",
@@ -66,7 +79,13 @@
     },
     "videoTime": 1305,
     "videoTimeFormatted": "21:45",
-    "videoId": "7d5yVHi4Q4w"
+    "videoId": "7d5yVHi4Q4w",
+    "tags": [
+      "art",
+      "largest_in_world",
+      "ticketed_only",
+      "indoor"
+    ]
   },
   {
     "id": "mauritsheys",
@@ -89,7 +108,13 @@
     },
     "videoTime": 1096,
     "videoTimeFormatted": "18:16",
-    "videoId": "7d5yVHi4Q4w"
+    "videoId": "7d5yVHi4Q4w",
+    "tags": [
+      "art",
+      "golden_age",
+      "photogenic",
+      "indoor"
+    ]
   },
   {
     "id": "esher-vo-dvorce",
@@ -112,7 +137,13 @@
     },
     "videoTime": 1104,
     "videoTimeFormatted": "18:24",
-    "videoId": "7d5yVHi4Q4w"
+    "videoId": "7d5yVHi4Q4w",
+    "tags": [
+      "art",
+      "quirky",
+      "family_friendly",
+      "indoor"
+    ]
   },
   {
     "id": "cvetochnyy-aukcion-alsmer",
@@ -135,7 +166,12 @@
     },
     "videoTime": 1200,
     "videoTimeFormatted": "20:00",
-    "videoId": "KpVkLtGaZjA"
+    "videoId": "KpVkLtGaZjA",
+    "tags": [
+      "largest_in_world",
+      "quirky",
+      "indoor"
+    ]
   },
   {
     "id": "maaslantkering",
@@ -158,7 +194,13 @@
     },
     "videoTime": 1365,
     "videoTimeFormatted": "22:45",
-    "videoId": "KpVkLtGaZjA"
+    "videoId": "KpVkLtGaZjA",
+    "tags": [
+      "technology",
+      "modern_arch",
+      "largest_in_world",
+      "outdoor"
+    ]
   },
   {
     "id": "ostrov-vliland",
@@ -181,7 +223,13 @@
     },
     "videoTime": 1101,
     "videoTimeFormatted": "18:21",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "nature",
+      "hidden_gem",
+      "byo_bike",
+      "outdoor"
+    ]
   },
   {
     "id": "ostrov-tersheling",
@@ -204,7 +252,13 @@
     },
     "videoTime": 234,
     "videoTimeFormatted": "3:54",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "art",
+      "seasonal",
+      "outdoor"
+    ]
   },
   {
     "id": "ostrov-ameland",
@@ -227,7 +281,13 @@
     },
     "videoTime": 248,
     "videoTimeFormatted": "4:08",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "sport",
+      "family_friendly",
+      "outdoor"
+    ]
   },
   {
     "id": "ostrov-shirmonnikog",
@@ -250,7 +310,13 @@
     },
     "videoTime": 266,
     "videoTimeFormatted": "4:26",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "hidden_gem",
+      "photogenic",
+      "outdoor"
+    ]
   },
   {
     "id": "vattovoe-more",
@@ -273,7 +339,14 @@
     },
     "videoTime": 1037,
     "videoTimeFormatted": "17:17",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "nature",
+      "unesco",
+      "quirky",
+      "seasonal",
+      "outdoor"
+    ]
   },
   {
     "id": "torn",
@@ -296,7 +369,14 @@
     },
     "videoTime": 400,
     "videoTimeFormatted": "6:40",
-    "videoId": "D3ioBbot6jw"
+    "videoId": "D3ioBbot6jw",
+    "tags": [
+      "history",
+      "religion",
+      "medieval",
+      "quirky",
+      "photogenic"
+    ]
   },
   {
     "id": "gyulpen",
@@ -319,7 +399,13 @@
     },
     "videoTime": 377,
     "videoTimeFormatted": "6:17",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "food",
+      "nature",
+      "hidden_gem",
+      "photogenic"
+    ]
   },
   {
     "id": "middelburg",
@@ -342,7 +428,12 @@
     },
     "videoTime": 53,
     "videoTimeFormatted": "0:53",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "history",
+      "golden_age",
+      "hidden_gem"
+    ]
   },
   {
     "id": "veere",
@@ -365,7 +456,13 @@
     },
     "videoTime": 444,
     "videoTimeFormatted": "7:24",
-    "videoId": "D3ioBbot6jw"
+    "videoId": "D3ioBbot6jw",
+    "tags": [
+      "history",
+      "golden_age",
+      "photogenic",
+      "hidden_gem"
+    ]
   },
   {
     "id": "hunebed-centr-borger",
@@ -388,7 +485,12 @@
     },
     "videoTime": 118,
     "videoTimeFormatted": "1:58",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "history",
+      "science",
+      "oldest_in_country"
+    ]
   },
   {
     "id": "dvingelo",
@@ -411,7 +513,13 @@
     },
     "videoTime": 125,
     "videoTimeFormatted": "2:05",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "science",
+      "technology",
+      "hidden_gem"
+    ]
   },
   {
     "id": "nacionalnyy-park-dvingelderveld",
@@ -434,7 +542,13 @@
     },
     "videoTime": 129,
     "videoTimeFormatted": "2:09",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "family_friendly",
+      "largest_in_world",
+      "outdoor"
+    ]
   },
   {
     "id": "nacionalnyy-park-drents-frize-vold",
@@ -457,7 +571,12 @@
     },
     "videoTime": 131,
     "videoTimeFormatted": "2:11",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "outdoor",
+      "family_friendly"
+    ]
   },
   {
     "id": "blokseyl",
@@ -480,7 +599,13 @@
     },
     "videoTime": 135,
     "videoTimeFormatted": "2:15",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "history",
+      "golden_age",
+      "hidden_gem",
+      "photogenic"
+    ]
   },
   {
     "id": "vinsyum",
@@ -503,7 +628,13 @@
     },
     "videoTime": 414,
     "videoTimeFormatted": "6:54",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "history",
+      "medieval",
+      "photogenic",
+      "hidden_gem"
+    ]
   },
   {
     "id": "piterbyuren",
@@ -526,7 +657,12 @@
     },
     "videoTime": 420,
     "videoTimeFormatted": "7:00",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "family_friendly",
+      "quirky"
+    ]
   },
   {
     "id": "de-reyp",
@@ -549,7 +685,13 @@
     },
     "videoTime": 223,
     "videoTimeFormatted": "3:43",
-    "videoId": "6WD4f-LpLjs"
+    "videoId": "6WD4f-LpLjs",
+    "tags": [
+      "history",
+      "golden_age",
+      "photogenic",
+      "hidden_gem"
+    ]
   },
   {
     "id": "nacionalnyy-park-hoge-velyuve",
@@ -572,7 +714,14 @@
     },
     "videoTime": 915,
     "videoTimeFormatted": "15:15",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "nature",
+      "art",
+      "golden_age",
+      "largest_in_world",
+      "byo_bike"
+    ]
   },
   {
     "id": "muzey-kreller-myuller",
@@ -595,7 +744,12 @@
     },
     "videoTime": 974,
     "videoTimeFormatted": "16:14",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "art",
+      "modern_arch",
+      "outdoor"
+    ]
   },
   {
     "id": "posbank",
@@ -618,7 +772,12 @@
     },
     "videoTime": 322,
     "videoTimeFormatted": "5:22",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "nature",
+      "photogenic",
+      "seasonal"
+    ]
   },
   {
     "id": "zamok-slot-zeylen",
@@ -641,7 +800,12 @@
     },
     "videoTime": 308,
     "videoTimeFormatted": "5:08",
-    "videoId": "D3ioBbot6jw"
+    "videoId": "D3ioBbot6jw",
+    "tags": [
+      "history",
+      "medieval",
+      "golden_age"
+    ]
   },
   {
     "id": "bronkhorst",
@@ -664,7 +828,13 @@
     },
     "videoTime": 125,
     "videoTimeFormatted": "2:05",
-    "videoId": "6WD4f-LpLjs"
+    "videoId": "6WD4f-LpLjs",
+    "tags": [
+      "history",
+      "quirky",
+      "hidden_gem",
+      "seasonal"
+    ]
   },
   {
     "id": "audevater",
@@ -687,7 +857,12 @@
     },
     "videoTime": 156,
     "videoTimeFormatted": "2:36",
-    "videoId": "6WD4f-LpLjs"
+    "videoId": "6WD4f-LpLjs",
+    "tags": [
+      "history",
+      "quirky",
+      "legend"
+    ]
   },
   {
     "id": "reyksmyuseum",
@@ -710,7 +885,11 @@
     },
     "videoTime": 169,
     "videoTimeFormatted": "2:49",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "art",
+      "golden_age"
+    ]
   },
   {
     "id": "centr-vermeera-delft",
@@ -733,7 +912,11 @@
     },
     "videoTime": 1442,
     "videoTimeFormatted": "24:02",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "art",
+      "golden_age"
+    ]
   },
   {
     "id": "kubicheskie-doma-rotterdam",
@@ -756,7 +939,13 @@
     },
     "videoTime": 1612,
     "videoTimeFormatted": "26:52",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "modern_arch",
+      "quirky",
+      "photogenic",
+      "indoor"
+    ]
   },
   {
     "id": "evromast",
@@ -779,7 +968,11 @@
     },
     "videoTime": 1615,
     "videoTimeFormatted": "26:55",
-    "videoId": "ypimgc3SlH0"
+    "videoId": "ypimgc3SlH0",
+    "tags": [
+      "modern_arch",
+      "photogenic"
+    ]
   },
   {
     "id": "koppelport",
@@ -802,7 +995,12 @@
     },
     "videoTime": 577,
     "videoTimeFormatted": "9:37",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "history",
+      "medieval",
+      "hidden_gem"
+    ]
   },
   {
     "id": "dom-mondriana",
@@ -825,7 +1023,11 @@
     },
     "videoTime": 580,
     "videoTimeFormatted": "9:40",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "art",
+      "modern_arch"
+    ]
   },
   {
     "id": "bashnya-onze-live-vroue",
@@ -848,6 +1050,12 @@
     },
     "videoTime": 590,
     "videoTimeFormatted": "9:50",
-    "videoId": "xSyDOn5xX5A"
+    "videoId": "xSyDOn5xX5A",
+    "tags": [
+      "religion",
+      "medieval",
+      "photogenic",
+      "oldest_in_country"
+    ]
   }
 ]

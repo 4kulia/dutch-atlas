@@ -46,6 +46,7 @@ export interface Attraction {
   videoId?: string;
   videoTime?: number;
   videoTimeFormatted?: string;
+  tags?: string[];                   // free-form labels from controlled vocab; see TAG_LABEL in i18n
   source: AttractionSource;
   status: AttractionStatus;
   authorId?: string;

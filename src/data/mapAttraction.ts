@@ -17,6 +17,7 @@ export interface ApiAttractionRecord {
   video_id: string | null;
   video_time: number | null;
   video_time_fmt: string | null;
+  tags: string[] | null;
   source: AttractionSource;
   status: AttractionStatus;
   author_id: string | null;
@@ -45,6 +46,7 @@ export function mapApiToAttraction(r: ApiAttractionRecord): Attraction {
     videoId: hasVideo ? r.video_id ?? undefined : undefined,
     videoTime: hasVideo ? r.video_time ?? undefined : undefined,
     videoTimeFormatted: hasVideo ? r.video_time_fmt || formatVideoTime(r.video_time) : undefined,
+    tags: r.tags ?? undefined,
     source: r.source,
     status: r.status,
     authorId: r.author_id ?? undefined,

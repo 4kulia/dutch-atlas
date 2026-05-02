@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 import type { Category } from '../types';
 import { CATEGORIES } from '../types';
 import { useLang } from '../i18n/LanguageProvider';
-import { CATEGORY_LABEL, UI } from '../i18n/strings';
+import { CATEGORY_LABEL, PRIMARY_CATEGORIES, UI } from '../i18n/strings';
 import { CategoryDot } from './MarkerIcon';
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
   onToggleHideVisited?: () => void;
   visitedCount?: number;
 }
+
+const PRIMARY_SET = new Set<Category>(PRIMARY_CATEGORIES);
 
 export function CategoryFilter({
   active,
@@ -33,14 +36,52 @@ export function CategoryFilter({
   const allActive = active.size === CATEGORIES.length && !favoritesOnly;
   const totalCount = CATEGORIES.reduce((sum, c) => sum + (counts[c] ?? 0), 0);
 
+  // Inline = primary list. When user has narrowed the filter (not all-on),
+  // we also float any active secondary category to the inline bar so the
+  // user always sees what's selected. In the default "all on" state we
+  // don't float anything — that would dump all 18 categories back inline.
+  const inline: Category[] = PRIMARY_CATEGORIES.slice();
+  const secondary: Category[] = [];
+  for (const c of CATEGORIES) {
+    if (PRIMARY_SET.has(c)) continue;
+    if (!allActive && active.has(c)) inline.push(c);
+    else secondary.push(c);
+  }
+  // Badge on the "More" button: in narrow mode, show how many secondary
+  // categories ARE active inside the popover (i.e. user picked them and
+  // we kept them inline) — but those are now in `inline`, so this is 0.
+  // Practically the badge just shows the count of categories living inside
+  // the popover, so users know how many they can still toggle on.
+  const hiddenCount = secondary.length;
+
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  // Close on outside click + Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
   return (
     <div
+      ref={wrapRef}
       className={[
-        'no-scrollbar flex items-center gap-1.5 px-3 py-2',
-        // Mobile: wrap onto multiple rows so every chip is reachable.
+        'no-scrollbar relative flex items-center gap-1.5 px-3 py-2',
+        // Mobile: wrap so every chip is reachable; desktop: single row that fits.
         'flex-wrap',
-        // Desktop: single horizontal row (chips fit on wider screens).
-        'md:flex-nowrap md:gap-2 md:overflow-x-auto md:px-4 md:py-3',
+        'md:flex-nowrap md:gap-2 md:px-4 md:py-3',
       ].join(' ')}
     >
       <button
@@ -114,7 +155,8 @@ export function CategoryFilter({
           <span className={hideVisited ? 'text-emerald-200/80' : 'text-ink-500'}>{visitedCount}</span>
         </button>
       )}
-      {CATEGORIES.map((c) => {
+
+      {inline.map((c) => {
         const isActive = active.has(c);
         const count = counts[c] ?? 0;
         return (
@@ -136,6 +178,72 @@ export function CategoryFilter({
           </button>
         );
       })}
+
+      {hiddenCount > 0 && (
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className={[
+            'snap-start shrink-0 inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium backdrop-blur-md transition-colors md:gap-1.5 md:px-3 md:py-1.5 md:text-xs',
+            open
+              ? 'border-ink-100/40 bg-ink-100 text-ink-950'
+              : 'border-ink-700/60 bg-ink-900/85 text-ink-300 hover:text-ink-100',
+          ].join(' ')}
+        >
+          <span aria-hidden className="text-base leading-none">+</span>
+          {UI.more_filters[lang]}
+          <span className={open ? 'text-ink-500' : 'text-ink-500'}>{hiddenCount}</span>
+        </button>
+      )}
+
+      {open && (
+        <div
+          role="dialog"
+          aria-label={UI.filter_panel_title[lang]}
+          className={[
+            'absolute z-50 mt-1 w-[min(92vw,360px)] rounded-2xl border border-ink-700/60',
+            'bg-ink-900/95 p-3 shadow-2xl backdrop-blur-md',
+            // Position right under the bar: anchored to the parent's bottom edge.
+            'top-full right-3 md:right-4',
+          ].join(' ')}
+        >
+          <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-wide text-ink-400 md:text-xs">
+            <span>{UI.filter_panel_title[lang]}</span>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="rounded-full px-2 py-0.5 text-ink-300 hover:text-ink-100"
+            >
+              {UI.filter_panel_close[lang]}
+            </button>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {secondary.map((c) => {
+              const isActive = active.has(c);
+              const count = counts[c] ?? 0;
+              return (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => onToggle(c)}
+                  className={[
+                    'inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors md:gap-1.5 md:px-3 md:py-1.5 md:text-xs',
+                    isActive
+                      ? 'border-ink-500/60 bg-ink-800/90 text-ink-100'
+                      : 'border-ink-700/60 bg-ink-950 text-ink-300 hover:text-ink-100',
+                  ].join(' ')}
+                  aria-pressed={isActive}
+                >
+                  <CategoryDot category={c} />
+                  {CATEGORY_LABEL[c][lang]}
+                  <span className={isActive ? 'text-ink-300' : 'text-ink-500'}>{count}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

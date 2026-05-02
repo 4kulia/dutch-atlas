@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Attraction } from '../types';
 import { useLang } from '../i18n/LanguageProvider';
-import { CATEGORY_LABEL, UI } from '../i18n/strings';
+import { CATEGORY_LABEL, TAG_LABEL, UI } from '../i18n/strings';
 import { VideoEmbed } from './VideoEmbed';
 import { CategoryDot } from './MarkerIcon';
 import { FavoriteButton } from './FavoriteButton';
@@ -102,6 +102,21 @@ export function AttractionDrawer({
                 <h2 className="text-2xl font-semibold leading-tight md:text-3xl">
                   {attraction.name[lang]}
                 </h2>
+                {attraction.tags && attraction.tags.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {attraction.tags.map((tag) => {
+                      const label = TAG_LABEL[tag]?.[lang] ?? tag;
+                      return (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center rounded-full bg-ink-800/70 px-2 py-0.5 text-[10px] font-medium text-ink-200 md:text-[11px]"
+                        >
+                          {label}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
               <button
                 type="button"

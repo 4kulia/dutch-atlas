@@ -113,6 +113,10 @@ export const UI: Dict = {
   notes_delete: { ru: 'Удалить', en: 'Delete' },
   notes_empty: { ru: 'Пока заметок нет', en: 'No notes yet' },
   favorites_only: { ru: 'Избранное', en: 'Favorites' },
+  more_filters: { ru: 'Ещё', en: 'More' },
+  more_filters_count: { ru: 'выбрано', en: 'selected' },
+  filter_panel_title: { ru: 'Все категории', en: 'All categories' },
+  filter_panel_close: { ru: 'Готово', en: 'Done' },
 };
 
 export const CATEGORY_LABEL: Record<Category, { ru: string; en: string }> = {
@@ -135,6 +139,63 @@ export const CATEGORY_LABEL: Record<Category, { ru: string; en: string }> = {
   oddity: { ru: 'Странности', en: 'Oddities' },
   other: { ru: 'Прочие места', en: 'Other places' },
 };
+
+// Controlled tag vocabulary — must mirror scripts/seed-attractions.mjs ALLOWED_TAGS.
+// Used for tag chips in drawer + (future) tag filter.
+export const TAG_LABEL: Record<string, { ru: string; en: string }> = {
+  // theme
+  art:           { ru: 'Искусство',     en: 'Art' },
+  music:         { ru: 'Музыка',        en: 'Music' },
+  science:       { ru: 'Наука',         en: 'Science' },
+  nature:        { ru: 'Природа',       en: 'Nature' },
+  history:       { ru: 'История',       en: 'History' },
+  military:      { ru: 'Военное',       en: 'Military' },
+  religion:      { ru: 'Религия',       en: 'Religion' },
+  food:          { ru: 'Еда',           en: 'Food' },
+  sport:         { ru: 'Спорт',         en: 'Sport' },
+  technology:    { ru: 'Технологии',    en: 'Technology' },
+  // era
+  medieval:      { ru: 'Средневековье',     en: 'Medieval' },
+  golden_age:    { ru: 'Золотой век',       en: 'Golden Age' },
+  industrial_era:{ ru: 'Эпоха индустрии',   en: 'Industrial era' },
+  wwii:          { ru: 'Вторая мировая',    en: 'WWII' },
+  cold_war:      { ru: 'Холодная война',    en: 'Cold War' },
+  modern_arch:   { ru: 'Современная архитектура', en: 'Modern architecture' },
+  // vibe
+  quirky:          { ru: 'Странное',        en: 'Quirky' },
+  spooky:          { ru: 'Жуткое',          en: 'Spooky' },
+  romantic:        { ru: 'Романтика',       en: 'Romantic' },
+  family_friendly: { ru: 'Для всей семьи',  en: 'Family-friendly' },
+  dark_tourism:    { ru: 'Тёмный туризм',   en: 'Dark tourism' },
+  hidden_gem:      { ru: 'Скрытая жемчужина', en: 'Hidden gem' },
+  photogenic:      { ru: 'Фотогеничное',    en: 'Photogenic' },
+  legend:          { ru: 'Легенда',         en: 'Legend' },
+  ghost_story:     { ru: 'История с призраками', en: 'Ghost story' },
+  eccentric:       { ru: 'Эксцентричное',   en: 'Eccentric' },
+  mural:           { ru: 'Мурал',           en: 'Mural' },
+  urban_art:       { ru: 'Уличное искусство', en: 'Urban art' },
+  largest_in_world:{ ru: 'Крупнейшее в мире', en: 'Largest in the world' },
+  oldest_in_country:{ ru: 'Старейшее в стране', en: 'Oldest in the country' },
+  // practical
+  unesco:        { ru: 'ЮНЕСКО',           en: 'UNESCO' },
+  free_entry:    { ru: 'Бесплатный вход',  en: 'Free entry' },
+  seasonal:      { ru: 'Сезонное',         en: 'Seasonal' },
+  byo_bike:      { ru: 'Свой велосипед',   en: 'Bring your bike' },
+  ticketed_only: { ru: 'По билетам',       en: 'Ticketed only' },
+  indoor:        { ru: 'В помещении',      en: 'Indoor' },
+  outdoor:       { ru: 'На улице',         en: 'Outdoor' },
+};
+
+// "Primary" categories — always visible in the filter bar. The rest is
+// behind a "+ More" popover. Picked by frequency × user-relevance.
+export const PRIMARY_CATEGORIES: Category[] = [
+  'city_large',
+  'city_historic',
+  'village',
+  'nature',
+  'castle',
+  'museum',
+];
 
 export function t(key: keyof typeof UI, lang: Lang): string {
   return UI[key][lang];
