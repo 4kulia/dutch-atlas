@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLang } from '../i18n/LanguageProvider';
 import { UI } from '../i18n/strings';
 import { LanguageToggle } from './LanguageToggle';
@@ -14,23 +15,30 @@ const CHAT_LABEL = { ru: 'Помощник', en: 'Assistant' } as const;
 
 export function Header({ onSelectAttraction, onOpenMyPlaces, onOpenChat }: Props) {
   const { lang } = useLang();
+  // On mobile, the search bar expands to ~78vw which doesn't leave room
+  // for the logo pill + the right-side action buttons. When the user taps
+  // the search icon we hide the logo pill so the search field has space.
+  const [searchExpanded, setSearchExpanded] = useState(false);
   return (
     <header
       className="pointer-events-none absolute inset-x-0 top-0 z-30"
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <div className="pointer-events-auto mx-auto flex max-w-[1600px] items-center gap-2 px-3 py-3 md:gap-3 md:px-5 md:py-4">
-        <div className="flex items-center gap-2.5 rounded-full border border-ink-700/60 bg-ink-900/70 px-3 py-1.5 backdrop-blur-md">
+        <div
+          className={[
+            'items-center gap-2.5 rounded-full border border-ink-700/60 bg-ink-900/70 px-3 py-1.5 backdrop-blur-md',
+            // Hide the logo pill on mobile while search is expanded.
+            searchExpanded ? 'hidden md:flex' : 'flex',
+          ].join(' ')}
+        >
           <Logo />
-          <span className="hidden md:inline text-[13px] font-semibold text-ink-100 leading-none">
+          <span className="text-[13px] font-semibold text-ink-100 leading-none">
             {UI.app_title[lang]}
-          </span>
-          <span className="md:hidden text-[13px] font-semibold text-ink-100 leading-none">
-            NL · {UI.short_title[lang]}
           </span>
         </div>
         <div className="ml-auto flex items-center gap-2">
-          <SearchBar onSelect={onSelectAttraction} />
+          <SearchBar onSelect={onSelectAttraction} onExpandChange={setSearchExpanded} />
           <button
             type="button"
             onClick={onOpenChat}

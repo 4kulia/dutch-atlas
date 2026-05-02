@@ -7,6 +7,7 @@ import type { Attraction } from '../types';
 
 interface Props {
   onSelect: (id: string) => void;
+  onExpandChange?: (expanded: boolean) => void;
 }
 
 const MAX_RESULTS = 8;
@@ -23,7 +24,7 @@ function score(query: string, a: Attraction): number {
   return 0;
 }
 
-export function SearchBar({ onSelect }: Props) {
+export function SearchBar({ onSelect, onExpandChange }: Props) {
   const { lang } = useLang();
   const { attractions } = useAttractions();
   const [query, setQuery] = useState('');
@@ -32,6 +33,12 @@ export function SearchBar({ onSelect }: Props) {
   const [expanded, setExpanded] = useState(false); // mobile: icon-only by default
   const inputRef = useRef<HTMLInputElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+
+  // Notify parent so it can hide neighbours (e.g. the logo pill) and let
+  // the search field claim the full row width on mobile.
+  useEffect(() => {
+    onExpandChange?.(expanded);
+  }, [expanded, onExpandChange]);
 
   const results = useMemo(() => {
     const q = query.trim();

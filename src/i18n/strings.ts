@@ -4,8 +4,8 @@ type Dict = Record<string, { ru: string; en: string }>;
 
 export const UI: Dict = {
   app_title: {
-    ru: 'Достопримечательности Нидерландов',
-    en: 'Netherlands Attractions',
+    ru: 'NL Atlas',
+    en: 'NL Atlas',
   },
   app_subtitle: {
     ru: 'По мотивам видео',
@@ -66,10 +66,6 @@ export const UI: Dict = {
   attractions_count: {
     ru: 'мест',
     en: 'places',
-  },
-  short_title: {
-    ru: 'Карта',
-    en: 'Map',
   },
   audio_hint: {
     ru: 'Аудио на русском есть в плеере — нажмите ⚙️ → «Аудиодорожка» → «Русский».',
