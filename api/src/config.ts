@@ -31,4 +31,10 @@ export const config = {
   modelFinal: optional('AGENT_MODEL_FINAL', 'claude-haiku-4-5-20251001'),
   agentMaxTurns: Number(optional('AGENT_MAX_TURNS', '8')),
   agentMaxBudgetUsd: Number(optional('AGENT_MAX_BUDGET_USD', '0.20')),
+
+  // Where uploaded photos live on disk. Resolved relative to process.cwd()
+  // when relative — works for both `npm run dev` from api/ and the Docker
+  // image (WORKDIR=/app, mount `./uploads:/app/uploads`).
+  uploadsDir: optional('UPLOADS_DIR', './uploads'),
+  uploadsMaxBytes: Number(optional('UPLOADS_MAX_BYTES', String(16 * 1024 * 1024))),
 };

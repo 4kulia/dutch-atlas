@@ -23,6 +23,17 @@ export interface UiEventOpenDrawer {
   slug: string;
 }
 
+export interface UiEventMapPickPoint {
+  type: 'map.pickPoint';
+  prompt?: string;
+}
+
+export interface UiEventDraftSaved {
+  type: 'draft.saved';
+  slug: string;
+  status: 'draft' | 'pending';
+}
+
 export interface RouteStop {
   slug: string;
   name: string;
@@ -46,7 +57,9 @@ export type UiEvent =
   | UiEventCardAttractions
   | UiEventShowOnMap
   | UiEventOpenDrawer
-  | UiEventRouteShow;
+  | UiEventRouteShow
+  | UiEventMapPickPoint
+  | UiEventDraftSaved;
 
 export interface ToolResult {
   forModel: unknown;

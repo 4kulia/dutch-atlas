@@ -9,6 +9,8 @@ setDefaultResultOrder('ipv4first');
 setGlobalDispatcher(new Agent({ connect: { family: 4 } as never }));
 
 import express from 'express';
+import { mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { config } from './config.js';
 import { runMigrations } from './migrate.js';
 import { authRouter } from './routes/auth.js';
@@ -18,6 +20,7 @@ import { visitsRouter } from './routes/visits.js';
 import { notesRouter } from './routes/notes.js';
 import { agentRouter } from './routes/agent.js';
 import { chatRouter } from './routes/chat.js';
+import { uploadsRouter } from './routes/uploads.js';
 
 async function main(): Promise<void> {
   console.log(`api starting (NODE_ENV=${config.nodeEnv})`);
@@ -40,6 +43,21 @@ async function main(): Promise<void> {
   app.use('/api/notes', notesRouter);
   app.use('/api/agent', agentRouter);
   app.use('/api/chat', chatRouter);
+  app.use('/api/uploads', uploadsRouter);
+
+  // Serve uploaded photos. The router above handles POST /photo; this
+  // serves GET /api/uploads/<filename> for everyone (photos are public —
+  // they're attached to attractions which are public once published).
+  const uploadsAbs = resolve(process.cwd(), config.uploadsDir);
+  await mkdir(uploadsAbs, { recursive: true });
+  app.use('/api/uploads', express.static(uploadsAbs, {
+    // fallthrough:true so missing files fall through to Express's default
+    // 404 — fallthrough:false routes a NotFoundError into our generic
+    // error handler which would return 500.
+    fallthrough: true,
+    maxAge: '7d',
+    immutable: true,
+  }));
 
   app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     console.error('[api] unhandled', err);

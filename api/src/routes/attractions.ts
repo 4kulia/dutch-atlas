@@ -22,7 +22,19 @@ interface AttractionRow {
   source: 'curated' | 'user';
   status: 'draft' | 'pending' | 'published' | 'rejected';
   author_id: string | null;
+  photos: Array<{ url: string; width: number | null; height: number | null }>;
 }
+
+// Bundle the per-row photos via a lateral subquery so the catalogue endpoint
+// stays one round-trip. Photos are ordered by position then created_at.
+const PHOTOS_SUBSELECT = `
+  COALESCE((
+    SELECT jsonb_agg(jsonb_build_object('url', p.url, 'width', p.width, 'height', p.height)
+                     ORDER BY p.position, p.created_at)
+      FROM attraction_photos p
+     WHERE p.attraction_id = attractions.id
+  ), '[]'::jsonb) AS photos
+`;
 
 // GET /api/attractions
 //   Public: returns published rows.
@@ -33,7 +45,8 @@ attractionsRouter.get('/', maybeAuth, async (req: AuthedRequest, res) => {
   const r = await query<AttractionRow>(
     `SELECT id, category, name_ru, name_en, short_ru, short_en, full_ru, full_en,
             lat, lng, video_id, video_time, video_time_fmt, tags,
-            source, status, author_id
+            source, status, author_id,
+            ${PHOTOS_SUBSELECT}
        FROM attractions
       WHERE status = 'published'
          OR ($1::text IS NOT NULL AND author_id = $1)
@@ -48,7 +61,8 @@ attractionsRouter.get('/:id', maybeAuth, async (req: AuthedRequest, res) => {
   const r = await query<AttractionRow>(
     `SELECT id, category, name_ru, name_en, short_ru, short_en, full_ru, full_en,
             lat, lng, video_id, video_time, video_time_fmt, tags,
-            source, status, author_id
+            source, status, author_id,
+            ${PHOTOS_SUBSELECT}
        FROM attractions
       WHERE id = $1
         AND (status = 'published' OR ($2::text IS NOT NULL AND author_id = $2))`,

@@ -34,7 +34,29 @@ export interface AgentRouteShow {
   sig?: string;
 }
 
-export type AgentUiEvent = AgentMapShow | AgentDrawerOpen | AgentRouteShow;
+// User-add flow: the agent asks the user to drop a pin on the map. The
+// app switches MapView into "picking" mode and emits the chosen coords
+// back via chat.send with a `[picked_lat=…, picked_lng=…]` prefix.
+export interface AgentMapPickPoint {
+  type: 'map.pickPoint';
+  prompt?: string;
+}
+
+// Notification that save_place_draft just persisted a new place. The new
+// row will appear via the attractions API; this event just lets the UI
+// refresh "my places" / catalogue.
+export interface AgentDraftSaved {
+  type: 'draft.saved';
+  slug: string;
+  status: 'draft' | 'pending';
+}
+
+export type AgentUiEvent =
+  | AgentMapShow
+  | AgentDrawerOpen
+  | AgentRouteShow
+  | AgentMapPickPoint
+  | AgentDraftSaved;
 
 type Listener = (event: AgentUiEvent) => void;
 

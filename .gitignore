@@ -15,3 +15,5 @@ pb/pb_data
 coverage
 .env.api
 .env.agent
+uploads/
+api/uploads/

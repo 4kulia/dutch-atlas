@@ -46,9 +46,16 @@ export default function App() {
   const [activeRouteSig, setActiveRouteSig] = useState<string | null>(null);
   const [travelMode, setTravelMode] = useState<TravelMode>(DEFAULT_TRAVEL_MODE);
   const [hideVisited, setHideVisited] = useState(false);
+  // Map picking mode (driven by the agent's pick_location_on_map tool).
+  const [picking, setPicking] = useState<{ active: boolean; prompt?: string } | null>(null);
+  // Injections from App into the chat composer. `composerPrefill` writes
+  // text into the textarea (FAB "I'm here"). `autoSend` calls chat.send
+  // immediately (after the user picks a point).
+  const [composerPrefill, setComposerPrefill] = useState<{ id: string; text: string } | null>(null);
+  const [autoSend, setAutoSend] = useState<{ id: string; text: string } | null>(null);
   const { ids: favoriteIds, toggle: toggleFavorite } = useFavorites();
   const { ids: visitedIds, toggle: toggleVisited } = useVisits();
-  const { attractions, byId, countByCategory: counts } = useAttractions();
+  const { attractions, byId, countByCategory: counts, refresh: refreshAttractions } = useAttractions();
 
   useEffect(() => {
     syncIdToUrl(selectedId);
@@ -136,9 +143,70 @@ export default function App() {
         const slugs = event.days.flatMap((d) => d.stops.map((s) => s.slug));
         setHighlightedIds(new Set(slugs));
         setSelectedId(null);
+      } else if (event.type === 'map.pickPoint') {
+        // Agent asked the user to drop a pin. Hide the chat sheet so the
+        // map is visible, then enter picking mode.
+        setPicking({ active: true, prompt: event.prompt });
+        setChatOpen(false);
+      } else if (event.type === 'draft.saved') {
+        // A new user-submitted place was persisted — refresh the catalogue
+        // so the marker shows up.
+        refreshAttractions();
       }
     });
+  }, [refreshAttractions]);
+
+  const onPicked = useCallback((c: { lat: number; lng: number; accuracyM?: number }) => {
+    setPicking(null);
+    setChatOpen(true);
+    const accuracy = c.accuracyM != null ? `, accuracy=${Math.round(c.accuracyM)}m` : '';
+    setAutoSend({
+      id: crypto.randomUUID(),
+      text: `[picked_lat=${c.lat.toFixed(6)}, picked_lng=${c.lng.toFixed(6)}${accuracy}] ${
+        lang === 'ru' ? 'вот точка' : 'here is the point'
+      }`,
+    });
+  }, [lang]);
+
+  const onPickCancel = useCallback(() => {
+    setPicking(null);
+    setChatOpen(true);
   }, []);
+
+  // FAB: "I'm here" — grab GPS, open chat, prefill the composer with the
+  // coordinates so the agent has everything it needs to start.
+  const onUseMyLocation = useCallback(() => {
+    if (!navigator.geolocation) {
+      setChatOpen(true);
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        const accuracyTxt = accuracy != null ? `, accuracy=${Math.round(accuracy)}m` : '';
+        setComposerPrefill({
+          id: crypto.randomUUID(),
+          text: `[gps_lat=${latitude.toFixed(6)}, gps_lng=${longitude.toFixed(6)}${accuracyTxt}] ${
+            lang === 'ru'
+              ? 'добавь это место — прикреплю фото и опишу.'
+              : 'add this place — I\'ll attach a photo and describe it.'
+          }`,
+        });
+        setChatOpen(true);
+      },
+      (err) => {
+        console.warn('[fab] geolocation failed', err);
+        setComposerPrefill({
+          id: crypto.randomUUID(),
+          text: lang === 'ru'
+            ? 'добавь новое место — нужна точка на карте.'
+            : 'add a new place — pick a point on the map.',
+        });
+        setChatOpen(true);
+      },
+      { enableHighAccuracy: true, timeout: 10_000, maximumAge: 30_000 },
+    );
+  }, [lang]);
 
   // We deliberately do NOT clear highlightedIds when selectedId changes —
   // a route should stay highlighted while the user opens individual stops
@@ -185,6 +253,9 @@ export default function App() {
         visitedIds={visitedIds}
         route={activeRoute}
         travelMode={travelMode}
+        picking={picking}
+        onPicked={onPicked}
+        onPickCancel={onPickCancel}
       />
       <Header
         onSelectAttraction={onSelect}
@@ -255,7 +326,30 @@ export default function App() {
         onTravelModeChange={setTravelMode}
         activeRouteSig={activeRouteSig}
         onActivateRoute={onActivateRoute}
+        composerPrefill={composerPrefill}
+        autoSend={autoSend}
       />
+      {!picking?.active && !chatOpen && (
+        <button
+          type="button"
+          onClick={onUseMyLocation}
+          title={lang === 'ru' ? 'Я здесь — добавить место' : 'I\'m here — add a place'}
+          aria-label={lang === 'ru' ? 'Я здесь — добавить место' : 'I\'m here — add a place'}
+          className="fixed z-30 right-4 grid h-12 w-12 place-items-center rounded-full border border-ink-700/60 bg-ink-900/90 text-ink-100 shadow-lg backdrop-blur-md transition-colors hover:border-accent/55 hover:text-accent"
+          style={{ bottom: 'calc(env(safe-area-inset-bottom) + 96px)' }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path
+              d="M12 21s7-7 7-12a7 7 0 10-14 0c0 5 7 12 7 12z"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinejoin="round"
+            />
+            <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M12 9v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

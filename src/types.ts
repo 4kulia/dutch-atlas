@@ -50,6 +50,8 @@ export interface Attraction {
   source: AttractionSource;
   status: AttractionStatus;
   authorId?: string;
+  // User-uploaded photos. URLs are absolute paths under /api/uploads/.
+  photos?: Array<{ url: string; width?: number; height?: number }>;
 }
 
 export const VIDEO_ID = '8O8TIoHpKXQ';

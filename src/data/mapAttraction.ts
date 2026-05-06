@@ -21,6 +21,7 @@ export interface ApiAttractionRecord {
   source: AttractionSource;
   status: AttractionStatus;
   author_id: string | null;
+  photos?: Array<{ url: string; width: number | null; height: number | null }> | null;
 }
 
 function formatVideoTime(seconds?: number | null): string | undefined {
@@ -50,5 +51,8 @@ export function mapApiToAttraction(r: ApiAttractionRecord): Attraction {
     source: r.source,
     status: r.status,
     authorId: r.author_id ?? undefined,
+    photos: r.photos && r.photos.length > 0
+      ? r.photos.map((p) => ({ url: p.url, width: p.width ?? undefined, height: p.height ?? undefined }))
+      : undefined,
   };
 }

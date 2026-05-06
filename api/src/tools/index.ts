@@ -1,7 +1,15 @@
 import { searchAttractionsToolDef, searchAttractions } from './searchAttractions.js';
 import { getAttractionDetailsToolDef, getAttractionDetails } from './getAttractionDetails.js';
-import { showOnMapToolDef, showOnMap, openDrawerToolDef, openDrawer } from './uiTools.js';
+import {
+  showOnMapToolDef,
+  showOnMap,
+  openDrawerToolDef,
+  openDrawer,
+  pickLocationOnMapToolDef,
+  pickLocationOnMap,
+} from './uiTools.js';
 import { buildRouteToolDef, buildRoute } from './buildRoute.js';
+import { savePlaceDraftToolDef, savePlaceDraft } from './savePlaceDraft.js';
 import type { ToolResult } from './types.js';
 export type { UiEvent, ToolResult } from './types.js';
 
@@ -15,6 +23,8 @@ export const TOOL_DEFS = [
   showOnMapToolDef,
   openDrawerToolDef,
   buildRouteToolDef,
+  pickLocationOnMapToolDef,
+  savePlaceDraftToolDef,
 ];
 
 type ToolFn = (args: any, ctx: ToolContext) => Promise<ToolResult>;
@@ -25,6 +35,8 @@ const dispatch: Record<string, ToolFn> = {
   show_on_map: showOnMap as ToolFn,
   open_drawer: openDrawer as ToolFn,
   build_route: buildRoute as ToolFn,
+  pick_location_on_map: pickLocationOnMap as ToolFn,
+  save_place_draft: savePlaceDraft as ToolFn,
 };
 
 export async function runTool(name: string, args: unknown, ctx: ToolContext): Promise<ToolResult> {
