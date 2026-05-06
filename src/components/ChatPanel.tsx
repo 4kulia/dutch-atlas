@@ -8,7 +8,7 @@ import {
 import { useLang } from '../i18n/LanguageProvider';
 import { useAuth } from '../auth/AuthProvider';
 import { useAttractions } from '../data/AttractionsProvider';
-import { useAgentChat, type AgentMessage, type CardItem, type RouteCardData } from '../agent/useAgentChat';
+import { useAgentChat, type AgentMessage, type AttachmentRef, type CardItem, type RouteCardData } from '../agent/useAgentChat';
 import { agentBus } from '../agent/events';
 import { renderMarkdown } from '../agent/markdown';
 import { useRouteDirections, findLeg } from '../agent/routeDirections';
@@ -71,6 +71,11 @@ interface Props {
   onTravelModeChange: (mode: TravelMode) => void;
   activeRouteSig: string | null;
   onActivateRoute: (sig: string, data: RouteCardData) => void;
+  // App can prefill the composer (FAB "I'm here" path) or trigger an
+  // immediate send (after the user picks a point on the map). Each ping
+  // carries a fresh id so ChatPanel can detect re-entries via useEffect deps.
+  composerPrefill?: { id: string; text: string } | null;
+  autoSend?: { id: string; text: string } | null;
 }
 
 interface SessionListItem {
@@ -88,6 +93,8 @@ export function ChatPanel({
   onTravelModeChange,
   activeRouteSig,
   onActivateRoute,
+  composerPrefill,
+  autoSend,
 }: Props) {
   const { lang } = useLang();
   const { isAuthenticated, signInWithGoogle } = useAuth();
@@ -123,9 +130,13 @@ export function ChatPanel({
   const chat = useAgentChat({ lang, travelMode, sessionId, onSessionCreated });
   const [draft, setDraft] = useState('');
   const [snap, setSnap] = useState<Snap>('mid');
+  const [attachments, setAttachments] = useState<AttachmentRef[]>([]);
+  const [uploadingCount, setUploadingCount] = useState(0);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const sheetRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const startNewSession = useCallback(() => {
     chat.reset();
@@ -185,15 +196,93 @@ export function ChatPanel({
 
   const handleSend = useCallback(() => {
     const text = draft.trim();
-    if (!text || chat.isStreaming) return;
-    chat.send(text);
+    if ((!text && attachments.length === 0) || chat.isStreaming || uploadingCount > 0) return;
+    chat.send(text, attachments);
     setDraft('');
-  }, [draft, chat]);
+    for (const a of attachments) URL.revokeObjectURL(a.previewUrl);
+    setAttachments([]);
+  }, [draft, attachments, chat, uploadingCount]);
 
   const handleStarter = useCallback((text: string) => {
     setDraft(text);
     inputRef.current?.focus();
   }, []);
+
+  // Handle photo selection from the OS picker. Each file is uploaded
+  // independently — failures don't block the others. Successful uploads
+  // are appended to `attachments`.
+  const handleFilesSelected = useCallback(async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setUploadError(null);
+    const list = Array.from(files).slice(0, 4 - attachments.length);
+    if (list.length === 0) return;
+    setUploadingCount((n) => n + list.length);
+    for (const file of list) {
+      const previewUrl = URL.createObjectURL(file);
+      try {
+        const fd = new FormData();
+        fd.append('photo', file);
+        const res = await fetch('/api/uploads/photo', {
+          method: 'POST',
+          credentials: 'include',
+          body: fd,
+        });
+        if (!res.ok) {
+          const errBody = await res.json().catch(() => ({}));
+          const code = errBody?.error || `HTTP ${res.status}`;
+          // Translate the few cases the user can act on; everything else
+          // bubbles up the raw code.
+          const friendly =
+            code === 'file_too_large'
+              ? (lang === 'ru' ? 'фото слишком большое (>16 МБ)' : 'photo too large (>16 MB)')
+              : code === 'unsupported_media_type'
+                ? (lang === 'ru' ? 'формат не поддерживается (JPEG / PNG / WebP)' : 'unsupported format (JPEG / PNG / WebP)')
+                : code;
+          throw new Error(friendly);
+        }
+        const data = (await res.json()) as { photoId: string; url: string };
+        // Use the local previewUrl so the thumbnail appears instantly without
+        // a round-trip; we only need the photoId to send to the agent.
+        setAttachments((prev) => [...prev, { photoId: data.photoId, previewUrl }]);
+        setUploadError(null);
+      } catch (err) {
+        URL.revokeObjectURL(previewUrl);
+        const msg = err instanceof Error ? err.message : 'upload_failed';
+        setUploadError(msg);
+      } finally {
+        setUploadingCount((n) => n - 1);
+      }
+    }
+  }, [attachments.length]);
+
+  const removeAttachment = useCallback((photoId: string) => {
+    setAttachments((prev) => {
+      const target = prev.find((a) => a.photoId === photoId);
+      if (target) URL.revokeObjectURL(target.previewUrl);
+      return prev.filter((a) => a.photoId !== photoId);
+    });
+  }, []);
+
+  // Apply prefill / auto-send injections from App. We key on the injection
+  // id so a brand-new injection always re-fires even with the same text.
+  const lastPrefillId = useRef<string | null>(null);
+  useEffect(() => {
+    if (!composerPrefill || composerPrefill.id === lastPrefillId.current) return;
+    lastPrefillId.current = composerPrefill.id;
+    setDraft((prev) => (prev ? `${prev.replace(/\s+$/, '')} ${composerPrefill.text}` : composerPrefill.text));
+    setSnap('full');
+    requestAnimationFrame(() => inputRef.current?.focus());
+  }, [composerPrefill]);
+
+  const lastAutoSendId = useRef<string | null>(null);
+  useEffect(() => {
+    if (!autoSend || autoSend.id === lastAutoSendId.current) return;
+    lastAutoSendId.current = autoSend.id;
+    if (chat.isStreaming) return;
+    chat.send(autoSend.text, attachments.length > 0 ? attachments : undefined);
+    for (const a of attachments) URL.revokeObjectURL(a.previewUrl);
+    setAttachments([]);
+  }, [autoSend, chat, attachments]);
 
   const cycleSnap = useCallback(() => {
     setSnap((s) => (s === 'peek' ? 'mid' : s === 'mid' ? 'full' : 'peek'));
@@ -428,7 +517,40 @@ export function ChatPanel({
                   </div>
                 )}
 
+                {(attachments.length > 0 || uploadingCount > 0 || uploadError) && (
+                  <AttachmentTray
+                    items={attachments}
+                    uploadingCount={uploadingCount}
+                    error={uploadError}
+                    lang={lang}
+                    onRemove={removeAttachment}
+                  />
+                )}
+
                 <div className="flex items-end gap-2">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                    capture="environment"
+                    className="hidden"
+                    onChange={(e) => {
+                      handleFilesSelected(e.target.files);
+                      // reset so picking the same file twice fires onChange
+                      e.target.value = '';
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={attachments.length >= 4}
+                    title={lang === 'ru' ? 'Прикрепить фото' : 'Attach photo'}
+                    aria-label={lang === 'ru' ? 'Прикрепить фото' : 'Attach photo'}
+                    className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-ink-300 transition-colors hover:bg-ink-800 hover:text-ink-100 disabled:cursor-not-allowed disabled:opacity-30"
+                  >
+                    <IconPaperclip />
+                  </button>
                   <textarea
                     ref={inputRef}
                     value={draft}
@@ -458,7 +580,7 @@ export function ChatPanel({
                     <button
                       type="button"
                       onClick={handleSend}
-                      disabled={!draft.trim()}
+                      disabled={(!draft.trim() && attachments.length === 0) || uploadingCount > 0}
                       title={T.send[lang]}
                       aria-label={T.send[lang]}
                       className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent text-ink-950 transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
@@ -477,6 +599,57 @@ export function ChatPanel({
 }
 
 // ─── Sub-components ─────────────────────────────────────────────────
+
+function AttachmentTray({
+  items,
+  uploadingCount,
+  error,
+  lang,
+  onRemove,
+}: {
+  items: AttachmentRef[];
+  uploadingCount: number;
+  error: string | null;
+  lang: 'ru' | 'en';
+  onRemove: (photoId: string) => void;
+}) {
+  return (
+    <div className="mb-2 flex flex-col gap-1">
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((a) => (
+          <div
+            key={a.photoId}
+            className="relative h-14 w-14 overflow-hidden rounded-lg border border-ink-700/60 bg-ink-950"
+          >
+            <img src={a.previewUrl} alt="" className="h-full w-full object-cover" />
+            <button
+              type="button"
+              onClick={() => onRemove(a.photoId)}
+              aria-label={lang === 'ru' ? 'Убрать' : 'Remove'}
+              className="absolute right-0.5 top-0.5 grid h-4 w-4 place-items-center rounded-full bg-ink-950/80 text-[10px] text-ink-100 hover:bg-rose-500/90"
+            >
+              ×
+            </button>
+          </div>
+        ))}
+        {Array.from({ length: uploadingCount }).map((_, i) => (
+          <div
+            key={`u-${i}`}
+            className="grid h-14 w-14 animate-pulse place-items-center rounded-lg border border-ink-700/60 bg-ink-900 text-[10px] text-ink-400"
+            aria-label={lang === 'ru' ? 'Загружаю…' : 'Uploading…'}
+          >
+            …
+          </div>
+        ))}
+      </div>
+      {error && (
+        <p className="text-[11px] text-rose-300/80">
+          {lang === 'ru' ? 'Ошибка загрузки' : 'Upload error'}: {error}
+        </p>
+      )}
+    </div>
+  );
+}
 
 function UserBubble({ text }: { text: string }) {
   return (
@@ -1138,6 +1311,19 @@ function IconStop() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden>
       <rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+function IconPaperclip() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M21 11.5l-9.2 9.2a5.5 5.5 0 11-7.78-7.78l9.2-9.2a3.7 3.7 0 015.23 5.23l-9.2 9.2a1.85 1.85 0 11-2.62-2.62l8.5-8.5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

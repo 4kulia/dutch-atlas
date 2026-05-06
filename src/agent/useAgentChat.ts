@@ -64,6 +64,11 @@ interface UseAgentChatOpts {
   onSessionCreated?: (sessionId: string) => void;
 }
 
+export interface AttachmentRef {
+  photoId: string;
+  previewUrl: string;
+}
+
 export function useAgentChat({ lang, travelMode, sessionId, onSessionCreated }: UseAgentChatOpts) {
   const [state, setState] = useState<State>({
     messages: [],
@@ -125,9 +130,9 @@ export function useAgentChat({ lang, travelMode, sessionId, onSessionCreated }: 
   }, [sessionId]);
 
   const send = useCallback(
-    async (text: string) => {
+    async (text: string, attachments?: AttachmentRef[]) => {
       const trimmed = text.trim();
-      if (!trimmed || state.isStreaming) return;
+      if ((!trimmed && (!attachments || attachments.length === 0)) || state.isStreaming) return;
 
       const ac = new AbortController();
       abortRef.current = ac;
@@ -171,6 +176,9 @@ export function useAgentChat({ lang, travelMode, sessionId, onSessionCreated }: 
             travelMode,
             sessionId: state.sessionId,
             history,
+            attachments: attachments && attachments.length > 0
+              ? attachments.map((a) => ({ photoId: a.photoId }))
+              : undefined,
           }),
           signal: ac.signal,
         });
@@ -382,7 +390,12 @@ function handleEvent(
       agentBus.emit({ type: 'route.show', title: payload.title, days: payload.days, sig } as any);
       return;
     }
-    if (payload?.type === 'map.show' || payload?.type === 'drawer.open') {
+    if (
+      payload?.type === 'map.show' ||
+      payload?.type === 'drawer.open' ||
+      payload?.type === 'map.pickPoint' ||
+      payload?.type === 'draft.saved'
+    ) {
       agentBus.emit(payload);
     }
     return;
@@ -399,4 +412,6 @@ const TOOL_HINTS: Record<string, string> = {
   show_on_map: '🗺 показываю на карте…',
   open_drawer: '➡ открываю детали…',
   build_route: '🚗 собираю маршрут…',
+  pick_location_on_map: '📍 жду точку на карте…',
+  save_place_draft: '💾 сохраняю место…',
 };

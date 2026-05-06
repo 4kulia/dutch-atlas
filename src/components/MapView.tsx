@@ -31,6 +31,12 @@ interface Props {
   visitedIds?: ReadonlySet<string>;
   route?: { title?: string; days: RouteDay[] } | null;
   travelMode?: TravelMode;
+  // Pin-drop mode: when active, the map centres a fixed pin and shows
+  // Done / My-GPS / Cancel controls. The user pans the map under the pin
+  // (Apple/Uber-style) and presses Done to commit the centre point.
+  picking?: { active: boolean; prompt?: string } | null;
+  onPicked?: (coords: { lat: number; lng: number; accuracyM?: number }) => void;
+  onPickCancel?: () => void;
 }
 
 export function MapView({
@@ -43,6 +49,9 @@ export function MapView({
   visitedIds,
   route,
   travelMode,
+  picking,
+  onPicked,
+  onPickCancel,
 }: Props) {
   const { lang } = useLang();
   const { attractions: allAttractions } = useAttractions();
@@ -65,34 +74,155 @@ export function MapView({
   }
 
   return (
-    <APIProvider apiKey={apiKey} libraries={['marker']}>
-      <GMap
-        defaultCenter={NETHERLANDS_CENTER}
-        defaultZoom={7}
-        mapId={MAP_ID}
-        gestureHandling="greedy"
-        disableDefaultUI={false}
-        clickableIcons={false}
-        fullscreenControl={false}
-        mapTypeControl={false}
-        streetViewControl={false}
-        zoomControl
-        className="h-full w-full"
+    <div className="relative h-full w-full">
+      <APIProvider apiKey={apiKey} libraries={['marker']}>
+        <GMap
+          defaultCenter={NETHERLANDS_CENTER}
+          defaultZoom={7}
+          mapId={MAP_ID}
+          gestureHandling="greedy"
+          disableDefaultUI={false}
+          clickableIcons={false}
+          fullscreenControl={false}
+          mapTypeControl={false}
+          streetViewControl={false}
+          zoomControl
+          className="h-full w-full"
+        >
+          <MapBody
+            visible={visible}
+            selectedId={selectedId}
+            onSelect={onSelect}
+            highlightedIds={highlightedIds ?? null}
+            visitedIds={visitedIds ?? null}
+            route={route ?? null}
+            travelMode={travelMode ?? 'DRIVING'}
+            flyTo={onlyCaribbean ? CARIBBEAN_CENTER : NETHERLANDS_CENTER}
+            flyZoom={onlyCaribbean ? 6 : 7}
+            flyKey={onlyCaribbean ? 'carib' : 'nl'}
+          />
+          {picking?.active && (
+            <PickPointOverlay
+              prompt={picking.prompt}
+              lang={lang}
+              onCommit={(c) => onPicked?.(c)}
+              onCancel={() => onPickCancel?.()}
+            />
+          )}
+        </GMap>
+      </APIProvider>
+    </div>
+  );
+}
+
+interface PickOverlayProps {
+  prompt?: string;
+  lang: 'ru' | 'en';
+  onCommit: (c: { lat: number; lng: number; accuracyM?: number }) => void;
+  onCancel: () => void;
+}
+
+// Pin sits at the visual centre of the map (absolute-positioned, NOT a marker)
+// — the user pans the map under the pin to place it precisely. "My GPS" pans
+// the map to the device location; "Done" commits the current map centre.
+function PickPointOverlay({ prompt, lang, onCommit, onCancel }: PickOverlayProps) {
+  const map = useMap();
+  const [accuracyM, setAccuracyM] = useState<number | null>(null);
+  const [gpsBusy, setGpsBusy] = useState(false);
+
+  const useMyLocation = useCallback(() => {
+    if (!map || !navigator.geolocation) return;
+    setGpsBusy(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setGpsBusy(false);
+        setAccuracyM(pos.coords.accuracy);
+        map.panTo({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        const z = map.getZoom() ?? 7;
+        if (z < 16) map.setZoom(16);
+      },
+      (err) => {
+        setGpsBusy(false);
+        console.warn('[pick] geolocation denied/unavailable', err);
+      },
+      { enableHighAccuracy: true, timeout: 10_000, maximumAge: 30_000 },
+    );
+  }, [map]);
+
+  const commit = useCallback(() => {
+    if (!map) return;
+    const c = map.getCenter();
+    if (!c) return;
+    onCommit({
+      lat: c.lat(),
+      lng: c.lng(),
+      ...(accuracyM != null ? { accuracyM } : {}),
+    });
+  }, [map, accuracyM, onCommit]);
+
+  return (
+    <>
+      {/* Centred pin — pure CSS, doesn't move while the map pans. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 z-30"
+        style={{ transform: 'translate(-50%, -100%)' }}
       >
-        <MapBody
-          visible={visible}
-          selectedId={selectedId}
-          onSelect={onSelect}
-          highlightedIds={highlightedIds ?? null}
-          visitedIds={visitedIds ?? null}
-          route={route ?? null}
-          travelMode={travelMode ?? 'DRIVING'}
-          flyTo={onlyCaribbean ? CARIBBEAN_CENTER : NETHERLANDS_CENTER}
-          flyZoom={onlyCaribbean ? 6 : 7}
-          flyKey={onlyCaribbean ? 'carib' : 'nl'}
+        <svg width="36" height="46" viewBox="0 0 36 46" fill="none">
+          <path
+            d="M18 2c8.84 0 16 6.93 16 15.47C34 28.5 18 44 18 44S2 28.5 2 17.47C2 8.93 9.16 2 18 2z"
+            fill="#ff6a3d"
+            stroke="#0b0f17"
+            strokeWidth="2"
+          />
+          <circle cx="18" cy="17" r="5.5" fill="#0b0f17" />
+        </svg>
+        <div
+          aria-hidden
+          className="absolute left-1/2 top-full mt-1 h-1.5 w-3 -translate-x-1/2 rounded-full bg-black/30 blur-[1px]"
         />
-      </GMap>
-    </APIProvider>
+      </div>
+
+      {/* Top hint banner */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 flex justify-center pt-3"
+           style={{ paddingTop: 'calc(env(safe-area-inset-top) + 12px)' }}>
+        <div className="pointer-events-auto rounded-full border border-accent/55 bg-ink-900/90 px-4 py-1.5 text-[12px] font-medium text-ink-100 backdrop-blur-md">
+          {prompt || (lang === 'ru' ? 'Двигайте карту, чтобы поставить точку' : 'Pan the map to drop the pin')}
+        </div>
+      </div>
+
+      {/* Bottom action bar */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 flex justify-center pb-4 px-3"
+           style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 16px)' }}>
+        <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-ink-700/60 bg-ink-900/95 p-1.5 shadow-lg backdrop-blur-md">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="rounded-full px-3 py-1.5 text-[12.5px] text-ink-300 hover:bg-ink-800 hover:text-ink-100"
+          >
+            {lang === 'ru' ? 'Отмена' : 'Cancel'}
+          </button>
+          <button
+            type="button"
+            onClick={useMyLocation}
+            disabled={gpsBusy}
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12.5px] text-ink-100 hover:bg-ink-800 disabled:opacity-50"
+          >
+            <span aria-hidden>📍</span>
+            {gpsBusy
+              ? (lang === 'ru' ? 'Ищу…' : 'Locating…')
+              : (lang === 'ru' ? 'Моё местоположение' : 'My location')}
+          </button>
+          <button
+            type="button"
+            onClick={commit}
+            className="rounded-full bg-accent px-4 py-1.5 text-[12.5px] font-semibold text-ink-950 hover:opacity-90"
+          >
+            {lang === 'ru' ? 'Готово' : 'Done'}
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
 

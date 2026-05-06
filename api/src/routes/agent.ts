@@ -10,7 +10,10 @@ export const agentRouter: Router = Router();
 agentRouter.use(requireAuth);
 
 const Body = z.object({
-  message: z.string().min(1).max(2000),
+  // No min(1) — when the user attaches a photo and hits send without text
+  // we still need to accept the request. The refine() below enforces that
+  // at least one of {non-empty message, attachments} is present.
+  message: z.string().max(2000),
   lang: z.enum(['ru', 'en']).optional().nullable(),
   travelMode: z.enum(['DRIVING', 'WALKING', 'BICYCLING', 'TRANSIT']).optional().nullable(),
   // Frontend sends `null` when no session is active yet — we accept it as
@@ -22,7 +25,13 @@ const Body = z.object({
       content: z.string().max(10_000),
     }),
   ).max(20).optional().nullable(),
-});
+  // Photo attachments uploaded via POST /api/uploads/photo. Cap matches
+  // runChat's slice(0, 4) — extras would be silently dropped anyway.
+  attachments: z.array(z.object({ photoId: z.string().min(1).max(40) })).max(4).optional().nullable(),
+}).refine(
+  (b) => (b.message?.trim().length ?? 0) > 0 || (b.attachments?.length ?? 0) > 0,
+  { message: 'message_or_attachments_required', path: ['message'] },
+);
 
 // Per-user rate limit: 60 messages per hour. Tracked in-memory; sufficient
 // for a single api replica.
@@ -49,6 +58,7 @@ function summariseTitle(text: string): string {
 agentRouter.post('/messages', async (req: AuthedRequest, res) => {
   const parsed = Body.safeParse(req.body);
   if (!parsed.success) {
+    console.warn('[agent] invalid body', JSON.stringify(parsed.error.issues));
     res.status(400).json({ error: 'invalid_body', issues: parsed.error.issues });
     return;
   }
@@ -56,7 +66,10 @@ agentRouter.post('/messages', async (req: AuthedRequest, res) => {
   const lang: Lang = parsed.data.lang ?? 'ru';
   const travelMode = parsed.data.travelMode ?? 'DRIVING';
   const history: ChatTurn[] = parsed.data.history ?? [];
-  const message = parsed.data.message.trim();
+  // When only attachments are present we still want a coherent text prompt
+  // for the model — fall back to a short hint so the assistant knows to
+  // look at the photos and use any GPS prefix from the previous turn.
+  const message = parsed.data.message.trim() || (lang === 'ru' ? '(приложил фото)' : '(attached a photo)');
   // Normalise null → undefined for the rest of the function.
   // (zod's `.optional().nullable()` lets `null` through; we treat it as absent.)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -124,6 +137,7 @@ agentRouter.post('/messages', async (req: AuthedRequest, res) => {
       userId,
       history,
       userMessage: message,
+      attachments: parsed.data.attachments ?? undefined,
       signal: ac.signal,
       onText: (delta) => send('text', { delta }),
       onUiEvent: (event) => {

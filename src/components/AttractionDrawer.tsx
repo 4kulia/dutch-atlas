@@ -160,6 +160,46 @@ export function AttractionDrawer({
             </header>
 
             <div className="flex-1 overflow-y-auto px-5 md:px-6">
+              {attraction.photos && attraction.photos.length > 0 && (
+                <div className="mt-2">
+                  {attraction.photos.length === 1 ? (
+                    <a
+                      href={attraction.photos[0]!.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block overflow-hidden rounded-2xl border border-ink-700/40"
+                    >
+                      <img
+                        src={attraction.photos[0]!.url}
+                        alt={attraction.name[lang]}
+                        loading="lazy"
+                        className="block w-full object-cover"
+                        style={{ maxHeight: 360 }}
+                      />
+                    </a>
+                  ) : (
+                    <div className="-mx-5 flex snap-x snap-mandatory gap-2 overflow-x-auto px-5 md:-mx-6 md:px-6 [scrollbar-width:thin]">
+                      {attraction.photos.map((p, i) => (
+                        <a
+                          key={p.url}
+                          href={p.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block shrink-0 snap-start overflow-hidden rounded-xl border border-ink-700/40"
+                          style={{ width: '78%', maxWidth: 360 }}
+                        >
+                          <img
+                            src={p.url}
+                            alt={`${attraction.name[lang]} #${i + 1}`}
+                            loading="lazy"
+                            className="block h-56 w-full object-cover"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
               {attraction.videoId && attraction.videoTime != null && (
                 <>
                   <VideoEmbed

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { apiFetch } from '../auth/api';
 import { mapApiToAttraction, type ApiAttractionRecord } from './mapAttraction';
 import { ATTRACTIONS_BUNDLED } from './bundled';
@@ -11,6 +11,7 @@ interface AttractionsState {
   isLoading: boolean;
   error: string | null;
   hydrated: boolean;
+  refresh: () => Promise<void>;
 }
 
 const AttractionsContext = createContext<AttractionsState | null>(null);
@@ -71,21 +72,22 @@ export function AttractionsProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const refresh = useCallback(async () => {
+    try {
+      const res = await apiFetch<{ attractions: ApiAttractionRecord[] }>('/api/attractions');
+      writeCache(res.attractions);
+      setAttractions(res.attractions.map(mapApiToAttraction));
+      setError(null);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Failed to load attractions';
+      console.warn('[attractions] refresh failed', err);
+      setError(msg);
+    }
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
-    apiFetch<{ attractions: ApiAttractionRecord[] }>('/api/attractions')
-      .then((res) => {
-        if (cancelled) return;
-        writeCache(res.attractions);
-        setAttractions(res.attractions.map(mapApiToAttraction));
-        setError(null);
-      })
-      .catch((err) => {
-        if (cancelled) return;
-        const msg = err instanceof Error ? err.message : 'Failed to load attractions';
-        console.warn('[attractions] api fetch failed, using fallback', err);
-        setError(msg);
-      })
+    refresh()
       .finally(() => {
         if (cancelled) return;
         setIsLoading(false);
@@ -94,12 +96,12 @@ export function AttractionsProvider({ children }: { children: ReactNode }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [refresh]);
 
   const value = useMemo<AttractionsState>(() => {
     const { byId, countByCategory } = deriveState(attractions);
-    return { attractions, byId, countByCategory, isLoading, error, hydrated };
-  }, [attractions, isLoading, error, hydrated]);
+    return { attractions, byId, countByCategory, isLoading, error, hydrated, refresh };
+  }, [attractions, isLoading, error, hydrated, refresh]);
 
   return <AttractionsContext.Provider value={value}>{children}</AttractionsContext.Provider>;
 }

@@ -1,5 +1,8 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { config } from './config.js';
+import { query } from './db.js';
 import { TOOL_DEFS, runTool, type UiEvent } from './tools/index.js';
 
 const anthropic = new Anthropic({ apiKey: config.anthropicApiKey });
@@ -12,12 +15,17 @@ export interface ChatTurn {
   content: string;
 }
 
+export interface AttachmentRef {
+  photoId: string;
+}
+
 export interface RunOptions {
   lang: Lang;
   travelMode: TravelMode;
   userId: string;
   history: ChatTurn[];
   userMessage: string;
+  attachments?: AttachmentRef[];
   signal: AbortSignal;
   onText: (delta: string) => void;
   onUiEvent: (event: UiEvent) => void;
@@ -40,6 +48,15 @@ Tools:
 - Use \`show_on_map\` for a flat shortlist of 3–6 places (no order) so the user sees them on the map.
 - Use \`build_route\` whenever the user asks for an itinerary, a tour, "a day", "a weekend", or a "route" — anything with order. Group stops into days. The frontend draws a colour-coded path on the map and shows numbered markers; it ALSO renders a structured route card in the chat. Don't ALSO call \`show_on_map\` for the same places.
 - Use \`open_drawer\` only when the user explicitly wants to see one place in depth.
+
+Adding new places (user submissions):
+- The user can ask you to add a place that isn't in the catalogue. Their message may include attached photos and one of these coordinate prefixes:
+  - \`[gps_lat=…, gps_lng=…, accuracy=…m]\` — the device GPS reading at the moment they pressed "I'm here". Treat as authoritative.
+  - \`[picked_lat=…, picked_lng=…]\` — coordinates the user dropped on the map.
+- If neither prefix is present and there are no other coordinate hints, call \`pick_location_on_map\` once to ask the user to drop a pin. Do not invent coordinates.
+- If a photo is attached, describe what you see briefly to confirm understanding ("вижу здание из красного кирпича с часовой башней"), then propose name (RU+EN), short description (one sentence each, RU+EN), full description (2–4 sentences each, RU+EN), category, and tags. Keep facts strictly to what's visible in the photo + what the user said. Do NOT make up history, dates, or attribution.
+- The user message may include a \`[photo_ids=…,…]\` prefix listing the photoIds of the attached photos. When you call \`save_place_draft\`, ALWAYS pass these as \`photo_ids\` so the photos get linked to the new place. Without this, the place will be saved without photos.
+- When you have name + descriptions + category + coords, call \`save_place_draft\` with status="pending" (default) unless the user said "draft"/"черновик". After it succeeds, the UI shows the new place card and opens its drawer — keep your reply to one short sentence ("Сохранил, можешь поправить в карточке.").
 
 Style:
 - Match the user's language (Russian or English).
@@ -70,14 +87,44 @@ export async function runChat(opts: RunOptions): Promise<{
   usage: { inputTokens: number; outputTokens: number };
   reply: string;
 }> {
-  const { lang, travelMode, userId, history, userMessage, onText, onUiEvent, onToolUseStart, signal } = opts;
+  const { lang, travelMode, userId, history, userMessage, attachments, onText, onUiEvent, onToolUseStart, signal } = opts;
 
   const messages: Array<{ role: 'user' | 'assistant'; content: any }> = [];
-  for (const m of history) messages.push({ role: m.role, content: m.content });
-  messages.push({
-    role: 'user',
-    content: `[lang=${lang}, travelMode=${travelMode}] ${userMessage}`,
-  });
+  // Anthropic rejects messages with empty content. The frontend can produce
+  // empty user.text when the user sent only photos, and empty assistant.text
+  // when the assistant turn was tool calls without prose. Substitute a
+  // placeholder so the history is preserved without violating the API.
+  for (const m of history) {
+    const text = m.content?.trim();
+    const content = text && text.length > 0
+      ? m.content
+      : (m.role === 'user' ? '(приложил фото)' : '(…)');
+    messages.push({ role: m.role, content });
+  }
+
+  // Include photo_ids in the prompt text so the model can pass them to
+  // save_place_draft. The vision blocks let the model SEE the photos; the
+  // ids tell it which database rows to attach when saving.
+  const photoIdsTag = attachments && attachments.length > 0
+    ? ` [photo_ids=${attachments.map((a) => a.photoId).join(',')}]`
+    : '';
+  const promptText = `[lang=${lang}, travelMode=${travelMode}]${photoIdsTag} ${userMessage}`;
+  if (attachments && attachments.length > 0) {
+    // Mixed content: image blocks first, then the prefixed text. We read the
+    // bytes from disk and inline them as base64 — Anthropic's vision API
+    // supports up to 20 images per request comfortably; we cap at 4 to keep
+    // the request size sane (each ~150 KB JPEG → ~200 KB base64).
+    const imageBlocks = await loadImageBlocks(attachments.slice(0, 4), userId);
+    messages.push({
+      role: 'user',
+      content: [
+        ...imageBlocks,
+        { type: 'text', text: promptText },
+      ],
+    });
+  } else {
+    messages.push({ role: 'user', content: promptText });
+  }
 
   let totalInputTokens = 0;
   let totalOutputTokens = 0;
@@ -148,4 +195,43 @@ export async function runChat(opts: RunOptions): Promise<{
     usage: { inputTokens: totalInputTokens, outputTokens: totalOutputTokens },
     reply: assembledReply,
   };
+}
+
+interface ImageBlock {
+  type: 'image';
+  source: { type: 'base64'; media_type: string; data: string };
+}
+
+// Read photo bytes from disk and inline as base64 image blocks for the vision
+// API. Defensive: only adopts photos that belong to the caller. Missing or
+// foreign photos are silently dropped — the model will simply not see them
+// and the user can re-attach.
+async function loadImageBlocks(refs: Array<{ photoId: string }>, userId: string): Promise<ImageBlock[]> {
+  if (refs.length === 0) return [];
+  const ids = refs.map((r) => r.photoId);
+  const r = await query<{ id: string; url: string }>(
+    `SELECT id, url FROM attraction_photos
+      WHERE id = ANY($1::text[]) AND uploaded_by = $2`,
+    [ids, userId],
+  );
+  if (r.rowCount === 0) return [];
+  const urlById = new Map(r.rows.map((row) => [row.id, row.url] as const));
+  const blocks: ImageBlock[] = [];
+  for (const ref of refs) {
+    const url = urlById.get(ref.photoId);
+    if (!url) continue;
+    // url is `/api/uploads/<filename>` — strip the prefix for the disk path.
+    const filename = url.replace(/^\/api\/uploads\//, '');
+    if (!/^[A-Z0-9]+\.jpg$/i.test(filename)) continue; // sanity guard
+    try {
+      const buf = await readFile(resolve(process.cwd(), config.uploadsDir, filename));
+      blocks.push({
+        type: 'image',
+        source: { type: 'base64', media_type: 'image/jpeg', data: buf.toString('base64') },
+      });
+    } catch (err) {
+      console.warn('[agent] could not read photo', filename, err);
+    }
+  }
+  return blocks;
 }

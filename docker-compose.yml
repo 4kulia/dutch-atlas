@@ -60,6 +60,11 @@ services:
       # and undici (Node fetch) stalls on Happy Eyeballs to e.g. oauth2.googleapis.com
       # when the AAAA record is preferred.
       NODE_OPTIONS: --dns-result-order=ipv4first
+      UPLOADS_DIR: /app/uploads
+    volumes:
+      # User-submitted photos. The host dir survives container rebuilds; back
+      # it up alongside the postgres volume.
+      - ./uploads:/app/uploads
     ports:
       - "127.0.0.1:8091:8091"
     healthcheck:

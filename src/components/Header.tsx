@@ -33,9 +33,19 @@ export function Header({ onSelectAttraction, onOpenMyPlaces, onOpenChat }: Props
           ].join(' ')}
         >
           <Logo />
-          <span className="text-[13px] font-semibold text-ink-100 leading-none">
-            {UI.app_title[lang]}
-          </span>
+          <div className="flex flex-col leading-none">
+            <span className="text-[13px] font-semibold text-ink-100">
+              {UI.app_title[lang]}
+            </span>
+            <a
+              href="https://x.com/ai_kulikov"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-0.5 text-[9.5px] font-medium tracking-wide text-ink-500 transition-colors hover:text-accent"
+            >
+              by @ai_kulikov
+            </a>
+          </div>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <SearchBar onSelect={onSelectAttraction} onExpandChange={setSearchExpanded} />
